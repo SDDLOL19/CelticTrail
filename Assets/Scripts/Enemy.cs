@@ -6,6 +6,7 @@ using UnityEngine.AI;
 public class Enemy : MonoBehaviour
 {
     [SerializeField] Transform player;
+    [SerializeField] GameObject prefabDroppeable;
     NavMeshAgent agent;
 
     void Start()
@@ -24,6 +25,11 @@ public class Enemy : MonoBehaviour
 
     void MoveToThePlayer()
     {
-        agent.SetDestination(player.position);
+        agent.SetDestination(GameManager.objetivoEnemigos.position);
+    }
+
+    private void OnDestroy()
+    {
+        Instantiate(prefabDroppeable).transform.position = this.transform.position;
     }
 }

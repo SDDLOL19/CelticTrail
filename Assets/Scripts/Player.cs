@@ -5,6 +5,7 @@ using UnityEngine;
 public class Player : MonoBehaviour
 {
     [SerializeField] float speed;
+    [SerializeField] int lenght;
 
     void Update()
     {
@@ -31,6 +32,25 @@ public class Player : MonoBehaviour
         if (Input.GetKey(KeyCode.A))
         {
             this.transform.position -= Vector3.right * Time.deltaTime * speed;
+        }
+    }
+
+    void Growth()
+    {
+        lenght++;
+    }
+
+    void Shrinkage()
+    {
+        lenght++;
+    }
+
+    private void OnTriggerEnter2D(Collider2D collision)
+    {
+        if (collision.gameObject.tag == "Droppeable")
+        {
+            Destroy(collision);
+            Growth();
         }
     }
 }

@@ -6,8 +6,8 @@ using UnityEngine.Video;
 public class Head : MonoBehaviour
 {
     [SerializeField, Range(1, 20)] int hp = 0;
-    [SerializeField, Range(1, 100)] protected float moveVelocity, rotationVelocity;
-    [SerializeField] GameObject[] prefabBody;
+    [SerializeField, Range(1, 100)] protected float moveVelocity;
+    [SerializeField] GameObject[] bodies;
     // Start is called before the first frame update
     void Start()
     {
@@ -17,47 +17,63 @@ public class Head : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
+        Movement();
+    }
+    void Movement()
+    {
         transform.Translate(Vector2.up * moveVelocity * Time.deltaTime); //mueve el objeto en el en direccion flecha verde(la del eje y)
 
-        if (Input.GetKey(KeyCode.A))
-        {
-            transform.eulerAngles += new Vector3(0f, 0, -rotationVelocity) * Time.deltaTime; //rota el objeto a izquierda
-        }
         if (Input.GetKey(KeyCode.D))
         {
-            transform.eulerAngles += new Vector3(0f, 0, rotationVelocity) * Time.deltaTime; //rota el objeto a derecha
+            MovementRight();
         }
-        CreateBody();
+        if (Input.GetKey(KeyCode.A))
+        {
+            MovementLeft();
+        }
+        if (Input.GetKey(KeyCode.W))
+        {
+            MovementUp();
+        }
+        if (Input.GetKey(KeyCode.S))
+        {
+            MovementDown();        
+        }
     }
-    //void Movement(Vector2 head)
-    //{
-    //    transform.Translate(head * moveVelocity * Time.deltaTime);
-    //    if (Input.GetKey(KeyCode.A))
-    //    {
-    //        transform.eulerAngles += new Vector3(0f, 0, -rotationVelocity) * Time.deltaTime;
-    //    }
-    //    if (Input.GetKey(KeyCode.D))
-    //    {
-    //        transform.eulerAngles += new Vector3(0f, 0, rotationVelocity) * Time.deltaTime;
-    //    }
-    //}
-    void CreateBody()
+    void MovementLeft()
     {
-        //if (hp == 1)
-        //{
-        //    Vector2 spawnPosition = transform.position; //spawnea en la misma posicion
-        //    Quaternion spawnRotation = transform.rotation; //spawnea con la misma rotacion
-        //    Instantiate(prefabBody[1], spawnPosition, spawnRotation);
-        //}
+        transform.eulerAngles = new Vector3(0f, 0, 90); //rota el objeto a izquierda
+    }
+    void MovementRight()
+    {
+        transform.eulerAngles = new Vector3(0f, 0, -90); //rota el objeto a derecha
+    }
+    void MovementUp()
+    {
+        transform.eulerAngles = new Vector3(0f, 0, 0); //rota el objeto hacia arriba
+    }
+    void MovementDown()
+    {
+        transform.eulerAngles = new Vector3(0f, 0, 180); //rota el objeto hacia abajo
+    }
+
+
+    void UpdateBodies()
+    {
         Vector2 spawnPosition = transform.position; //spawnea en la misma posicion
         Quaternion spawnRotation = transform.rotation; //spawnea con la misma rotacion
-        for (int i = 0; i < prefabBody.Length; i++)
+        for (int i = 0; i < bodies.Length; i++)
         {
             if (hp > i)
             {
-                Instantiate(prefabBody[i], spawnPosition, spawnRotation);
+                Instantiate(bodies[i], spawnPosition, spawnRotation);
+                Invoke("CallBodies",3f);
             }
 
         }
+    }
+    void CallBodies()
+    {
+
     }
 }

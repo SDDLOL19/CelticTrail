@@ -1,43 +1,46 @@
 using System.Collections;
-using System.Collections.Generic;
+using System;
 using UnityEngine;
-using UnityEngine.Video;
 
 public class Head : MonoBehaviour
 {
-    [SerializeField, Range(1, 20)] int hp = 0;
-    [SerializeField, Range(1, 100)] protected float moveVelocity;
+    [SerializeField, Range(1, 10)] int hp = 0;
+    [SerializeField, Range(1, 100)] public float speed = 20;
+    [SerializeField] float distance;
     [SerializeField] GameObject[] bodies;
-    // Start is called before the first frame update
-    void Start()
-    {
+    float tiempo = 0.01f;
 
-    }
-
-    // Update is called once per frame
     void Update()
     {
         Movement();
     }
+
     void Movement()
     {
-        transform.Translate(Vector2.up * moveVelocity * Time.deltaTime); //mueve el objeto en el en direccion flecha verde(la del eje y)
+        transform.Translate(Vector2.up * speed * Time.deltaTime); //mueve el objeto en el en direccion flecha verde(la del eje y)
 
         if (Input.GetKey(KeyCode.D))
         {
             MovementRight();
+            BodiesRight();
         }
+
         if (Input.GetKey(KeyCode.A))
         {
             MovementLeft();
+            BodiesLeft();
         }
+
         if (Input.GetKey(KeyCode.W))
         {
             MovementUp();
+            BodiesUp();
         }
+
         if (Input.GetKey(KeyCode.S))
         {
-            MovementDown();        
+            MovementDown();
+            BodiesDown();
         }
     }
     void MovementLeft()
@@ -57,23 +60,72 @@ public class Head : MonoBehaviour
         transform.eulerAngles = new Vector3(0f, 0, 180); //rota el objeto hacia abajo
     }
 
-
-    void UpdateBodies()
+    IEnumerator WaitForUp(int i)
     {
-        Vector2 spawnPosition = transform.position; //spawnea en la misma posicion
-        Quaternion spawnRotation = transform.rotation; //spawnea con la misma rotacion
+        tiempo = (distance * (i + 1)) / speed;
+        yield return new WaitForSeconds(tiempo);
+        bodies[i].GetComponent<Body>().MovementUp();
+    }
+
+    IEnumerator WaitForDown(int i)
+    {
+        tiempo = (distance * (i + 1)) / speed;
+        yield return new WaitForSeconds(tiempo);
+        bodies[i].GetComponent<Body>().MovementDown();
+    }
+
+    IEnumerator WaitForLeft(int i)
+    {
+        tiempo = (distance * (i + 1)) / speed;
+        yield return new WaitForSeconds(tiempo);
+        bodies[i].GetComponent<Body>().MovementLeft();
+    }
+
+    IEnumerator WaitForRight(int i)
+    {
+        tiempo = (distance * (i + 1)) / speed;
+        yield return new WaitForSeconds(tiempo);
+        bodies[i].GetComponent<Body>().MovementRight();
+    }
+
+    /*void Temporizador()
+    {
+        timer += Time.deltaTime;
+        if (timer > delay)
+        {
+            MyFunction();
+        }
+    }*/
+
+    void BodiesUp()
+    {
         for (int i = 0; i < bodies.Length; i++)
         {
-            if (hp > i)
-            {
-                Instantiate(bodies[i], spawnPosition, spawnRotation);
-                Invoke("CallBodies",3f);
-            }
-
+            StartCoroutine(WaitForUp(i));
         }
     }
-    void CallBodies()
-    {
 
+    void BodiesDown()
+    {
+        for (int i = 0; i < bodies.Length; i++)
+        {
+            StartCoroutine(WaitForDown(i));
+        }
+    }
+
+    void BodiesRight()
+    {
+        for (int i = 0; i < bodies.Length; i++)
+        {
+            StartCoroutine(WaitForRight(i));
+        }
+    }
+
+    void BodiesLeft()
+    {
+        for (int i = 0; i < bodies.Length; i++)
+        {
+            StartCoroutine(WaitForLeft(i));
+        }
     }
 }

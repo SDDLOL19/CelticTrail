@@ -8,7 +8,8 @@ public class Head : MonoBehaviour
     [SerializeField, Range(1, 100)] public float speed = 20;
     [SerializeField] float distance;
     [SerializeField] GameObject[] bodies;
-    float tiempo = 0.01f;
+    float tiempo;
+    float temporizador = 0;
 
     void Update()
     {
@@ -19,29 +20,32 @@ public class Head : MonoBehaviour
     {
         transform.Translate(Vector2.up * speed * Time.deltaTime); //mueve el objeto en el en direccion flecha verde(la del eje y)
 
-        if (Input.GetKey(KeyCode.D))
+        if (true)
         {
-            MovementRight();
-            BodiesRight();
-        }
+            if (Input.GetKey(KeyCode.D))
+            {
+                MovementRight();
+                BodiesRight();
+            }
 
-        if (Input.GetKey(KeyCode.A))
-        {
-            MovementLeft();
-            BodiesLeft();
-        }
+            if (Input.GetKey(KeyCode.A))
+            {
+                MovementLeft();
+                BodiesLeft();
+            }
 
-        if (Input.GetKey(KeyCode.W))
-        {
-            MovementUp();
-            BodiesUp();
-        }
+            if (Input.GetKey(KeyCode.W))
+            {
+                MovementUp();
+                BodiesUp();
+            }
 
-        if (Input.GetKey(KeyCode.S))
-        {
-            MovementDown();
-            BodiesDown();
-        }
+            if (Input.GetKey(KeyCode.S))
+            {
+                MovementDown();
+                BodiesDown();
+            }
+        }    
     }
     void MovementLeft()
     {

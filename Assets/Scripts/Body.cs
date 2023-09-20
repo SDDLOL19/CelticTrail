@@ -4,11 +4,6 @@ public class Body : MonoBehaviour
 {
     [SerializeField, Range(1, 100)] protected float speed = 20;
 
-    void Start()
-    {
-
-    }
-
     // Update is called once per frame
     void Update()
     {

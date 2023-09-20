@@ -4,12 +4,12 @@ using UnityEngine;
 
 public class Head : MonoBehaviour
 {
-    [SerializeField, Range(1, 10)] int hp = 0;
+    //[SerializeField, Range(1, 10)] int hp = 0;
     [SerializeField, Range(1, 100)] public float speed = 20;
     [SerializeField] float distance;
     [SerializeField] GameObject[] bodies;
     float tiempo;
-    float temporizador = 0;
+    //float temporizador = 0;
 
     void Update()
     {

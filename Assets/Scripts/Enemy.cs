@@ -5,7 +5,6 @@ using UnityEngine.AI;
 
 public class Enemy : MonoBehaviour
 {
-    [SerializeField] Transform player;
     [SerializeField] GameObject prefabDroppeable;
     [SerializeField] int enemyVida;
     NavMeshAgent agent;

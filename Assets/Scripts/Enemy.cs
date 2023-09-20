@@ -23,7 +23,7 @@ public class Enemy : MonoBehaviour
     {
         MoveToThePlayer();
 
-        if (enemyVida >= 0)
+        if (enemyVida <= 0)
         {
             Instantiate(prefabDroppeable).transform.position = this.transform.position;
             Destroy(this.gameObject);

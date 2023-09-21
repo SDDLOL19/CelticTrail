@@ -49,13 +49,13 @@ public class Head : MonoBehaviour
 
     void controladorCarrosEnEscena()
     {
+        for (int i = bodies.Length - 1; i >= lenght; i--)
+        {
+            bodies[i].GetComponent<Body>().Esconderme();
+        }
+
         if (lenght > 0)
         {
-            for (int i = bodies.Length - 1; i >= lenght; i--)
-            {
-                bodies[i].GetComponent<Body>().Esconderme();
-            }
-
             for (int i = 0; i < lenght; i++)
             {
                 bodies[i].GetComponent<Body>().Aparecerme();

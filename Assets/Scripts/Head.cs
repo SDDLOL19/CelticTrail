@@ -35,6 +35,14 @@ public class Head : MonoBehaviour
             Shrinkage(1);
         }
     }
+
+    private void OnCollisionEnter2D(Collision2D collision)
+    {
+        if (collision.gameObject.tag == "Obstaculo")
+        {
+            GameManager.AcabarPartida();
+        }
+    }
     //QQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQ
 
     //CANTIDAD DE CUERPOS

@@ -84,18 +84,23 @@ public class GameManager : MonoBehaviour
 
         if (pausado)
         {
-            Time.timeScale = 0;
+            PararTiempo();
         }
 
         else
         {
-            Time.timeScale = 1;
+            ReanudarTiempo();
         }
     }
 
-    void ReanudarTiempo()
+    static void ReanudarTiempo()
     {
         Time.timeScale = 1;
+    }
+
+    static void PararTiempo()
+    {
+        Time.timeScale = 0;
     }
 
     public void Pausar()
@@ -110,11 +115,10 @@ public class GameManager : MonoBehaviour
         ComprobarPausa();
     }
 
-    void AcabarPartida()
+    public static void AcabarPartida()
     {
-        //partidaAcabada = true;
-
-        Invoke("CargarMenuPrincipal", 3);
+        PararTiempo();
+        //Invoke("CargarMenuPrincipal", 3);
     }
 
     public void CargarMenuPrincipal()

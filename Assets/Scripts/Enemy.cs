@@ -13,7 +13,6 @@ public class Enemy : MonoBehaviour
     {
         agent = GetComponent<NavMeshAgent>();
 
-
         agent.updateRotation = false;
         agent.updateUpAxis = false;
     }
@@ -32,5 +31,13 @@ public class Enemy : MonoBehaviour
     void MoveToThePlayer()
     {
         agent.SetDestination(GameManager.objetivoEnemigos.position);
+    }
+
+    private void OnTriggerEnter2D(Collider2D collision)
+    {
+        if (collision.gameObject.tag == "BalasJugador")
+        {
+            enemyVida--;
+        }
     }
 }

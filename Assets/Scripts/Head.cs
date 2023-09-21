@@ -7,14 +7,47 @@ public class Head : MonoBehaviour
     //[SerializeField, Range(1, 10)] int hp = 0;
     [SerializeField, Range(1, 100)] public float speed = 20;
     [SerializeField] float distance;
+    [SerializeField] int lenght;
     [SerializeField] GameObject[] bodies;
     float tiempo;
-    //float temporizador = 0;
+    float temporizadorGiro = 0;
+    float delay = 0.05f;
 
     void Update()
     {
         Movement();
     }
+
+    private void OnTriggerEnter2D(Collider2D collision)
+    {
+        if (collision.gameObject.tag == "Droppeable")
+        {
+            Destroy(collision);
+            Growth();
+        }
+    }
+
+    private void OnCollisionEnter2D(Collision2D collision)
+    {
+        if (collision.gameObject.tag == "Enemigo")
+        {
+            Shrinkage(1);
+        }
+    }
+
+    //CANTIDAD DE CUERPOS
+
+    void Growth()
+    {
+        lenght ++;
+    }
+
+    void Shrinkage(int longitudAQuitar)
+    {
+        lenght -= longitudAQuitar;
+    }
+
+    //MOVIMIENTO
 
     void Movement()
     {
@@ -45,7 +78,7 @@ public class Head : MonoBehaviour
                 MovementDown();
                 BodiesDown();
             }
-        }    
+        }
     }
     void MovementLeft()
     {
@@ -92,14 +125,14 @@ public class Head : MonoBehaviour
         bodies[i].GetComponent<Body>().MovementRight();
     }
 
-    /*void Temporizador()
+    void Temporizador()
     {
-        timer += Time.deltaTime;
-        if (timer > delay)
+        temporizadorGiro += Time.deltaTime;
+        if (temporizadorGiro >= delay)
         {
-            MyFunction();
+            temporizadorGiro = 0;
         }
-    }*/
+    }
 
     void BodiesUp()
     {

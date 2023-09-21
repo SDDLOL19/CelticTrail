@@ -3,10 +3,8 @@ using UnityEngine.AI;
 
 public class Body : MonoBehaviour
 {
-    [SerializeField] float speed = 20;
     [SerializeField] GameObject torreta;
 
-    // Update is called once per frame
     void Update()
     {
         Movement();
@@ -14,7 +12,7 @@ public class Body : MonoBehaviour
 
     void Movement()
     {
-        transform.Translate(Vector2.up * speed * Time.deltaTime); //mueve el objeto en el en direccion flecha verde(la del eje y)           
+        transform.Translate(Vector2.up * GameManager.playerSpeed * Time.deltaTime); //mueve el objeto en el en direccion flecha verde(la del eje y)           
     }
 
     public void MovementLeft()

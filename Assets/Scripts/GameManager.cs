@@ -7,6 +7,9 @@ using TMPro;
 public class GameManager : MonoBehaviour
 {
     [SerializeField] GameObject player;
+    [Range(1, 10)] public static float playerSpeed;
+
+
     public static Transform objetivoEnemigos;
     
     public int framerate = 60;

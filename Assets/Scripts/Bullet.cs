@@ -4,7 +4,7 @@ using UnityEngine;
 
 public class Bullet : MonoBehaviour
 {
-    [SerializeField, Range(1f, 20f)] float velocity;
+    [SerializeField, Range(1f, 20f)] float speed;
     [SerializeField, Range(1f, 20f)] float timeDestruction;
     // Start is called before the first frame update
     void Start()
@@ -20,7 +20,7 @@ public class Bullet : MonoBehaviour
     }
     void Movement(Vector2 bullet)
     {
-        transform.Translate(bullet * velocity * Time.deltaTime);
+        transform.Translate(bullet * speed * Time.deltaTime);
     }
     void Destroy()
     {

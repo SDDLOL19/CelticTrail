@@ -13,6 +13,11 @@ public class Head : MonoBehaviour
     float temporizadorGiro = 0;
     float delay = 0.05f;
 
+    private void Start()
+    {
+        controladorCarrosEnEscena();
+    }
+
     void Update()
     {
         Movement();
@@ -37,14 +42,33 @@ public class Head : MonoBehaviour
 
     //CANTIDAD DE CUERPOS
 
+    void controladorCarrosEnEscena()
+    {
+        if (lenght > 0)
+        {
+            for (int i = bodies.Length; i >= lenght; i--)
+            {
+                bodies[i].GetComponent<Body>().Esconderme();
+            }
+
+            for (int i = 0; i < lenght; i++)
+            {
+                bodies[i].GetComponent<Body>().Aparecerme();
+            }
+        }
+
+    }
+
     void Growth()
     {
-        lenght ++;
+        lenght++;
+        controladorCarrosEnEscena();
     }
 
     void Shrinkage(int longitudAQuitar)
     {
         lenght -= longitudAQuitar;
+        controladorCarrosEnEscena();
     }
 
     //MOVIMIENTO

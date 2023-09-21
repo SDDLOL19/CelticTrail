@@ -100,6 +100,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   speed: 4
+  torreta: {fileID: 8398361225069132520}
 --- !u!208 &948746887528750098
 NavMeshObstacle:
   m_ObjectHideFlags: 0
@@ -173,6 +174,11 @@ PrefabInstance:
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 49e817bb657325846af7e6e3220901eb, type: 3}
+--- !u!1 &8398361225069132520 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 6638441914308934019, guid: 49e817bb657325846af7e6e3220901eb, type: 3}
+  m_PrefabInstance: {fileID: 2930861177583584107}
+  m_PrefabAsset: {fileID: 0}
 --- !u!4 &8705344511602533892 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 5792502148913522031, guid: 49e817bb657325846af7e6e3220901eb, type: 3}

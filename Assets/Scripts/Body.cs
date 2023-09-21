@@ -1,8 +1,10 @@
 using UnityEngine;
+using UnityEngine.AI;
 
 public class Body : MonoBehaviour
 {
-    [SerializeField, Range(1, 100)] protected float speed = 20;
+    [SerializeField] float speed = 20;
+    [SerializeField] GameObject torreta;
 
     // Update is called once per frame
     void Update()
@@ -33,5 +35,18 @@ public class Body : MonoBehaviour
     public void MovementDown()
     {
         transform.eulerAngles = new Vector3(0f, 0, 180); //rota el objeto hacia abajo
+    }
+
+    public void Aparecerme()
+    {
+        this.gameObject.GetComponent<SpriteRenderer>().enabled = true;
+        torreta.SetActive(true);
+    }
+
+    public void Esconderme()
+    {
+        this.gameObject.GetComponent<SpriteRenderer>().enabled = false;
+        this.gameObject.GetComponent<NavMeshObstacle>().enabled = false;
+        torreta.SetActive(false);
     }
 }

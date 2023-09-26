@@ -38,6 +38,8 @@ public class Body : MonoBehaviour
     public void Aparecerme()
     {
         this.gameObject.GetComponent<SpriteRenderer>().enabled = true;
+        this.gameObject.GetComponent<NavMeshObstacle>().enabled = true;
+        this.gameObject.GetComponent<Collider2D>().enabled = true;
         torreta.SetActive(true);
     }
 
@@ -45,6 +47,7 @@ public class Body : MonoBehaviour
     {
         this.gameObject.GetComponent<SpriteRenderer>().enabled = false;
         this.gameObject.GetComponent<NavMeshObstacle>().enabled = false;
+        this.gameObject.GetComponent<Collider2D>().enabled = false;
         torreta.SetActive(false);
     }
 }

@@ -38,7 +38,7 @@ public class Head : MonoBehaviour
 
     private void OnCollisionEnter2D(Collision2D collision)
     {
-        if (collision.gameObject.tag == "Obstaculo")
+        if (collision.gameObject.tag == "Obstaculo" || collision.gameObject.tag == "MiCulo")
         {
             GameManager.AcabarPartida();
         }

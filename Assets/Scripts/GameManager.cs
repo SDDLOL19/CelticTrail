@@ -9,6 +9,7 @@ public class GameManager : MonoBehaviour
     [SerializeField] GameObject player;
     [Range(1, 10)] public static float playerSpeed;
 
+    public static KeyCode movimientoIzquierda = KeyCode.A, movimientoDerecha = KeyCode.D, movimientoArriba = KeyCode.W, movimientoAbajo = KeyCode.S;
 
     public static Transform objetivoEnemigos;
     

@@ -85,28 +85,40 @@ public class Head : MonoBehaviour
 
         if (true)
         {
-            if (Input.GetKey(KeyCode.D))
+            if (Input.GetKey(GameManager.movimientoDerecha))
             {
-                MovementRight();
-                BodiesRight();
+                if (this.transform.eulerAngles.z != 90f)
+                {
+                    MovementRight();
+                    BodiesRight();
+                } 
             }
 
-            if (Input.GetKey(KeyCode.A))
+            if (Input.GetKey(GameManager.movimientoIzquierda))
             {
-                MovementLeft();
-                BodiesLeft();
+                if (this.transform.eulerAngles.z != 270f)
+                {
+                    MovementLeft();
+                    BodiesLeft();
+                }
             }
 
-            if (Input.GetKey(KeyCode.W))
+            if (Input.GetKey(GameManager.movimientoArriba))
             {
-                MovementUp();
-                BodiesUp();
+                if (this.transform.eulerAngles.z != 180f)
+                {
+                    MovementUp();
+                    BodiesUp();
+                }
             }
 
-            if (Input.GetKey(KeyCode.S))
+            if (Input.GetKey(GameManager.movimientoAbajo))
             {
-                MovementDown();
-                BodiesDown();
+                if (this.transform.eulerAngles.z != 0)
+                {
+                    MovementDown();
+                    BodiesDown();
+                }              
             }
         }
     }

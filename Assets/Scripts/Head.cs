@@ -127,32 +127,36 @@ public class Head : MonoBehaviour
         transform.eulerAngles = new Vector3(0f, 0, 180); //rota el objeto hacia abajo
     }
 
-    IEnumerator WaitForUp(int i)
+    IEnumerator WaitForUp(int i, float posicionEnHorizontal)
     {
         tiempo = (distance * (i + 1)) / GameManager.playerSpeed;
         yield return new WaitForSeconds(tiempo);
         bodies[i].GetComponent<Body>().MovementUp();
+        bodies[i].transform.position = new Vector3(posicionEnHorizontal, bodies[i].transform.position.y, bodies[i].transform.position.z);
     }
 
-    IEnumerator WaitForDown(int i)
+    IEnumerator WaitForDown(int i, float posicionEnHorizontal)
     {
         tiempo = (distance * (i + 1)) / GameManager.playerSpeed;
         yield return new WaitForSeconds(tiempo);
         bodies[i].GetComponent<Body>().MovementDown();
+        bodies[i].transform.position = new Vector3(posicionEnHorizontal, bodies[i].transform.position.y, bodies[i].transform.position.z);
     }
 
-    IEnumerator WaitForLeft(int i)
+    IEnumerator WaitForLeft(int i, float posicionEnVertical)
     {
         tiempo = (distance * (i + 1)) / GameManager.playerSpeed;
         yield return new WaitForSeconds(tiempo);
         bodies[i].GetComponent<Body>().MovementLeft();
+        bodies[i].transform.position = new Vector3(bodies[i].transform.position.x, posicionEnVertical, bodies[i].transform.position.z);
     }
 
-    IEnumerator WaitForRight(int i)
+    IEnumerator WaitForRight(int i, float posicionEnVertical)
     {
         tiempo = (distance * (i + 1)) / GameManager.playerSpeed;
         yield return new WaitForSeconds(tiempo);
         bodies[i].GetComponent<Body>().MovementRight();
+        bodies[i].transform.position = new Vector3(bodies[i].transform.position.x, posicionEnVertical, bodies[i].transform.position.z);
     }
 
     void Temporizador()
@@ -168,7 +172,7 @@ public class Head : MonoBehaviour
     {
         for (int i = 0; i < bodies.Length; i++)
         {
-            StartCoroutine(WaitForUp(i));
+            StartCoroutine(WaitForUp(i, this.transform.position.x));
         }
     }
 
@@ -176,7 +180,7 @@ public class Head : MonoBehaviour
     {
         for (int i = 0; i < bodies.Length; i++)
         {
-            StartCoroutine(WaitForDown(i));
+            StartCoroutine(WaitForDown(i, this.transform.position.x));
         }
     }
 
@@ -184,7 +188,7 @@ public class Head : MonoBehaviour
     {
         for (int i = 0; i < bodies.Length; i++)
         {
-            StartCoroutine(WaitForRight(i));
+            StartCoroutine(WaitForRight(i, this.transform.position.y));
         }
     }
 
@@ -192,7 +196,7 @@ public class Head : MonoBehaviour
     {
         for (int i = 0; i < bodies.Length; i++)
         {
-            StartCoroutine(WaitForLeft(i));
+            StartCoroutine(WaitForLeft(i, this.transform.position.y));
         }
     }
     //QQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQ

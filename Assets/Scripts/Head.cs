@@ -11,14 +11,29 @@ public class Head : MonoBehaviour
     float temporizadorGiro = 0;
     float delay = 0.05f;
 
+    Rigidbody2D miRb;
+    RaycastHit2D hit;
+
     private void Start()
     {
-        controladorCarrosEnEscena();
+        ControladorCarrosEnEscena();
     }
 
     void Update()
     {
+        DetectarChoqueFrontal();
         Movement();
+    }
+
+    void DetectarChoqueFrontal()
+    {
+        hit = Physics2D.Raycast(transform.position, Vector2.up);
+        hit.distance = 0.1f;
+
+        if (hit.collider.gameObject.tag == "MiCulo")
+        {
+            GameManager.AcabarPartida();
+        }
     }
 
     private void OnTriggerEnter2D(Collider2D collision)
@@ -38,7 +53,7 @@ public class Head : MonoBehaviour
 
     private void OnCollisionEnter2D(Collision2D collision)
     {
-        if (collision.gameObject.tag == "Obstaculo" || collision.gameObject.tag == "MiCulo")
+        if (collision.gameObject.tag == "Obstaculo")
         {
             GameManager.AcabarPartida();
         }
@@ -47,7 +62,7 @@ public class Head : MonoBehaviour
 
     //CANTIDAD DE CUERPOS
 
-    void controladorCarrosEnEscena()
+    void ControladorCarrosEnEscena()
     {
         for (int i = bodies.Length - 1; i >= lenght; i--)
         {
@@ -68,13 +83,13 @@ public class Head : MonoBehaviour
     void Growth()
     {
         lenght++;
-        controladorCarrosEnEscena();
+        ControladorCarrosEnEscena();
     }
 
     void Shrinkage(int longitudAQuitar)
     {
         lenght -= longitudAQuitar;
-        controladorCarrosEnEscena();
+        ControladorCarrosEnEscena();
     }
     //QQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQ
 

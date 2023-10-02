@@ -12,7 +12,7 @@ GameObject:
   - component: {fileID: 1088154038553495844}
   - component: {fileID: -7998199324626335511}
   - component: {fileID: 948746887528750098}
-  - component: {fileID: 713125206063189009}
+  - component: {fileID: 7665443843324332352}
   m_Layer: 0
   m_Name: Body
   m_TagString: MiCulo
@@ -111,13 +111,13 @@ NavMeshObstacle:
   m_Enabled: 1
   serializedVersion: 3
   m_Shape: 1
-  m_Extents: {x: 0.5, y: 0.305, z: 0.1}
+  m_Extents: {x: 0.4388049, y: 0.44774306, z: 0.1}
   m_MoveThreshold: 0.1
   m_Carve: 1
   m_CarveOnlyStationary: 0
   m_Center: {x: 0, y: 0, z: 0}
   m_TimeToStationary: 0.5
---- !u!61 &713125206063189009
+--- !u!61 &7665443843324332352
 BoxCollider2D:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -141,7 +141,7 @@ BoxCollider2D:
     adaptiveTiling: 0
   m_AutoTiling: 0
   serializedVersion: 2
-  m_Size: {x: 0.8776098, y: 0.89548606}
+  m_Size: {x: 0.8776098, y: 0.8954861}
   m_EdgeRadius: 0
 --- !u!1001 &2930861177583584107
 PrefabInstance:

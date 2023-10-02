@@ -7,30 +7,33 @@ public class Head : MonoBehaviour
     [SerializeField] float distance;
     [SerializeField, Range(1, 9)] int lenght;
     [SerializeField] GameObject[] bodies;
-    float tiempo;
-    float temporizadorGiro = 0;
-    float delay = 0.05f;
+    [SerializeField] GameObject puntaCabeza;
+    float tiempo, temporizadorGiro = 0, delay = 0.05f;
+
+    float distanciaRaycast = 0.2f;
 
     Rigidbody2D miRb;
     RaycastHit2D hit;
+    Vector2 direccionRayo;
 
     private void Start()
     {
         ControladorCarrosEnEscena();
+        direccionRayo = Vector2.up;
     }
 
     void Update()
     {
-        DetectarChoqueFrontal();
         Movement();
+        DetectarChoqueFrontal();
     }
 
     void DetectarChoqueFrontal()
     {
-        hit = Physics2D.Raycast(transform.position, Vector2.up);
-        hit.distance = 0.1f;
+        hit = Physics2D.Raycast(puntaCabeza.transform.position, direccionRayo);
+        Debug.DrawRay(puntaCabeza.transform.position, direccionRayo * distanciaRaycast, Color.green); //Para ver a donde se lanza el raycast solo en la ventana scene
 
-        if (hit.collider.gameObject.tag == "MiCulo")
+        if (hit.collider != null && hit.distance <= distanciaRaycast && hit.collider.gameObject.tag == "MiCulo") //El raycast es infinito, por lo que para evitar que detecte la cosa que queremos desde el infinito comprobamos su distance
         {
             GameManager.AcabarPartida();
         }
@@ -106,7 +109,7 @@ public class Head : MonoBehaviour
                 {
                     MovementRight();
                     BodiesRight();
-                } 
+                }
             }
 
             if (Input.GetKey(GameManager.movimientoIzquierda))
@@ -133,25 +136,29 @@ public class Head : MonoBehaviour
                 {
                     MovementDown();
                     BodiesDown();
-                }              
+                }
             }
         }
     }
     void MovementLeft()
     {
         transform.eulerAngles = new Vector3(0f, 0, 90); //rota el objeto a izquierda
+        direccionRayo = Vector2.left;
     }
     void MovementRight()
     {
         transform.eulerAngles = new Vector3(0f, 0, -90); //rota el objeto a derecha
+        direccionRayo = Vector2.right;
     }
     void MovementUp()
     {
         transform.eulerAngles = new Vector3(0f, 0, 0); //rota el objeto hacia arriba
+        direccionRayo = Vector2.up;
     }
     void MovementDown()
     {
         transform.eulerAngles = new Vector3(0f, 0, 180); //rota el objeto hacia abajo
+        direccionRayo = Vector2.down;
     }
 
     IEnumerator WaitForUp(int i, float posicionEnHorizontal)

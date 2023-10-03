@@ -566,6 +566,22 @@ PrefabInstance:
       propertyPath: player
       value: 
       objectReference: {fileID: 937053894}
+    - target: {fileID: 373091746928209349, guid: 4c522bc4a46d22441acba20c9130bcba, type: 3}
+      propertyPath: timeSpawn
+      value: 10
+      objectReference: {fileID: 0}
+    - target: {fileID: 373091746928209349, guid: 4c522bc4a46d22441acba20c9130bcba, type: 3}
+      propertyPath: prefabEnemy
+      value: 
+      objectReference: {fileID: 534673807879513746, guid: c31b1af20385c1c4891a760fe8b64898, type: 3}
+    - target: {fileID: 373091746928209349, guid: 4c522bc4a46d22441acba20c9130bcba, type: 3}
+      propertyPath: distancePlayer
+      value: 10
+      objectReference: {fileID: 0}
+    - target: {fileID: 373091746928209349, guid: 4c522bc4a46d22441acba20c9130bcba, type: 3}
+      propertyPath: enemigosSpawneados
+      value: 1
+      objectReference: {fileID: 0}
     - target: {fileID: 4011753592780504115, guid: 4c522bc4a46d22441acba20c9130bcba, type: 3}
       propertyPath: m_Name
       value: GameManager

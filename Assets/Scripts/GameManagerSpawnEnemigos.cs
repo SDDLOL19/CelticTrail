@@ -3,7 +3,7 @@ using System.Collections.Generic;
 using Unity.VisualScripting;
 using UnityEngine;
 
-public class GameManager : MonoBehaviour
+public class GameManagerSpawnEnemigos : MonoBehaviour
 {
     [SerializeField] GameObject prefabEnemy, player;
     [SerializeField] float timeSpawn, distancePlayer, enemigosSpawneados;

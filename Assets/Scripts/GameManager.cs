@@ -135,16 +135,34 @@ public class GameManager : MonoBehaviour
         pausado = false;
         ComprobarPausa();
     }
-
+    public void IniciarPartida()
+    {
+        Scene EscenaJuego = SceneManager.GetActiveScene();
+        SceneManager.LoadScene(EscenaJuego.name);
+        Time.timeScale = 1;
+    }
     public static void AcabarPartida()
     {
         PararTiempo();
+        Scene MenuPrincipal = SceneManager.GetActiveScene();
+        SceneManager.LoadScene(MenuPrincipal.name);
         //Invoke("CargarMenuPrincipal", 3);
     }
-
+    public void CerrarJuego()
+    {
+        Application.Quit();
+        print("cerrando... "); 
+    }
     public void CargarMenuPrincipal()
     {
         ReanudarTiempo();
-        SceneManager.LoadScene(0);
+        Scene MenuPrincipal = SceneManager.GetActiveScene();
+        SceneManager.LoadScene(MenuPrincipal.name);
+    }
+    public void CargarMenuOpciones()
+    {
+        //ReanudarTiempo();
+        Scene MenuOpciones = SceneManager.GetActiveScene();
+        SceneManager.LoadScene(MenuOpciones.name);
     }
 }

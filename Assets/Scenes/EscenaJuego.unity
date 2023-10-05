@@ -1259,7 +1259,7 @@ GameObject:
   - component: {fileID: 1461483248}
   - component: {fileID: 1461483247}
   m_Layer: 5
-  m_Name: Text (TMP)
+  m_Name: TextPuntos
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -1282,7 +1282,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: 449, y: 272}
+  m_AnchoredPosition: {x: 394, y: 207}
   m_SizeDelta: {x: 200, y: 50}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &1461483247
@@ -2126,7 +2126,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!114 &2036378859
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -2297,6 +2297,10 @@ PrefabInstance:
       propertyPath: enemigosSpawneados
       value: 1
       objectReference: {fileID: 0}
+    - target: {fileID: 373091746928209349, guid: 4c522bc4a46d22441acba20c9130bcba, type: 3}
+      propertyPath: textoPuntosJugador
+      value: 
+      objectReference: {fileID: 696964348}
     - target: {fileID: 4011753592780504115, guid: 4c522bc4a46d22441acba20c9130bcba, type: 3}
       propertyPath: m_Name
       value: GameManager

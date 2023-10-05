@@ -61,7 +61,7 @@ public class GameManager : MonoBehaviour
         //MostrarHud();
         //cronometro -= Time.deltaTime;
         //cronometro = Mathf.Clamp(cronometro, 0, 180);
-
+        
         if (Input.GetKeyDown(KeyCode.Escape) && !partidaAcabada) //Keyboard.current.escapeKey.wasPressedThisFrame
         {
             pausado = !pausado;
@@ -93,9 +93,9 @@ public class GameManager : MonoBehaviour
         
     }
 
-    void MostrarHud()
+    public void MostrarHud()
     {
-        textoPuntosJugador.text = puntosJugador.ToString("0"); //Para que no se muestren decimales en el hud
+        textoPuntosJugador.text = "Puntos: " + puntosJugador.ToString(); //Para que no se muestren decimales en el hud
         //textoCronometro.text = cronometro.ToString("0");
     }
 
@@ -137,16 +137,18 @@ public class GameManager : MonoBehaviour
     }
     public void IniciarPartida()
     {
-        Scene EscenaJuego = SceneManager.GetActiveScene();
-        SceneManager.LoadScene(EscenaJuego.name);
+        //Scene EscenaJuego = SceneManager.GetActiveScene();
+        //SceneManager.LoadScene(EscenaJuego.name);
+        SceneManager.LoadScene(0);
         Time.timeScale = 1;
     }
     public static void AcabarPartida()
     {
         PararTiempo();
-        Scene MenuPrincipal = SceneManager.GetActiveScene();
-        SceneManager.LoadScene(MenuPrincipal.name);
+        //Scene MenuPrincipal = SceneManager.GetActiveScene();
+        //SceneManager.LoadScene(MenuPrincipal.name);
         //Invoke("CargarMenuPrincipal", 3);
+        SceneManager.LoadScene(1);
     }
     public void CerrarJuego()
     {
@@ -156,13 +158,15 @@ public class GameManager : MonoBehaviour
     public void CargarMenuPrincipal()
     {
         ReanudarTiempo();
-        Scene MenuPrincipal = SceneManager.GetActiveScene();
-        SceneManager.LoadScene(MenuPrincipal.name);
+        //Scene MenuPrincipal = SceneManager.GetActiveScene();
+        //SceneManager.LoadScene(MenuPrincipal.name);
+        SceneManager.LoadScene(1);
     }
     public void CargarMenuOpciones()
     {
         //ReanudarTiempo();
-        Scene MenuOpciones = SceneManager.GetActiveScene();
-        SceneManager.LoadScene(MenuOpciones.name);
+        //Scene MenuOpciones = SceneManager.GetActiveScene();
+        //SceneManager.LoadScene(MenuOpciones.name);
+        SceneManager.LoadScene(2);
     }
 }

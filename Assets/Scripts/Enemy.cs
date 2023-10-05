@@ -25,6 +25,7 @@ public class Enemy : MonoBehaviour
         {
             Instantiate(prefabDroppeable).transform.position = this.transform.position;
             Destroy(this.gameObject);
+            
         }
     }
 

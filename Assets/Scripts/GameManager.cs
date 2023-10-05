@@ -14,7 +14,7 @@ public class GameManager : MonoBehaviour
     public static KeyCode movimientoIzquierda = KeyCode.A, movimientoDerecha = KeyCode.D, movimientoArriba = KeyCode.W, movimientoAbajo = KeyCode.S;
 
     public static Transform objetivoEnemigos;
-    
+
     public int framerate = 60;
     [SerializeField] TextMeshProUGUI textoPuntosJugador;
     [SerializeField] TextMeshProUGUI textoCronometro;
@@ -32,6 +32,7 @@ public class GameManager : MonoBehaviour
     [SerializeField] GameObject prefabEnemy;
     [SerializeField] float timeSpawn, distancePlayer, enemigosSpawneados;
     float timeAux;
+
     private void Awake()
     {
         Application.targetFrameRate = framerate;
@@ -61,7 +62,7 @@ public class GameManager : MonoBehaviour
         //MostrarHud();
         //cronometro -= Time.deltaTime;
         //cronometro = Mathf.Clamp(cronometro, 0, 180);
-        
+
         if (Input.GetKeyDown(KeyCode.Escape) && !partidaAcabada) //Keyboard.current.escapeKey.wasPressedThisFrame
         {
             pausado = !pausado;
@@ -74,10 +75,12 @@ public class GameManager : MonoBehaviour
             timeSpawn = timeAux;
         }
     }
+
     private void TimerSpawnEnemy()
     {
         timeSpawn -= Time.deltaTime;
     }
+
     void SpawnEnemy()
     {
         for (int i = 0; i < enemigosSpawneados; i++)
@@ -90,7 +93,7 @@ public class GameManager : MonoBehaviour
     }
     void ActualizarObjetivo()
     {
-        
+
     }
 
     public void MostrarHud()
@@ -153,7 +156,7 @@ public class GameManager : MonoBehaviour
     public void CerrarJuego()
     {
         Application.Quit();
-        print("cerrando... "); 
+        print("cerrando... ");
     }
     public void CargarMenuPrincipal()
     {

@@ -16,6 +16,8 @@ public class Head : MonoBehaviour
     RaycastHit2D hit;
     Vector2 direccionRayo;
 
+    bool delayAcabado;
+
     private void Start()
     {
         ControladorCarrosEnEscena();
@@ -99,9 +101,9 @@ public class Head : MonoBehaviour
     //MOVIMIENTO
     void Movement()
     {
-        transform.Translate(Vector2.up * GameManager.playerSpeed * Time.deltaTime); //mueve el objeto en el en direccion flecha verde(la del eje y)
+        transform.Translate(Vector2.up * GameManager.playerSpeed * Time.deltaTime); //mueve el objeto en el en direccion flecha verde(la del eje y)        
 
-        if (true)
+        if (delayAcabado)
         {
             if (Input.GetKey(GameManager.movimientoDerecha))
             {
@@ -109,6 +111,7 @@ public class Head : MonoBehaviour
                 {
                     MovementRight();
                     BodiesRight();
+                    delayAcabado = false;
                 }
             }
 
@@ -118,6 +121,7 @@ public class Head : MonoBehaviour
                 {
                     MovementLeft();
                     BodiesLeft();
+                    delayAcabado = false;
                 }
             }
 
@@ -127,6 +131,7 @@ public class Head : MonoBehaviour
                 {
                     MovementUp();
                     BodiesUp();
+                    delayAcabado = false;
                 }
             }
 
@@ -136,8 +141,14 @@ public class Head : MonoBehaviour
                 {
                     MovementDown();
                     BodiesDown();
+                    delayAcabado = false;
                 }
             }
+        }
+
+        else
+        {
+            Temporizador();
         }
     }
     void MovementLeft()
@@ -199,6 +210,7 @@ public class Head : MonoBehaviour
         if (temporizadorGiro >= delay)
         {
             temporizadorGiro = 0;
+            delayAcabado = true;
         }
     }
 

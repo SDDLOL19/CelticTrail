@@ -457,6 +457,7 @@ GameObject:
   - component: {fileID: 721206907}
   - component: {fileID: 721206906}
   - component: {fileID: 721206908}
+  - component: {fileID: 721206909}
   m_Layer: 0
   m_Name: Player
   m_TagString: Untagged
@@ -543,6 +544,20 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 07c9eb99c034049489af0a5c5aa88a38, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+--- !u!114 &721206909
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 721206904}
+  m_Enabled: 0
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 57cc2b1dd78e9084896294dfce36415e, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  derecha: 100
+  esperandoTecla: 0
 --- !u!1 &1007383595
 GameObject:
   m_ObjectHideFlags: 0
@@ -1299,9 +1314,9 @@ MonoBehaviour:
   m_OnClick:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 1486449553}
-        m_TargetAssemblyTypeName: CambioDeControles, Assembly-CSharp
-        m_MethodName: CambiarDerecha
+      - m_Target: {fileID: 721206909}
+        m_TargetAssemblyTypeName: PlayerOriginal, Assembly-CSharp
+        m_MethodName: Reconfigurar
         m_Mode: 1
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
@@ -1461,6 +1476,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: a676fc42933248643b03db5f1604ef7a, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  teclaACambiar: 0
   esperandoTecla: 0
 --- !u!1 &2096425338
 GameObject:

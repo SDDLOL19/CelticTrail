@@ -4,17 +4,15 @@ using UnityEngine;
 
 public class CambioDeControles : MonoBehaviour
 {
-    public static KeyCode izquierda = KeyCode.A, derecha = KeyCode.D, arriba = KeyCode.W, abajo = KeyCode.S;
-
-    KeyCode teclaACambiar;
+    public static KeyCode derecha = KeyCode.D, izquierda = KeyCode.A,  arriba = KeyCode.W, abajo = KeyCode.S;
     public  bool esperandoTecla = false;
 
     void OnGUI() //Se actualiza cada vez que hay un evento
     {
-        CambiarTecla();
+        //CambiarTecla(); 
     }
 
-    void CambiarTecla()
+    void CambiarTecla(ref KeyCode teclaACambiar) //LO DEJÉ AQUÍ || Obligatoriamente tiene que hacerse en OnGUI || Hay que añadir la tecla que hay que cambiar por referencia
     {
         if (esperandoTecla && Event.current.isKey && Event.current.type == EventType.KeyDown)
         {
@@ -27,30 +25,33 @@ public class CambioDeControles : MonoBehaviour
         }
     }
 
-    void PermitirCambioDeTecla(KeyCode tecla) //Permites que detecte la siguiente tecla || Hay que añadir la tecla que hay que cambiar
+    void PermitirCambioDeTecla() //Permites que detecte la siguiente tecla
     {
-        teclaACambiar = tecla; //Se añade la tecla que quieres cambiar
-        esperandoTecla = true;
+        esperandoTecla = true;        
     }
 
     public void CambiarDerecha()
-    {       
-        PermitirCambioDeTecla(derecha);
+    {
+        PermitirCambioDeTecla();
+        CambiarTecla(ref derecha);
     }
 
     public void CambiarIzquierda()
     {
-        PermitirCambioDeTecla(izquierda);
+        PermitirCambioDeTecla();
+        CambiarTecla(ref izquierda);
     }
 
     public void CambiarArriba()
     {
-        PermitirCambioDeTecla(arriba);
+        PermitirCambioDeTecla();
+        CambiarTecla(ref arriba);
     }
 
     public void CambiarAbajo()
     {
-        PermitirCambioDeTecla(abajo);
+        PermitirCambioDeTecla();
+        CambiarTecla(ref abajo);   
     }
 
     public void Cambiar()

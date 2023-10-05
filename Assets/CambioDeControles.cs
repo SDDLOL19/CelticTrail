@@ -4,7 +4,8 @@ using UnityEngine;
 
 public class CambioDeControles : MonoBehaviour
 {
-    public static KeyCode derecha = KeyCode.D;
+    public static KeyCode izquierda = KeyCode.A, derecha = KeyCode.D, arriba = KeyCode.W, abajo = KeyCode.S;
+
     KeyCode teclaACambiar;
     public  bool esperandoTecla = false;
 
@@ -26,15 +27,35 @@ public class CambioDeControles : MonoBehaviour
         }
     }
 
-    void PermitirCambioDeTecla()
+    void PermitirCambioDeTecla(KeyCode tecla) //Permites que detecte la siguiente tecla || Hay que añadir la tecla que hay que cambiar
     {
+        teclaACambiar = tecla; //Se añade la tecla que quieres cambiar
         esperandoTecla = true;
     }
 
     public void CambiarDerecha()
+    {       
+        PermitirCambioDeTecla(derecha);
+    }
+
+    public void CambiarIzquierda()
     {
-        teclaACambiar = derecha; //Se añade la tecla que quieres cambiar
-        PermitirCambioDeTecla(); //Permites que detecte la siguiente tecla
+        PermitirCambioDeTecla(izquierda);
+    }
+
+    public void CambiarArriba()
+    {
+        PermitirCambioDeTecla(arriba);
+    }
+
+    public void CambiarAbajo()
+    {
+        PermitirCambioDeTecla(abajo);
+    }
+
+    public void Cambiar()
+    {
+
     }
 
 }

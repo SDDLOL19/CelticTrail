@@ -8,6 +8,7 @@ using System;
 
 public class GameManager : MonoBehaviour
 {
+    //MOVIMIENTO JUGADOR
     [SerializeField] GameObject player;
     [Range(1, 10)] public static float playerSpeed;
 
@@ -15,20 +16,22 @@ public class GameManager : MonoBehaviour
 
     public static Transform objetivoEnemigos;
 
+    //CANVAS HUD
     public int framerate = 60;
     [SerializeField] TextMeshProUGUI textoPuntosJugador;
     [SerializeField] TextMeshProUGUI textoCronometro;
     public int puntosJugador = 0;
     /*public float cronometro = 180;*/ //Tres minutos en segundos
 
+    //CANVAS PAUSA
     bool partidaAcabada = false;
-
     [SerializeField] Canvas Pausa;
     [SerializeField] Canvas GameOver;
     bool pausado = false;
 
     public static GameManager Instance;
 
+    //SPAWN ENEMIGOS
     [SerializeField] GameObject prefabEnemy;
     [SerializeField] float timeSpawn, distancePlayer, enemigosSpawneados;
     float timeAux;
@@ -76,6 +79,7 @@ public class GameManager : MonoBehaviour
         }
     }
 
+    //SPAWN ENEMIGOS
     private void TimerSpawnEnemy()
     {
         timeSpawn -= Time.deltaTime;
@@ -96,12 +100,14 @@ public class GameManager : MonoBehaviour
 
     }
 
+    //HUD
     public void MostrarHud()
     {
         textoPuntosJugador.text = "Puntos: " + puntosJugador.ToString(); //Para que no se muestren decimales en el hud
         //textoCronometro.text = cronometro.ToString("0");
     }
 
+    //PAUSA Y MENU
     void ComprobarPausa()
     {
         Pausa.gameObject.SetActive(pausado);

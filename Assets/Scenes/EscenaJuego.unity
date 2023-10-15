@@ -859,6 +859,11 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 696964346}
   m_CullTransparentMesh: 1
+--- !u!1 &834901483 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 5205183529543799379, guid: 52af84ac7f04834489e02437a602479c, type: 3}
+  m_PrefabInstance: {fileID: 5205183530247978073}
+  m_PrefabAsset: {fileID: 0}
 --- !u!1 &937053894 stripped
 GameObject:
   m_CorrespondingSourceObject: {fileID: 5205183531337242781, guid: 52af84ac7f04834489e02437a602479c, type: 3}
@@ -2497,6 +2502,10 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: 477860143948631767, guid: 52af84ac7f04834489e02437a602479c, type: 3}
+      propertyPath: tiempoSpawnBalas
+      value: 1
+      objectReference: {fileID: 0}
     - target: {fileID: 5205183529543799378, guid: 52af84ac7f04834489e02437a602479c, type: 3}
       propertyPath: m_RootOrder
       value: 6
@@ -2544,6 +2553,14 @@ PrefabInstance:
     - target: {fileID: 5205183529543799379, guid: 52af84ac7f04834489e02437a602479c, type: 3}
       propertyPath: m_Name
       value: Serpiente
+      objectReference: {fileID: 0}
+    - target: {fileID: 5205183531337242780, guid: 52af84ac7f04834489e02437a602479c, type: 3}
+      propertyPath: serpiente
+      value: 
+      objectReference: {fileID: 834901483}
+    - target: {fileID: 5205183531337242780, guid: 52af84ac7f04834489e02437a602479c, type: 3}
+      propertyPath: tiempoInvulnerable
+      value: 0.5
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 52af84ac7f04834489e02437a602479c, type: 3}

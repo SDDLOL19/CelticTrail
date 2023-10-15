@@ -23,9 +23,17 @@ public class Enemy : MonoBehaviour
 
         if (enemyVida <= 0)
         {
-            Instantiate(prefabDroppeable).transform.position = this.transform.position;
             Destroy(this.gameObject);
-            
+            int randomSpawnDropeable = Random.Range(0, 10); 
+            if (randomSpawnDropeable <= 5)
+            {
+                Instantiate(prefabDroppeable, transform.position, Quaternion.identity);
+                Debug.Log("Funciona");
+            }
+            else
+            {
+                Debug.Log("Funciona otra parte");
+            }
         }
     }
 

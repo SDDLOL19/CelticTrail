@@ -18,6 +18,12 @@ public class Head : MonoBehaviour
 
     bool delayAcabado;
 
+    [SerializeField] GameObject serpiente;
+    [SerializeField] float tiempoInvulnerable;
+
+
+
+
     private void Start()
     {
         ControladorCarrosEnEscena();
@@ -53,6 +59,11 @@ public class Head : MonoBehaviour
         {
             Destroy(collision.gameObject);
             Shrinkage(1);
+            StartCoroutine(ParpadeoTemporal());
+            if (serpiente != null) //lo activa si esta desactivado
+            {
+                serpiente.SetActive(!serpiente.activeSelf);
+            }
         }
     }
 
@@ -213,7 +224,6 @@ public class Head : MonoBehaviour
             delayAcabado = true;
         }
     }
-
     void BodiesUp()
     {
         for (int i = 0; i < bodies.Length; i++)
@@ -246,4 +256,31 @@ public class Head : MonoBehaviour
         }
     }
     //QQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQ
+   
+    IEnumerator ParpadeoTemporal()
+    {
+        while (tiempoInvulnerable > 0)
+        {
+            StartCoroutine(TemporizadorInvulnerable());
+            InvokeRepeating("Parpadeo", 0, 0.1f); // Llama a la función Parpadeo
+            yield return new WaitForSeconds(0.1f); // Espera 0.1 segundos antes de la siguiente iteración
+            // Reduce el tiempo invulnerable
+        }
+        tiempoInvulnerable = 0.5f;  // Reinicia el tiempo invulnerable
+    }
+
+    IEnumerator TemporizadorInvulnerable()
+    {
+        while (tiempoInvulnerable > 0)
+        {
+            tiempoInvulnerable -= Time.deltaTime;
+            yield return null;  // Espera hasta el siguiente frame antes de la siguiente iteración
+        }
+    }
+
+    void Parpadeo()
+    {
+        serpiente.SetActive(!serpiente.activeInHierarchy);
+    }
 }
+

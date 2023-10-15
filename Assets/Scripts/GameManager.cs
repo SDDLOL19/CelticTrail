@@ -36,6 +36,8 @@ public class GameManager : MonoBehaviour
     [SerializeField] float timeSpawn, distancePlayer, enemigosSpawneados;
     float timeAux;
 
+
+
     private void Awake()
     {
         Application.targetFrameRate = framerate;

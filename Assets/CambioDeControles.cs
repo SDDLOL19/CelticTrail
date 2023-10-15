@@ -2,24 +2,26 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class CambioDeControles : MonoBehaviour
+unsafe public class CambioDeControles : MonoBehaviour
 {
-    public static KeyCode derecha = KeyCode.D, izquierda = KeyCode.A,  arriba = KeyCode.W, abajo = KeyCode.S;
-    public  bool esperandoTecla = false;
+    public static KeyCode derecha = KeyCode.D, izquierda = KeyCode.A, arriba = KeyCode.W, abajo = KeyCode.S;
+    public bool esperandoTecla = false;
+
+    KeyCode* teclaQueCambia;
 
     void OnGUI() //Se actualiza cada vez que hay un evento
     {
         //CambiarTecla(); 
     }
 
-    void CambiarTecla(ref KeyCode teclaACambiar) //LO DEJÉ AQUÍ || Obligatoriamente tiene que hacerse en OnGUI || Hay que añadir la tecla que hay que cambiar por referencia
+    void CambiarTecla()//LO DEJÉ AQUÍ || Obligatoriamente tiene que llamarse en OnGUI || Hay que añadir la tecla que hay que cambiar por referencia
     {
         if (esperandoTecla && Event.current.isKey && Event.current.type == EventType.KeyDown)
         {
             if (Event.current.keyCode != KeyCode.None)
             {
                 Debug.Log(Event.current.keyCode);
-                teclaACambiar = Event.current.keyCode;
+                *teclaQueCambia = Event.current.keyCode;
                 esperandoTecla = false;
             }
         }
@@ -27,31 +29,47 @@ public class CambioDeControles : MonoBehaviour
 
     void PermitirCambioDeTecla() //Permites que detecte la siguiente tecla
     {
-        esperandoTecla = true;        
+        esperandoTecla = true;
     }
 
     public void CambiarDerecha()
     {
         PermitirCambioDeTecla();
-        CambiarTecla(ref derecha);
+
+        fixed (KeyCode* tecla = &derecha) 
+        {
+            teclaQueCambia = tecla;
+        }
     }
 
     public void CambiarIzquierda()
     {
         PermitirCambioDeTecla();
-        CambiarTecla(ref izquierda);
+
+        fixed (KeyCode* tecla = &izquierda)
+        {
+            teclaQueCambia = tecla;
+        }
     }
 
     public void CambiarArriba()
     {
         PermitirCambioDeTecla();
-        CambiarTecla(ref arriba);
+
+        fixed (KeyCode* tecla = &arriba)
+        {
+            teclaQueCambia = tecla;
+        }
     }
 
     public void CambiarAbajo()
     {
         PermitirCambioDeTecla();
-        CambiarTecla(ref abajo);   
+
+        fixed (KeyCode* tecla = &abajo)
+        {
+            teclaQueCambia = tecla;
+        }
     }
 
     public void Cambiar()

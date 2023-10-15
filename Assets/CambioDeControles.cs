@@ -11,10 +11,10 @@ unsafe public class CambioDeControles : MonoBehaviour
 
     void OnGUI() //Se actualiza cada vez que hay un evento
     {
-        //CambiarTecla(); 
+        CambiarTecla(); 
     }
 
-    void CambiarTecla()//LO DEJÉ AQUÍ || Obligatoriamente tiene que llamarse en OnGUI || Hay que añadir la tecla que hay que cambiar por referencia
+    void CambiarTecla() //Obligatoriamente tiene que llamarse en OnGUI || Hay que añadir la tecla que hay que cambiar por puntero
     {
         if (esperandoTecla && Event.current.isKey && Event.current.type == EventType.KeyDown)
         {

@@ -5,6 +5,7 @@ using UnityEngine;
 unsafe public class CambioDeControles : MonoBehaviour
 {
     public static KeyCode derecha = KeyCode.D, izquierda = KeyCode.A, arriba = KeyCode.W, abajo = KeyCode.S;
+    [SerializeField] GameObject[] botones;
     public bool esperandoTecla = false;
 
     KeyCode* teclaQueCambia;

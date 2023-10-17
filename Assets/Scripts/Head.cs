@@ -21,7 +21,7 @@ public class Head : MonoBehaviour
     [SerializeField] GameObject serpiente;
     [SerializeField] float tiempoInvulnerable;
 
-
+    [SerializeField] GameObject prefabStaticTurret;
 
 
     private void Start()
@@ -83,6 +83,7 @@ public class Head : MonoBehaviour
         for (int i = bodies.Length - 1; i >= lenght; i--)
         {
             bodies[i].GetComponent<Body>().Esconderme();
+            Instantiate(prefabStaticTurret, bodies[i].transform.position, bodies[i].transform.rotation); //spawnea la torreta estatica
         }
 
         if (lenght > 0)

@@ -59,7 +59,7 @@ public class Head : MonoBehaviour
         {
             Destroy(collision.gameObject);
             Shrinkage(1);
-            StartCoroutine(ParpadeoTemporal());
+            //StartCoroutine(ParpadeoTemporal());
             if (serpiente != null) //lo activa si esta desactivado
             {
                 serpiente.SetActive(!serpiente.activeSelf);

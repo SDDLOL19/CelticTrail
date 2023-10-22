@@ -324,9 +324,9 @@ MonoBehaviour:
   - {fileID: 4073783638695228707}
   - {fileID: 4073783638649250456}
   puntaCabeza: {fileID: 4121294468663751040}
-  serpiente: {fileID: 0}
+  serpiente: {fileID: 5205183529543799379}
   tiempoInvulnerable: 0
-  prefabStaticTurret: {fileID: 0}
+  prefabStaticTurret: {fileID: 1240167930174620457, guid: 9c4233157596d4243962f698be2057db, type: 3}
 --- !u!50 &937053899
 Rigidbody2D:
   serializedVersion: 4

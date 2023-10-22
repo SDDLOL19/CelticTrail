@@ -4,15 +4,18 @@ using UnityEngine;
 
 public class Turret : MonoBehaviour
 {
-    [SerializeField, Range(1f, 20f)] float rotationSpeed, tiempoSpawnBalas;
+    [SerializeField, Range(1f, 20f)] float rotationSpeed;
+    float tiempoSpawnBalas;
     [SerializeField] GameObject prefabBullet;
     [SerializeField] Transform shootPosition;
 
     private new Camera camera;
+
     void Start()
     {
         camera = Camera.main;
     }
+
     void Update()
     {
         Rotation();
@@ -20,9 +23,10 @@ public class Turret : MonoBehaviour
         if (tiempoSpawnBalas <= 0)
         {
             CreateBullet();
-            Debug.Log("FuncionaElcontador");
+            //Debug.Log("FuncionaElcontador");
         }
     }
+
     void Rotation()
     {
         Vector2 mousePoint = camera.ScreenToWorldPoint(Input.mousePosition); //detecta las coordenadas del raton
@@ -32,10 +36,12 @@ public class Turret : MonoBehaviour
         transform.up = Vector2.MoveTowards(transform.up, direction, rotationSpeed * Time.deltaTime);
         //mueve la orientacion de la torreta (desde el punto de pivote) (el move towards ralentiza un poco ese movimiento)
     }
+
     void TemporizadorBalas()
     {
         tiempoSpawnBalas -= Time.deltaTime;
     }
+
     void CreateBullet()
     {
         if (Input.GetMouseButtonDown(0))

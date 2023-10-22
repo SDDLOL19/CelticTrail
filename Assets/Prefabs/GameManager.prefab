@@ -44,11 +44,4 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 4b4cfe8f8981dfe4889872287280d6d5, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  player: {fileID: 0}
   framerate: 60
-  textoPuntosJugador: {fileID: 0}
-  textoCronometro: {fileID: 0}
-  puntosJugador: 0
-  cronometro: 180
-  Pausa: {fileID: 0}
-  GameOver: {fileID: 0}

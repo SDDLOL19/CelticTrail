@@ -23,9 +23,13 @@ public class Head : MonoBehaviour
 
     [SerializeField] GameObject prefabStaticTurret;
 
-    private void Start()
+    private void Awake()
     {
         GameManager.player = this;
+    }
+
+    private void Start()
+    {   
         playerSpeed = 10 - lenght;
         ControladorCarrosEnEscena();
         direccionRayo = Vector2.up;
@@ -84,7 +88,6 @@ public class Head : MonoBehaviour
         for (int i = bodies.Length - 1; i >= lenght; i--)
         {
             bodies[i].GetComponent<Body>().Esconderme();
-            Instantiate(prefabStaticTurret, bodies[i].transform.position, bodies[i].transform.rotation); //spawnea la torreta estatica
         }
 
         if (lenght > 0)
@@ -281,7 +284,7 @@ public class Head : MonoBehaviour
         }
     }
 
-    void Parpadeo()
+    void Parpadeo()  //Hay que rehacerlo del todo. Nunca funcionará como queremos de esta forma
     {
         serpiente.SetActive(!serpiente.activeInHierarchy);
     }

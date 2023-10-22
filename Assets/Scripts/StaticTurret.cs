@@ -8,15 +8,18 @@ public class StaticTurret : MonoBehaviour
     float tiempoAux;
     [SerializeField] GameObject prefabBullet;
     [SerializeField] Transform shootPosition;
+
     void Start()
     {
         tiempoAux = timeSpawnBullet;
 
     }
+
     void Update()
     {
         EnemyDetection();
     }
+
     void EnemyDetection()
     {
         {
@@ -33,16 +36,18 @@ public class StaticTurret : MonoBehaviour
                     //crea una tangente entre el up (la flecha verde del eje y) del objeto y la posicion x del raton (crea la linea en direccion a donde apuntara la torreta)
                     transform.up = Vector2.MoveTowards(transform.up, direction, rotationSpeed * Time.deltaTime);
                     //mueve la orientacion de la torreta (desde el punto de pivote) (el move towards ralentiza un poco ese movimiento)
-                    Debug.Log("Enemigo detectado");
+                    //Debug.Log("Enemigo detectado");
                     TimerSpawnBullet();
                     CreateBullet();
                 }
             }
         }
+
         void TimerSpawnBullet()
         {
             timeSpawnBullet -= Time.deltaTime;
         }
+
         void CreateBullet()
         {
             if (timeSpawnBullet < 0)

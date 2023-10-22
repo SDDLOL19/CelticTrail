@@ -20,11 +20,6 @@ public class GameManager : MonoBehaviour
     //ELEMENTOS JUGADOR
     public static int puntosJugador = 0;
 
-    //SPAWN ENEMIGOS
-    [SerializeField] GameObject prefabEnemy;
-    [SerializeField] float timeSpawn, distancePlayer, enemigosSpawneados;
-    float timeAux;
-
     void Singleton()
     {
         if (Instance == null) // If there is no instance already
@@ -44,48 +39,18 @@ public class GameManager : MonoBehaviour
     private void Awake()
     {
         Application.targetFrameRate = framerate;
-        Singleton();     
-    }
-
-    private void Start()
-    {
-        objetivoPrincipalEnemigos = player.transform;
-        timeAux = timeSpawn;
+        Singleton();
     }
 
     void Update()
     {
-        //MostrarHud();
         //cronometro -= Time.deltaTime;
         //cronometro = Mathf.Clamp(cronometro, 0, 180);
-
-        TimerSpawnEnemy();
-        if (timeSpawn <= 0)
-        {
-            SpawnEnemy();
-            timeSpawn = timeAux;
-        }
     }
 
-    //SPAWN ENEMIGOS
-    private void TimerSpawnEnemy()
+    void ActualizarObjetivo(Transform objetivo)
     {
-        timeSpawn -= Time.deltaTime;
-    }
-
-    void SpawnEnemy()
-    {
-        for (int i = 0; i < enemigosSpawneados; i++)
-        {
-            Vector2 playerPosition = player.transform.position; //detecta la posicion del jugador
-            Vector2 randomPosicion = UnityEngine.Random.onUnitSphere * distancePlayer; // Random de distancia: genera una posicion random a una unidad de distancia (en todas direcciones x,y,z), se multiplica para que spawnee a la distancia que se quiera
-            Vector2 enemyPosition = playerPosition + randomPosicion; //suma la posicion actual del personaje mas el random de distancia
-            Instantiate(prefabEnemy, enemyPosition, Quaternion.identity); //spawnea el enemigo
-        }
-    }
-    void ActualizarObjetivo()
-    {
-
+        objetivoPrincipalEnemigos = objetivo;
     }
 
     public static void ReanudarTiempo()
@@ -107,7 +72,6 @@ public class GameManager : MonoBehaviour
     public static void CargarMenuPrincipal()
     {
         ReanudarTiempo();
-        //SceneManager.LoadScene(MenuPrincipal.name);
-        SceneManager.LoadScene(1);
+        SceneManager.LoadScene("MenuPrincipal");
     }
 }

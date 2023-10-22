@@ -8,6 +8,7 @@ public class Enemy : MonoBehaviour
     [SerializeField] GameObject prefabDroppeable;
     [SerializeField] int enemyVida;
     NavMeshAgent agent;
+    Transform objetivoActual;
 
     void Start()
     {
@@ -15,6 +16,8 @@ public class Enemy : MonoBehaviour
 
         agent.updateRotation = false;
         agent.updateUpAxis = false;
+
+        CambiarObjetivo(GameManager.player.transform);
     }
 
     private void Update()
@@ -23,23 +26,36 @@ public class Enemy : MonoBehaviour
 
         if (enemyVida <= 0)
         {
-            Destroy(this.gameObject);
-            int randomSpawnDropeable = Random.Range(0, 10); 
+            int randomSpawnDropeable = Random.Range(0, 10);
+
             if (randomSpawnDropeable <= 5)
             {
                 Instantiate(prefabDroppeable, transform.position, Quaternion.identity);
                 Debug.Log("Funciona");
             }
+
             else
             {
                 Debug.Log("Funciona otra parte");
             }
+
+            Destroy(this.gameObject);
         }
     }
 
     void MoveToThePlayer()
     {
-        agent.SetDestination(GameManager.objetivoPrincipalEnemigos.position);
+        agent.SetDestination(objetivoActual.position);
+    }
+
+    void CambiarObjetivo(Transform objetivoNuevo)
+    {
+        objetivoActual = objetivoNuevo;
+    }
+
+    void ObjetivoPrincipal()
+    {
+        objetivoActual = GameManager.objetivoPrincipalEnemigos;
     }
 
     private void OnTriggerEnter2D(Collider2D collision)

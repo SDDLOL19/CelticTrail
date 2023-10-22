@@ -1,6 +1,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.SceneManagement;
 using TMPro;
 
 public class HUD_Manager : MonoBehaviour
@@ -25,11 +26,13 @@ public class HUD_Manager : MonoBehaviour
 
     private void Update()
     {
-        /*if (Input.GetKeyDown(KeyCode.Escape) && GameManager.partidaAcabada) //Keyboard.current.escapeKey.wasPressedThisFrame
+        MostrarHud();
+
+        if (Input.GetKeyDown(KeyCode.Escape) && !GameManager.partidaAcabada) //Keyboard.current.escapeKey.wasPressedThisFrame
         {
             pausado = !pausado;
             ComprobarPausa();
-        }*/
+        }
 
         if (GameManager.partidaAcabada)
         {
@@ -62,7 +65,7 @@ public class HUD_Manager : MonoBehaviour
 
     void AcabarPartida()
     {
-        GameOver.gameObject.SetActive(true);
+        //GameOver.gameObject.SetActive(true);
         GameManager.PararTiempo();
         Invoke("GameManager.CargarMenuPrincipal", 3);
     }
@@ -77,5 +80,11 @@ public class HUD_Manager : MonoBehaviour
     {
         pausado = false;
         ComprobarPausa();
+    }
+
+    public void Reiniciar()
+    {
+        Reanudar();
+        SceneManager.LoadScene(SceneManager.GetActiveScene().name);
     }
 }

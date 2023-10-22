@@ -63,7 +63,7 @@ public class GameManager : MonoBehaviour
         Time.timeScale = 0;
     }
 
-    public void CerrarJuego()
+    public static void CerrarJuego()
     {
         Debug.Log("cerrando... "); //Sirve para comprobar si funciona en el editor, donde no se puede cerrar
         Application.Quit();

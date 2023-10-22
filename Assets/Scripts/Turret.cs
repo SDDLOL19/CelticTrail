@@ -20,7 +20,7 @@ public class Turret : MonoBehaviour
         if (tiempoSpawnBalas <= 0)
         {
             CreateBullet();
-            Debug.Log("FuncionaElcontqador");
+            Debug.Log("FuncionaElcontador");
         }
     }
     void Rotation()

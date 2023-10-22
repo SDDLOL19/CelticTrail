@@ -39,7 +39,7 @@ public class Enemy : MonoBehaviour
 
     void MoveToThePlayer()
     {
-        agent.SetDestination(GameManager.objetivoEnemigos.position);
+        agent.SetDestination(GameManager.objetivoPrincipalEnemigos.position);
     }
 
     private void OnTriggerEnter2D(Collider2D collision)

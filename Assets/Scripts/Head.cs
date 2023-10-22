@@ -6,13 +6,13 @@ public class Head : MonoBehaviour
 {
     [SerializeField] float distance;
     [SerializeField, Range(1, 9)] int lenght;
+    [Range(1, 10)] public float playerSpeed;
     [SerializeField] GameObject[] bodies;
     [SerializeField] GameObject puntaCabeza;
     float tiempo, temporizadorGiro = 0, delay = 0.05f;
 
     float distanciaRaycast = 0.2f;
 
-    Rigidbody2D miRb;
     RaycastHit2D hit;
     Vector2 direccionRayo;
 
@@ -23,9 +23,10 @@ public class Head : MonoBehaviour
 
     [SerializeField] GameObject prefabStaticTurret;
 
-
     private void Start()
     {
+        GameManager.player = this;
+        playerSpeed = 10 - lenght;
         ControladorCarrosEnEscena();
         direccionRayo = Vector2.up;
     }
@@ -43,7 +44,7 @@ public class Head : MonoBehaviour
 
         if (hit.collider != null && hit.distance <= distanciaRaycast && hit.collider.gameObject.tag == "MiCulo") //El raycast es infinito, por lo que para evitar que detecte la cosa que queremos desde el infinito comprobamos su distance
         {
-            GameManager.AcabarPartida();
+            GameManager.partidaAcabada = true;
         }
     }
 
@@ -71,7 +72,7 @@ public class Head : MonoBehaviour
     {
         if (collision.gameObject.tag == "Obstaculo")
         {
-            GameManager.AcabarPartida();
+            GameManager.partidaAcabada = true;
         }
     }
     //QQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQ
@@ -94,7 +95,7 @@ public class Head : MonoBehaviour
             }
         }
 
-        GameManager.playerSpeed = 10 - lenght;
+        playerSpeed = 10 - lenght;
     }
 
     void Growth()
@@ -113,7 +114,7 @@ public class Head : MonoBehaviour
     //MOVIMIENTO
     void Movement()
     {
-        transform.Translate(Vector2.up * GameManager.playerSpeed * Time.deltaTime); //mueve el objeto en el en direccion flecha verde(la del eje y)        
+        transform.Translate(Vector2.up * playerSpeed * Time.deltaTime); //mueve el objeto en el en direccion flecha verde(la del eje y)        
 
         if (delayAcabado)
         {
@@ -186,7 +187,7 @@ public class Head : MonoBehaviour
 
     IEnumerator WaitForUp(int i, float posicionEnHorizontal)
     {
-        tiempo = (distance * (i + 1)) / GameManager.playerSpeed;
+        tiempo = (distance * (i + 1)) / playerSpeed;
         yield return new WaitForSeconds(tiempo);
         bodies[i].GetComponent<Body>().MovementUp();
         bodies[i].transform.position = new Vector3(posicionEnHorizontal, bodies[i].transform.position.y, bodies[i].transform.position.z);
@@ -194,7 +195,7 @@ public class Head : MonoBehaviour
 
     IEnumerator WaitForDown(int i, float posicionEnHorizontal)
     {
-        tiempo = (distance * (i + 1)) / GameManager.playerSpeed;
+        tiempo = (distance * (i + 1)) / playerSpeed;
         yield return new WaitForSeconds(tiempo);
         bodies[i].GetComponent<Body>().MovementDown();
         bodies[i].transform.position = new Vector3(posicionEnHorizontal, bodies[i].transform.position.y, bodies[i].transform.position.z);
@@ -202,7 +203,7 @@ public class Head : MonoBehaviour
 
     IEnumerator WaitForLeft(int i, float posicionEnVertical)
     {
-        tiempo = (distance * (i + 1)) / GameManager.playerSpeed;
+        tiempo = (distance * (i + 1)) / playerSpeed;
         yield return new WaitForSeconds(tiempo);
         bodies[i].GetComponent<Body>().MovementLeft();
         bodies[i].transform.position = new Vector3(bodies[i].transform.position.x, posicionEnVertical, bodies[i].transform.position.z);
@@ -210,7 +211,7 @@ public class Head : MonoBehaviour
 
     IEnumerator WaitForRight(int i, float posicionEnVertical)
     {
-        tiempo = (distance * (i + 1)) / GameManager.playerSpeed;
+        tiempo = (distance * (i + 1)) / playerSpeed;
         yield return new WaitForSeconds(tiempo);
         bodies[i].GetComponent<Body>().MovementRight();
         bodies[i].transform.position = new Vector3(bodies[i].transform.position.x, posicionEnVertical, bodies[i].transform.position.z);
@@ -256,6 +257,7 @@ public class Head : MonoBehaviour
             StartCoroutine(WaitForLeft(i, this.transform.position.y));
         }
     }
+
     //QQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQ
    
     IEnumerator ParpadeoTemporal()

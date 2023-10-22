@@ -1,64 +1,55 @@
 using System.Collections;
 using System.Collections.Generic;
+using System;
 using UnityEngine;
 using UnityEngine.SceneManagement;
-using TMPro;
-using System.Threading;
-using System;
 
 public class GameManager : MonoBehaviour
 {
+    public int framerate = 60;
+    public static GameManager Instance;
+    public static bool partidaAcabada = false;
+
     //MOVIMIENTO JUGADOR
-    [SerializeField] GameObject player;
-    [Range(1, 10)] public static float playerSpeed;
+    public static Head player; //Para que al cargar pantalla funcione el Navmesh se tiene que guardar directamente desde player en su start
 
     public static KeyCode movimientoIzquierda = KeyCode.A, movimientoDerecha = KeyCode.D, movimientoArriba = KeyCode.W, movimientoAbajo = KeyCode.S;
 
-    public static Transform objetivoEnemigos;
+    public static Transform objetivoPrincipalEnemigos;
 
-    //CANVAS HUD
-    public int framerate = 60;
-    [SerializeField] TextMeshProUGUI textoPuntosJugador;
-    [SerializeField] TextMeshProUGUI textoCronometro;
-    public int puntosJugador = 0;
-    /*public float cronometro = 180;*/ //Tres minutos en segundos
-
-    //CANVAS PAUSA
-    bool partidaAcabada = false;
-    [SerializeField] Canvas Pausa;
-    [SerializeField] Canvas GameOver;
-    bool pausado = false;
-
-    public static GameManager Instance;
+    //ELEMENTOS JUGADOR
+    public static int puntosJugador = 0;
 
     //SPAWN ENEMIGOS
     [SerializeField] GameObject prefabEnemy;
     [SerializeField] float timeSpawn, distancePlayer, enemigosSpawneados;
     float timeAux;
 
-
-
-    private void Awake()
+    void Singleton()
     {
-        Application.targetFrameRate = framerate;
-        //Pausa.gameObject.SetActive(pausado);
-
         if (Instance == null) // If there is no instance already
         {
-            DontDestroyOnLoad(gameObject); // Keep the GameObject, this component is attached to, across different scenes
+            DontDestroyOnLoad(this.gameObject); // Keep the GameObject, this component is attached to, across different scenes
             Instance = this;
         }
+
         else if (Instance != this) // If there is already an instance and it's not `this` instance
         {
-            Destroy(gameObject); // Destroy the GameObject, this component is attached to
+            Destroy(this.gameObject); // Destroy the GameObject, this component is attached to
         }
 
         DontDestroyOnLoad(this.gameObject);
     }
 
+    private void Awake()
+    {
+        Application.targetFrameRate = framerate;
+        Singleton();     
+    }
+
     private void Start()
     {
-        objetivoEnemigos = player.transform;
+        objetivoPrincipalEnemigos = player.transform;
         timeAux = timeSpawn;
     }
 
@@ -68,11 +59,6 @@ public class GameManager : MonoBehaviour
         //cronometro -= Time.deltaTime;
         //cronometro = Mathf.Clamp(cronometro, 0, 180);
 
-        if (Input.GetKeyDown(KeyCode.Escape) && !partidaAcabada) //Keyboard.current.escapeKey.wasPressedThisFrame
-        {
-            pausado = !pausado;
-            ComprobarPausa();
-        }
         TimerSpawnEnemy();
         if (timeSpawn <= 0)
         {
@@ -102,82 +88,26 @@ public class GameManager : MonoBehaviour
 
     }
 
-    //HUD
-    public void MostrarHud()
-    {
-        textoPuntosJugador.text = "Puntos: " + puntosJugador.ToString(); //Para que no se muestren decimales en el hud
-        //textoCronometro.text = cronometro.ToString("0");
-    }
-
-    //PAUSA Y MENU
-    void ComprobarPausa()
-    {
-        Pausa.gameObject.SetActive(pausado);
-
-        if (pausado)
-        {
-            PararTiempo();
-        }
-
-        else
-        {
-            ReanudarTiempo();
-        }
-    }
-
-    static void ReanudarTiempo()
+    public static void ReanudarTiempo()
     {
         Time.timeScale = 1;
     }
 
-    static void PararTiempo()
+    public static void PararTiempo()
     {
         Time.timeScale = 0;
     }
 
-    public void Pausar()
-    {
-        pausado = true;
-        ComprobarPausa();
-    }
-
-    public void Reanudar()
-    {
-        pausado = false;
-        ComprobarPausa();
-    }
-    public void IniciarPartida()
-    {
-        //Scene EscenaJuego = SceneManager.GetActiveScene();
-        //SceneManager.LoadScene(EscenaJuego.name);
-        SceneManager.LoadScene(0);
-        Time.timeScale = 1;
-    }
-    public static void AcabarPartida()
-    {
-        PararTiempo();
-        //Scene MenuPrincipal = SceneManager.GetActiveScene();
-        //SceneManager.LoadScene(MenuPrincipal.name);
-        //Invoke("CargarMenuPrincipal", 3);
-        SceneManager.LoadScene(1);
-    }
     public void CerrarJuego()
     {
+        Debug.Log("cerrando... "); //Sirve para comprobar si funciona en el editor, donde no se puede cerrar
         Application.Quit();
-        print("cerrando... ");
     }
-    public void CargarMenuPrincipal()
+
+    public static void CargarMenuPrincipal()
     {
         ReanudarTiempo();
-        //Scene MenuPrincipal = SceneManager.GetActiveScene();
         //SceneManager.LoadScene(MenuPrincipal.name);
         SceneManager.LoadScene(1);
-    }
-    public void CargarMenuOpciones()
-    {
-        //ReanudarTiempo();
-        //Scene MenuOpciones = SceneManager.GetActiveScene();
-        //SceneManager.LoadScene(MenuOpciones.name);
-        SceneManager.LoadScene(2);
     }
 }

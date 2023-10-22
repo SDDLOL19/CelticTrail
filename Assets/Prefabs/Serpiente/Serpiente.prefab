@@ -312,6 +312,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   distance: 1.15
   lenght: 3
+  playerSpeed: 0
   bodies:
   - {fileID: 4073783638485843241}
   - {fileID: 4073783638374843238}
@@ -323,6 +324,9 @@ MonoBehaviour:
   - {fileID: 4073783638695228707}
   - {fileID: 4073783638649250456}
   puntaCabeza: {fileID: 4121294468663751040}
+  serpiente: {fileID: 0}
+  tiempoInvulnerable: 0
+  prefabStaticTurret: {fileID: 0}
 --- !u!50 &937053899
 Rigidbody2D:
   serializedVersion: 4
@@ -645,6 +649,10 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 5205183529543799378}
     m_Modifications:
+    - target: {fileID: -7998199324626335511, guid: 86e2b4e142f780347a6f659e8fed7cb7, type: 3}
+      propertyPath: player
+      value: 
+      objectReference: {fileID: 5205183531337242780}
     - target: {fileID: 206387186016016487, guid: 86e2b4e142f780347a6f659e8fed7cb7, type: 3}
       propertyPath: m_RootOrder
       value: 2
@@ -712,6 +720,10 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 5205183529543799378}
     m_Modifications:
+    - target: {fileID: -7998199324626335511, guid: 86e2b4e142f780347a6f659e8fed7cb7, type: 3}
+      propertyPath: player
+      value: 
+      objectReference: {fileID: 5205183531337242780}
     - target: {fileID: 206387186016016487, guid: 86e2b4e142f780347a6f659e8fed7cb7, type: 3}
       propertyPath: m_RootOrder
       value: 1

@@ -14,6 +14,8 @@ public class Enemy : MonoBehaviour
 
     void Start()
     {
+        SpawnManager.cantidadEnemigosEnEscena++;
+
         agent = GetComponent<NavMeshAgent>();
 
         agent.updateRotation = false;

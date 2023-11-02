@@ -15,7 +15,7 @@ public class SpawnPoint : MonoBehaviour
 
     void Update()
     {
-        if (SpawnManager.cantidadEnemigosEnEscena < SpawnManager.cantidadEnemigosRonda[SpawnManager.rondaActual])
+        if (SpawnManager.cantidadEnemigosEnEscena < SpawnManager.cantidadEnemigosMax)
         {
             TimerSpawnEnemy();
             if (contadorTiempoSpawn <= 0)

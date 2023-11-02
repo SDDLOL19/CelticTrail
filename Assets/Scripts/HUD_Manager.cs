@@ -9,6 +9,8 @@ public class HUD_Manager : MonoBehaviour
     //AQUÍ ESTARAN TODOS LOS ELEMENTOS PRINCIPALES DE LA ESCENA DE JUEGO
 
     [SerializeField] TextMeshProUGUI textoPuntosJugador;
+    [SerializeField] TextMeshProUGUI textoCantidadEnemigos;
+    [SerializeField] TextMeshProUGUI textoRonda;
     [SerializeField] TextMeshProUGUI textoCronometro;
 
     /*public float cronometro = 180;*/ //Tres minutos en segundos
@@ -44,6 +46,8 @@ public class HUD_Manager : MonoBehaviour
     public void MostrarHud()
     {
         textoPuntosJugador.text = "Puntos: " + GameManager.puntosJugador.ToString(); //Para que no se muestren decimales en el hud
+        textoCantidadEnemigos.text = "Enemigos: " + SpawnManager.cantidadEnemigosEnEscena.ToString();
+        textoRonda.text = "Ronda: " + SpawnManager.rondaActual.ToString();
         //textoCronometro.text = cronometro.ToString("0");
     }
 

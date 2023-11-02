@@ -24,6 +24,12 @@ public class Enemy : MonoBehaviour
         CambiarObjetivo(GameManager.player.transform);
     }
 
+    private void OnDestroy()
+    {
+        SpawnManager.cantidadEnemigosEnEscena--;
+        SpawnManager.cantidadEnemigosMax--;
+    }
+
     private void Update()
     {
         MoveToThePlayer();

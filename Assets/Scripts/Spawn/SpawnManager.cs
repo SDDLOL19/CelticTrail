@@ -4,8 +4,8 @@ using UnityEngine;
 
 public class SpawnManager : MonoBehaviour
 {
-    public static readonly int cantidadEnemigosEnEscena;
+    public static int cantidadEnemigosEnEscena;
     public static int rondaActual;
-    public static readonly int[] cantidadEnemigosRonda;
-    public static readonly float timeToSpawn;
+    public static int[] cantidadEnemigosRonda;
+    public static float timeToSpawn;
 }

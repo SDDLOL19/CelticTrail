@@ -3,7 +3,7 @@ guid: ef48d127efd4e2b4680bcb777baa3468
 TextureImporter:
   internalIDToNameTable: []
   externalObjects: {}
-  serializedVersion: 11
+  serializedVersion: 12
   mipmaps:
     mipMapMode: 0
     enableMipMap: 0
@@ -47,7 +47,7 @@ TextureImporter:
   spriteMeshType: 1
   alignment: 0
   spritePivot: {x: 0.5, y: 0.5}
-  spritePixelsToUnits: 32
+  spritePixelsToUnits: 16
   spriteBorder: {x: 0, y: 0, z: 0, w: 0}
   spriteGenerateFallbackPhysicsShape: 1
   alphaUsage: 1
@@ -63,6 +63,7 @@ TextureImporter:
   textureFormatSet: 0
   ignorePngGamma: 0
   applyGammaDecoding: 0
+  cookieLightType: 1
   platformSettings:
   - serializedVersion: 3
     buildTarget: DefaultTexturePlatform
@@ -513,25 +514,25 @@ TextureImporter:
     weights: []
     secondaryTextures: []
     nameFileIdTable:
-      SpriteSheert Arquera_6: 692131109
-      SpriteSheert Arquera_14: 1404881818
-      SpriteSheert Arquera_16: 185654747
-      SpriteSheert Arquera_18: -2048140006
-      SpriteSheert Arquera_8: -1737722225
-      SpriteSheert Arquera_10: 1614138659
-      SpriteSheert Arquera_3: 10636191
-      SpriteSheert Arquera_2: 1732127603
-      SpriteSheert Arquera_13: -398363800
-      SpriteSheert Arquera_15: -1744905248
-      SpriteSheert Arquera_1: -1945844418
-      SpriteSheert Arquera_11: 1325769108
-      SpriteSheert Arquera_4: 691768473
-      SpriteSheert Arquera_17: -830082585
-      SpriteSheert Arquera_9: -897186671
       SpriteSheert Arquera_0: 894956187
-      SpriteSheert Arquera_5: 136450497
+      SpriteSheert Arquera_1: -1945844418
+      SpriteSheert Arquera_10: 1614138659
+      SpriteSheert Arquera_11: 1325769108
       SpriteSheert Arquera_12: -410975555
+      SpriteSheert Arquera_13: -398363800
+      SpriteSheert Arquera_14: 1404881818
+      SpriteSheert Arquera_15: -1744905248
+      SpriteSheert Arquera_16: 185654747
+      SpriteSheert Arquera_17: -830082585
+      SpriteSheert Arquera_18: -2048140006
+      SpriteSheert Arquera_2: 1732127603
+      SpriteSheert Arquera_3: 10636191
+      SpriteSheert Arquera_4: 691768473
+      SpriteSheert Arquera_5: 136450497
+      SpriteSheert Arquera_6: 692131109
       SpriteSheert Arquera_7: -1074588356
+      SpriteSheert Arquera_8: -1737722225
+      SpriteSheert Arquera_9: -897186671
   spritePackingTag: 
   pSDRemoveMatte: 0
   pSDShowRemoveMatteOption: 0

@@ -1,5 +1,6 @@
 using System.Collections;
 using System.Collections.Generic;
+using Unity.Burst.CompilerServices;
 using UnityEngine;
 using UnityEngine.AI;
 
@@ -9,6 +10,7 @@ public class Enemy : MonoBehaviour
     [SerializeField] int enemyVida;
     NavMeshAgent agent;
     Transform objetivoActual;
+    RaycastHit2D hit;
 
     void Start()
     {
@@ -41,6 +43,8 @@ public class Enemy : MonoBehaviour
 
             Destroy(this.gameObject);
         }
+
+        Disparo();
     }
 
     void MoveToThePlayer()
@@ -58,6 +62,12 @@ public class Enemy : MonoBehaviour
         objetivoActual = GameManager.objetivoPrincipalEnemigos;
     }
 
+    private void Disparo()
+    {
+        hit = Physics2D.Raycast(this.transform.position, objetivoActual.position);
+        Debug.DrawRay(this.transform.position,  (objetivoActual.position-this.transform.position) * 10, Color.green);
+    }
+    
     private void OnTriggerEnter2D(Collider2D collision)
     {
         if (collision.gameObject.tag == "BalasJugador")

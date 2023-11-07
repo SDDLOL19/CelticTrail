@@ -42,6 +42,11 @@ public class GameManager : MonoBehaviour
         Singleton();
     }
 
+    private void Start()
+    {
+        Application.targetFrameRate = framerate;
+    }
+
     void Update()
     {
         //cronometro -= Time.deltaTime;

@@ -6,14 +6,21 @@ using UnityEngine.AI;
 
 public class Enemy : MonoBehaviour
 {
-    [SerializeField] GameObject prefabDroppeable;
+    [SerializeField] GameObject prefabDroppeable, shootPosition, prefabBullet, rotacionShooting;
     [SerializeField] int enemyVida;
+    [SerializeField] float tiempoDeRecarga;
+    float timerSpawnBullet;
+
+    [SerializeField] float rangoDisparo;
+
     NavMeshAgent agent;
     Transform objetivoActual;
     RaycastHit2D hit;
 
     void Start()
     {
+        timerSpawnBullet = tiempoDeRecarga;
+
         SpawnManager.cantidadEnemigosEnEscena++;
 
         agent = GetComponent<NavMeshAgent>();
@@ -32,6 +39,8 @@ public class Enemy : MonoBehaviour
 
     private void Update()
     {
+        RotarShootingPoint();
+        timerSpawnBullet -= Time.deltaTime;
         MoveToThePlayer();
 
         if (enemyVida <= 0)
@@ -52,7 +61,13 @@ public class Enemy : MonoBehaviour
             Destroy(this.gameObject);
         }
 
-        Disparo();
+        hit = Physics2D.Raycast(shootPosition.transform.position, objetivoActual.position - this.transform.position);
+        Debug.DrawRay(shootPosition.transform.position, (objetivoActual.position - this.transform.position) * 10, Color.green);
+
+        if (timerSpawnBullet <= 0)
+        {
+            Disparo();
+        }
     }
 
     void MoveToThePlayer()
@@ -70,12 +85,22 @@ public class Enemy : MonoBehaviour
         objetivoActual = GameManager.objetivoPrincipalEnemigos;
     }
 
+    void RotarShootingPoint()
+    {
+        //rotacionShooting.transform.LookAt(GameManager.player.transform.position);
+        rotacionShooting.transform.up = GameManager.player.transform.position - rotacionShooting.transform.position;
+    }
+
     private void Disparo()
     {
-        hit = Physics2D.Raycast(this.transform.position, objetivoActual.position);
-        Debug.DrawRay(this.transform.position,  (objetivoActual.position-this.transform.position) * 10, Color.green);
+        if (hit.collider != null && hit.distance <= rangoDisparo && hit.collider.gameObject.tag == "Player") //El raycast es infinito, por lo que para evitar que detecte la cosa que queremos desde el infinito comprobamos su distance
+        {
+            Debug.Log("Disparo");
+            Instantiate(prefabBullet, shootPosition.transform.position, rotacionShooting.transform.rotation);
+        }
+        timerSpawnBullet = tiempoDeRecarga;
     }
-    
+
     private void OnTriggerEnter2D(Collider2D collision)
     {
         if (collision.gameObject.tag == "BalasJugador")

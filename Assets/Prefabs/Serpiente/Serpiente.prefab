@@ -224,7 +224,7 @@ GameObject:
   - component: {fileID: 937053898}
   m_Layer: 0
   m_Name: Head
-  m_TagString: Untagged
+  m_TagString: Player
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -650,10 +650,6 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 5205183529543799378}
     m_Modifications:
-    - target: {fileID: -7998199324626335511, guid: 86e2b4e142f780347a6f659e8fed7cb7, type: 3}
-      propertyPath: player
-      value: 
-      objectReference: {fileID: 5205183531337242780}
     - target: {fileID: 206387186016016487, guid: 86e2b4e142f780347a6f659e8fed7cb7, type: 3}
       propertyPath: m_RootOrder
       value: 2
@@ -721,10 +717,6 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 5205183529543799378}
     m_Modifications:
-    - target: {fileID: -7998199324626335511, guid: 86e2b4e142f780347a6f659e8fed7cb7, type: 3}
-      propertyPath: player
-      value: 
-      objectReference: {fileID: 5205183531337242780}
     - target: {fileID: 206387186016016487, guid: 86e2b4e142f780347a6f659e8fed7cb7, type: 3}
       propertyPath: m_RootOrder
       value: 1

@@ -63,7 +63,7 @@ public class Head : MonoBehaviour
         if (collision.gameObject.tag == "Enemigo")
         {
             Destroy(collision.gameObject);
-            Shrinkage(1);
+            Shrinkage();
             //StartCoroutine(ParpadeoTemporal());
         }
     }
@@ -103,9 +103,9 @@ public class Head : MonoBehaviour
         ControladorCarrosEnEscena();
     }
 
-    void Shrinkage(int longitudAQuitar)
+    public void Shrinkage()
     {
-        lenght -= longitudAQuitar;
+        lenght --;
         ControladorCarrosEnEscena();
     }
     //QQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQ

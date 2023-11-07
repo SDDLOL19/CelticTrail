@@ -312,7 +312,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   distance: 1.15
   lenght: 3
-  playerSpeed: 0
+  speedEscogida: 10
   bodies:
   - {fileID: 4073783638485843241}
   - {fileID: 4073783638374843238}
@@ -324,6 +324,7 @@ MonoBehaviour:
   - {fileID: 4073783638695228707}
   - {fileID: 4073783638649250456}
   puntaCabeza: {fileID: 4121294468663751040}
+  playerSpeed: 0
   serpiente: {fileID: 5205183529543799379}
   tiempoInvulnerable: 0
   prefabStaticTurret: {fileID: 1240167930174620457, guid: 9c4233157596d4243962f698be2057db, type: 3}

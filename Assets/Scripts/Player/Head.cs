@@ -5,12 +5,13 @@ using UnityEngine;
 public class Head : MonoBehaviour
 {
     [SerializeField] float distance;
-    [SerializeField, Range(1, 9)] int lenght;
-    [Range(1, 10)] public float playerSpeed;
+    [SerializeField, Range(0, 9)] int lenght;
+    [SerializeField, Range(1, 10)] int speedEscogida;
     [SerializeField] GameObject[] bodies;
     [SerializeField] GameObject puntaCabeza;
     float tiempo, temporizadorGiro = 0, delay = 0.05f;
 
+    public float playerSpeed;
     float distanciaRaycast = 0.2f;
 
     RaycastHit2D hit;
@@ -29,8 +30,7 @@ public class Head : MonoBehaviour
     }
 
     private void Start()
-    {   
-        playerSpeed = 10 - lenght;
+    {
         ControladorCarrosEnEscena();
         direccionRayo = Vector2.up;
     }
@@ -81,6 +81,8 @@ public class Head : MonoBehaviour
 
     void ControladorCarrosEnEscena()
     {
+        playerSpeed = speedEscogida - (lenght / 1.5f);
+
         for (int i = bodies.Length - 1; i >= lenght; i--)
         {
             bodies[i].GetComponent<Body>().Esconderme();
@@ -93,8 +95,6 @@ public class Head : MonoBehaviour
                 bodies[i].GetComponent<Body>().Aparecerme();
             }
         }
-
-        playerSpeed = 10 - lenght;
     }
 
     void Growth()
@@ -258,7 +258,7 @@ public class Head : MonoBehaviour
     }
 
     //QQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQ
-   
+
     IEnumerator ParpadeoTemporal()
     {
         while (tiempoInvulnerable > 0)

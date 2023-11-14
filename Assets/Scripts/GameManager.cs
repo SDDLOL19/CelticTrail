@@ -45,6 +45,7 @@ public class GameManager : MonoBehaviour
     private void Start()
     {
         Application.targetFrameRate = framerate;
+        partidaAcabada = false;
     }
 
     void Update()
@@ -77,6 +78,7 @@ public class GameManager : MonoBehaviour
     public static void CargarMenuPrincipal()
     {
         ReanudarTiempo();
+        partidaAcabada = false;
         SceneManager.LoadScene("MenuPrincipal");
     }
 }

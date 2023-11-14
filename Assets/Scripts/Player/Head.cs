@@ -37,8 +37,11 @@ public class Head : MonoBehaviour
 
     void Update()
     {
-        Movement();
-        DetectarChoqueFrontal();
+        if (!GameManager.partidaAcabada)
+        {
+            Movement();
+            DetectarChoqueFrontal();
+        } 
     }
 
     void DetectarChoqueFrontal()
@@ -46,9 +49,9 @@ public class Head : MonoBehaviour
         hit = Physics2D.Raycast(puntaCabeza.transform.position, direccionRayo);
         Debug.DrawRay(puntaCabeza.transform.position, direccionRayo * distanciaRaycast, Color.green); //Para ver a donde se lanza el raycast solo en la ventana scene
 
-        if (hit.collider != null && hit.distance <= distanciaRaycast && hit.collider.gameObject.tag == "MiCulo") //El raycast es infinito, por lo que para evitar que detecte la cosa que queremos desde el infinito comprobamos su distance
+        if (hit.collider != null && hit.distance <= distanciaRaycast && hit.collider.gameObject.tag == "Player") //El raycast es infinito, por lo que para evitar que detecte la cosa que queremos desde el infinito comprobamos su distance
         {
-            GameManager.partidaAcabada = true;
+            Morir();
         }
     }
 
@@ -60,9 +63,8 @@ public class Head : MonoBehaviour
             Growth();
         }
 
-        if (collision.gameObject.tag == "Enemigo")
+        if (collision.gameObject.tag == "BalaEnemigo")
         {
-            Destroy(collision.gameObject);
             Shrinkage();
             //StartCoroutine(ParpadeoTemporal());
         }
@@ -70,11 +72,20 @@ public class Head : MonoBehaviour
 
     private void OnCollisionEnter2D(Collision2D collision)
     {
+        Debug.Log("ME CHOQUÉ");
+
         if (collision.gameObject.tag == "Obstaculo")
         {
-            GameManager.partidaAcabada = true;
+            Morir();
+        }
+
+        if (collision.gameObject.tag == "Enemigo")
+        {
+            Destroy(collision.gameObject);
+            Shrinkage();
         }
     }
+
     //QQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQ
 
     //CANTIDAD DE CUERPOS
@@ -88,7 +99,7 @@ public class Head : MonoBehaviour
             bodies[i].GetComponent<Body>().Esconderme();
         }
 
-        if (lenght > 0)
+        if (lenght >= 0)
         {
             for (int i = 0; i < lenght; i++)
             {
@@ -99,13 +110,26 @@ public class Head : MonoBehaviour
 
     void Growth()
     {
-        lenght++;
+        if (lenght <= 8)
+        {
+            lenght++;
+        }
+        
         ControladorCarrosEnEscena();
     }
 
     public void Shrinkage()
     {
-        lenght --;
+        if (lenght > 0)
+        {
+            lenght--;
+        }
+
+        else
+        {
+            Morir();
+        }
+
         ControladorCarrosEnEscena();
     }
     //QQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQ
@@ -163,21 +187,25 @@ public class Head : MonoBehaviour
             Temporizador();
         }
     }
+
     void MovementLeft()
     {
         transform.eulerAngles = new Vector3(0f, 0, 90); //rota el objeto a izquierda
         direccionRayo = Vector2.left;
     }
+
     void MovementRight()
     {
         transform.eulerAngles = new Vector3(0f, 0, -90); //rota el objeto a derecha
         direccionRayo = Vector2.right;
     }
+
     void MovementUp()
     {
         transform.eulerAngles = new Vector3(0f, 0, 0); //rota el objeto hacia arriba
         direccionRayo = Vector2.up;
     }
+
     void MovementDown()
     {
         transform.eulerAngles = new Vector3(0f, 0, 180); //rota el objeto hacia abajo
@@ -188,32 +216,28 @@ public class Head : MonoBehaviour
     {
         tiempo = (distance * (i + 1)) / playerSpeed;
         yield return new WaitForSeconds(tiempo);
-        bodies[i].GetComponent<Body>().MovementUp();
-        bodies[i].transform.position = new Vector3(posicionEnHorizontal, bodies[i].transform.position.y, bodies[i].transform.position.z);
+        bodies[i].GetComponent<Body>().MovementUp(posicionEnHorizontal);
     }
 
     IEnumerator WaitForDown(int i, float posicionEnHorizontal)
     {
         tiempo = (distance * (i + 1)) / playerSpeed;
         yield return new WaitForSeconds(tiempo);
-        bodies[i].GetComponent<Body>().MovementDown();
-        bodies[i].transform.position = new Vector3(posicionEnHorizontal, bodies[i].transform.position.y, bodies[i].transform.position.z);
+        bodies[i].GetComponent<Body>().MovementDown(posicionEnHorizontal);
     }
 
     IEnumerator WaitForLeft(int i, float posicionEnVertical)
     {
         tiempo = (distance * (i + 1)) / playerSpeed;
         yield return new WaitForSeconds(tiempo);
-        bodies[i].GetComponent<Body>().MovementLeft();
-        bodies[i].transform.position = new Vector3(bodies[i].transform.position.x, posicionEnVertical, bodies[i].transform.position.z);
+        bodies[i].GetComponent<Body>().MovementLeft(posicionEnVertical);
     }
 
     IEnumerator WaitForRight(int i, float posicionEnVertical)
     {
         tiempo = (distance * (i + 1)) / playerSpeed;
         yield return new WaitForSeconds(tiempo);
-        bodies[i].GetComponent<Body>().MovementRight();
-        bodies[i].transform.position = new Vector3(bodies[i].transform.position.x, posicionEnVertical, bodies[i].transform.position.z);
+        bodies[i].GetComponent<Body>().MovementRight(posicionEnVertical);
     }
 
     void Temporizador()
@@ -283,6 +307,11 @@ public class Head : MonoBehaviour
     void Parpadeo()  //Hay que rehacerlo del todo. Nunca funcionará como queremos de esta forma
     {
         serpiente.SetActive(!serpiente.activeInHierarchy);
+    }
+
+    void Morir()
+    {
+        GameManager.partidaAcabada = true;
     }
 }
 

@@ -18,12 +18,15 @@ public class Turret : MonoBehaviour
 
     void Update()
     {
-        Rotation();
-        TemporizadorBalas();
-        if (tiempoSpawnBalas <= 0)
+        if (!GameManager.partidaAcabada)
         {
-            CreateBullet();
-            //Debug.Log("FuncionaElcontador");
+            Rotation();
+            TemporizadorBalas();
+            if (tiempoSpawnBalas <= 0)
+            {
+                CreateBullet();
+                //Debug.Log("FuncionaElcontador");
+            }
         }
     }
 

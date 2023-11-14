@@ -68,8 +68,13 @@ public class HUD_Manager : MonoBehaviour
     void AcabarPartida()
     {
         //GameOver.gameObject.SetActive(true);
-        GameManager.PararTiempo();
-        Invoke("GameManager.CargarMenuPrincipal", 3);
+        Invoke("DelayAcabar", 2);
+        //GameManager.PararTiempo();
+    }
+
+    void DelayAcabar()
+    {
+        GameManager.CargarMenuPrincipal();
     }
 
     public void Pausar()

@@ -39,34 +39,37 @@ public class Enemy : MonoBehaviour
 
     private void Update()
     {
-        RotarShootingPoint();
-        timerSpawnBullet -= Time.deltaTime;
-        MoveToThePlayer();
-
-        if (enemyVida <= 0)
+        if (!GameManager.partidaAcabada)
         {
-            int randomSpawnDropeable = Random.Range(0, 10);
+            RotarShootingPoint();
+            timerSpawnBullet -= Time.deltaTime;
+            MoveToThePlayer();
 
-            if (randomSpawnDropeable <= 5)
+            if (enemyVida <= 0)
             {
-                Instantiate(prefabDroppeable, transform.position, Quaternion.identity);
-                Debug.Log("Funciona");
+                int randomSpawnDropeable = Random.Range(0, 10);
+
+                if (randomSpawnDropeable <= 5)
+                {
+                    Instantiate(prefabDroppeable, transform.position, Quaternion.identity);
+                    //Debug.Log("Funciona");
+                }
+
+                else
+                {
+                    //Debug.Log("Funciona otra parte");
+                }
+
+                Destroy(this.gameObject);
             }
 
-            else
+            hit = Physics2D.Raycast(shootPosition.transform.position, objetivoActual.position - this.transform.position);
+            Debug.DrawRay(shootPosition.transform.position, (objetivoActual.position - this.transform.position) * 10, Color.green);
+
+            if (timerSpawnBullet <= 0)
             {
-                Debug.Log("Funciona otra parte");
+                Disparo();
             }
-
-            Destroy(this.gameObject);
-        }
-
-        hit = Physics2D.Raycast(shootPosition.transform.position, objetivoActual.position - this.transform.position);
-        Debug.DrawRay(shootPosition.transform.position, (objetivoActual.position - this.transform.position) * 10, Color.green);
-
-        if (timerSpawnBullet <= 0)
-        {
-            Disparo();
         }
     }
 
@@ -95,7 +98,7 @@ public class Enemy : MonoBehaviour
     {
         if (hit.collider != null && hit.distance <= rangoDisparo && hit.collider.gameObject.tag == "Player") //El raycast es infinito, por lo que para evitar que detecte la cosa que queremos desde el infinito comprobamos su distance
         {
-            Debug.Log("Disparo");
+            //Debug.Log("Disparo");
             Instantiate(prefabBullet, shootPosition.transform.position, rotacionShooting.transform.rotation);
         }
         timerSpawnBullet = tiempoDeRecarga;

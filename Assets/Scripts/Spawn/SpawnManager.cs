@@ -20,10 +20,13 @@ public class SpawnManager : MonoBehaviour
 
     private void Update()
     {
-        if (cantidadEnemigosMax == 0 && puedeCambiarRonda)
+        if (!GameManager.partidaAcabada)
         {
-            Invoke("ActualizarRonda", 4f);
-            puedeCambiarRonda = false; //Para que solo lo haga una vez
+            if (cantidadEnemigosMax == 0 && puedeCambiarRonda)
+            {
+                Invoke("ActualizarRonda", 4f);
+                puedeCambiarRonda = false; //Para que solo lo haga una vez
+            }
         }
     }
 

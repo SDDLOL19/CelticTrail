@@ -15,13 +15,17 @@ public class SpawnPoint : MonoBehaviour
 
     void Update()
     {
-        if (SpawnManager.cantidadEnemigosEnEscena < SpawnManager.cantidadEnemigosMax)
+        if (!GameManager.partidaAcabada)
         {
-            TimerSpawnEnemy();
-            if (contadorTiempoSpawn <= 0)
+            if (SpawnManager.cantidadEnemigosEnEscena < SpawnManager.cantidadEnemigosMax)
             {
-                SpawnEnemy();
-                contadorTiempoSpawn = SpawnManager.timeToSpawn;
+                TimerSpawnEnemy();
+
+                if (contadorTiempoSpawn <= 0)
+                {
+                    SpawnEnemy();
+                    contadorTiempoSpawn = SpawnManager.timeToSpawn;
+                }
             }
         }
     }

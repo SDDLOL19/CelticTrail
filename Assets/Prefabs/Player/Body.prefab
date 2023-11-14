@@ -16,7 +16,7 @@ GameObject:
   - component: {fileID: -7998199324626335511}
   m_Layer: 0
   m_Name: Body
-  m_TagString: MiCulo
+  m_TagString: Player
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -141,7 +141,7 @@ Rigidbody2D:
   m_GameObject: {fileID: 8121250672241718121}
   m_BodyType: 1
   m_Simulated: 1
-  m_UseFullKinematicContacts: 0
+  m_UseFullKinematicContacts: 1
   m_UseAutoMass: 0
   m_Mass: 1
   m_LinearDrag: 0

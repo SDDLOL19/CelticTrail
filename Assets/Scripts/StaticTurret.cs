@@ -16,7 +16,10 @@ public class StaticTurret : MonoBehaviour
 
     void Update()
     {
-        EnemyDetection();
+        if (!GameManager.partidaAcabada)
+        {
+            EnemyDetection();
+        }
     }
 
     void EnemyDetection()

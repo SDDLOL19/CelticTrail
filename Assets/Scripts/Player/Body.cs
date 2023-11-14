@@ -17,7 +17,10 @@ public class Body : MonoBehaviour
 
     void Update()
     {
-        Movement();
+        if (!GameManager.partidaAcabada)
+        {
+            Movement();
+        }
     }
 
     void Movement()
@@ -25,24 +28,28 @@ public class Body : MonoBehaviour
         transform.Translate(Vector2.up * GameManager.player.playerSpeed * Time.deltaTime); //mueve el objeto en el en direccion flecha verde(la del eje y)           
     }
 
-    public void MovementLeft()
+    public void MovementLeft(float posicionEnVertical)
     {
         transform.eulerAngles = new Vector3(0f, 0, 90); //rota el objeto a izquierda
+        transform.position = new Vector3(transform.position.x, posicionEnVertical, transform.position.z);
     }
 
-    public void MovementRight()
+    public void MovementRight(float posicionEnVertical)
     {
         transform.eulerAngles = new Vector3(0f, 0, -90); //rota el objeto a derecha
+        transform.position = new Vector3(transform.position.x, posicionEnVertical, transform.position.z);
     }
 
-    public void MovementUp()
+    public void MovementUp(float posicionEnHorizontal)
     {
         transform.eulerAngles = new Vector3(0f, 0, 0); //rota el objeto hacia arriba
+        transform.position = new Vector3(posicionEnHorizontal, transform.position.y, transform.position.z);
     }
 
-    public void MovementDown()
+    public void MovementDown(float posicionEnHorizontal)
     {
         transform.eulerAngles = new Vector3(0f, 0, 180); //rota el objeto hacia abajo
+        transform.position = new Vector3(posicionEnHorizontal, transform.position.y, transform.position.z);
     }
 
     public void Aparecerme()
@@ -61,14 +68,26 @@ public class Body : MonoBehaviour
         torreta.SetActive(false);
     }
 
-    private void OnCollisionEnter2D(Collision2D collision)
+    void MeHicePupa()
+    {
+        GameManager.player.Shrinkage();
+        //StartCoroutine(ParpadeoTemporal());
+    }
+
+    private void OnTriggerEnter2D(Collider2D collision)
     {
         if (collision.gameObject.tag == "BalaEnemigo")
         {
-            Debug.Log("PA TI MI COLA");
+            MeHicePupa();
+        }
+    }
+
+    private void OnCollisionEnter2D(Collision2D collision)
+    {
+        if (collision.gameObject.tag == "Enemigo")
+        {
             Destroy(collision.gameObject);
-            GameManager.player.Shrinkage();
-            //StartCoroutine(ParpadeoTemporal());
+            MeHicePupa();
         }
     }
 }

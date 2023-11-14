@@ -41,7 +41,7 @@ public class Head : MonoBehaviour
         {
             Movement();
             DetectarChoqueFrontal();
-        } 
+        }
     }
 
     void DetectarChoqueFrontal()
@@ -97,12 +97,9 @@ public class Head : MonoBehaviour
             bodies[i].GetComponent<Body>().Esconderme();
         }
 
-        if (lenght >= 0)
+        for (int i = 0; i < lenght; i++)
         {
-            for (int i = 0; i < lenght; i++)
-            {
-                bodies[i].GetComponent<Body>().Aparecerme();
-            }
+            bodies[i].GetComponent<Body>().Aparecerme();
         }
     }
 
@@ -112,7 +109,7 @@ public class Head : MonoBehaviour
         {
             lenght++;
         }
-        
+
         ControladorCarrosEnEscena();
     }
 

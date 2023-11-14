@@ -30,26 +30,38 @@ public class Body : MonoBehaviour
 
     public void MovementLeft(float posicionEnVertical)
     {
-        transform.eulerAngles = new Vector3(0f, 0, 90); //rota el objeto a izquierda
-        transform.position = new Vector3(transform.position.x, posicionEnVertical, transform.position.z);
+        if (!GameManager.partidaAcabada)
+        {
+            transform.eulerAngles = new Vector3(0f, 0, 90); //rota el objeto a izquierda
+            transform.position = new Vector3(transform.position.x, posicionEnVertical, transform.position.z);
+        } 
     }
 
     public void MovementRight(float posicionEnVertical)
     {
-        transform.eulerAngles = new Vector3(0f, 0, -90); //rota el objeto a derecha
-        transform.position = new Vector3(transform.position.x, posicionEnVertical, transform.position.z);
+        if (!GameManager.partidaAcabada)
+        {
+            transform.eulerAngles = new Vector3(0f, 0, -90); //rota el objeto a derecha
+            transform.position = new Vector3(transform.position.x, posicionEnVertical, transform.position.z);
+        }
     }
 
     public void MovementUp(float posicionEnHorizontal)
     {
-        transform.eulerAngles = new Vector3(0f, 0, 0); //rota el objeto hacia arriba
-        transform.position = new Vector3(posicionEnHorizontal, transform.position.y, transform.position.z);
+        if (!GameManager.partidaAcabada)
+        {
+            transform.eulerAngles = new Vector3(0f, 0, 0); //rota el objeto hacia arriba
+            transform.position = new Vector3(posicionEnHorizontal, transform.position.y, transform.position.z);
+        } 
     }
 
     public void MovementDown(float posicionEnHorizontal)
     {
-        transform.eulerAngles = new Vector3(0f, 0, 180); //rota el objeto hacia abajo
-        transform.position = new Vector3(posicionEnHorizontal, transform.position.y, transform.position.z);
+        if (!GameManager.partidaAcabada)
+        {
+            transform.eulerAngles = new Vector3(0f, 0, 180); //rota el objeto hacia abajo
+            transform.position = new Vector3(posicionEnHorizontal, transform.position.y, transform.position.z);
+        }
     }
 
     public void Aparecerme()
@@ -86,7 +98,6 @@ public class Body : MonoBehaviour
     {
         if (collision.gameObject.tag == "Enemigo")
         {
-            Destroy(collision.gameObject);
             MeHicePupa();
         }
     }

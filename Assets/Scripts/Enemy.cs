@@ -71,6 +71,11 @@ public class Enemy : MonoBehaviour
                 Disparo();
             }
         }
+
+        else
+        {
+            agent.SetDestination(this.transform.position);
+        }
     }
 
     void MoveToThePlayer()
@@ -109,6 +114,14 @@ public class Enemy : MonoBehaviour
         if (collision.gameObject.tag == "BalaJugador")
         {
             enemyVida--;
+        }
+    }
+
+    private void OnCollisionEnter2D(Collision2D collision)
+    {
+        if (collision.gameObject.tag == "Player")
+        {
+            Destroy(this.gameObject);
         }
     }
 }

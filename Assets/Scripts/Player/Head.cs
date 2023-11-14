@@ -72,8 +72,6 @@ public class Head : MonoBehaviour
 
     private void OnCollisionEnter2D(Collision2D collision)
     {
-        Debug.Log("ME CHOQUÉ");
-
         if (collision.gameObject.tag == "Obstaculo")
         {
             Morir();
@@ -81,7 +79,7 @@ public class Head : MonoBehaviour
 
         if (collision.gameObject.tag == "Enemigo")
         {
-            Destroy(collision.gameObject);
+            Debug.Log("ME CHOQUÉ");
             Shrinkage();
         }
     }

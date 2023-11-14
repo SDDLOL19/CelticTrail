@@ -35,7 +35,7 @@ public class Bullet : MonoBehaviour
     {
         if (collision.gameObject.tag != tagDeMiCreador) //collision.gameObject.tag != tagDeMiCreador
         {
-            Debug.Log("AAAAAAAAAAAAA");
+            //Debug.Log("AAAAAAAAAAAAA");
             Destroy(this.gameObject);
         }
     }

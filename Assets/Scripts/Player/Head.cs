@@ -127,7 +127,7 @@ public class Head : MonoBehaviour
                 }
             }
 
-            if (Input.GetKey(GameManager.movimientoIzquierda))
+            else if (Input.GetKey(GameManager.movimientoIzquierda))
             {
                 if (this.transform.eulerAngles.z != 270f)
                 {
@@ -137,7 +137,7 @@ public class Head : MonoBehaviour
                 }
             }
 
-            if (Input.GetKey(GameManager.movimientoArriba))
+            else if (Input.GetKey(GameManager.movimientoArriba))
             {
                 if (this.transform.eulerAngles.z != 180f)
                 {
@@ -147,7 +147,7 @@ public class Head : MonoBehaviour
                 }
             }
 
-            if (Input.GetKey(GameManager.movimientoAbajo))
+            else if (Input.GetKey(GameManager.movimientoAbajo))
             {
                 if (this.transform.eulerAngles.z != 0)
                 {

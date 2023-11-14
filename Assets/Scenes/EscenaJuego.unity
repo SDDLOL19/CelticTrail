@@ -2309,7 +2309,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 1}
   m_AnchorMax: {x: 0, y: 1}
-  m_AnchoredPosition: {x: 216.06396, y: -52.809937}
+  m_AnchoredPosition: {x: 216.06396, y: -52.81006}
   m_SizeDelta: {x: 578.6323, y: 126.992}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &1461483247
@@ -3819,10 +3819,6 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 0}
     m_Modifications:
-    - target: {fileID: 937053899, guid: 52af84ac7f04834489e02437a602479c, type: 3}
-      propertyPath: m_BodyType
-      value: 1
-      objectReference: {fileID: 0}
     - target: {fileID: 5205183529543799378, guid: 52af84ac7f04834489e02437a602479c, type: 3}
       propertyPath: m_RootOrder
       value: 10
@@ -3870,6 +3866,10 @@ PrefabInstance:
     - target: {fileID: 5205183529543799379, guid: 52af84ac7f04834489e02437a602479c, type: 3}
       propertyPath: m_Name
       value: Serpiente
+      objectReference: {fileID: 0}
+    - target: {fileID: 5205183531337242780, guid: 52af84ac7f04834489e02437a602479c, type: 3}
+      propertyPath: delay
+      value: 0.05
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 52af84ac7f04834489e02437a602479c, type: 3}

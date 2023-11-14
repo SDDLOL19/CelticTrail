@@ -4,12 +4,12 @@ using UnityEngine;
 
 public class Head : MonoBehaviour
 {
-    [SerializeField] float distance;
+    [SerializeField] float distance, delay = 0.05f;
     [SerializeField, Range(0, 9)] int lenght;
     [SerializeField, Range(1, 10)] int speedEscogida;
     [SerializeField] GameObject[] bodies;
     [SerializeField] GameObject puntaCabeza;
-    float tiempo, temporizadorGiro = 0, delay = 0.05f;
+    float tiempo, temporizadorGiro = 0;
 
     public float playerSpeed;
     float distanciaRaycast = 0.2f;

@@ -12,7 +12,6 @@ public class StaticTurret : MonoBehaviour
     void Start()
     {
         tiempoAux = timeSpawnBullet;
-
     }
 
     void Update()

@@ -4,6 +4,16 @@ using UnityEngine.AI;
 public class Body : MonoBehaviour
 {
     [SerializeField] GameObject torreta;
+    SpriteRenderer miRenderer;
+    NavMeshObstacle miObstacle;
+    Collider2D miCollider;
+
+    private void Start()
+    {
+        miRenderer = this.gameObject.GetComponent<SpriteRenderer>();
+        miObstacle = this.gameObject.GetComponent<NavMeshObstacle>();
+        miCollider = this.gameObject.GetComponent<Collider2D>();
+    }
 
     void Update()
     {
@@ -37,24 +47,25 @@ public class Body : MonoBehaviour
 
     public void Aparecerme()
     {
-        this.gameObject.GetComponent<SpriteRenderer>().enabled = true;
-        this.gameObject.GetComponent<NavMeshObstacle>().enabled = true;
-        this.gameObject.GetComponent<Collider2D>().enabled = true;
+        miRenderer.enabled = true;
+        miObstacle.enabled = true;
+        miCollider.enabled = true;
         torreta.SetActive(true);
     }
 
     public void Esconderme()
     {
-        this.gameObject.GetComponent<SpriteRenderer>().enabled = false;
-        this.gameObject.GetComponent<NavMeshObstacle>().enabled = false;
-        this.gameObject.GetComponent<Collider2D>().enabled = false;
+        miRenderer.enabled = false;
+        miObstacle.enabled = false;
+        miCollider.enabled = false;
         torreta.SetActive(false);
     }
 
-    private void OnTriggerEnter2D(Collider2D collision)
+    private void OnCollisionEnter2D(Collision2D collision)
     {
-        if (collision.gameObject.tag == "Enemigo")
+        if (collision.gameObject.tag == "BalaEnemigo")
         {
+            Debug.Log("PA TI MI COLA");
             Destroy(collision.gameObject);
             GameManager.player.Shrinkage();
             //StartCoroutine(ParpadeoTemporal());

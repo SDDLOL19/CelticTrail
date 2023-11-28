@@ -15,8 +15,9 @@ public class HUD_Manager : MonoBehaviour
     //PAUSA
     [SerializeField] Canvas Pausa;
     [SerializeField] Canvas GameOver;
+    [SerializeField] Canvas Cartas;
     bool pausado;
-
+    public bool pantallaCartas;
     private void Start()
     {
         pausado = false;
@@ -93,5 +94,18 @@ public class HUD_Manager : MonoBehaviour
     {
         Reanudar();
         SceneManager.LoadScene(SceneManager.GetActiveScene().name);
+    }
+    public void PantallaCartas()
+    {
+        if (pantallaCartas)
+        {
+            pausado = true;
+            Cartas.gameObject.SetActive(pantallaCartas);
+        }
+        else
+        {
+            pausado = false;
+            Cartas.gameObject.SetActive(!pantallaCartas);
+        }
     }
 }

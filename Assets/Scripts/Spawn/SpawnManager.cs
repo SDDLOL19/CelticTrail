@@ -35,6 +35,7 @@ public class SpawnManager : MonoBehaviour
         rondaActual++;
         cantidadEnemigosMax = cantidadEnemigosRonda[rondaActual - 1];
         puedeCambiarRonda = true;
+        
     }
 
     void ActualizarTimeToSpawn()

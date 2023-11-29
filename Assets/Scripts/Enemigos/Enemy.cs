@@ -1,16 +1,17 @@
 using System.Collections;
 using System.Collections.Generic;
+using Unity.Burst.CompilerServices;
 using UnityEngine;
 using UnityEngine.AI;
 
-public class NearEnemy : MonoBehaviour
+public class Enemy : MonoBehaviour
 {
     [SerializeField] GameObject prefabDroppeable, shootPosition, prefabBullet, rotacionShooting;
     [SerializeField] int enemyVida;
     [SerializeField] float tiempoDeRecarga;
     float timerSpawnBullet;
 
-    [SerializeField] float rangoDisparo;
+    [SerializeField] float rangoDisparoMin, rangoDisparoMax;
 
     NavMeshAgent agent;
     Transform objetivoActual;
@@ -63,7 +64,7 @@ public class NearEnemy : MonoBehaviour
             }
 
             hit = Physics2D.Raycast(shootPosition.transform.position, objetivoActual.position - this.transform.position);
-            Debug.DrawRay(shootPosition.transform.position, (objetivoActual.position - this.transform.position), Color.green);
+            Debug.DrawRay(shootPosition.transform.position, (objetivoActual.position - this.transform.position) * 10, Color.green);
 
             if (timerSpawnBullet <= 0)
             {
@@ -100,7 +101,7 @@ public class NearEnemy : MonoBehaviour
 
     private void Disparo()
     {
-        if (hit.collider != null && hit.distance <= rangoDisparo && hit.collider.gameObject.tag == "Player") //El raycast es infinito, por lo que para evitar que detecte la cosa que queremos desde el infinito comprobamos su distance
+        if (hit.collider != null && hit.distance >= rangoDisparoMin && hit.distance < rangoDisparoMax && hit.collider.gameObject.tag == "Player") //El raycast es infinito, por lo que para evitar que detecte la cosa que queremos desde el infinito comprobamos su distance
         {
             //Debug.Log("Disparo");
             Instantiate(prefabBullet, shootPosition.transform.position, rotacionShooting.transform.rotation);
@@ -124,4 +125,3 @@ public class NearEnemy : MonoBehaviour
         }
     }
 }
-

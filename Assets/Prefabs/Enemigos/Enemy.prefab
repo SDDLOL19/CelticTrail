@@ -129,7 +129,8 @@ MonoBehaviour:
   rotacionShooting: {fileID: 4634567906735696393}
   enemyVida: 4
   tiempoDeRecarga: 2
-  rangoDisparo: 200
+  rangoDisparoMin: 10
+  rangoDisparoMax: 30
 --- !u!58 &3183939425134061998
 CircleCollider2D:
   m_ObjectHideFlags: 0

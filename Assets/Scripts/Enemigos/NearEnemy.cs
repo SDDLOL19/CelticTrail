@@ -1,17 +1,16 @@
 using System.Collections;
 using System.Collections.Generic;
-using Unity.Burst.CompilerServices;
 using UnityEngine;
 using UnityEngine.AI;
 
-public class Enemy : MonoBehaviour
+public class NearEnemy : MonoBehaviour
 {
     [SerializeField] GameObject prefabDroppeable, shootPosition, prefabBullet, rotacionShooting;
     [SerializeField] int enemyVida;
-    [SerializeField] float tiempoDeRecarga;
+    [SerializeField] float tiempoDeRecarga, tiempoEntreRafaga;
     float timerSpawnBullet;
 
-    [SerializeField] float rangoDisparo;
+    [SerializeField] float rangoDisparoMin, rangoDisparoMax;
 
     NavMeshAgent agent;
     Transform objetivoActual;
@@ -69,6 +68,7 @@ public class Enemy : MonoBehaviour
             if (timerSpawnBullet <= 0)
             {
                 Disparo();
+                Invoke("Disparo", tiempoEntreRafaga);
             }
         }
 
@@ -101,10 +101,10 @@ public class Enemy : MonoBehaviour
 
     private void Disparo()
     {
-        if (hit.collider != null && hit.distance <= rangoDisparo && hit.collider.gameObject.tag == "Player") //El raycast es infinito, por lo que para evitar que detecte la cosa que queremos desde el infinito comprobamos su distance
+        if (hit.collider != null && hit.distance >= rangoDisparoMin && hit.distance < rangoDisparoMax && hit.collider.gameObject.tag == "Player") //El raycast es infinito, por lo que para evitar que detecte la cosa que queremos desde el infinito comprobamos su distance
         {
             //Debug.Log("Disparo");
-            Instantiate(prefabBullet, shootPosition.transform.position, rotacionShooting.transform.rotation);
+            Instantiate(prefabBullet, shootPosition.transform.position, rotacionShooting.transform.rotation);       
         }
         timerSpawnBullet = tiempoDeRecarga;
     }
@@ -125,3 +125,4 @@ public class Enemy : MonoBehaviour
         }
     }
 }
+

@@ -15,7 +15,7 @@ GameObject:
   - component: {fileID: 3183939425134061998}
   - component: {fileID: -4010048032539599115}
   m_Layer: 0
-  m_Name: Enemy
+  m_Name: Arquero
   m_TagString: Enemigo
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0

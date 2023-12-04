@@ -3,13 +3,13 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.AI;
 
-public class NearEnemy : MonoBehaviour
+public class Phooka : MonoBehaviour
 {
     [SerializeField] GameObject prefabDroppeable, shootPosition, prefabBullet, rotacionShooting;
     [SerializeField] int enemyVida;
-    [SerializeField] float tiempoDeRecarga, tiempoEntreRafaga;
+    [SerializeField] float tiempoDeRecarga;
     float timerSpawnBullet;
-
+    int enemyVidaMax;
     [SerializeField] float rangoDisparoMin, rangoDisparoMax;
 
     NavMeshAgent agent;
@@ -19,6 +19,7 @@ public class NearEnemy : MonoBehaviour
     void Start()
     {
         timerSpawnBullet = tiempoDeRecarga;
+        enemyVida = enemyVidaMax;
 
         SpawnManager.cantidadEnemigosEnEscena++;
 
@@ -67,11 +68,16 @@ public class NearEnemy : MonoBehaviour
 
             if (timerSpawnBullet <= 0)
             {
-                Disparo();
-                Invoke("Disparo", tiempoEntreRafaga);
+                if(enemyVida > (enemyVidaMax/2)) //su vida esta por encima de la mitad
+                {
+                    Disparo();
+                }
+                else
+                {
+                    DisparoVidaMax();
+                }
             }
         }
-
         else
         {
             agent.SetDestination(this.transform.position);
@@ -104,7 +110,16 @@ public class NearEnemy : MonoBehaviour
         if (hit.collider != null && hit.distance >= rangoDisparoMin && hit.distance < rangoDisparoMax && hit.collider.gameObject.tag == "Player") //El raycast es infinito, por lo que para evitar que detecte la cosa que queremos desde el infinito comprobamos su distance
         {
             //Debug.Log("Disparo");
-            Instantiate(prefabBullet, shootPosition.transform.position, rotacionShooting.transform.rotation);       
+            Instantiate(prefabBullet, shootPosition.transform.position, rotacionShooting.transform.rotation);
+        }
+        timerSpawnBullet = tiempoDeRecarga;
+    }
+    private void DisparoVidaMax()
+    { 
+        if (hit.collider != null && hit.distance >= 0 && hit.distance < 1 && hit.collider.gameObject.tag == "Player") //El raycast es infinito, por lo que para evitar que detecte la cosa que queremos desde el infinito comprobamos su distance
+        {
+            //Debug.Log("Disparo");
+            Instantiate(prefabBullet, shootPosition.transform.position, rotacionShooting.transform.rotation);
         }
         timerSpawnBullet = tiempoDeRecarga;
     }
@@ -125,4 +140,3 @@ public class NearEnemy : MonoBehaviour
         }
     }
 }
-

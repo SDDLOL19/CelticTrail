@@ -72,6 +72,7 @@ public class Phooka : MonoBehaviour
                 {
                     Disparo();
                 }
+
                 else
                 {
                     DisparoVidaMax();
@@ -114,6 +115,7 @@ public class Phooka : MonoBehaviour
         }
         timerSpawnBullet = tiempoDeRecarga;
     }
+
     private void DisparoVidaMax()
     { 
         if (hit.collider != null && hit.distance >= 0 && hit.distance < 1 && hit.collider.gameObject.tag == "Player") //El raycast es infinito, por lo que para evitar que detecte la cosa que queremos desde el infinito comprobamos su distance

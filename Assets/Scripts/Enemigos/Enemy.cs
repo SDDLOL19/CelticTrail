@@ -1,6 +1,5 @@
 using System.Collections;
 using System.Collections.Generic;
-using Unity.Burst.CompilerServices;
 using UnityEngine;
 using UnityEngine.AI;
 
@@ -10,7 +9,7 @@ public class Enemy : MonoBehaviour
     [SerializeField] int enemyVida;
     [SerializeField] float tiempoDeRecarga;
     float timerSpawnBullet;
-
+    int enemyVidaMax;
     [SerializeField] float rangoDisparoMin, rangoDisparoMax;
 
     NavMeshAgent agent;
@@ -20,6 +19,7 @@ public class Enemy : MonoBehaviour
     void Start()
     {
         timerSpawnBullet = tiempoDeRecarga;
+        enemyVida = enemyVidaMax;
 
         SpawnManager.cantidadEnemigosEnEscena++;
 

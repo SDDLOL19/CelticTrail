@@ -6,10 +6,9 @@ using UnityEngine.AI;
 public class Phooka : MonoBehaviour
 {
     [SerializeField] GameObject prefabDroppeable, shootPosition, prefabBullet, rotacionShooting;
-    [SerializeField] int enemyVida;
+    [SerializeField] int enemyVida, enemyVidaMax;
     [SerializeField] float tiempoDeRecarga;
     float timerSpawnBullet;
-    int enemyVidaMax;
     [SerializeField] float rangoDisparoMin, rangoDisparoMax;
 
     NavMeshAgent agent;

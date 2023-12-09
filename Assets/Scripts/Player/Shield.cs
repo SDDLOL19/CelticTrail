@@ -41,12 +41,12 @@ public class Shield : MonoBehaviour
         vidaEscudo = escudoMaximo;
     }
 
-    public int LeerEscudo()
+    public float LeerEscudo()
     {
         return vidaEscudo;
     }
 
-    public int LeerEscudoMaximo()
+    public float LeerEscudoMaximo()
     {
         return escudoMaximo;
     }

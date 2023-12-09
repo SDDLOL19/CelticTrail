@@ -60,7 +60,7 @@ public class HUD_Manager : MonoBehaviour
     //ESCUDO
     void CambiarBarraEscudo()
     {
-        anchuraBarra = player.miEscudo.LeerEscudo() / player.miEscudo.LeerEscudoMaximo() * 100;
+        anchuraBarra = (player.miEscudo.LeerEscudo() / player.miEscudo.LeerEscudoMaximo()) * 100;
         escalaBarra = new Vector2(anchuraBarra, 17);
         barraEscudo.sizeDelta = escalaBarra;
     }

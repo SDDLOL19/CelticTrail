@@ -282,6 +282,7 @@ MonoBehaviour:
   prefabBullet: {fileID: 2412584935707745910, guid: bda567a229a2a6d44bbac4c97c59cdd6, type: 3}
   rotacionShooting: {fileID: 2255331675192042856}
   enemyVida: 4
+  enemyVidaMax: 4
   tiempoDeRecarga: 2
   rangoDisparoMin: 5
   rangoDisparoMax: 10

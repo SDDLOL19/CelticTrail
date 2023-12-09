@@ -9,6 +9,7 @@ public class Head : MonoBehaviour
     [SerializeField, Range(1, 10)] int speedEscogida;
     [SerializeField] GameObject[] bodies;
     [SerializeField] GameObject puntaCabeza;
+    public Shield miEscudo;
     float tiempo, temporizadorGiro = 0;
 
     public float playerSpeed;
@@ -33,6 +34,7 @@ public class Head : MonoBehaviour
     {
         ControladorCarrosEnEscena();
         direccionRayo = Vector2.up;
+        miEscudo = this.gameObject.GetComponentInParent<Shield>();
     }
 
     void Update()
@@ -115,15 +117,23 @@ public class Head : MonoBehaviour
 
     public void Shrinkage()
     {
-        if (lenght > 0)
+        if (miEscudo.LeerEscudo() > 0)
         {
-            lenght--;
+            miEscudo.QuitarEscudo();
         }
 
         else
         {
-            Morir();
-        }
+            if (lenght > 0)
+            {
+                lenght--;
+            }
+
+            else
+            {
+                Morir();
+            }
+        } 
 
         ControladorCarrosEnEscena();
     }

@@ -13,15 +13,21 @@ public class HUD_Manager : MonoBehaviour
     /*public float cronometro = 180;*/ //Tres minutos en segundos
 
     //PAUSA
-    [SerializeField] Canvas Pausa;
-    [SerializeField] Canvas GameOver;
-    [SerializeField] Canvas Cartas;
+    [SerializeField] Canvas Pausa, GameOver, Cartas;
     bool pausado;
+
     public bool pantallaCartas;
+
+    [SerializeField] RectTransform barraEscudo;
+    Vector2 escalaBarra;
+    float anchuraBarra;
+    Head player;
+
     private void Start()
     {
         pausado = false;
         Pausa.gameObject.SetActive(pausado);
+        player = GameManager.player;
     }
 
     private void Update()
@@ -45,9 +51,18 @@ public class HUD_Manager : MonoBehaviour
     {
         textoPuntosJugador.text = "Puntos: " + GameManager.puntosJugador.ToString(); //Para que no se muestren decimales en el hud
         textoCantidadEnemigos.text = "Enemigos: " + SpawnManager.cantidadEnemigosEnEscena.ToString();
-        textoCantidadEnemigosRestante.text = "Faltan " + (SpawnManager.cantidadEnemigosMax).ToString() + " enemigos" ;
+        textoCantidadEnemigosRestante.text = "Faltan " + (SpawnManager.cantidadEnemigosMax).ToString() + " enemigos";
         textoRonda.text = "Ronda: " + SpawnManager.rondaActual.ToString();
         //textoCronometro.text = cronometro.ToString("0");
+        CambiarBarraEscudo();
+    }
+
+    //ESCUDO
+    void CambiarBarraEscudo()
+    {
+        anchuraBarra = player.miEscudo.LeerEscudo() / player.miEscudo.LeerEscudoMaximo() * 100;
+        escalaBarra = new Vector2(anchuraBarra, 17);
+        barraEscudo.sizeDelta = escalaBarra;
     }
 
     //PAUSA Y MENU
@@ -95,6 +110,7 @@ public class HUD_Manager : MonoBehaviour
         Reanudar();
         SceneManager.LoadScene(SceneManager.GetActiveScene().name);
     }
+
     public void PantallaCartas()
     {
         if (pantallaCartas)
@@ -102,6 +118,7 @@ public class HUD_Manager : MonoBehaviour
             pausado = true;
             Cartas.gameObject.SetActive(pantallaCartas);
         }
+
         else
         {
             pausado = false;

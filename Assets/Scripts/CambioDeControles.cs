@@ -77,4 +77,9 @@ unsafe public class CambioDeControles : MonoBehaviour
 
     }
 
+    public void SalirDelMenu()
+    {
+        this.gameObject.SetActive(false);
+    }
+
 }

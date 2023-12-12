@@ -13,10 +13,8 @@ public class HUD_Manager : MonoBehaviour
     /*public float cronometro = 180;*/ //Tres minutos en segundos
 
     //PAUSA
-    [SerializeField] Canvas Pausa, GameOver, Cartas;
-    bool pausado;
-
-    public bool pantallaCartas;
+    [SerializeField] Canvas Pausa, CambioDeControles, GameOver, Cartas;
+    bool pausado, pantallaCartas, pantallaControles;
 
     [SerializeField] RectTransform barraEscudo;
     Vector2 escalaBarra;
@@ -116,13 +114,20 @@ public class HUD_Manager : MonoBehaviour
         if (pantallaCartas)
         {
             pausado = true;
-            Cartas.gameObject.SetActive(pantallaCartas);
+            Cartas.gameObject.SetActive(true);
         }
 
         else
         {
             pausado = false;
-            Cartas.gameObject.SetActive(!pantallaCartas);
+            Cartas.gameObject.SetActive(false);
         }
+    }
+
+    public void PantallaControles()
+    {
+        pantallaControles = !pantallaControles;
+
+        CambioDeControles.gameObject.SetActive(pantallaControles);
     }
 }

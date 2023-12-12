@@ -1513,6 +1513,7 @@ MonoBehaviour:
   textoRonda: {fileID: 2000621873}
   textoCronometro: {fileID: 0}
   Pausa: {fileID: 2036378861}
+  CambioDeControles: {fileID: 1992533749}
   GameOver: {fileID: 0}
   Cartas: {fileID: 0}
   pantallaCartas: 0
@@ -4371,7 +4372,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 1635216159328160079, guid: 0dda63b8114a5134fab7b9517ba42ea3, type: 3}
       propertyPath: m_IsActive
-      value: 1
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 1635216159328160083, guid: 0dda63b8114a5134fab7b9517ba42ea3, type: 3}
       propertyPath: m_Pivot.x
@@ -4459,6 +4460,11 @@ PrefabInstance:
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 0dda63b8114a5134fab7b9517ba42ea3, type: 3}
+--- !u!223 &1992533749 stripped
+Canvas:
+  m_CorrespondingSourceObject: {fileID: 1635216159328160080, guid: 0dda63b8114a5134fab7b9517ba42ea3, type: 3}
+  m_PrefabInstance: {fileID: 1992533748}
+  m_PrefabAsset: {fileID: 0}
 --- !u!114 &2000621873 stripped
 MonoBehaviour:
   m_CorrespondingSourceObject: {fileID: 434372622460426683, guid: 80603f486e4ca894eaeb7dfbab1ce7d3, type: 3}
@@ -4709,7 +4715,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!114 &2036378859
 MonoBehaviour:
   m_ObjectHideFlags: 0

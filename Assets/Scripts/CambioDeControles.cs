@@ -4,7 +4,6 @@ using UnityEngine;
 
 unsafe public class CambioDeControles : MonoBehaviour
 {
-    public static KeyCode derecha = KeyCode.D, izquierda = KeyCode.A, arriba = KeyCode.W, abajo = KeyCode.S;
     public bool esperandoTecla = false;
 
     KeyCode* teclaQueCambia;
@@ -36,7 +35,7 @@ unsafe public class CambioDeControles : MonoBehaviour
     {
         PermitirCambioDeTecla();
 
-        fixed (KeyCode* tecla = &derecha) 
+        fixed (KeyCode* tecla = &GameManager.movimientoDerecha) 
         {
             teclaQueCambia = tecla;
         }
@@ -46,7 +45,7 @@ unsafe public class CambioDeControles : MonoBehaviour
     {
         PermitirCambioDeTecla();
 
-        fixed (KeyCode* tecla = &izquierda)
+        fixed (KeyCode* tecla = &GameManager.movimientoIzquierda)
         {
             teclaQueCambia = tecla;
         }
@@ -56,7 +55,7 @@ unsafe public class CambioDeControles : MonoBehaviour
     {
         PermitirCambioDeTecla();
 
-        fixed (KeyCode* tecla = &arriba)
+        fixed (KeyCode* tecla = &GameManager.movimientoArriba)
         {
             teclaQueCambia = tecla;
         }
@@ -66,7 +65,7 @@ unsafe public class CambioDeControles : MonoBehaviour
     {
         PermitirCambioDeTecla();
 
-        fixed (KeyCode* tecla = &abajo)
+        fixed (KeyCode* tecla = &GameManager.movimientoAbajo)
         {
             teclaQueCambia = tecla;
         }

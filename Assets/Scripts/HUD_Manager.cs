@@ -14,7 +14,7 @@ public class HUD_Manager : MonoBehaviour
 
     //PAUSA
     [SerializeField] Canvas Pausa, CambioDeControles, GameOver, Cartas;
-    bool pausado, pantallaCartas, pantallaControles;
+    bool pausado = false, pantallaPausa = false, pantallaCartas = false, pantallaControles = false;
 
     [SerializeField] RectTransform barraEscudo;
     Vector2 escalaBarra;
@@ -24,7 +24,7 @@ public class HUD_Manager : MonoBehaviour
     private void Start()
     {
         pausado = false;
-        Pausa.gameObject.SetActive(pausado);
+        Pausa.gameObject.SetActive(pantallaPausa);
         player = GameManager.player;
     }
 
@@ -32,8 +32,9 @@ public class HUD_Manager : MonoBehaviour
     {
         MostrarHud();
 
-        if (Input.GetKeyDown(KeyCode.Escape) && !GameManager.partidaAcabada) //Keyboard.current.escapeKey.wasPressedThisFrame
+        if (Input.GetKeyDown(KeyCode.Escape) && !pantallaControles && !pantallaCartas && !GameManager.partidaAcabada)
         {
+            PantallaPausa();
             pausado = !pausado;
             ComprobarPausa();
         }
@@ -66,8 +67,6 @@ public class HUD_Manager : MonoBehaviour
     //PAUSA Y MENU
     void ComprobarPausa()
     {
-        Pausa.gameObject.SetActive(pausado);
-
         if (pausado)
         {
             GameManager.PararTiempo();
@@ -100,6 +99,7 @@ public class HUD_Manager : MonoBehaviour
     public void Reanudar()
     {
         pausado = false;
+        PantallaPausa();
         ComprobarPausa();
     }
 
@@ -109,18 +109,27 @@ public class HUD_Manager : MonoBehaviour
         SceneManager.LoadScene(SceneManager.GetActiveScene().name);
     }
 
+    public void PantallaPausa()
+    {
+        pantallaPausa = !pantallaPausa;
+
+        Pausa.gameObject.SetActive(pantallaPausa);
+    }
+
     public void PantallaCartas()
     {
+        pantallaCartas = !pantallaCartas;
+
+        Cartas.gameObject.SetActive(pantallaCartas);
+
         if (pantallaCartas)
         {
             pausado = true;
-            Cartas.gameObject.SetActive(true);
         }
 
         else
         {
             pausado = false;
-            Cartas.gameObject.SetActive(false);
         }
     }
 

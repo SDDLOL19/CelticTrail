@@ -27,6 +27,7 @@ public class Head : MonoBehaviour
 
     private void Awake()
     {
+        miEscudo = this.gameObject.GetComponentInParent<Shield>();
         GameManager.player = this;
     }
 
@@ -34,7 +35,6 @@ public class Head : MonoBehaviour
     {
         ControladorCarrosEnEscena();
         direccionRayo = Vector2.up;
-        miEscudo = this.gameObject.GetComponentInParent<Shield>();
     }
 
     void Update()

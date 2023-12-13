@@ -2,22 +2,23 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.AI;
+using UnityEngine.Animations;
 
 public class Enemy : MonoBehaviour
 {
-    [SerializeField] GameObject prefabDroppeable, shootPosition, prefabBullet, rotacionShooting;
+    [SerializeField] GameObject prefabDroppeable, shootPosition, prefabBullet, rotacionShooting, spriteEnemigo;
     [SerializeField] int enemyVida;
-    [SerializeField] float tiempoDeRecarga;
+    [SerializeField] float tiempoDeRecarga, rangoDisparoMin, rangoDisparoMax, rotationSpeed = 100;
     float timerSpawnBullet;
-    [SerializeField] float rangoDisparoMin, rangoDisparoMax;
 
     NavMeshAgent agent;
     Transform objetivoActual;
     RaycastHit2D hit;
+    Animator miAnimator;
 
     void Start()
     {
-        timerSpawnBullet = tiempoDeRecarga;
+        Recarga();
 
         SpawnManager.cantidadEnemigosEnEscena++;
 
@@ -27,6 +28,8 @@ public class Enemy : MonoBehaviour
         agent.updateUpAxis = false;
 
         CambiarObjetivo(GameManager.player.transform);
+
+        miAnimator = spriteEnemigo.GetComponent<Animator>();
     }
 
     private void OnDestroy()
@@ -66,7 +69,7 @@ public class Enemy : MonoBehaviour
 
             if (timerSpawnBullet <= 0)
             {
-                Disparo();
+                DisparoBala();
             }
         }
 
@@ -79,6 +82,7 @@ public class Enemy : MonoBehaviour
     void MoveToThePlayer()
     {
         agent.SetDestination(objetivoActual.position);
+        miAnimator.Play("Caminar");
     }
 
     void CambiarObjetivo(Transform objetivoNuevo)
@@ -97,13 +101,23 @@ public class Enemy : MonoBehaviour
         rotacionShooting.transform.up = GameManager.player.transform.position - rotacionShooting.transform.position;
     }
 
-    private void Disparo()
+    public void GenerarBala()
+    {
+        Instantiate(prefabBullet, shootPosition.transform.position, rotacionShooting.transform.rotation);
+        Recarga();
+    }
+
+    void DisparoBala()
     {
         if (hit.collider != null && hit.distance >= rangoDisparoMin && hit.distance < rangoDisparoMax && hit.collider.gameObject.tag == "Player") //El raycast es infinito, por lo que para evitar que detecte la cosa que queremos desde el infinito comprobamos su distance
         {
             //Debug.Log("Disparo");
-            Instantiate(prefabBullet, shootPosition.transform.position, rotacionShooting.transform.rotation);
+            miAnimator.Play("Ataque");
         }
+    }
+
+    void Recarga()
+    {
         timerSpawnBullet = tiempoDeRecarga;
     }
 

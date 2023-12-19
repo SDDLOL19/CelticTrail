@@ -11,6 +11,8 @@ public class Enemy : MonoBehaviour
     [SerializeField] float tiempoDeRecarga, rangoDisparoMin, rangoDisparoMax, rotationSpeed = 100;
     float timerSpawnBullet;
 
+    bool disparando = false;
+
     NavMeshAgent agent;
     Transform objetivoActual;
     RaycastHit2D hit;
@@ -75,14 +77,27 @@ public class Enemy : MonoBehaviour
 
         else
         {
-            agent.SetDestination(this.transform.position);
+            Parar();
         }
     }
 
     void MoveToThePlayer()
     {
-        agent.SetDestination(objetivoActual.position);
-        miAnimator.Play("Caminar");
+        if (!disparando)
+        {
+            agent.SetDestination(objetivoActual.position);
+            miAnimator.Play("Caminar");
+        }
+
+        else
+        {
+            Parar();
+        }
+    }
+
+    void Parar()
+    {
+        agent.SetDestination(this.transform.position);
     }
 
     void CambiarObjetivo(Transform objetivoNuevo)
@@ -108,6 +123,7 @@ public class Enemy : MonoBehaviour
     public void GenerarBala()
     {
         Instantiate(prefabBullet, shootPosition.transform.position, rotacionShooting.transform.rotation);
+        disparando = false;
         Recarga();
     }
 
@@ -116,6 +132,8 @@ public class Enemy : MonoBehaviour
         if (hit.collider != null && hit.distance >= rangoDisparoMin && hit.distance < rangoDisparoMax && hit.collider.gameObject.tag == "Player") //El raycast es infinito, por lo que para evitar que detecte la cosa que queremos desde el infinito comprobamos su distance
         {
             //Debug.Log("Disparo");
+
+            disparando = true;
             miAnimator.Play("Ataque");
         }
     }

@@ -77,8 +77,9 @@ MonoBehaviour:
   spriteEnemigo: {fileID: 7663235161128967486}
   enemyVida: 4
   tiempoDeRecarga: 2
-  rangoDisparoMin: 10
+  rangoDisparoMin: 0
   rangoDisparoMax: 30
+  rotationSpeed: 100
 --- !u!58 &3183939425134061998
 CircleCollider2D:
   m_ObjectHideFlags: 0
@@ -170,7 +171,7 @@ Transform:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 4634567906735696393}
-  m_LocalRotation: {x: 0, y: 0, z: -0.27798533, w: 0.96058536}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
@@ -179,7 +180,7 @@ Transform:
   - {fileID: 2842424941199407338}
   m_Father: {fileID: 534673807879513756}
   m_RootOrder: 0
-  m_LocalEulerAnglesHint: {x: 0, y: 0, z: -32.28}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &7663235161128967486
 GameObject:
   m_ObjectHideFlags: 0
@@ -191,6 +192,7 @@ GameObject:
   - component: {fileID: 2842424941199407338}
   - component: {fileID: 4080739887934980233}
   - component: {fileID: 7697100724678395418}
+  - component: {fileID: 5759573501711080730}
   m_Layer: 0
   m_Name: SpriteSheert Arquera
   m_TagString: Untagged
@@ -254,7 +256,7 @@ SpriteRenderer:
   m_SortingLayerID: 0
   m_SortingLayer: 0
   m_SortingOrder: 0
-  m_Sprite: {fileID: -2413806693520163455, guid: a86470a33a6bf42c4b3595704624658b, type: 3}
+  m_Sprite: {fileID: 894956187, guid: ef48d127efd4e2b4680bcb777baa3468, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_FlipX: 0
   m_FlipY: 0
@@ -286,3 +288,16 @@ Animator:
   m_AllowConstantClipSamplingOptimization: 1
   m_KeepAnimatorStateOnDisable: 0
   m_WriteDefaultValuesOnDisable: 0
+--- !u!114 &5759573501711080730
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7663235161128967486}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 84f58c9d96add9d46a98c771c4c9fd34, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  miPadre: {fileID: 534673807879513758}

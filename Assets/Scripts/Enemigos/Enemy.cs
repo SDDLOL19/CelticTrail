@@ -97,8 +97,12 @@ public class Enemy : MonoBehaviour
 
     void RotarShootingPoint()
     {
-        //rotacionShooting.transform.LookAt(GameManager.player.transform.position);
-        rotacionShooting.transform.up = GameManager.player.transform.position - rotacionShooting.transform.position;
+        //rotacionShooting.transform.up = GameManager.player.transform.position - rotacionShooting.transform.position;
+        Vector3 look = rotacionShooting.transform.InverseTransformPoint(objetivoActual.transform.position);
+        float angle = Mathf.Atan2(look.y, look.x) * Mathf.Rad2Deg - 90;
+
+        rotacionShooting.transform.Rotate(0, 0, angle);
+
     }
 
     public void GenerarBala()

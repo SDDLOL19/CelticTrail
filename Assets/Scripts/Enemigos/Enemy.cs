@@ -22,8 +22,6 @@ public class Enemy : MonoBehaviour
     {
         Recarga();
 
-        SpawnManager.cantidadEnemigosEnEscena++;
-
         agent = GetComponent<NavMeshAgent>();
 
         agent.updateRotation = false;

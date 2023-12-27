@@ -344,6 +344,7 @@ MonoBehaviour:
   - {fileID: 4073783638695228707}
   - {fileID: 4073783638649250456}
   puntaCabeza: {fileID: 4121294468663751040}
+  miEscudo: {fileID: 0}
   playerSpeed: 0
   serpiente: {fileID: 5205183529543799379}
   tiempoInvulnerable: 0
@@ -1151,7 +1152,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 5792502148913522031, guid: 49e817bb657325846af7e6e3220901eb, type: 3}
       propertyPath: m_LocalPosition.z
-      value: -5.63
+      value: -0.25
       objectReference: {fileID: 0}
     - target: {fileID: 5792502148913522031, guid: 49e817bb657325846af7e6e3220901eb, type: 3}
       propertyPath: m_LocalRotation.w

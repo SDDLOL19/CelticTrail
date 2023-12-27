@@ -14,6 +14,7 @@ public class SpawnManager : MonoBehaviour
 
     private void Start()
     {
+        rondaActual = 0;
         ActualizarTimeToSpawn();
         ActualizarRonda();
     }

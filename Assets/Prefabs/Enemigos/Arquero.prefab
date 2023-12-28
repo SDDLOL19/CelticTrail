@@ -301,3 +301,5 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   miPadre: {fileID: 534673807879513758}
+  prefabHuellaDer: {fileID: 4726500218215086106, guid: b6f6fadc44e1e364ea9f42b33ff7c44c, type: 3}
+  prefabHuellaIzq: {fileID: 8535026773800866767, guid: d08637e125b7f7041984da662285efcf, type: 3}

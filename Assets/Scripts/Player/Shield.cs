@@ -4,7 +4,7 @@ using UnityEngine;
 
 public class Shield : MonoBehaviour
 {
-    [SerializeField] int vidaEscudo, escudoMaximo = 5, cantidadRecuperada = 1;
+    [SerializeField] int vidaEscudo;
     [SerializeField] float tiempoMaxRecarga = 3, temporizadorRecarga;
 
     private void Start()
@@ -30,15 +30,15 @@ public class Shield : MonoBehaviour
         {
             temporizadorRecarga = tiempoMaxRecarga;
 
-            vidaEscudo += cantidadRecuperada;
+            vidaEscudo += StatManager.cantidadEscudoRecuperada;
         }
 
-        vidaEscudo = Mathf.Clamp(vidaEscudo, 0, escudoMaximo);
+        vidaEscudo = Mathf.Clamp(vidaEscudo, 0, StatManager.vidaEscudoMaxima);
     }
 
     void RecargarEscudo()
     {
-        vidaEscudo = escudoMaximo;
+        vidaEscudo = StatManager.vidaEscudoMaxima;
     }
 
     public float LeerEscudo()
@@ -48,6 +48,6 @@ public class Shield : MonoBehaviour
 
     public float LeerEscudoMaximo()
     {
-        return escudoMaximo;
+        return StatManager.vidaEscudoMaxima;
     }
 }

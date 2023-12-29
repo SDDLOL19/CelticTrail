@@ -1,16 +1,17 @@
 using System.Collections;
 using System;
 using UnityEngine;
+using Unity.VisualScripting;
 
 public class Head : MonoBehaviour
 {
     [SerializeField] float distance, delay = 0.05f;
-    [SerializeField, Range(0, 9)] int lenght;
+    [SerializeField] int lenght;
     [SerializeField, Range(1, 10)] int speedEscogida;
     [SerializeField] GameObject[] bodies;
     [SerializeField] GameObject puntaCabeza;
     public Shield miEscudo;
-    float tiempo, temporizadorGiro = 0;
+    float tiempo, temporizadorGiro = 0, contadorRegeneracionVida = 40;
 
     public float playerSpeed;
     float distanciaRaycast = 0.2f;
@@ -43,6 +44,7 @@ public class Head : MonoBehaviour
         {
             Movement();
             DetectarChoqueFrontal();
+            RegeneracionVida();
         }
     }
 
@@ -92,7 +94,7 @@ public class Head : MonoBehaviour
 
     void ControladorCarrosEnEscena()
     {
-        playerSpeed = speedEscogida - (lenght / 1.5f);
+        playerSpeed = StatManager.velocidad * (speedEscogida - (lenght / 1.5f));
 
         for (int i = bodies.Length - 1; i >= lenght; i--)
         {
@@ -107,7 +109,7 @@ public class Head : MonoBehaviour
 
     void Growth()
     {
-        if (lenght <= 8)
+        if (lenght <= StatManager.vidaMaxima)
         {
             lenght++;
         }
@@ -126,17 +128,36 @@ public class Head : MonoBehaviour
         {
             if (lenght > 0)
             {
-                lenght--;
+                lenght -= 1 * StatManager.multpDanioRecibidoPlayer;
             }
 
             else
             {
                 Morir();
             }
-        } 
+        }
 
         ControladorCarrosEnEscena();
     }
+    void RegeneracionVida()
+    {
+        if (StatManager.puedeRegenerarVida)
+        {
+            ContadorVida();
+
+            if (contadorRegeneracionVida == 0)
+            {
+                Growth();
+
+                contadorRegeneracionVida = 40;
+            }
+        }
+    }
+    void ContadorVida()
+    {
+        contadorRegeneracionVida -= Time.deltaTime;
+    }
+
     //QQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQ
 
     //MOVIMIENTO

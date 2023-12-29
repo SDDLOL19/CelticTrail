@@ -7,7 +7,7 @@ using UnityEngine.Animations;
 public class Enemy : MonoBehaviour
 {
     [SerializeField] GameObject prefabDroppeable, shootPosition, prefabBullet, rotacionShooting, spriteEnemigo;
-    [SerializeField] int enemyVida;
+    [SerializeField] float enemyVida;
     [SerializeField] float tiempoDeRecarga, rangoDisparoMin, rangoDisparoMax, rotationSpeed = 100;
     float timerSpawnBullet;
 
@@ -145,7 +145,7 @@ public class Enemy : MonoBehaviour
     {
         if (collision.gameObject.tag == "BalaJugador")
         {
-            enemyVida--;
+            enemyVida -= StatManager.dañoBala * StatManager.multiplicadorDaño;
         }
     }
 

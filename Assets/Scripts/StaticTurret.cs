@@ -4,7 +4,7 @@ using UnityEngine;
 
 public class StaticTurret : MonoBehaviour
 {
-    [SerializeField, Range(1f, 20f)] float rotationSpeed, detectionDistance, timeSpawnBullet;
+    [SerializeField, Range(1f, 20f)] float rotationSpeed, detectionDistance, timeSpawnBullet, vidaTorreta;
     float tiempoAux;
     [SerializeField] GameObject prefabBullet;
     [SerializeField] Transform shootPosition;
@@ -40,26 +40,41 @@ public class StaticTurret : MonoBehaviour
                     //mueve la orientacion de la torreta (desde el punto de pivote) (el move towards ralentiza un poco ese movimiento)
                     //Debug.Log("Enemigo detectado");
                     TimerSpawnBullet();
-                    CreateBullet();
+                    if (StatManager.puedenDispararTorreta)
+                    {
+                        CreateBullet();
+                    }
                 }
             }
-        }
+        } 
+    }
+    void TimerSpawnBullet()
+    {
+        timeSpawnBullet -= Time.deltaTime;
+    }
 
-        void TimerSpawnBullet()
-        {
-            timeSpawnBullet -= Time.deltaTime;
-        }
+    void RegeneracionVida()
+    {
+        vidaTorreta -= Time.deltaTime;
+    }
 
-        void CreateBullet()
+    void CreateBullet()
+    {
+        if (timeSpawnBullet < 0)
         {
-            if (timeSpawnBullet < 0)
-            {
-                Vector2 spawnPosition = (Vector2)transform.position + (Vector2)(transform.up * 1f);
-                Instantiate(prefabBullet, spawnPosition, transform.rotation);
-                //spawnea una bala en la posicion del disparo y con la rotacion que tenga este objeto
-                //para modificar esta posicion simplemente mueve el objeto ShootPosition
-                timeSpawnBullet = tiempoAux; //resetea el tiempo de spawn
-            }
+            Vector2 spawnPosition = (Vector2)transform.position + (Vector2)(transform.up * 1f);
+            Instantiate(prefabBullet, spawnPosition, transform.rotation);
+            //spawnea una bala en la posicion del disparo y con la rotacion que tenga este objeto
+            //para modificar esta posicion simplemente mueve el objeto ShootPosition
+            timeSpawnBullet = tiempoAux; //resetea el tiempo de spawn
+        }
+    }
+
+    private void OnTriggerEnter2D(Collider2D collision)
+    {
+        if (collision.gameObject.tag == "BalaEnemigo")
+        {
+            vidaTorreta-= 1*StatManager.multplDanioRecibidoTorreta;
         }
     }
 }

@@ -21,6 +21,12 @@ public class HUD_Manager : MonoBehaviour
     float anchuraBarra;
     Head player;
 
+    //CARTAS
+    [SerializeField]GameObject[] prefabsCartas;
+    GameObject cartaUno, cartaDos, cartaTres;
+    [SerializeField] RectTransform[] posicionCarta;
+    int numeroRandomCarta;
+
     private void Start()
     {
         pausado = false;
@@ -125,12 +131,37 @@ public class HUD_Manager : MonoBehaviour
         if (pantallaCartas)
         {
             pausado = true;
+            SpawnearCartas();
         }
 
         else
         {
             pausado = false;
+            DestruirCartas();
         }
+    }
+   
+    
+    void SpawnearCartas()
+    {
+        numeroRandomCarta = Random.Range(0,prefabsCartas.Length-1);
+        cartaUno = Instantiate(prefabsCartas[numeroRandomCarta]);
+        cartaUno.GetComponent<RectTransform>().position = posicionCarta[0].position;
+        
+        numeroRandomCarta = Random.Range(0, prefabsCartas.Length - 1);
+        cartaDos = Instantiate(prefabsCartas[numeroRandomCarta]);
+        cartaDos.GetComponent<RectTransform>().position = posicionCarta[1].position;
+
+        numeroRandomCarta = Random.Range(0, prefabsCartas.Length - 1);
+        cartaTres = Instantiate(prefabsCartas[numeroRandomCarta]);
+        cartaTres.GetComponent<RectTransform>().position = posicionCarta[2].position;
+
+    }
+    void DestruirCartas()
+    {
+        Destroy(cartaUno);
+        Destroy(cartaDos);
+        Destroy(cartaTres);
     }
 
     public void PantallaControles()

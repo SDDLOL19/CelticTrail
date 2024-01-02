@@ -25,6 +25,10 @@ public class Turret : MonoBehaviour
             if (tiempoSpawnBalas <= 0)
             {
                 CreateBullet();
+                for (int i = 1; i < StatManager.cantidadBalas; i++)
+                {
+                    Invoke("CreateBullet",0.15f);
+                }
                 //Debug.Log("FuncionaElcontador");
             }
         }

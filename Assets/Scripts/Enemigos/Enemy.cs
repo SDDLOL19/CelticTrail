@@ -48,17 +48,20 @@ public class Enemy : MonoBehaviour
 
             if (enemyVida <= 0)
             {
-                int randomSpawnDropeable = Random.Range(0, 10);
-
-                if (randomSpawnDropeable <= 5)
+                if (StatManager.puedeDropear)
                 {
-                    Instantiate(prefabDroppeable, transform.position, Quaternion.identity);
-                    //Debug.Log("Funciona");
-                }
+                    int randomSpawnDropeable = Random.Range(0, 10);
 
-                else
-                {
-                    //Debug.Log("Funciona otra parte");
+                    if (randomSpawnDropeable <= 5)
+                    {
+                        Instantiate(prefabDroppeable, transform.position, Quaternion.identity);
+                        //Debug.Log("Funciona");
+                    }
+
+                    else
+                    {
+                        //Debug.Log("Funciona otra parte");
+                    }
                 }
 
                 Destroy(this.gameObject);
@@ -145,7 +148,7 @@ public class Enemy : MonoBehaviour
     {
         if (collision.gameObject.tag == "BalaJugador")
         {
-            enemyVida -= StatManager.dañoBala * StatManager.multiplicadorDaño;
+            enemyVida -= StatManager.danioBala * StatManager.multiplicadorDaño;
         }
     }
 

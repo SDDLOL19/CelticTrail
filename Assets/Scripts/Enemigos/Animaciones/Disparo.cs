@@ -14,7 +14,7 @@ public class Disparo : MonoBehaviour
 
     public void Destruirme()
     {
-        miPadre.Destuirme();
+        miPadre.Destruirme();
     }
 
     public void HuellaDer()

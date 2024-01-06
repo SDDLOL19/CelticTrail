@@ -6,16 +6,17 @@ using UnityEngine.AI;
 public class Enemy : MonoBehaviour
 {
     public GameObject prefabDroppeable, shootPosition, prefabBullet, rotacionShooting, spriteEnemigo;
+    public int velocidadMovimiento = 5;      //Para que esté a al velocidad por defecto sería 4 o 5
     public float enemyVida;
     public float tiempoDeRecarga, rangoDisparoMin, rangoDisparoMax, rotationSpeed = 100;
-    [HideInInspector] public float timerSpawnBullet;                       //HideInInspector para que sea pública pero no se pueda cambiar fuera
+    protected float timerSpawnBullet;                       //HideInInspector para que sea pública pero no se pueda cambiar fuera
 
-    [HideInInspector] public bool disparando = false, estoyMuerto = false;
+    protected bool disparando = false, muriendo = false;
 
-    [HideInInspector] public NavMeshAgent agent;
-    [HideInInspector] public Transform objetivoActual;
-    [HideInInspector] public RaycastHit2D hit;
-    [HideInInspector] public Animator miAnimator;
+    protected NavMeshAgent agent;
+    protected Transform objetivoActual;
+    protected RaycastHit2D hit;
+    protected Animator miAnimator;
 
     void Start()
     {
@@ -25,6 +26,7 @@ public class Enemy : MonoBehaviour
 
         agent.updateRotation = false;
         agent.updateUpAxis = false;
+        agent.speed = velocidadMovimiento;
 
         CambiarObjetivo(GameManager.player.transform);
 
@@ -39,7 +41,7 @@ public class Enemy : MonoBehaviour
 
     private void Update()
     {
-        if (!GameManager.partidaAcabada && !estoyMuerto)
+        if (!GameManager.partidaAcabada && !muriendo)
         {
             RotarShootingPoint();
             timerSpawnBullet -= Time.deltaTime;
@@ -48,13 +50,14 @@ public class Enemy : MonoBehaviour
             hit = Physics2D.Raycast(shootPosition.transform.position, objetivoActual.position - this.transform.position);
             Debug.DrawRay(shootPosition.transform.position, (objetivoActual.position - this.transform.position) * 10, Color.green);
 
-            if (timerSpawnBullet <= 0)
+            if (timerSpawnBullet <= 0 && disparando == false)
             {
                 DisparoBala();
             }
 
             if (enemyVida <= 0)
             {
+                GetComponent<Collider2D>().enabled = false;
                 Morir();
             }
         }
@@ -62,6 +65,11 @@ public class Enemy : MonoBehaviour
         else
         {
             Parar();
+
+            if (GameManager.partidaAcabada)
+            {
+                AnimacionIdle();
+            }
         }
     }
 
@@ -70,7 +78,7 @@ public class Enemy : MonoBehaviour
         if (!disparando)
         {
             agent.SetDestination(objetivoActual.position);
-            miAnimator.Play("Caminar");
+            AnimacionCaminar();
         }
 
         else
@@ -104,25 +112,25 @@ public class Enemy : MonoBehaviour
 
     }
 
-    public void GenerarBala()
+    public virtual void GenerarBala()
     {
         Instantiate(prefabBullet, shootPosition.transform.position, rotacionShooting.transform.rotation);
         disparando = false;
         Recarga();
     }
 
-    void DisparoBala()
+    protected virtual void DisparoBala()
     {
         if (hit.collider != null && hit.distance >= rangoDisparoMin && hit.distance < rangoDisparoMax && hit.collider.gameObject.tag == "Player") //El raycast es infinito, por lo que para evitar que detecte la cosa que queremos desde el infinito comprobamos su distance
         {
             //Debug.Log("Disparo");
 
             disparando = true;
-            miAnimator.Play("Ataque");
+            AnimacionAtaque();
         }
     }
 
-    public void Destuirme()
+    public void Destruirme()
     {
         if (StatManager.puedeDropear)
         {
@@ -145,11 +153,11 @@ public class Enemy : MonoBehaviour
 
     void Morir()
     {
-        estoyMuerto = true;
-        miAnimator.Play("Muerte");
+        muriendo = true;
+        AnimacionMuerte();
     }
 
-    void Recarga()
+    protected void Recarga()
     {
         timerSpawnBullet = tiempoDeRecarga;
     }
@@ -168,5 +176,27 @@ public class Enemy : MonoBehaviour
         {
             Destroy(this.gameObject);
         }
+    }
+
+    //ANIMACIONES
+
+    protected void AnimacionAtaque()
+    {
+        miAnimator.Play("Ataque");
+    }
+
+    protected void AnimacionMuerte()
+    {
+        miAnimator.Play("Muerte");
+    }
+
+    protected void AnimacionIdle()
+    {
+        miAnimator.Play("Idle");
+    }
+
+    protected void AnimacionCaminar()
+    {
+        miAnimator.Play("Caminar");
     }
 }

@@ -2,21 +2,20 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.AI;
-using UnityEngine.Animations;
 
 public class Enemy : MonoBehaviour
 {
-    [SerializeField] GameObject prefabDroppeable, shootPosition, prefabBullet, rotacionShooting, spriteEnemigo;
-    [SerializeField] float enemyVida;
-    [SerializeField] float tiempoDeRecarga, rangoDisparoMin, rangoDisparoMax, rotationSpeed = 100;
-    float timerSpawnBullet;
+    public GameObject prefabDroppeable, shootPosition, prefabBullet, rotacionShooting, spriteEnemigo;
+    public float enemyVida;
+    public float tiempoDeRecarga, rangoDisparoMin, rangoDisparoMax, rotationSpeed = 100;
+    [HideInInspector] public float timerSpawnBullet;                       //HideInInspector para que sea pública pero no se pueda cambiar fuera
 
-    bool disparando = false;
+    [HideInInspector] public bool disparando = false, estoyMuerto = false;
 
-    NavMeshAgent agent;
-    Transform objetivoActual;
-    RaycastHit2D hit;
-    Animator miAnimator;
+    [HideInInspector] public NavMeshAgent agent;
+    [HideInInspector] public Transform objetivoActual;
+    [HideInInspector] public RaycastHit2D hit;
+    [HideInInspector] public Animator miAnimator;
 
     void Start()
     {
@@ -40,32 +39,11 @@ public class Enemy : MonoBehaviour
 
     private void Update()
     {
-        if (!GameManager.partidaAcabada)
+        if (!GameManager.partidaAcabada && !estoyMuerto)
         {
             RotarShootingPoint();
             timerSpawnBullet -= Time.deltaTime;
             MoveToThePlayer();
-
-            if (enemyVida <= 0)
-            {
-                if (StatManager.puedeDropear)
-                {
-                    int randomSpawnDropeable = Random.Range(0, 10);
-
-                    if (randomSpawnDropeable <= 5)
-                    {
-                        Instantiate(prefabDroppeable, transform.position, Quaternion.identity);
-                        //Debug.Log("Funciona");
-                    }
-
-                    else
-                    {
-                        //Debug.Log("Funciona otra parte");
-                    }
-                }
-
-                Destroy(this.gameObject);
-            }
 
             hit = Physics2D.Raycast(shootPosition.transform.position, objetivoActual.position - this.transform.position);
             Debug.DrawRay(shootPosition.transform.position, (objetivoActual.position - this.transform.position) * 10, Color.green);
@@ -73,6 +51,11 @@ public class Enemy : MonoBehaviour
             if (timerSpawnBullet <= 0)
             {
                 DisparoBala();
+            }
+
+            if (enemyVida <= 0)
+            {
+                Morir();
             }
         }
 
@@ -137,6 +120,33 @@ public class Enemy : MonoBehaviour
             disparando = true;
             miAnimator.Play("Ataque");
         }
+    }
+
+    public void Destuirme()
+    {
+        if (StatManager.puedeDropear)
+        {
+            int randomSpawnDropeable = Random.Range(0, 10);
+
+            if (randomSpawnDropeable <= 5)
+            {
+                Instantiate(prefabDroppeable, transform.position, Quaternion.identity);
+                //Debug.Log("Funciona");
+            }
+
+            else
+            {
+                //Debug.Log("Funciona otra parte");
+            }
+        }
+
+        Destroy(this.gameObject);
+    }
+
+    void Morir()
+    {
+        estoyMuerto = true;
+        miAnimator.Play("Muerte");
     }
 
     void Recarga()

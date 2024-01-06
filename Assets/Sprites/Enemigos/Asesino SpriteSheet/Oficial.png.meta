@@ -3,7 +3,7 @@ guid: 5743ddab9712c024da38a39207f6a5d3
 TextureImporter:
   internalIDToNameTable: []
   externalObjects: {}
-  serializedVersion: 11
+  serializedVersion: 12
   mipmaps:
     mipMapMode: 0
     enableMipMap: 0
@@ -63,6 +63,7 @@ TextureImporter:
   textureFormatSet: 0
   ignorePngGamma: 0
   applyGammaDecoding: 0
+  cookieLightType: 1
   platformSettings:
   - serializedVersion: 3
     buildTarget: DefaultTexturePlatform
@@ -534,26 +535,26 @@ TextureImporter:
     weights: []
     secondaryTextures: []
     nameFileIdTable:
-      Oficial_14: 1739019099
-      Oficial_11: -1446875357
-      Oficial_2: -792898060
-      Oficial_9: -1925287889
-      Oficial_12: 584371866
-      Oficial_10: -224478640
-      Oficial_3: -1274835914
-      Oficial_5: -889183642
-      Oficial_16: -1162673555
-      Oficial_17: -351642690
-      Oficial_15: -2056019627
-      Oficial_8: -1115319223
       Oficial_0: -552856311
       Oficial_1: -1100870987
-      Oficial_6: -1491976442
-      Oficial_7: 1176921819
+      Oficial_10: -224478640
+      Oficial_11: -1446875357
+      Oficial_12: 584371866
+      Oficial_13: 1115283541
+      Oficial_14: 1739019099
+      Oficial_15: -2056019627
+      Oficial_16: -1162673555
+      Oficial_17: -351642690
       Oficial_18: -749012283
       Oficial_19: 2138488354
+      Oficial_2: -792898060
+      Oficial_3: -1274835914
       Oficial_4: -2060099690
-      Oficial_13: 1115283541
+      Oficial_5: -889183642
+      Oficial_6: -1491976442
+      Oficial_7: 1176921819
+      Oficial_8: -1115319223
+      Oficial_9: -1925287889
   spritePackingTag: 
   pSDRemoveMatte: 0
   pSDShowRemoveMatteOption: 0

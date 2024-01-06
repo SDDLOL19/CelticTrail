@@ -7,9 +7,14 @@ public class Disparo : MonoBehaviour
     [SerializeField] Enemy miPadre;
     [SerializeField] GameObject prefabHuellaDer, prefabHuellaIzq;
 
-    void GenerarAtaque()
+    public void GenerarAtaque()
     {
         miPadre.GenerarBala();
+    }
+
+    public void Destruirme()
+    {
+        miPadre.Destuirme();
     }
 
     public void HuellaDer()

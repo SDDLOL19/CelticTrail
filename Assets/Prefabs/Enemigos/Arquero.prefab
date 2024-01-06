@@ -10,7 +10,7 @@ GameObject:
   m_Component:
   - component: {fileID: 534673807879513756}
   - component: {fileID: 534673807879513757}
-  - component: {fileID: 534673807879513758}
+  - component: {fileID: 7640720002130053273}
   - component: {fileID: 3183939425134061998}
   - component: {fileID: -4010048032539599115}
   m_Layer: 0
@@ -58,7 +58,7 @@ NavMeshAgent:
   m_BaseOffset: 0.5
   m_WalkableMask: 4294967295
   m_ObstacleAvoidanceType: 4
---- !u!114 &534673807879513758
+--- !u!114 &7640720002130053273
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -67,7 +67,7 @@ MonoBehaviour:
   m_GameObject: {fileID: 534673807879513746}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 5e87d2327d99e264bb1321aab3c11fbd, type: 3}
+  m_Script: {fileID: 11500000, guid: fdd7787e15b17c441a7f25ae604d2292, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
   prefabDroppeable: {fileID: 2093152885178359709, guid: 502b661e01e6d17478e972f05e0ac041, type: 3}
@@ -80,6 +80,12 @@ MonoBehaviour:
   rangoDisparoMin: 0
   rangoDisparoMax: 30
   rotationSpeed: 100
+  timerSpawnBullet: 0
+  disparando: 0
+  estoyMuerto: 0
+  agent: {fileID: 0}
+  objetivoActual: {fileID: 0}
+  miAnimator: {fileID: 0}
 --- !u!58 &3183939425134061998
 CircleCollider2D:
   m_ObjectHideFlags: 0
@@ -300,6 +306,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 84f58c9d96add9d46a98c771c4c9fd34, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  miPadre: {fileID: 534673807879513758}
+  miPadre: {fileID: 7640720002130053273}
   prefabHuellaDer: {fileID: 4726500218215086106, guid: b6f6fadc44e1e364ea9f42b33ff7c44c, type: 3}
   prefabHuellaIzq: {fileID: 8535026773800866767, guid: d08637e125b7f7041984da662285efcf, type: 3}

@@ -16,7 +16,7 @@ public class StatManager : MonoBehaviour
     //bala jugador
     public static bool balaExplosiva = false;
     public static int cantidadBalas = 1;
-    public static float velocidadBala = 10, vidaBala = 1, danioBala = 1, multiplicadorDaño = 1;
+    public static float multiplicadorVelocidadBala = 1, vidaBala = 1, danioBala = 1, multiplicadorDaño = 1;
 
     //dropeable
     public static bool puedeDropear = true;

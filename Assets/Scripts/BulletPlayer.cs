@@ -12,6 +12,7 @@ public class BulletPlayer : MonoBehaviour
     {
         timeDestruction = StatManager.vidaBala;
     }
+
     void Update()
     {
         if (!GameManager.partidaAcabada)
@@ -23,7 +24,7 @@ public class BulletPlayer : MonoBehaviour
 
     void Movement(Vector2 bullet)
     {
-        transform.Translate(bullet * StatManager.velocidadBala * Time.deltaTime);
+        transform.Translate(bullet * speed * StatManager.multiplicadorVelocidadBala * Time.deltaTime);
     }
 
     void Destroy()
@@ -37,10 +38,15 @@ public class BulletPlayer : MonoBehaviour
 
     private void OnTriggerEnter2D(Collider2D collision)
     {
-        if (collision.gameObject.tag != tagDeMiCreador) //collision.gameObject.tag != tagDeMiCreador
+        if (collision.gameObject.tag == "Enemigo") //collision.gameObject.tag != tagDeMiCreador
         {
             //Debug.Log("AAAAAAAAAAAAA");
             Destroy(this.gameObject);
+        }
+
+        else if (collision.gameObject.tag != tagDeMiCreador)
+        {
+
         }
     }
 }

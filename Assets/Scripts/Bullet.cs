@@ -5,7 +5,7 @@ using UnityEngine;
 public class Bullet : MonoBehaviour
 {
     [SerializeField, Range(1f, 20f)] float speed;
-    [SerializeField, Range(1f, 20f)] float timeDestruction;
+    [SerializeField] float timeDestruction;
     [SerializeField] string tagDeMiCreador;
 
     void Update()
@@ -19,7 +19,7 @@ public class Bullet : MonoBehaviour
 
     void Movement(Vector2 bullet)
     {
-        transform.Translate(bullet * speed * Time.deltaTime);
+        transform.Translate(bullet * speed * StatManager.multiplicadorVelocidadBala * Time.deltaTime);
     }
 
     void Destroy()

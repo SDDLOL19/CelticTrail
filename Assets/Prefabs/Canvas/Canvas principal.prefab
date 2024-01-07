@@ -314,7 +314,7 @@ GameObject:
   - component: {fileID: 8539367637564885002}
   - component: {fileID: 7498174753482673259}
   m_Layer: 5
-  m_Name: Escudo
+  m_Name: TextoEscudo
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -337,8 +337,8 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: -408.50006, y: -90}
-  m_SizeDelta: {x: 200, y: 50}
+  m_AnchoredPosition: {x: -432.2696, y: -90}
+  m_SizeDelta: {x: 84.3917, y: 50}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!222 &8539367637564885002
 CanvasRenderer:
@@ -368,7 +368,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_text: 45%
+  m_text: 333
   m_isRightToLeft: 0
   m_fontAsset: {fileID: 11400000, guid: 2493568eee236e84fac6f747c1b01b50, type: 2}
   m_sharedMaterial: {fileID: 7207087687280041878, guid: 2493568eee236e84fac6f747c1b01b50, type: 2}
@@ -402,7 +402,7 @@ MonoBehaviour:
   m_fontSizeMin: 18
   m_fontSizeMax: 72
   m_fontStyle: 0
-  m_HorizontalAlignment: 1
+  m_HorizontalAlignment: 4
   m_VerticalAlignment: 256
   m_textAlignment: 65535
   m_characterSpacing: 0
@@ -584,7 +584,7 @@ GameObject:
   - component: {fileID: 7056811681959328185}
   - component: {fileID: 2260885825683591982}
   m_Layer: 5
-  m_Name: Cadencia
+  m_Name: TextoCadencia
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -607,8 +607,8 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: -408.50006, y: -45}
-  m_SizeDelta: {x: 200, y: 50}
+  m_AnchoredPosition: {x: -428.38046, y: -45}
+  m_SizeDelta: {x: 103.3193, y: 50}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!222 &7056811681959328185
 CanvasRenderer:
@@ -638,7 +638,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_text: 45%
+  m_text: 100%
   m_isRightToLeft: 0
   m_fontAsset: {fileID: 11400000, guid: 2493568eee236e84fac6f747c1b01b50, type: 2}
   m_sharedMaterial: {fileID: 7207087687280041878, guid: 2493568eee236e84fac6f747c1b01b50, type: 2}
@@ -672,7 +672,7 @@ MonoBehaviour:
   m_fontSizeMin: 18
   m_fontSizeMax: 72
   m_fontStyle: 0
-  m_HorizontalAlignment: 1
+  m_HorizontalAlignment: 4
   m_VerticalAlignment: 256
   m_textAlignment: 65535
   m_characterSpacing: 0
@@ -795,7 +795,7 @@ GameObject:
   - component: {fileID: 5157491218162971404}
   - component: {fileID: 6634102737349013859}
   m_Layer: 5
-  m_Name: "Da\xF1o"
+  m_Name: "TextoDa\xF1o"
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -818,8 +818,8 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: -408.5, y: 45}
-  m_SizeDelta: {x: 200, y: 50}
+  m_AnchoredPosition: {x: -428.38043, y: 45}
+  m_SizeDelta: {x: 103.3193, y: 50}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!222 &5157491218162971404
 CanvasRenderer:
@@ -849,7 +849,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_text: 45%
+  m_text: 100%
   m_isRightToLeft: 0
   m_fontAsset: {fileID: 11400000, guid: 2493568eee236e84fac6f747c1b01b50, type: 2}
   m_sharedMaterial: {fileID: 7207087687280041878, guid: 2493568eee236e84fac6f747c1b01b50, type: 2}
@@ -883,7 +883,7 @@ MonoBehaviour:
   m_fontSizeMin: 18
   m_fontSizeMax: 72
   m_fontStyle: 0
-  m_HorizontalAlignment: 1
+  m_HorizontalAlignment: 4
   m_VerticalAlignment: 256
   m_textAlignment: 65535
   m_characterSpacing: 0
@@ -1044,7 +1044,7 @@ GameObject:
   - component: {fileID: 8655373378207631564}
   - component: {fileID: 5945350467831380909}
   m_Layer: 5
-  m_Name: Velocidad Disparo
+  m_Name: TextoVelocidad Disparo
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -1067,8 +1067,8 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: -408.5, y: 0}
-  m_SizeDelta: {x: 200, y: 50}
+  m_AnchoredPosition: {x: -428.38043, y: 0}
+  m_SizeDelta: {x: 103.3193, y: 50}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!222 &8655373378207631564
 CanvasRenderer:
@@ -1098,7 +1098,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_text: 45%
+  m_text: 100%
   m_isRightToLeft: 0
   m_fontAsset: {fileID: 11400000, guid: 2493568eee236e84fac6f747c1b01b50, type: 2}
   m_sharedMaterial: {fileID: 7207087687280041878, guid: 2493568eee236e84fac6f747c1b01b50, type: 2}
@@ -1132,7 +1132,7 @@ MonoBehaviour:
   m_fontSizeMin: 18
   m_fontSizeMax: 72
   m_fontStyle: 0
-  m_HorizontalAlignment: 1
+  m_HorizontalAlignment: 4
   m_VerticalAlignment: 256
   m_textAlignment: 65535
   m_characterSpacing: 0
@@ -1331,7 +1331,7 @@ GameObject:
   - component: {fileID: 8347350652327183012}
   - component: {fileID: 7033800163033525058}
   m_Layer: 5
-  m_Name: Regeneracion Escudo
+  m_Name: Texto Regeneracion Escudo
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -1354,8 +1354,8 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: -408.50006, y: -135}
-  m_SizeDelta: {x: 200, y: 50}
+  m_AnchoredPosition: {x: -432.61728, y: -135}
+  m_SizeDelta: {x: 82.715, y: 50}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!222 &8347350652327183012
 CanvasRenderer:
@@ -1385,7 +1385,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_text: 45%
+  m_text: 333
   m_isRightToLeft: 0
   m_fontAsset: {fileID: 11400000, guid: 2493568eee236e84fac6f747c1b01b50, type: 2}
   m_sharedMaterial: {fileID: 7207087687280041878, guid: 2493568eee236e84fac6f747c1b01b50, type: 2}
@@ -1419,7 +1419,7 @@ MonoBehaviour:
   m_fontSizeMin: 18
   m_fontSizeMax: 72
   m_fontStyle: 0
-  m_HorizontalAlignment: 1
+  m_HorizontalAlignment: 4
   m_VerticalAlignment: 256
   m_textAlignment: 65535
   m_characterSpacing: 0

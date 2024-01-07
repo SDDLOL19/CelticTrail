@@ -27,6 +27,9 @@ public class HUD_Manager : MonoBehaviour
     [SerializeField] RectTransform[] posicionCarta;
     int numeroRandomCarta;
 
+    //STATS
+    [SerializeField] TextMeshProUGUI textoDanioBala, textoVelocidadBala, textoRecarga, textoEscudoMaximo, textoEscudoRegenerado;
+
     private void Start()
     {
         pausado = false;
@@ -60,6 +63,12 @@ public class HUD_Manager : MonoBehaviour
         textoRonda.text = "Ronda: " + SpawnManager.rondaActual.ToString();
         //textoCronometro.text = cronometro.ToString("0");
         CambiarBarraEscudo();
+
+        textoDanioBala.text = (StatManager.danioBala * 100).ToString() + "%";
+        textoVelocidadBala.text = (StatManager.multiplicadorVelocidadBala * 100).ToString() + "%";
+        textoRecarga.text = (StatManager.tiempoRecarga * 100).ToString() + "%";
+        textoEscudoMaximo.text = (StatManager.vidaEscudoMaxima).ToString();
+        textoEscudoRegenerado.text = (StatManager.cantidadEscudoRecuperada).ToString();
     }
 
     //ESCUDO

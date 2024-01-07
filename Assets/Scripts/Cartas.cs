@@ -74,7 +74,7 @@ public class Cartas : MonoBehaviour
         StatManager.vidaBala += StatManager.vidaBala * 0.30f;
 
         //DESVENTAJAS
-        StatManager.velocidadBala -= StatManager.velocidadBala * 0.20f;
+        StatManager.multiplicadorVelocidadBala -= StatManager.multiplicadorVelocidadBala * 0.20f;
     }
 
     public void LecheVegana()

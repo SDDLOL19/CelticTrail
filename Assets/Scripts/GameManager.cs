@@ -40,6 +40,7 @@ public class GameManager : MonoBehaviour
     {
         Application.targetFrameRate = framerate;
         Singleton();
+        partidaAcabada = false;
     }
 
     private void Start()

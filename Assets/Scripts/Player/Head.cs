@@ -20,6 +20,7 @@ public class Head : MonoBehaviour
     Vector2 direccionRayo;
 
     bool delayAcabado;
+    [HideInInspector]public bool hePerdido;
 
     [SerializeField] GameObject serpiente;
     [SerializeField] float tiempoInvulnerable;
@@ -337,6 +338,7 @@ public class Head : MonoBehaviour
 
     void Morir()
     {
+        hePerdido = true;
         GameManager.partidaAcabada = true;
     }
 }

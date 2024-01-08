@@ -8,7 +8,7 @@ public class Body : MonoBehaviour
     NavMeshObstacle miObstacle;
     Collider2D miCollider;
 
-    private void Start()
+    private void Awake()
     {
         miRenderer = this.gameObject.GetComponent<SpriteRenderer>();
         miObstacle = this.gameObject.GetComponent<NavMeshObstacle>();

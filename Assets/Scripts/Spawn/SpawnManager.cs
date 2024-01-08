@@ -6,18 +6,20 @@ public class SpawnManager : MonoBehaviour
 {
     public static int cantidadEnemigosEnEscena, cantidadEnemigosMax, rondaActual;
     [SerializeField] int[] cantidadEnemigosRonda;
-    [SerializeField] float tiempoEscogido, radioEscogido;
+    [SerializeField] float tiempoEscogidoSpawn, radioEscogido, tiempoEsperaRonda;
     public static float timeToSpawn, radioDeSpawn;
     [SerializeField] SpawnArea[] areasDeSpawn;
+
+    [SerializeField] int rondaFinal;
 
     bool puedeCambiarRonda = false;
     float temporizadorEspecial;
 
     private void Start()
     {
-        timeToSpawn = tiempoEscogido;
+        timeToSpawn = tiempoEscogidoSpawn;
         radioDeSpawn = radioEscogido;
-        temporizadorEspecial = tiempoEscogido + 0.2f;
+        temporizadorEspecial = tiempoEscogidoSpawn + 0.2f;
         rondaActual = 0;
         ActualizarRonda();
     }
@@ -37,7 +39,7 @@ public class SpawnManager : MonoBehaviour
             if (temporizadorEspecial <= 0)
             {
                 ControlarSpawnAreas();
-                temporizadorEspecial = tiempoEscogido + 0.2f;
+                temporizadorEspecial = tiempoEscogidoSpawn + 0.2f;
             }
         }
     }
@@ -56,9 +58,21 @@ public class SpawnManager : MonoBehaviour
 
     void ActualizarRonda()
     {
-        rondaActual++;
+        if (rondaActual != rondaFinal)
+        {
+            rondaActual++;
+            Invoke("ComenzarRonda", tiempoEsperaRonda);
+        }
+
+        else
+        {
+
+        }
+    }
+
+    void ComenzarRonda()
+    {
         cantidadEnemigosMax = cantidadEnemigosRonda[rondaActual - 1];
         puedeCambiarRonda = true;
-        
     }
 }

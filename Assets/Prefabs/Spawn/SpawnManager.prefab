@@ -45,8 +45,9 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   cantidadEnemigosRonda: 19000000320000006400000096000000c8000000
-  tiempoEscogido: 2
+  tiempoEscogidoSpawn: 1
   radioEscogido: 3
+  tiempoEsperaRonda: 4
   areasDeSpawn:
   - {fileID: 0}
   - {fileID: 0}

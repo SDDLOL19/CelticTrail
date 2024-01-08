@@ -20,7 +20,7 @@ public class Head : MonoBehaviour
     Vector2 direccionRayo;
 
     bool delayAcabado;
-    [HideInInspector]public bool hePerdido;
+    [HideInInspector]public bool hePerdido = false;
 
     [SerializeField] GameObject serpiente;
     [SerializeField] float tiempoInvulnerable;

@@ -13,8 +13,9 @@ public class HUD_Manager : MonoBehaviour
     /*public float cronometro = 180;*/ //Tres minutos en segundos
 
     //PAUSA
-    [SerializeField] Canvas Pausa, CambioDeControles, Cartas, HudPrincipal;
-    bool pausado = false, pantallaPausa = false, pantallaCartas = false, pantallaControles = false;
+    [SerializeField] Canvas Pausa, CambioDeControles, canvasCartas, HudPrincipal;
+    bool pausado = false, pantallaPausa = false, pantallaControles = false;
+    public static bool pantallaCartasActivada = false;
 
     //ESCUDO
     [SerializeField] RectTransform barraEscudo;
@@ -39,6 +40,7 @@ public class HUD_Manager : MonoBehaviour
         pausado = false;
         Pausa.gameObject.SetActive(pantallaPausa);
         player = GameManager.player;
+        GameManager.hdmngr = this;
     }
 
     private void Update()
@@ -47,7 +49,7 @@ public class HUD_Manager : MonoBehaviour
         {
             MostrarHud();
 
-            if (Input.GetKeyDown(KeyCode.Escape) && !pantallaControles && !pantallaCartas && !GameManager.partidaAcabada)
+            if (Input.GetKeyDown(KeyCode.Escape) && !pantallaControles && !pantallaCartasActivada && !GameManager.partidaAcabada)
             {
                 PantallaPausa();
                 pausado = !pausado;
@@ -111,7 +113,7 @@ public class HUD_Manager : MonoBehaviour
         {
             CanvasVictoria.gameObject.SetActive(true);
         }
-        
+
         HudPrincipal.gameObject.SetActive(false);
         Invoke("DelayAcabar", 2);
         //GameManager.PararTiempo();
@@ -150,19 +152,21 @@ public class HUD_Manager : MonoBehaviour
 
     public void PantallaCartas()
     {
-        pantallaCartas = !pantallaCartas;
+        pantallaCartasActivada = !pantallaCartasActivada;
 
-        Cartas.gameObject.SetActive(pantallaCartas);
+        canvasCartas.gameObject.SetActive(pantallaCartasActivada);
 
-        if (pantallaCartas)
+        if (pantallaCartasActivada)
         {
             pausado = true;
+            ComprobarPausa();
             SpawnearCartas();
         }
 
         else
         {
             pausado = false;
+            ComprobarPausa();
             DestruirCartas();
         }
     }
@@ -172,14 +176,17 @@ public class HUD_Manager : MonoBehaviour
     {
         numeroRandomCarta = Random.Range(0, prefabsCartas.Length - 1);
         cartaUno = Instantiate(prefabsCartas[numeroRandomCarta]);
+        cartaUno.transform.SetParent(canvasCartas.transform, false);
         cartaUno.GetComponent<RectTransform>().position = posicionCarta[0].position;
 
         numeroRandomCarta = Random.Range(0, prefabsCartas.Length - 1);
         cartaDos = Instantiate(prefabsCartas[numeroRandomCarta]);
+        cartaDos.transform.SetParent(canvasCartas.transform, false);
         cartaDos.GetComponent<RectTransform>().position = posicionCarta[1].position;
 
         numeroRandomCarta = Random.Range(0, prefabsCartas.Length - 1);
         cartaTres = Instantiate(prefabsCartas[numeroRandomCarta]);
+        cartaTres.transform.SetParent(canvasCartas.transform, false);
         cartaTres.GetComponent<RectTransform>().position = posicionCarta[2].position;
 
     }

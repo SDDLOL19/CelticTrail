@@ -4,6 +4,11 @@ using UnityEngine;
 
 public class Cartas : MonoBehaviour
 {
+    void LlamarPantallaCartas()
+    {
+        GameManager.hdmngr.PantallaCartas();
+    }
+
     //CARTAS
     public void EtapaDeDefinicion()
     {
@@ -12,6 +17,8 @@ public class Cartas : MonoBehaviour
 
         //DESVENTAJAS
         StatManager.danioBala -= StatManager.danioBala * 0.20f;
+
+        LlamarPantallaCartas();
     }
 
     public void EscudoItaliano()
@@ -21,6 +28,8 @@ public class Cartas : MonoBehaviour
 
         //DESVENTAJAS
         StatManager.velocidad -= StatManager.velocidad * 0.10f;
+
+        LlamarPantallaCartas();
     }
 
     public void Acorazado()
@@ -30,6 +39,8 @@ public class Cartas : MonoBehaviour
 
         //DESVENTAJAS
         StatManager.danioTorreta -= StatManager.danioTorreta * 0.20f;
+
+        LlamarPantallaCartas();
     }
 
     public void AutoDestruccion()
@@ -39,6 +50,8 @@ public class Cartas : MonoBehaviour
 
         //DESVENTAJAS
         StatManager.danioTorreta -= StatManager.danioTorreta * 0.4f;
+
+        LlamarPantallaCartas();
     }
 
     public void CañonDeCristal()
@@ -48,6 +61,8 @@ public class Cartas : MonoBehaviour
 
         //DESVENTAJAS
         StatManager.vidaMaxima = -5;
+
+        LlamarPantallaCartas();
     }
 
     public void CuatroPorCuatro()
@@ -57,6 +72,8 @@ public class Cartas : MonoBehaviour
 
         //DESVENTAJAS
         StatManager.danioBala += StatManager.danioBala * 0.20f;
+
+        LlamarPantallaCartas();
     }
 
     public void Temerario()
@@ -66,6 +83,8 @@ public class Cartas : MonoBehaviour
 
         //DESVENTAJAS
         StatManager.vidaMaxima -= 2;
+
+        LlamarPantallaCartas();
     }
 
     public void Barret()
@@ -75,6 +94,8 @@ public class Cartas : MonoBehaviour
 
         //DESVENTAJAS
         StatManager.multiplicadorVelocidadBala -= StatManager.multiplicadorVelocidadBala * 0.20f;
+
+        LlamarPantallaCartas();
     }
 
     public void LecheVegana()
@@ -84,6 +105,8 @@ public class Cartas : MonoBehaviour
 
         //DESVENTAJAS
         StatManager.danioBala -= StatManager.danioBala * 0.35f;
+
+        LlamarPantallaCartas();
     }
 
     public void SuperBalas()
@@ -93,6 +116,8 @@ public class Cartas : MonoBehaviour
 
         //DESVENTAJAS
         StatManager.tiempoRecarga += StatManager.tiempoRecarga * 0.25f;
+
+        LlamarPantallaCartas();
     }
 
     public void BalasSombras()
@@ -102,6 +127,8 @@ public class Cartas : MonoBehaviour
 
         //DESVENTAJAS
         StatManager.multpDanioRecibidoPlayer *= 2;
+
+        LlamarPantallaCartas();
     }
 
     public void Holograma()
@@ -111,6 +138,8 @@ public class Cartas : MonoBehaviour
 
         //DESVENTAJAS
         StatManager.vidaEscudoMaxima = 3;
+
+        LlamarPantallaCartas();
     }
 
     public void Nuez()
@@ -120,6 +149,8 @@ public class Cartas : MonoBehaviour
 
         //DESVENTAJAS
         StatManager.puedenDispararTorreta = false;
+
+        LlamarPantallaCartas();
     }
 
     public void BalasExplosivas()
@@ -129,6 +160,8 @@ public class Cartas : MonoBehaviour
 
         //DESVENTAJAS
         StatManager.tiempoRecarga += StatManager.tiempoRecarga * 0.25f;
+
+        LlamarPantallaCartas();
     }
 
     public void LagrimasDeFantasma()
@@ -138,6 +171,8 @@ public class Cartas : MonoBehaviour
 
         //DESVENTAJAS
         StatManager.puedeDropear = false;
+
+        LlamarPantallaCartas();
     }
 
 }

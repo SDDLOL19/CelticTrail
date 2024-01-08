@@ -98,18 +98,18 @@ MonoBehaviour:
       y: 21
       width: 662
       height: 854
-    m_Scale: {x: 0.5532893, y: 0.5532893}
-    m_Translation: {x: 531.1577, y: 427}
+    m_Scale: {x: 0.34479168, y: 0.34479168}
+    m_Translation: {x: 330.99997, y: 427}
     m_MarginLeft: 0
     m_MarginRight: 0
     m_MarginTop: 0
     m_MarginBottom: 0
     m_LastShownAreaInsideMargins:
       serializedVersion: 2
-      x: -960
-      y: -771.74817
-      width: 1196.4807
-      height: 1543.4963
+      x: -959.9999
+      y: -1238.429
+      width: 1919.9999
+      height: 2476.858
     m_MinimalGUI: 1
   m_defaultScale: 0.34479168
   m_LastWindowPixelSize: {x: 662, y: 875}
@@ -227,23 +227,23 @@ MonoBehaviour:
   m_SceneHierarchy:
     m_TreeViewState:
       scrollPos: {x: 0, y: 0}
-      m_SelectedIDs: 58200000
-      m_LastClickedID: 0
-      m_ExpandedIDs: 24f8ffff24f9ffff
+      m_SelectedIDs: 44610000
+      m_LastClickedID: 24900
+      m_ExpandedIDs: e644fdfff244fdff7256feff7e56feff965bfeffa25bfefff67dfeff86fafeff0a31ffffa63dffffb23dffff0efbffffb45f0000146000001e600000a66000002c61000012cc0000
       m_RenameOverlay:
         m_UserAcceptedRename: 0
-        m_Name: 
-        m_OriginalName: 
+        m_Name: Fondo
+        m_OriginalName: Fondo
         m_EditFieldRect:
           serializedVersion: 2
           x: 0
           y: 0
           width: 0
           height: 0
-        m_UserData: 0
+        m_UserData: 24620
         m_IsWaitingForDelay: 0
         m_IsRenaming: 0
-        m_OriginalEventType: 11
+        m_OriginalEventType: 0
         m_IsRenamingFilename: 0
         m_ClientGUIView: {fileID: 5}
       m_SearchString: 
@@ -561,9 +561,9 @@ MonoBehaviour:
   m_PlayAudio: 0
   m_AudioPlay: 0
   m_Position:
-    m_Target: {x: 42.27682, y: -66.40614, z: 13.374596}
+    m_Target: {x: 708.50214, y: 625.05585, z: -15.60978}
     speed: 2
-    m_Value: {x: 42.27682, y: -66.40614, z: 13.374596}
+    m_Value: {x: 743.8086, y: 623.1658, z: -14.96792}
   m_RenderMode: 0
   m_CameraMode:
     drawMode: 0
@@ -614,9 +614,9 @@ MonoBehaviour:
     speed: 2
     m_Value: {x: 0, y: 0, z: 0, w: 1}
   m_Size:
-    m_Target: 581.3041
+    m_Target: 1490.5576
     speed: 2
-    m_Value: 581.3041
+    m_Value: 1426.371
   m_Ortho:
     m_Target: 1
     speed: 2
@@ -691,14 +691,14 @@ MonoBehaviour:
       e31: 0
       e32: 0
       e33: 1
-    - e00: 0.5534258
+    - e00: 0.45685118
       e01: 0
       e02: 0
-      e03: 201.1531
+      e03: 96.920654
       e10: 0
-      e11: 0.5534258
+      e11: 0.45685118
       e12: 0
-      e13: 381.9534
+      e13: 442.8851
       e20: 0
       e21: 0
       e22: 1
@@ -708,9 +708,9 @@ MonoBehaviour:
       e32: 0
       e33: 1
   m_PreviewAnimator: {fileID: 0}
-  m_AnimatorController: {fileID: 9100000, guid: 043afcec569ecdf4abf0ee7adfaef6d2, type: 2}
+  m_AnimatorController: {fileID: 9100000, guid: 3ec817c7c50333e4bae7eb1d3b185d24, type: 2}
   m_BreadCrumbs:
-  - m_Target: {fileID: 7941841067436579870, guid: 043afcec569ecdf4abf0ee7adfaef6d2, type: 2}
+  - m_Target: {fileID: 7941841067436579870, guid: 3ec817c7c50333e4bae7eb1d3b185d24, type: 2}
     m_ScrollPosition: {x: 0, y: 0}
   stateMachineGraph: {fileID: 0}
   stateMachineGraphGUI: {fileID: 0}
@@ -759,7 +759,7 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 1
   m_Script: {fileID: 12006, guid: 0000000000000000e000000000000000, type: 0}
-  m_Name: ProjectBrowser
+  m_Name: ConsoleWindow
   m_EditorClassIdentifier: 
   m_Children: []
   m_Position:
@@ -768,14 +768,14 @@ MonoBehaviour:
     y: 896
     width: 1799
     height: 411
-  m_MinSize: {x: 231, y: 271}
-  m_MaxSize: {x: 10001, y: 10021}
-  m_ActualView: {fileID: 12}
+  m_MinSize: {x: 101, y: 121}
+  m_MaxSize: {x: 4001, y: 4021}
+  m_ActualView: {fileID: 13}
   m_Panes:
   - {fileID: 12}
   - {fileID: 13}
-  m_Selected: 0
-  m_LastSelected: 1
+  m_Selected: 1
+  m_LastSelected: 0
 --- !u!114 &12
 MonoBehaviour:
   m_ObjectHideFlags: 52
@@ -818,22 +818,22 @@ MonoBehaviour:
     m_SkipHidden: 0
     m_SearchArea: 1
     m_Folders:
-    - Assets/Scripts/Player
+    - Assets/Scripts
     m_Globs: []
     m_OriginalText: 
   m_ViewMode: 1
   m_StartGridSize: 64
   m_LastFolders:
-  - Assets/Scripts/Player
+  - Assets/Scripts
   m_LastFoldersGridSize: -1
   m_LastProjectPath: D:\GitHub\ElTrenDeLaMina
   m_LockTracker:
     m_IsLocked: 0
   m_FolderTreeState:
     scrollPos: {x: 0, y: 31}
-    m_SelectedIDs: be680000
-    m_LastClickedID: 26814
-    m_ExpandedIDs: 00000000a8680000aa680000ae680000b2680000b4680000ba680000f67e0000
+    m_SelectedIDs: 84680000
+    m_LastClickedID: 26756
+    m_ExpandedIDs: 0000000080680000826800008468000086680000886800008a6800008c6800008e68000090680000
     m_RenameOverlay:
       m_UserAcceptedRename: 0
       m_Name: 
@@ -861,7 +861,7 @@ MonoBehaviour:
     scrollPos: {x: 0, y: 0}
     m_SelectedIDs: 
     m_LastClickedID: 0
-    m_ExpandedIDs: 00000000aa680000ae680000b2680000b4680000ba680000f67e0000
+    m_ExpandedIDs: 0000000080680000826800008468000086680000886800008a6800008c6800008e68000090680000
     m_RenameOverlay:
       m_UserAcceptedRename: 0
       m_Name: 
@@ -886,8 +886,8 @@ MonoBehaviour:
       m_Icon: {fileID: 0}
       m_ResourceFile: 
   m_ListAreaState:
-    m_SelectedInstanceIDs: 58200000
-    m_LastClickedInstanceID: 8280
+    m_SelectedInstanceIDs: 14600000
+    m_LastClickedInstanceID: 24596
     m_HadKeyboardFocusLastEvent: 1
     m_ExpandedInstanceIDs: c62300001a8c0000a060000024610000568c00001c600000347a00006074000088650000000000006e65000026650000ec6700007c6500008e65000060640000509800003c8900004a6500006c660000f266000006670000
     m_RenameOverlay:

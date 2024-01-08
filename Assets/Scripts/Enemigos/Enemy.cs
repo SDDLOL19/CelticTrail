@@ -57,7 +57,6 @@ public class Enemy : MonoBehaviour
 
             if (enemyVida <= 0)
             {
-                GetComponent<Collider2D>().enabled = false;
                 Morir();
             }
         }
@@ -153,6 +152,7 @@ public class Enemy : MonoBehaviour
 
     void Morir()
     {
+        GetComponent<Collider2D>().enabled = false;
         muriendo = true;
         AnimacionMuerte();
     }

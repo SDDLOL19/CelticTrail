@@ -20,6 +20,9 @@ public class GameManager : MonoBehaviour
     //ELEMENTOS JUGADOR
     public static int puntosJugador = 0;
 
+    public static HUD_Manager hdmngr;
+
+
     void Singleton()
     {
         if (Instance == null) // If there is no instance already

@@ -10,7 +10,8 @@ public class SpawnManager : MonoBehaviour
     public static float timeToSpawn, radioDeSpawn;
     [SerializeField] SpawnArea[] areasDeSpawn;
 
-    [SerializeField] int rondaFinal;
+    [SerializeField] int rondaFinal, rondaCartas;
+    [SerializeField] HUD_Manager manejadorHud;
 
     bool puedeCambiarRonda = false;
     float temporizadorEspecial;
@@ -20,8 +21,9 @@ public class SpawnManager : MonoBehaviour
         timeToSpawn = tiempoEscogidoSpawn;
         radioDeSpawn = radioEscogido;
         temporizadorEspecial = tiempoEscogidoSpawn + 0.2f;
-        rondaActual = 0;
-        ActualizarRonda();
+        rondaActual = 1;
+        cantidadEnemigosMax = 0;
+        Invoke("ComenzarRonda", tiempoEsperaRonda);
     }
 
     private void Update()
@@ -58,6 +60,11 @@ public class SpawnManager : MonoBehaviour
 
     void ActualizarRonda()
     {
+        if (rondaActual == rondaCartas)
+        {
+            manejadorHud.PantallaCartas();
+        }
+
         if (rondaActual != rondaFinal)
         {
             rondaActual++;
@@ -66,7 +73,8 @@ public class SpawnManager : MonoBehaviour
 
         else
         {
-
+            GameManager.player.hePerdido = false;
+            GameManager.partidaAcabada = true;
         }
     }
 

@@ -29,7 +29,6 @@ public class Ladron : Enemy
 
             disparando = true;
             AnimacionAtaque();
-            Invoke("AnimacionAtaque", tiempoEntreRafaga + 0.6f); //para realizar un segundo disparo
         }
     }
 }

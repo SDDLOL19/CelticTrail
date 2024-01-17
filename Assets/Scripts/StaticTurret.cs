@@ -6,8 +6,12 @@ public class StaticTurret : MonoBehaviour
 {
     [SerializeField, Range(1f, 20f)] float rotationSpeed, detectionDistance, timeSpawnBullet, vidaTorreta;
     float tiempoAux;
-    [SerializeField] GameObject prefabBullet;
+    [SerializeField] GameObject prefabBullet, rotacionShooting;
     [SerializeField] Transform shootPosition;
+
+    Collider2D enemigo;
+
+    bool tengoEnemigo = false;
 
     void Start()
     {
@@ -24,30 +28,48 @@ public class StaticTurret : MonoBehaviour
 
     void EnemyDetection()
     {
+
+        Vector2 radioDeteccion = Random.insideUnitCircle * detectionDistance; //genera un radio alrededor del objeto
+        Vector2 radioDeteccionMovido = new Vector2(transform.position.x + radioDeteccion.x, transform.position.y + radioDeteccion.y); //genera un radio de deteccion alrededor del objeto aunque se mueva
+                                                                                                                                      //transform.position = radioDeteccionMovido;
+        if (enemigo == null || Mathf.Abs(this.transform.position.x - enemigo.transform.position.x) >= detectionDistance || Mathf.Abs(this.transform.position.y - enemigo.transform.position.y) >= detectionDistance)
         {
-            Vector2 radioDeteccion = Random.insideUnitCircle * detectionDistance; //genera un radio alrededor del objeto
-            Vector2 radioDeteccionMovido = new Vector2(transform.position.x + radioDeteccion.x, transform.position.y + radioDeteccion.y); //genera un radio de deteccion alrededor del objeto aunque se mueva
-            //transform.position = radioDeteccionMovido;
-            Collider2D[] objetosCercanos = Physics2D.OverlapCircleAll(radioDeteccionMovido, detectionDistance); //crea un array de objetos con collider 2d
-            foreach (Collider2D objeto in objetosCercanos) //detecta todos los objetos con collider 2D
+            tengoEnemigo = false;
+        }
+
+        if (!tengoEnemigo)
+        {
+            enemigo = Physics2D.OverlapCircle(radioDeteccionMovido, detectionDistance);
+
+            if (enemigo.gameObject.tag == "Enemigo")
             {
-                if (objeto.gameObject.tag == "Enemigo") //actua solo cuando esos objetos tengan el tag enemigo
-                {
-                    Vector2 enemyPoint = objeto.transform.position; //detecta las coordenadas del raton
-                    Vector2 direction = enemyPoint - (Vector2)transform.position;
-                    //crea una tangente entre el up (la flecha verde del eje y) del objeto y la posicion x del raton (crea la linea en direccion a donde apuntara la torreta)
-                    transform.up = Vector2.MoveTowards(transform.up, direction, rotationSpeed * Time.deltaTime);
-                    //mueve la orientacion de la torreta (desde el punto de pivote) (el move towards ralentiza un poco ese movimiento)
-                    //Debug.Log("Enemigo detectado");
-                    TimerSpawnBullet();
-                    if (StatManager.puedenDispararTorreta)
-                    {
-                        CreateBullet();
-                    }
-                }
+                tengoEnemigo = true;
             }
-        } 
+        }
+
+        else
+        {
+            RotarShootingPoint();
+            TimerSpawnBullet();
+
+            if (StatManager.puedenDispararTorreta)
+            {
+                CreateBullet();
+            }
+        }
+
     }
+
+    void RotarShootingPoint()
+    {
+        //rotacionShooting.transform.up = GameManager.player.transform.position - rotacionShooting.transform.position;
+        Vector3 look = rotacionShooting.transform.InverseTransformPoint(enemigo.transform.position);
+        float angle = Mathf.Atan2(look.y, look.x) * Mathf.Rad2Deg - 90;
+
+        rotacionShooting.transform.Rotate(0, 0, angle);
+
+    }
+
     void TimerSpawnBullet()
     {
         timeSpawnBullet -= Time.deltaTime;
@@ -62,8 +84,7 @@ public class StaticTurret : MonoBehaviour
     {
         if (timeSpawnBullet < 0)
         {
-            Vector2 spawnPosition = (Vector2)transform.position + (Vector2)(transform.up * 1f);
-            Instantiate(prefabBullet, spawnPosition, transform.rotation);
+            Instantiate(prefabBullet, shootPosition.transform.position, rotacionShooting.transform.rotation);
             //spawnea una bala en la posicion del disparo y con la rotacion que tenga este objeto
             //para modificar esta posicion simplemente mueve el objeto ShootPosition
             timeSpawnBullet = tiempoAux; //resetea el tiempo de spawn
@@ -74,7 +95,7 @@ public class StaticTurret : MonoBehaviour
     {
         if (collision.gameObject.tag == "BalaEnemigo")
         {
-            vidaTorreta-= 1*StatManager.multplDanioRecibidoTorreta;
+            vidaTorreta -= 1 * StatManager.multplDanioRecibidoTorreta;
         }
     }
 }

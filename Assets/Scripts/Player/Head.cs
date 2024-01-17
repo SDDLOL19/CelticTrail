@@ -2,11 +2,12 @@ using System.Collections;
 using System;
 using UnityEngine;
 using Unity.VisualScripting;
+using UnityEngine.UIElements;
 
 public class Head : MonoBehaviour
 {
     [SerializeField] float distance, delay = 0.05f;
-    [SerializeField] int lenght;
+    [SerializeField] int length;
     [SerializeField, Range(1, 10)] int speedEscogida;
     [SerializeField] GameObject[] bodies;
     [SerializeField] GameObject puntaCabeza;
@@ -95,14 +96,14 @@ public class Head : MonoBehaviour
 
     void ControladorCarrosEnEscena()
     {
-        playerSpeed = StatManager.velocidad * (speedEscogida - (lenght / 1.5f));
+        playerSpeed = StatManager.velocidad * (speedEscogida - (length / 1.5f));
 
-        for (int i = bodies.Length - 1; i >= lenght; i--)
+        for (int i = bodies.Length - 1; i >= length; i--)
         {
             bodies[i].GetComponent<Body>().Esconderme();
         }
 
-        for (int i = 0; i < lenght; i++)
+        for (int i = 0; i < length; i++)
         {
             bodies[i].GetComponent<Body>().Aparecerme();
         }
@@ -110,9 +111,9 @@ public class Head : MonoBehaviour
 
     void Growth()
     {
-        if (lenght <= StatManager.vidaMaxima)
+        if (length <= StatManager.vidaMaxima)
         {
-            lenght++;
+            length++;
         }
 
         ControladorCarrosEnEscena();
@@ -127,9 +128,9 @@ public class Head : MonoBehaviour
 
         else
         {
-            if (lenght > 0)
+            if (length > 0)
             {
-                lenght -= 1 * StatManager.multpDanioRecibidoPlayer;
+                length -= 1 * StatManager.multpDanioRecibidoPlayer;
             }
 
             else
@@ -140,6 +141,7 @@ public class Head : MonoBehaviour
 
         ControladorCarrosEnEscena();
     }
+    
     void RegeneracionVida()
     {
         if (StatManager.puedeRegenerarVida)
@@ -161,7 +163,20 @@ public class Head : MonoBehaviour
 
     //QQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQ
 
-    //MOVIMIENTO
+    //CONTROLES
+    void SoltarTorreta()
+    {
+
+        if (Input.GetKey(KeyCode.C))
+        {
+            if (length > 1)
+            {
+                length--;
+                Instantiate(prefabStaticTurret);
+            }
+        }
+    }
+
     void Movement()
     {
         transform.Translate(Vector2.up * playerSpeed * Time.deltaTime); //mueve el objeto en el en direccion flecha verde(la del eje y)        

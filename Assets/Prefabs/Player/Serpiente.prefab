@@ -329,7 +329,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   distance: 1.15
   delay: 0.05
-  lenght: 3
+  length: 3
   speedEscogida: 10
   bodies:
   - {fileID: 4073783638485843241}
@@ -342,11 +342,12 @@ MonoBehaviour:
   - {fileID: 4073783638695228707}
   - {fileID: 4073783638649250456}
   puntaCabeza: {fileID: 4121294468663751040}
-  miEscudo: {fileID: 0}
+  miEscudo: {fileID: 6018376522817620088}
   playerSpeed: 0
+  hePerdido: 0
   serpiente: {fileID: 5205183529543799379}
   tiempoInvulnerable: 0
-  prefabStaticTurret: {fileID: 1240167930174620457, guid: 9c4233157596d4243962f698be2057db, type: 3}
+  prefabStaticTurret: {fileID: 8564850350010324443, guid: fbe82a0c57f6d46498420f8ecbd48624, type: 3}
 --- !u!61 &937053898
 BoxCollider2D:
   m_ObjectHideFlags: 0

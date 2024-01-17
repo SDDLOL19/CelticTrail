@@ -18,6 +18,8 @@ public class Enemy : MonoBehaviour
     protected RaycastHit2D hit;
     protected Animator miAnimator;
 
+    [SerializeField] float detectionDistance;
+
     void Start()
     {
         Recarga();
@@ -167,6 +169,16 @@ public class Enemy : MonoBehaviour
         if (collision.gameObject.tag == "BalaJugador")
         {
             enemyVida -= StatManager.danioBala * StatManager.multiplicadorDaño;
+        }
+
+        if (collision.gameObject.tag == "BalaTorreta")
+        {
+            enemyVida -= StatManager.danioBala * StatManager.multiplicadorDaño;
+
+            Vector2 radioDeteccion = Random.insideUnitCircle * detectionDistance; //genera un radio alrededor del objeto
+            Vector2 radioDeteccionMovido = new Vector2(transform.position.x + radioDeteccion.x, transform.position.y + radioDeteccion.y);
+
+            CambiarObjetivo(Physics2D.OverlapCircle(radioDeteccionMovido, detectionDistance).transform);
         }
     }
 

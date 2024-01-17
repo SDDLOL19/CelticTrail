@@ -11,17 +11,18 @@ public class Head : MonoBehaviour
     [SerializeField, Range(1, 10)] int speedEscogida;
     [SerializeField] GameObject[] bodies;
     [SerializeField] GameObject puntaCabeza;
+    GameObject culoDeTren;
     public Shield miEscudo;
     float tiempo, temporizadorGiro = 0, contadorRegeneracionVida = 40;
 
-    public float playerSpeed;
+    [HideInInspector]public float playerSpeed;
     float distanciaRaycast = 0.2f;
 
     RaycastHit2D hit;
     Vector2 direccionRayo;
 
     bool delayAcabado;
-    [HideInInspector]public bool hePerdido = false;
+    [HideInInspector] public bool hePerdido = false;
 
     [SerializeField] GameObject serpiente;
     [SerializeField] float tiempoInvulnerable;
@@ -38,6 +39,7 @@ public class Head : MonoBehaviour
     {
         ControladorCarrosEnEscena();
         direccionRayo = Vector2.up;
+        culoDeTren = bodies[length];
     }
 
     void Update()
@@ -47,6 +49,7 @@ public class Head : MonoBehaviour
             Movement();
             DetectarChoqueFrontal();
             RegeneracionVida();
+            SoltarTorreta();
         }
     }
 
@@ -114,6 +117,7 @@ public class Head : MonoBehaviour
         if (length <= StatManager.vidaMaxima)
         {
             length++;
+            
         }
 
         ControladorCarrosEnEscena();
@@ -141,7 +145,7 @@ public class Head : MonoBehaviour
 
         ControladorCarrosEnEscena();
     }
-    
+
     void RegeneracionVida()
     {
         if (StatManager.puedeRegenerarVida)
@@ -167,12 +171,14 @@ public class Head : MonoBehaviour
     void SoltarTorreta()
     {
 
-        if (Input.GetKey(KeyCode.C))
+        if (Input.GetKeyDown(KeyCode.C))
         {
-            if (length > 1)
+            if (length > 0)
             {
                 length--;
-                Instantiate(prefabStaticTurret);
+                ControladorCarrosEnEscena();
+                Instantiate(prefabStaticTurret, culoDeTren.transform.position,culoDeTren.transform.rotation);
+                culoDeTren = bodies[length];
             }
         }
     }

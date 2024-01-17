@@ -23,12 +23,12 @@ public class StaticTurret : MonoBehaviour
         if (!GameManager.partidaAcabada)
         {
             EnemyDetection();
+            ReduccionVida();
         }
     }
 
     void EnemyDetection()
     {
-
         Vector2 radioDeteccion = Random.insideUnitCircle * detectionDistance; //genera un radio alrededor del objeto
         Vector2 radioDeteccionMovido = new Vector2(transform.position.x + radioDeteccion.x, transform.position.y + radioDeteccion.y); //genera un radio de deteccion alrededor del objeto aunque se mueva
                                                                                                                                       //transform.position = radioDeteccionMovido;
@@ -57,7 +57,6 @@ public class StaticTurret : MonoBehaviour
                 CreateBullet();
             }
         }
-
     }
 
     void RotarShootingPoint()
@@ -67,7 +66,6 @@ public class StaticTurret : MonoBehaviour
         float angle = Mathf.Atan2(look.y, look.x) * Mathf.Rad2Deg - 90;
 
         rotacionShooting.transform.Rotate(0, 0, angle);
-
     }
 
     void TimerSpawnBullet()
@@ -75,9 +73,14 @@ public class StaticTurret : MonoBehaviour
         timeSpawnBullet -= Time.deltaTime;
     }
 
-    void RegeneracionVida()
+    void ReduccionVida()
     {
         vidaTorreta -= Time.deltaTime;
+
+        if (vidaTorreta <= 0) 
+        {
+            DestruirTorreta();
+        }
     }
 
     void CreateBullet()
@@ -89,6 +92,11 @@ public class StaticTurret : MonoBehaviour
             //para modificar esta posicion simplemente mueve el objeto ShootPosition
             timeSpawnBullet = tiempoAux; //resetea el tiempo de spawn
         }
+    }
+
+    void DestruirTorreta()
+    {
+        Destroy(gameObject);
     }
 
     private void OnTriggerEnter2D(Collider2D collision)

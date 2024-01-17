@@ -11,6 +11,7 @@ TagManager:
   - BalaEnemigo
   - BalaJugador
   - Rompible
+  - BalaTorreta
   layers:
   - Default
   - TransparentFX

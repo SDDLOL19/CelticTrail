@@ -5,12 +5,18 @@ public class Body : MonoBehaviour
 {
     [SerializeField] GameObject torreta;
     SpriteRenderer miRenderer;
+    SpriteRenderer torretaRenderer;
     NavMeshObstacle miObstacle;
     Collider2D miCollider;
+
+    public Color defaultColor;
+    public Color changedColor;
+    [SerializeField] float tiempoParpadeo = 0.5f;
 
     private void Awake()
     {
         miRenderer = this.gameObject.GetComponent<SpriteRenderer>();
+        torretaRenderer = torreta.GetComponent<SpriteRenderer>();
         miObstacle = this.gameObject.GetComponent<NavMeshObstacle>();
         miCollider = this.gameObject.GetComponent<Collider2D>();
     }
@@ -34,7 +40,7 @@ public class Body : MonoBehaviour
         {
             transform.eulerAngles = new Vector3(0f, 0, 90); //rota el objeto a izquierda
             transform.position = new Vector3(transform.position.x, posicionEnVertical, transform.position.z);
-        } 
+        }
     }
 
     public void MovementRight(float posicionEnVertical)
@@ -52,7 +58,7 @@ public class Body : MonoBehaviour
         {
             transform.eulerAngles = new Vector3(0f, 0, 0); //rota el objeto hacia arriba
             transform.position = new Vector3(posicionEnHorizontal, transform.position.y, transform.position.z);
-        } 
+        }
     }
 
     public void MovementDown(float posicionEnHorizontal)
@@ -86,11 +92,26 @@ public class Body : MonoBehaviour
         //StartCoroutine(ParpadeoTemporal());
     }
 
+    protected void CambioColor()
+    {
+        miRenderer.color = changedColor;
+        torretaRenderer.color = changedColor;
+    }
+
+    protected void ResetColor()
+    {
+        miRenderer.color = defaultColor;
+        torretaRenderer.color = defaultColor;
+    }
+
     private void OnTriggerEnter2D(Collider2D collision)
     {
         if (collision.gameObject.tag == "BalaEnemigo")
         {
             MeHicePupa();
+
+            CambioColor();
+            Invoke("ResetColor", tiempoParpadeo);
         }
     }
 
@@ -99,6 +120,9 @@ public class Body : MonoBehaviour
         if (collision.gameObject.tag == "Enemigo")
         {
             MeHicePupa();
+
+            CambioColor();
+            Invoke("ResetColor", tiempoParpadeo);
         }
     }
 }

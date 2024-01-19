@@ -81,6 +81,9 @@ MonoBehaviour:
   rangoDisparoMin: 1
   rangoDisparoMax: 5
   rotationSpeed: 100
+  detectionDistance: 0
+  defaultColor: {r: 1, g: 1, b: 1, a: 1}
+  changedColor: {r: 0, g: 0, b: 0, a: 1}
   tiempoEntreRafaga: 1
 --- !u!58 &3763893288277437440
 CircleCollider2D:

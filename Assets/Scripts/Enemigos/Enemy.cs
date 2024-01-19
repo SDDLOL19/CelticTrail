@@ -20,6 +20,11 @@ public class Enemy : MonoBehaviour
 
     [SerializeField] float detectionDistance;
 
+    protected SpriteRenderer miRenderer;
+    public Color defaultColor;
+    public Color changedColor;
+    [SerializeField] float tiempoParpadeo = 0.5f;
+
     void Start()
     {
         Recarga();
@@ -33,6 +38,8 @@ public class Enemy : MonoBehaviour
         CambiarObjetivo(GameManager.player.transform);
 
         miAnimator = spriteEnemigo.GetComponent<Animator>();
+
+        miRenderer = spriteEnemigo.GetComponent<SpriteRenderer>();
     }
 
     private void OnDestroy()
@@ -164,11 +171,24 @@ public class Enemy : MonoBehaviour
         timerSpawnBullet = tiempoDeRecarga;
     }
 
+    protected void CambioColor()
+    {
+        miRenderer.color = changedColor;
+    }
+
+    protected void ResetColor()
+    {
+        miRenderer.color = defaultColor;
+    }
+
     private void OnTriggerEnter2D(Collider2D collision)
     {
         if (collision.gameObject.tag == "BalaJugador")
         {
             enemyVida -= StatManager.danioBala * StatManager.multiplicadorDaño;
+
+            CambioColor();
+            Invoke("ResetColor", tiempoParpadeo);
         }
 
         if (collision.gameObject.tag == "BalaTorreta")
@@ -179,6 +199,9 @@ public class Enemy : MonoBehaviour
             Vector2 radioDeteccionMovido = new Vector2(transform.position.x + radioDeteccion.x, transform.position.y + radioDeteccion.y);
 
             CambiarObjetivo(Physics2D.OverlapCircle(radioDeteccionMovido, detectionDistance).transform);
+
+            CambioColor();
+            Invoke("ResetColor", tiempoParpadeo);
         }
     }
 

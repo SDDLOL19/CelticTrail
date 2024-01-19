@@ -3,6 +3,7 @@ using System;
 using UnityEngine;
 using Unity.VisualScripting;
 using UnityEngine.UIElements;
+using UnityEngine.AI;
 
 public class Head : MonoBehaviour
 {
@@ -11,6 +12,7 @@ public class Head : MonoBehaviour
     [SerializeField, Range(1, 10)] int speedEscogida;
     [SerializeField] GameObject[] bodies;
     [SerializeField] GameObject puntaCabeza;
+    [SerializeField] GameObject torreta;
     GameObject culoDeTren;
     public Shield miEscudo;
     float tiempo, temporizadorGiro = 0, contadorRegeneracionVida = 40;
@@ -29,6 +31,12 @@ public class Head : MonoBehaviour
 
     [SerializeField] GameObject prefabStaticTurret;
 
+    SpriteRenderer miRenderer;
+    SpriteRenderer torretaRenderer;
+    public Color defaultColor;
+    public Color changedColor;
+    [SerializeField] float tiempoParpadeo = 0.5f;
+
     private void Awake()
     {
         miEscudo = this.gameObject.GetComponentInParent<Shield>();
@@ -36,10 +44,12 @@ public class Head : MonoBehaviour
     }
 
     private void Start()
-    {
+    { 
         ControladorCarrosEnEscena();
         direccionRayo = Vector2.up;
         culoDeTren = bodies[length];
+        miRenderer = this.GetComponent<SpriteRenderer>();
+        torretaRenderer = torreta.GetComponent<SpriteRenderer>();
     }
 
     void Update()
@@ -64,6 +74,18 @@ public class Head : MonoBehaviour
         }
     }
 
+    protected void CambioColor()
+    {
+        miRenderer.color = changedColor;
+        torretaRenderer.color = changedColor;
+    }
+
+    protected void ResetColor()
+    {
+        miRenderer.color = defaultColor;
+        torretaRenderer.color = defaultColor;
+    }
+
     private void OnTriggerEnter2D(Collider2D collision)
     {
         if (collision.gameObject.tag == "Droppeable")
@@ -76,6 +98,8 @@ public class Head : MonoBehaviour
         {
             Shrinkage();
             //StartCoroutine(ParpadeoTemporal());
+            CambioColor();
+            Invoke("ResetColor", tiempoParpadeo);
         }
     }
 
@@ -90,6 +114,9 @@ public class Head : MonoBehaviour
         {
             Debug.Log("ME CHOQUÉ");
             Shrinkage();
+
+            CambioColor();
+            Invoke("ResetColor", tiempoParpadeo);
         }
     }
 
@@ -331,31 +358,31 @@ public class Head : MonoBehaviour
 
     //QQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQ
 
-    IEnumerator ParpadeoTemporal()
-    {
-        while (tiempoInvulnerable > 0)
-        {
-            StartCoroutine(TemporizadorInvulnerable());
-            InvokeRepeating("Parpadeo", 0, 0.1f); // Llama a la función Parpadeo
-            yield return new WaitForSeconds(0.1f); // Espera 0.1 segundos antes de la siguiente iteración
-            // Reduce el tiempo invulnerable
-        }
-        tiempoInvulnerable = 0.5f;  // Reinicia el tiempo invulnerable
-    }
+    //IEnumerator ParpadeoTemporal()
+    //{
+    //    while (tiempoInvulnerable > 0)
+    //    {
+    //        StartCoroutine(TemporizadorInvulnerable());
+    //        InvokeRepeating("Parpadeo", 0, 0.1f); // Llama a la función Parpadeo
+    //        yield return new WaitForSeconds(0.1f); // Espera 0.1 segundos antes de la siguiente iteración
+    //        // Reduce el tiempo invulnerable
+    //    }
+    //    tiempoInvulnerable = 0.5f;  // Reinicia el tiempo invulnerable
+    //}
 
-    IEnumerator TemporizadorInvulnerable()
-    {
-        while (tiempoInvulnerable > 0)
-        {
-            tiempoInvulnerable -= Time.deltaTime;
-            yield return null;  // Espera hasta el siguiente frame antes de la siguiente iteración
-        }
-    }
+    //IEnumerator TemporizadorInvulnerable()
+    //{
+    //    while (tiempoInvulnerable > 0)
+    //    {
+    //        tiempoInvulnerable -= Time.deltaTime;
+    //        yield return null;  // Espera hasta el siguiente frame antes de la siguiente iteración
+    //    }
+    //}
 
-    void Parpadeo()  //Hay que rehacerlo del todo. Nunca funcionará como queremos de esta forma
-    {
-        serpiente.SetActive(!serpiente.activeInHierarchy);
-    }
+    //void Parpadeo()  //Hay que rehacerlo del todo. Nunca funcionará como queremos de esta forma
+    //{
+    //    serpiente.SetActive(!serpiente.activeInHierarchy);
+    //}
 
     void Morir()
     {

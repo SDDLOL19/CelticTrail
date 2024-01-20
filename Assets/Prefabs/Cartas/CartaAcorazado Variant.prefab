@@ -23,9 +23,25 @@ PrefabInstance:
       propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_Arguments.m_ObjectArgumentAssemblyTypeName
       value: UnityEngine.Object, UnityEngine
       objectReference: {fileID: 0}
+    - target: {fileID: 3635986694797464147, guid: 7b10d5829c7748b47bfa283bb6bcfe38, type: 3}
+      propertyPath: m_text
+      value: ACORAZADO
+      objectReference: {fileID: 0}
+    - target: {fileID: 6155557242959742519, guid: 7b10d5829c7748b47bfa283bb6bcfe38, type: 3}
+      propertyPath: m_text
+      value: Las TORRETAS colocadas en el suelo tienen el x2 de VIDA
+      objectReference: {fileID: 0}
+    - target: {fileID: 6155557242959742519, guid: 7b10d5829c7748b47bfa283bb6bcfe38, type: 3}
+      propertyPath: m_margin.w
+      value: 2.154633
+      objectReference: {fileID: 0}
+    - target: {fileID: 6155557242959742519, guid: 7b10d5829c7748b47bfa283bb6bcfe38, type: 3}
+      propertyPath: m_fontSizeBase
+      value: 47.34
+      objectReference: {fileID: 0}
     - target: {fileID: 7940997572988566640, guid: 7b10d5829c7748b47bfa283bb6bcfe38, type: 3}
       propertyPath: m_Name
-      value: CartaAcorazado
+      value: CartaAcorazado Variant
       objectReference: {fileID: 0}
     - target: {fileID: 9119973605254299685, guid: 7b10d5829c7748b47bfa283bb6bcfe38, type: 3}
       propertyPath: m_Pivot.x
@@ -57,11 +73,11 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 9119973605254299685, guid: 7b10d5829c7748b47bfa283bb6bcfe38, type: 3}
       propertyPath: m_SizeDelta.x
-      value: 269.2229
+      value: 518
       objectReference: {fileID: 0}
     - target: {fileID: 9119973605254299685, guid: 7b10d5829c7748b47bfa283bb6bcfe38, type: 3}
       propertyPath: m_SizeDelta.y
-      value: 276.4517
+      value: 808
       objectReference: {fileID: 0}
     - target: {fileID: 9119973605254299685, guid: 7b10d5829c7748b47bfa283bb6bcfe38, type: 3}
       propertyPath: m_LocalPosition.x
@@ -93,7 +109,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 9119973605254299685, guid: 7b10d5829c7748b47bfa283bb6bcfe38, type: 3}
       propertyPath: m_AnchoredPosition.x
-      value: -381
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 9119973605254299685, guid: 7b10d5829c7748b47bfa283bb6bcfe38, type: 3}
       propertyPath: m_AnchoredPosition.y

@@ -330,11 +330,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: f4688fdb7df04437aeb418b961361dc5, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
---- !u!1 &163412882 stripped
-GameObject:
-  m_CorrespondingSourceObject: {fileID: 4213528779662944626, guid: 52af84ac7f04834489e02437a602479c, type: 3}
-  m_PrefabInstance: {fileID: 5205183530247978073}
-  m_PrefabAsset: {fileID: 0}
 --- !u!1001 &170406046
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -7538,46 +7533,6 @@ PrefabInstance:
     - target: {fileID: 5205183529543799379, guid: 52af84ac7f04834489e02437a602479c, type: 3}
       propertyPath: m_Name
       value: Serpiente
-      objectReference: {fileID: 0}
-    - target: {fileID: 5205183531337242780, guid: 52af84ac7f04834489e02437a602479c, type: 3}
-      propertyPath: length
-      value: 3
-      objectReference: {fileID: 0}
-    - target: {fileID: 5205183531337242780, guid: 52af84ac7f04834489e02437a602479c, type: 3}
-      propertyPath: torreta
-      value: 
-      objectReference: {fileID: 163412882}
-    - target: {fileID: 5205183531337242780, guid: 52af84ac7f04834489e02437a602479c, type: 3}
-      propertyPath: changedColor.a
-      value: 1
-      objectReference: {fileID: 0}
-    - target: {fileID: 5205183531337242780, guid: 52af84ac7f04834489e02437a602479c, type: 3}
-      propertyPath: changedColor.b
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 5205183531337242780, guid: 52af84ac7f04834489e02437a602479c, type: 3}
-      propertyPath: changedColor.g
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 5205183531337242780, guid: 52af84ac7f04834489e02437a602479c, type: 3}
-      propertyPath: changedColor.r
-      value: 1
-      objectReference: {fileID: 0}
-    - target: {fileID: 5205183531337242780, guid: 52af84ac7f04834489e02437a602479c, type: 3}
-      propertyPath: defaultColor.a
-      value: 1
-      objectReference: {fileID: 0}
-    - target: {fileID: 5205183531337242780, guid: 52af84ac7f04834489e02437a602479c, type: 3}
-      propertyPath: defaultColor.b
-      value: 1
-      objectReference: {fileID: 0}
-    - target: {fileID: 5205183531337242780, guid: 52af84ac7f04834489e02437a602479c, type: 3}
-      propertyPath: defaultColor.g
-      value: 1
-      objectReference: {fileID: 0}
-    - target: {fileID: 5205183531337242780, guid: 52af84ac7f04834489e02437a602479c, type: 3}
-      propertyPath: defaultColor.r
-      value: 1
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 52af84ac7f04834489e02437a602479c, type: 3}

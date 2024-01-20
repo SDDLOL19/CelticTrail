@@ -8,7 +8,7 @@ using UnityEngine.AI;
 public class Head : MonoBehaviour
 {
     [SerializeField] float distance, delay = 0.05f;
-    [SerializeField] int length;
+    [SerializeField] int lenghtSnake;
     [SerializeField, Range(1, 10)] int speedEscogida;
     [SerializeField] GameObject[] bodies;
     [SerializeField] GameObject puntaCabeza;
@@ -37,6 +37,8 @@ public class Head : MonoBehaviour
     public Color changedColor;
     [SerializeField] float tiempoParpadeo = 0.5f;
 
+    Animator miAnimator;
+
     private void Awake()
     {
         miEscudo = this.gameObject.GetComponentInParent<Shield>();
@@ -47,7 +49,7 @@ public class Head : MonoBehaviour
     { 
         ControladorCarrosEnEscena();
         direccionRayo = Vector2.up;
-        culoDeTren = bodies[length];
+        culoDeTren = bodies[lenghtSnake];
         miRenderer = this.GetComponent<SpriteRenderer>();
         torretaRenderer = torreta.GetComponent<SpriteRenderer>();
     }
@@ -126,14 +128,19 @@ public class Head : MonoBehaviour
 
     void ControladorCarrosEnEscena()
     {
-        playerSpeed = StatManager.velocidad * (speedEscogida - (length / 1.5f));
+        if (lenghtSnake > 8)
+        {
+            lenghtSnake = 8;
+        }
 
-        for (int i = bodies.Length - 1; i >= length; i--)
+        playerSpeed = StatManager.velocidad * (speedEscogida - (lenghtSnake / 1.5f));
+
+        for (int i = bodies.Length - 1; i >= lenghtSnake; i--)
         {
             bodies[i].GetComponent<Body>().Esconderme();
         }
 
-        for (int i = 0; i < length; i++)
+        for (int i = 0; i < lenghtSnake; i++)
         {
             bodies[i].GetComponent<Body>().Aparecerme();
         }
@@ -141,10 +148,9 @@ public class Head : MonoBehaviour
 
     void Growth()
     {
-        if (length <= StatManager.vidaMaxima)
+        if (lenghtSnake <= StatManager.vidaMaxima)
         {
-            length++;
-            
+            lenghtSnake++;      
         }
 
         ControladorCarrosEnEscena();
@@ -159,9 +165,9 @@ public class Head : MonoBehaviour
 
         else
         {
-            if (length > 0)
+            if (lenghtSnake > 0)
             {
-                length -= 1 * StatManager.multpDanioRecibidoPlayer;
+                lenghtSnake -= 1 * StatManager.multpDanioRecibidoPlayer;
             }
 
             else
@@ -200,12 +206,12 @@ public class Head : MonoBehaviour
 
         if (Input.GetKeyDown(KeyCode.C))
         {
-            if (length > 0)
+            if (lenghtSnake > 0)
             {
-                length--;
+                lenghtSnake--;
                 ControladorCarrosEnEscena();
                 Instantiate(prefabStaticTurret, culoDeTren.transform.position,culoDeTren.transform.rotation);
-                culoDeTren = bodies[length];
+                culoDeTren = bodies[lenghtSnake];
             }
         }
     }
@@ -388,6 +394,11 @@ public class Head : MonoBehaviour
     {
         hePerdido = true;
         GameManager.partidaAcabada = true;
+    }
+
+    void AnimacionMorir()
+    {
+        miAnimator.Play("");
     }
 }
 

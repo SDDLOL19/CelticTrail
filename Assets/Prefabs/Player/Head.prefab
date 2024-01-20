@@ -102,9 +102,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: d0852da8b76b6b04d8a2fd96eda5d615, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  distance: 1.15
+  distance: 2
   delay: 0.05
-  lenghtSnake: 0
+  lenghtSnake: 10
   speedEscogida: 10
   bodies:
   - {fileID: 0}
@@ -117,15 +117,15 @@ MonoBehaviour:
   - {fileID: 0}
   - {fileID: 0}
   puntaCabeza: {fileID: 8892954027581782086}
-  torreta: {fileID: 0}
+  torreta: {fileID: 8656674880028795060}
   miEscudo: {fileID: 0}
   playerSpeed: 0
   hePerdido: 0
   serpiente: {fileID: 0}
   tiempoInvulnerable: 0
   prefabStaticTurret: {fileID: 8564850350010324443, guid: fbe82a0c57f6d46498420f8ecbd48624, type: 3}
-  defaultColor: {r: 0, g: 0, b: 0, a: 0}
-  changedColor: {r: 0, g: 0, b: 0, a: 0}
+  defaultColor: {r: 1, g: 1, b: 1, a: 1}
+  changedColor: {r: 1, g: 0, b: 0, a: 1}
   tiempoParpadeo: 0.5
 --- !u!61 &4781655027846629132
 BoxCollider2D:
@@ -184,7 +184,7 @@ Animator:
   m_GameObject: {fileID: 749672583318327643}
   m_Enabled: 1
   m_Avatar: {fileID: 0}
-  m_Controller: {fileID: 9100000, guid: 76626ea65f5162540afe5b935c1b87e2, type: 2}
+  m_Controller: {fileID: 9100000, guid: e31c31a2156e6064b89c21b40c53b6ea, type: 2}
   m_CullingMode: 0
   m_UpdateMode: 0
   m_ApplyRootMotion: 0
@@ -339,5 +339,10 @@ PrefabInstance:
 --- !u!4 &8386210808278170712 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 5792502148913522031, guid: 49e817bb657325846af7e6e3220901eb, type: 3}
+  m_PrefabInstance: {fileID: 2594869775320176951}
+  m_PrefabAsset: {fileID: 0}
+--- !u!1 &8656674880028795060 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 6638441914308934019, guid: 49e817bb657325846af7e6e3220901eb, type: 3}
   m_PrefabInstance: {fileID: 2594869775320176951}
   m_PrefabAsset: {fileID: 0}

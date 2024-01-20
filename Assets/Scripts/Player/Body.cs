@@ -13,12 +13,15 @@ public class Body : MonoBehaviour
     public Color changedColor;
     [SerializeField] float tiempoParpadeo = 0.5f;
 
+    Animator miAnimator;
+
     private void Awake()
     {
-        miRenderer = this.gameObject.GetComponent<SpriteRenderer>();
+        miRenderer = GetComponent<SpriteRenderer>();
         torretaRenderer = torreta.GetComponent<SpriteRenderer>();
-        miObstacle = this.gameObject.GetComponent<NavMeshObstacle>();
-        miCollider = this.gameObject.GetComponent<Collider2D>();
+        miObstacle = GetComponent<NavMeshObstacle>();
+        miCollider = GetComponent<Collider2D>();
+        miAnimator = GetComponent<Animator>();
     }
 
     void Update()
@@ -102,6 +105,11 @@ public class Body : MonoBehaviour
     {
         miRenderer.color = defaultColor;
         torretaRenderer.color = defaultColor;
+    }
+
+    public void AnimacionMorir()
+    {
+        miAnimator.Play("Muerte");
     }
 
     private void OnTriggerEnter2D(Collider2D collision)

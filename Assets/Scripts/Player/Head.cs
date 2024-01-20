@@ -10,10 +10,10 @@ public class Head : MonoBehaviour
     [SerializeField] float distance, delay = 0.05f;
     [SerializeField] int lenghtSnake;
     [SerializeField, Range(1, 10)] int speedEscogida;
-    [SerializeField] GameObject[] bodies;
+    [SerializeField] Body[] bodies;
     [SerializeField] GameObject puntaCabeza;
     [SerializeField] GameObject torreta;
-    GameObject culoDeTren;
+    Transform culoDeTren;
     public Shield miEscudo;
     float tiempo, temporizadorGiro = 0, contadorRegeneracionVida = 40;
 
@@ -49,8 +49,9 @@ public class Head : MonoBehaviour
     { 
         ControladorCarrosEnEscena();
         direccionRayo = Vector2.up;
-        culoDeTren = bodies[lenghtSnake];
-        miRenderer = this.GetComponent<SpriteRenderer>();
+        culoDeTren = bodies[lenghtSnake].transform;
+        miRenderer = GetComponent<SpriteRenderer>();
+        miAnimator = GetComponent<Animator>();
         torretaRenderer = torreta.GetComponent<SpriteRenderer>();
     }
 
@@ -137,12 +138,12 @@ public class Head : MonoBehaviour
 
         for (int i = bodies.Length - 1; i >= lenghtSnake; i--)
         {
-            bodies[i].GetComponent<Body>().Esconderme();
+            bodies[i].Esconderme();
         }
 
         for (int i = 0; i < lenghtSnake; i++)
         {
-            bodies[i].GetComponent<Body>().Aparecerme();
+            bodies[i].Aparecerme();
         }
     }
 
@@ -210,8 +211,8 @@ public class Head : MonoBehaviour
             {
                 lenghtSnake--;
                 ControladorCarrosEnEscena();
-                Instantiate(prefabStaticTurret, culoDeTren.transform.position,culoDeTren.transform.rotation);
-                culoDeTren = bodies[lenghtSnake];
+                Instantiate(prefabStaticTurret, culoDeTren.position,culoDeTren.rotation);
+                culoDeTren = bodies[lenghtSnake].transform;
             }
         }
     }
@@ -297,28 +298,28 @@ public class Head : MonoBehaviour
     {
         tiempo = (distance * (i + 1)) / playerSpeed;
         yield return new WaitForSeconds(tiempo);
-        bodies[i].GetComponent<Body>().MovementUp(posicionEnHorizontal);
+        bodies[i].MovementUp(posicionEnHorizontal);
     }
 
     IEnumerator WaitForDown(int i, float posicionEnHorizontal)
     {
         tiempo = (distance * (i + 1)) / playerSpeed;
         yield return new WaitForSeconds(tiempo);
-        bodies[i].GetComponent<Body>().MovementDown(posicionEnHorizontal);
+        bodies[i].MovementDown(posicionEnHorizontal);
     }
 
     IEnumerator WaitForLeft(int i, float posicionEnVertical)
     {
         tiempo = (distance * (i + 1)) / playerSpeed;
         yield return new WaitForSeconds(tiempo);
-        bodies[i].GetComponent<Body>().MovementLeft(posicionEnVertical);
+        bodies[i].MovementLeft(posicionEnVertical);
     }
 
     IEnumerator WaitForRight(int i, float posicionEnVertical)
     {
         tiempo = (distance * (i + 1)) / playerSpeed;
         yield return new WaitForSeconds(tiempo);
-        bodies[i].GetComponent<Body>().MovementRight(posicionEnVertical);
+        bodies[i].MovementRight(posicionEnVertical);
     }
 
     void Temporizador()
@@ -394,11 +395,17 @@ public class Head : MonoBehaviour
     {
         hePerdido = true;
         GameManager.partidaAcabada = true;
+        AnimacionMorir();
     }
 
     void AnimacionMorir()
     {
-        miAnimator.Play("");
+        miAnimator.Play("Muerte");
+
+        for (int i = 0; i < bodies.Length; i++)
+        {
+            bodies[i].AnimacionMorir();
+        }
     }
 }
 

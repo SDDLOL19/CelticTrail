@@ -6,6 +6,7 @@ public class Body : MonoBehaviour
     [SerializeField] GameObject torreta;
     SpriteRenderer miRenderer;
     SpriteRenderer torretaRenderer;
+    [SerializeField] SpriteRenderer escudoRenderer;
     NavMeshObstacle miObstacle;
     Collider2D miCollider;
 
@@ -86,6 +87,7 @@ public class Body : MonoBehaviour
         miRenderer.enabled = false;
         miObstacle.enabled = false;
         miCollider.enabled = false;
+        escudoRenderer.enabled = false;
         torreta.SetActive(false);
     }
 
@@ -111,6 +113,22 @@ public class Body : MonoBehaviour
     {
         miAnimator.Play("Muerte");
     }
+
+    public void AnimacionEscudoRoto()
+    {
+        miAnimator.Play("EscudoRoto");
+    }
+
+    public void AnimacionEscudoCasiRoto()
+    {
+        miAnimator.Play("EscudoCasiRoto");
+    }
+
+    public void AnimacionEscudoBien()
+    {
+        miAnimator.Play("EscudoBien");
+    }
+
 
     private void OnTriggerEnter2D(Collider2D collision)
     {

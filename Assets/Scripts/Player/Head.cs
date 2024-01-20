@@ -129,7 +129,7 @@ public class Head : MonoBehaviour
 
     void ControladorCarrosEnEscena()
     {
-        if (lenghtSnake > 8)
+        if (lenghtSnake > 9)
         {
             lenghtSnake = 8;
         }
@@ -178,6 +178,39 @@ public class Head : MonoBehaviour
         }
 
         ControladorCarrosEnEscena();
+    }
+
+    public void AnimacionEscudo()
+    {
+        if (miEscudo.LeerEscudo() <= 0)
+        {
+            miAnimator.Play("EscudoRoto");
+
+            for (int i = 0; i < lenghtSnake; i++)
+            {
+                bodies[i].AnimacionEscudoRoto();
+            }
+        }
+
+        else if (miEscudo.LeerEscudo() == 1)
+        {
+            miAnimator.Play("EscudoCasiRoto");
+
+            for (int i = 0; i < lenghtSnake; i++)
+            {
+                bodies[i].AnimacionEscudoCasiRoto();
+            }
+        }
+
+        else
+        {
+            miAnimator.Play("EscudoBien");
+
+            for (int i = 0; i < lenghtSnake; i++)
+            {
+                bodies[i].AnimacionEscudoBien();
+            }
+        }
     }
 
     void RegeneracionVida()

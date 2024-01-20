@@ -57,6 +57,7 @@ MonoBehaviour:
   vidaEscudo: 3
   tiempoMaxRecarga: 3
   temporizadorRecarga: 0
+  player: {fileID: 5205183531337242780}
 --- !u!1001 &4781655028070353350
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -117,6 +118,10 @@ PrefabInstance:
       value: 
       objectReference: {fileID: 5205183529543799379}
     - target: {fileID: 749672583318327642, guid: adfe2a66566b3224c9531384718f841f, type: 3}
+      propertyPath: lenghtSnake
+      value: 3
+      objectReference: {fileID: 0}
+    - target: {fileID: 749672583318327642, guid: adfe2a66566b3224c9531384718f841f, type: 3}
       propertyPath: bodies.Array.data[0]
       value: 
       objectReference: {fileID: 6430074569486321321}
@@ -158,6 +163,17 @@ PrefabInstance:
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: adfe2a66566b3224c9531384718f841f, type: 3}
+--- !u!114 &5205183531337242780 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 749672583318327642, guid: adfe2a66566b3224c9531384718f841f, type: 3}
+  m_PrefabInstance: {fileID: 4781655028070353350}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: d0852da8b76b6b04d8a2fd96eda5d615, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!4 &5205183531337242782 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 749672583318327640, guid: adfe2a66566b3224c9531384718f841f, type: 3}

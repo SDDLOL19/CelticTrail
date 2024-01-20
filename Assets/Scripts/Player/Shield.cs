@@ -7,6 +7,8 @@ public class Shield : MonoBehaviour
     [SerializeField] int vidaEscudo;
     [SerializeField] float tiempoMaxRecarga = 3, temporizadorRecarga;
 
+    [SerializeField] Head player;
+
     private void Start()
     {
         RecargarEscudo();
@@ -20,6 +22,7 @@ public class Shield : MonoBehaviour
     public void QuitarEscudo()
     {
         vidaEscudo--;
+        player.AnimacionEscudo();
     }
 
     void CuentaAtras()
@@ -31,6 +34,8 @@ public class Shield : MonoBehaviour
             temporizadorRecarga = tiempoMaxRecarga;
 
             vidaEscudo += StatManager.cantidadEscudoRecuperada;
+
+            player.AnimacionEscudo();
         }
 
         vidaEscudo = Mathf.Clamp(vidaEscudo, 0, StatManager.vidaEscudoMaxima);

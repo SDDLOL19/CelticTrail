@@ -10,7 +10,8 @@ public class SpawnManager : MonoBehaviour
     public static float timeToSpawn, radioDeSpawn;
     [SerializeField] SpawnArea[] areasDeSpawn;
 
-    [SerializeField] int rondaFinal, rondaCartas;
+    [SerializeField] int rondaFinal;
+    [SerializeField] bool[] rondasCartas;
     [SerializeField] HUD_Manager manejadorHud;
 
     bool puedeCambiarRonda = false;
@@ -60,7 +61,7 @@ public class SpawnManager : MonoBehaviour
 
     void ActualizarRonda()
     {
-        if (rondaActual == rondaCartas)
+        if (rondasCartas[rondaActual])
         {
             manejadorHud.PantallaCartas();
         }

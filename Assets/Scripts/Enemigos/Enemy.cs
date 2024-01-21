@@ -25,6 +25,8 @@ public class Enemy : MonoBehaviour
     public Color changedColor;
     [SerializeField] float tiempoParpadeo = 0.5f;
 
+    [SerializeField] int probabilidadDrop;
+
     void Start()
     {
         Recarga();
@@ -138,22 +140,27 @@ public class Enemy : MonoBehaviour
         }
     }
 
+    void Dropeable()
+    {
+        int randomSpawnDropeable = Random.Range(0, 100);
+
+        if (randomSpawnDropeable <= probabilidadDrop)
+        {
+            Instantiate(prefabDroppeable, transform.position, Quaternion.identity);
+            //Debug.Log("Funciona");
+        }
+
+        else
+        {
+            //Debug.Log("Funciona otra parte");
+        }
+    }
+
     public void Destruirme()
     {
         if (StatManager.puedeDropear)
         {
-            int randomSpawnDropeable = Random.Range(0, 10);
-
-            if (randomSpawnDropeable <= 5)
-            {
-                Instantiate(prefabDroppeable, transform.position, Quaternion.identity);
-                //Debug.Log("Funciona");
-            }
-
-            else
-            {
-                //Debug.Log("Funciona otra parte");
-            }
+            Dropeable();
         }
 
         Destroy(this.gameObject);

@@ -5,17 +5,28 @@ using UnityEngine;
 public class Shield : MonoBehaviour
 {
     [SerializeField] int vidaEscudo;
-    [SerializeField] float tiempoMaxRecarga = 3, temporizadorRecarga;
+    [SerializeField] float tiempoMaxRecarga = 3, tiempoMaxEscudoRoto = 3;
+    float temporizadorRecarga, temporizadorEscudoRoto;
+
+    bool puedoEscudear;
 
     [SerializeField] Head player;
 
     private void Start()
     {
         RecargarEscudo();
+
+        temporizadorRecarga = tiempoMaxRecarga;
+        temporizadorEscudoRoto = tiempoMaxEscudoRoto;
     }
 
     private void Update()
     {
+        if (vidaEscudo <= 0)
+        {
+            puedoEscudear = false;
+        }
+
         CuentaAtras();
     }
 
@@ -27,8 +38,23 @@ public class Shield : MonoBehaviour
 
     void CuentaAtras()
     {
-        temporizadorRecarga -= Time.deltaTime;
+        if (puedoEscudear)
+        {
+            temporizadorRecarga -= Time.deltaTime;
+        }
 
+        else
+        {
+            temporizadorEscudoRoto -= Time.deltaTime;
+        }
+
+        if (temporizadorEscudoRoto <= 0)
+        {
+            temporizadorEscudoRoto = tiempoMaxEscudoRoto;
+            puedoEscudear = true;
+            temporizadorRecarga = tiempoMaxRecarga;
+        }
+        
         if (temporizadorRecarga <= 0)
         {
             temporizadorRecarga = tiempoMaxRecarga;

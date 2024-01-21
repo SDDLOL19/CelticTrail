@@ -16,7 +16,7 @@ public class Cartas : MonoBehaviour
         StatManager.velocidad += StatManager.velocidad * 0.15f;
 
         //DESVENTAJAS
-        StatManager.danioBala -= StatManager.danioBala * 0.20f;
+        StatManager.danioBala -= StatManager.danioBala * 0.15f;
 
         LlamarPantallaCartas();
     }
@@ -137,7 +137,8 @@ public class Cartas : MonoBehaviour
         StatManager.cantidadEscudoRecuperada += 1;
 
         //DESVENTAJAS
-        StatManager.vidaEscudoMaxima = 3;
+        StatManager.vidaEscudoMaxima = 2;
+        
 
         LlamarPantallaCartas();
     }

@@ -15,7 +15,7 @@ public class Head : MonoBehaviour
     [SerializeField] GameObject torreta;
     Transform culoDeTren;
     public Shield miEscudo;
-    float tiempo, temporizadorGiro = 0, contadorRegeneracionVida = 40;
+    float tiempo, temporizadorGiro = 0, contadorRegeneracionVida = 30;
 
     [HideInInspector]public float playerSpeed;
     float distanciaRaycast = 0.2f;
@@ -238,7 +238,7 @@ public class Head : MonoBehaviour
     void SoltarTorreta()
     {
 
-        if (Input.GetKeyDown(KeyCode.C))
+        if (Input.GetKeyDown(KeyCode.E))
         {
             if (lenghtSnake > 0)
             {

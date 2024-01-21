@@ -18,11 +18,12 @@ public class Shield : MonoBehaviour
 
         temporizadorRecarga = tiempoMaxRecarga;
         temporizadorEscudoRoto = tiempoMaxEscudoRoto;
+        puedoEscudear = true;
     }
 
     private void Update()
     {
-        if (vidaEscudo <= 0)
+        if (vidaEscudo < 0)
         {
             puedoEscudear = false;
         }
@@ -38,7 +39,7 @@ public class Shield : MonoBehaviour
 
     void CuentaAtras()
     {
-        if (puedoEscudear)
+        if (puedoEscudear == true)
         {
             temporizadorRecarga -= Time.deltaTime;
         }

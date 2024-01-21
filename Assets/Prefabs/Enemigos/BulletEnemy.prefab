@@ -136,6 +136,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 68348134c9e29fd41ba95bf0ce6008ce, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  speed: 10
+  speed: 17
   timeDestruction: 6
   tagDeMiCreador: Enemigo

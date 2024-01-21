@@ -199,14 +199,15 @@ MonoBehaviour:
   rotacionShooting: {fileID: 872757117508137596}
   spriteEnemigo: {fileID: 0}
   velocidadMovimiento: 1
-  enemyVida: 4
+  enemyVida: 10
   tiempoDeRecarga: 2
-  rangoDisparoMin: 0
-  rangoDisparoMax: 0
+  rangoDisparoMin: 1
+  rangoDisparoMax: 2
   rotationSpeed: 100
   detectionDistance: 0
   defaultColor: {r: 1, g: 1, b: 1, a: 1}
   changedColor: {r: 1, g: 0, b: 0, a: 1}
+  tiempoParpadeo: 0.5
 --- !u!1 &7511480312273813374
 GameObject:
   m_ObjectHideFlags: 0

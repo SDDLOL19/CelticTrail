@@ -54,8 +54,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 4d52138b63c049c4e9df11d3c0872e14, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  vidaEscudo: 3
-  tiempoMaxRecarga: 3
+  vidaEscudo: 4
+  tiempoMaxRecarga: 5
   temporizadorRecarga: 0
   player: {fileID: 5205183531337242780}
 --- !u!1001 &4781655028070353350

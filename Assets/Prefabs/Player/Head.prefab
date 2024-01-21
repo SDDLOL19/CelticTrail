@@ -123,7 +123,7 @@ MonoBehaviour:
   playerSpeed: 0
   hePerdido: 0
   serpiente: {fileID: 0}
-  tiempoInvulnerable: 0
+  tiempoInvulnerable: 0.5
   prefabStaticTurret: {fileID: 8564850350010324443, guid: fbe82a0c57f6d46498420f8ecbd48624, type: 3}
   defaultColor: {r: 1, g: 1, b: 1, a: 1}
   changedColor: {r: 1, g: 0, b: 0, a: 1}

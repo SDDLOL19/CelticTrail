@@ -24,6 +24,7 @@ public class SpawnManager : MonoBehaviour
         temporizadorEspecial = tiempoEscogidoSpawn + 0.2f;
         rondaActual = 1;
         cantidadEnemigosMax = 0;
+        cantidadEnemigosEnEscena = 0;
         Invoke("ComenzarRonda", tiempoEsperaRonda);
     }
 
@@ -61,7 +62,7 @@ public class SpawnManager : MonoBehaviour
 
     void ActualizarRonda()
     {
-        if (rondasCartas[rondaActual])
+        if (rondasCartas[rondaActual] == true)
         {
             manejadorHud.PantallaCartas();
         }

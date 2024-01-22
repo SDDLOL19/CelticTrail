@@ -44,7 +44,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: e0ea87cd81b344546a7ad06640713a26, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  cantidadEnemigosRonda: 05000000070000000a0000000f0000001400000019000000190000001900000019000000
+  cantidadEnemigosRonda: 070000000a0000000f0000001400000019000000230000002a0000003200000046000000
   tiempoEscogidoSpawn: 2
   radioEscogido: 3
   tiempoEsperaRonda: 4

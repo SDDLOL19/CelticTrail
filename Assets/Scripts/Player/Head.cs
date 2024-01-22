@@ -46,13 +46,13 @@ public class Head : MonoBehaviour
     }
 
     private void Start()
-    { 
-        ControladorCarrosEnEscena();
-        direccionRayo = Vector2.up;
-        culoDeTren = bodies[lenghtSnake].transform;
+    {
         miRenderer = GetComponent<SpriteRenderer>();
         miAnimator = GetComponent<Animator>();
         torretaRenderer = torreta.GetComponent<SpriteRenderer>();
+        ControladorCarrosEnEscena();
+        direccionRayo = Vector2.up;
+        culoDeTren = bodies[lenghtSnake].transform;
     }
 
     void Update()
@@ -131,7 +131,7 @@ public class Head : MonoBehaviour
     {
         if (lenghtSnake > 9)
         {
-            lenghtSnake = 8;
+            lenghtSnake = 9;
         }
 
         playerSpeed = StatManager.velocidad * (speedEscogida - (lenghtSnake / 1.5f));
@@ -145,6 +145,8 @@ public class Head : MonoBehaviour
         {
             bodies[i].Aparecerme();
         }
+
+        AnimacionEscudo();
     }
 
     void Growth()

@@ -79,6 +79,7 @@ public class Body : MonoBehaviour
         miRenderer.enabled = true;
         miObstacle.enabled = true;
         miCollider.enabled = true;
+        escudoRenderer.enabled = true;
         torreta.SetActive(true);
     }
 

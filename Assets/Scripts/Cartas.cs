@@ -6,7 +6,7 @@ public class Cartas : MonoBehaviour
 {
     void LlamarPantallaCartas()
     {
-        GameManager.hdmngr.PantallaCartas();
+        GameManager.hudMngr.PantallaCartas();
     }
 
     //CARTAS

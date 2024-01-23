@@ -40,7 +40,7 @@ public class HUD_Manager : MonoBehaviour
         pausado = false;
         Pausa.gameObject.SetActive(pantallaPausa);
         player = GameManager.player;
-        GameManager.hdmngr = this;
+        GameManager.hudMngr = this;
     }
 
     private void Update()

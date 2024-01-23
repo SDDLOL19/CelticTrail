@@ -36,7 +36,7 @@ public class SpawnManager : MonoBehaviour
         {
             if (cantidadEnemigosMax == 0 && puedeCambiarRonda)
             {
-                Invoke("ActualizarRonda", 4f);
+                Invoke("ActualizarRonda", 4f);                                 //SE ACTUALIZA LAS RONDAS
                 puedeCambiarRonda = false; //Para que solo lo haga una vez
             }
 

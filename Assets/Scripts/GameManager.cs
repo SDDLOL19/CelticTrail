@@ -20,7 +20,7 @@ public class GameManager : MonoBehaviour
     //ELEMENTOS JUGADOR
     public static int puntosJugador = 0;
 
-    public static HUD_Manager hdmngr;
+    public static HUD_Manager hudMngr;
 
 
     void Singleton()

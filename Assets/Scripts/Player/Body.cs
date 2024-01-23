@@ -38,40 +38,46 @@ public class Body : MonoBehaviour
         transform.Translate(Vector2.up * GameManager.player.playerSpeed * Time.deltaTime); //mueve el objeto en el en direccion flecha verde(la del eje y)           
     }
 
-    public void MovementLeft(float posicionEnVertical)
+    public void MovementLeft(float posicionEnHorizontal, float posicionEnVertical)
     {
         if (!GameManager.partidaAcabada)
         {
             transform.eulerAngles = new Vector3(0f, 0, 90); //rota el objeto a izquierda
-            transform.position = new Vector3(transform.position.x, posicionEnVertical, transform.position.z);
+            new Vector3(posicionEnHorizontal, posicionEnVertical, transform.position.z);
         }
     }
 
-    public void MovementRight(float posicionEnVertical)
+    public void MovementRight(float posicionEnHorizontal, float posicionEnVertical)
     {
         if (!GameManager.partidaAcabada)
         {
             transform.eulerAngles = new Vector3(0f, 0, -90); //rota el objeto a derecha
-            transform.position = new Vector3(transform.position.x, posicionEnVertical, transform.position.z);
+            transform.position = new Vector3(posicionEnHorizontal, posicionEnVertical, transform.position.z);
         }
     }
 
-    public void MovementUp(float posicionEnHorizontal)
+    public void MovementUp(float posicionEnHorizontal, float posicionEnVertical)
     {
         if (!GameManager.partidaAcabada)
         {
-            transform.eulerAngles = new Vector3(0f, 0, 0); //rota el objeto hacia arriba
-            transform.position = new Vector3(posicionEnHorizontal, transform.position.y, transform.position.z);
+            transform.eulerAngles = Vector3.zero; ; //rota el objeto hacia arriba
+            transform.position = new Vector3(posicionEnHorizontal, posicionEnVertical, transform.position.z);
         }
     }
 
-    public void MovementDown(float posicionEnHorizontal)
+    public void MovementDown(float posicionEnHorizontal, float posicionEnVertical)
     {
         if (!GameManager.partidaAcabada)
         {
             transform.eulerAngles = new Vector3(0f, 0, 180); //rota el objeto hacia abajo
-            transform.position = new Vector3(posicionEnHorizontal, transform.position.y, transform.position.z);
+            transform.position = new Vector3(posicionEnHorizontal, posicionEnVertical, transform.position.z);
         }
+    }
+
+    public void ReSpawn(Transform posicionPlayer, float distancia)
+    {
+        transform.eulerAngles = Vector3.zero;
+        transform.position = new Vector3(posicionPlayer.position.x, posicionPlayer.position.y - distancia ,transform.position.z);
     }
 
     public void Aparecerme()

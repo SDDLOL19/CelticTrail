@@ -44,6 +44,11 @@ public class BulletPlayer : MonoBehaviour
             Destroy(this.gameObject);
         }
 
+        else if (collision.gameObject.tag == "Obstaculo")
+        {
+            Destroy(this.gameObject);
+        }
+
         else if (collision.gameObject.tag != tagDeMiCreador)
         {
 

@@ -17,7 +17,7 @@ public class Head : MonoBehaviour
     public Shield miEscudo;
     float tiempo, temporizadorGiro = 0, contadorRegeneracionVida = 30;
 
-    [HideInInspector]public float playerSpeed;
+    [HideInInspector] public float playerSpeed;
     float distanciaRaycast = 0.2f;
 
     RaycastHit2D hit;
@@ -38,6 +38,9 @@ public class Head : MonoBehaviour
     [SerializeField] float tiempoParpadeo = 0.5f;
 
     Animator miAnimator;
+
+    [SerializeField] Transform spawnPointPlayer;
+
 
     private void Awake()
     {
@@ -110,7 +113,7 @@ public class Head : MonoBehaviour
     {
         if (collision.gameObject.tag == "Obstaculo")
         {
-            Morir();
+            ReSpawm();
         }
 
         if (collision.gameObject.tag == "Enemigo")
@@ -127,11 +130,30 @@ public class Head : MonoBehaviour
 
     //CANTIDAD DE CUERPOS
 
+    void ReSpawm()
+    {
+        PerderVida();
+        PerderVida();
+
+        MovementUp();
+        transform.position = spawnPointPlayer.position;
+
+        for (int i = 0; i < lenghtSnake; i++)
+        {
+            bodies[i].ReSpawn(spawnPointPlayer, distance * (i + 1));
+        }
+    }
+
     void ControladorCarrosEnEscena()
     {
         if (lenghtSnake > 9)
         {
             lenghtSnake = 9;
+        }
+
+        if (lenghtSnake <= 0)
+        {
+            Morir();
         }
 
         playerSpeed = StatManager.velocidad * (speedEscogida - (lenghtSnake / 1.5f));
@@ -153,7 +175,7 @@ public class Head : MonoBehaviour
     {
         if (lenghtSnake <= StatManager.vidaMaxima)
         {
-            lenghtSnake++;      
+            lenghtSnake++;
         }
 
         ControladorCarrosEnEscena();
@@ -170,13 +192,20 @@ public class Head : MonoBehaviour
         {
             if (lenghtSnake > 0)
             {
-                lenghtSnake -= 1 * StatManager.multpDanioRecibidoPlayer;
+                PerderVida();
             }
+        }
 
-            else
-            {
-                Morir();
-            }
+        ControladorCarrosEnEscena();
+    }
+
+    void PerderVida()
+    {
+        lenghtSnake -= 1 * StatManager.multpDanioRecibidoPlayer;
+
+        if (lenghtSnake < 0)
+        {
+            lenghtSnake = 0;
         }
 
         ControladorCarrosEnEscena();
@@ -246,7 +275,7 @@ public class Head : MonoBehaviour
             {
                 lenghtSnake--;
                 ControladorCarrosEnEscena();
-                Instantiate(prefabStaticTurret, culoDeTren.position,culoDeTren.rotation);
+                Instantiate(prefabStaticTurret, culoDeTren.position, culoDeTren.rotation);
                 culoDeTren = bodies[lenghtSnake].transform;
             }
         }
@@ -329,32 +358,32 @@ public class Head : MonoBehaviour
         direccionRayo = Vector2.down;
     }
 
-    IEnumerator WaitForUp(int i, float posicionEnHorizontal)
+    IEnumerator WaitForUp(int i, float posicionEnHorizontal, float posicionEnVertical)
     {
         tiempo = (distance * (i + 1)) / playerSpeed;
         yield return new WaitForSeconds(tiempo);
-        bodies[i].MovementUp(posicionEnHorizontal);
+        bodies[i].MovementUp(posicionEnHorizontal, posicionEnVertical);
     }
 
-    IEnumerator WaitForDown(int i, float posicionEnHorizontal)
+    IEnumerator WaitForDown(int i, float posicionEnHorizontal, float posicionEnVertical)
     {
         tiempo = (distance * (i + 1)) / playerSpeed;
         yield return new WaitForSeconds(tiempo);
-        bodies[i].MovementDown(posicionEnHorizontal);
+        bodies[i].MovementDown(posicionEnHorizontal, posicionEnVertical);
     }
 
-    IEnumerator WaitForLeft(int i, float posicionEnVertical)
+    IEnumerator WaitForLeft(int i, float posicionEnHorizontal, float posicionEnVertical)
     {
         tiempo = (distance * (i + 1)) / playerSpeed;
         yield return new WaitForSeconds(tiempo);
-        bodies[i].MovementLeft(posicionEnVertical);
+        bodies[i].MovementLeft(posicionEnHorizontal, posicionEnVertical);
     }
 
-    IEnumerator WaitForRight(int i, float posicionEnVertical)
+    IEnumerator WaitForRight(int i, float posicionEnHorizontal, float posicionEnVertical)
     {
         tiempo = (distance * (i + 1)) / playerSpeed;
         yield return new WaitForSeconds(tiempo);
-        bodies[i].MovementRight(posicionEnVertical);
+        bodies[i].MovementRight(posicionEnHorizontal, posicionEnVertical);
     }
 
     void Temporizador()
@@ -370,7 +399,7 @@ public class Head : MonoBehaviour
     {
         for (int i = 0; i < bodies.Length; i++)
         {
-            StartCoroutine(WaitForUp(i, this.transform.position.x));
+            StartCoroutine(WaitForUp(i, transform.position.x, transform.position.y));
         }
     }
 
@@ -378,7 +407,7 @@ public class Head : MonoBehaviour
     {
         for (int i = 0; i < bodies.Length; i++)
         {
-            StartCoroutine(WaitForDown(i, this.transform.position.x));
+            StartCoroutine(WaitForDown(i, transform.position.x, transform.position.y));
         }
     }
 
@@ -386,7 +415,7 @@ public class Head : MonoBehaviour
     {
         for (int i = 0; i < bodies.Length; i++)
         {
-            StartCoroutine(WaitForRight(i, this.transform.position.y));
+            StartCoroutine(WaitForRight(i, transform.position.x, transform.position.y));
         }
     }
 
@@ -394,7 +423,7 @@ public class Head : MonoBehaviour
     {
         for (int i = 0; i < bodies.Length; i++)
         {
-            StartCoroutine(WaitForLeft(i, this.transform.position.y));
+            StartCoroutine(WaitForLeft(i, transform.position.x, transform.position.y));
         }
     }
 

@@ -31,6 +31,12 @@ public class Shield : MonoBehaviour
         CuentaAtras();
     }
 
+    public void VaciarEscudo()
+    {
+        vidaEscudo = 0;
+        player.AnimacionEscudo();
+    }
+
     public void QuitarEscudo()
     {
         vidaEscudo--;

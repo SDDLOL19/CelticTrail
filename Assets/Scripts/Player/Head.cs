@@ -66,6 +66,7 @@ public class Head : MonoBehaviour
             DetectarChoqueFrontal();
             RegeneracionVida();
             SoltarTorreta();
+            GastarEscudo();
         }
     }
 
@@ -171,7 +172,7 @@ public class Head : MonoBehaviour
         AnimacionEscudo();
     }
 
-    void Growth()
+    public void Growth()
     {
         if (lenghtSnake <= StatManager.vidaMaxima)
         {
@@ -211,39 +212,6 @@ public class Head : MonoBehaviour
         ControladorCarrosEnEscena();
     }
 
-    public void AnimacionEscudo()
-    {
-        if (miEscudo.LeerEscudo() <= 0)
-        {
-            miAnimator.Play("EscudoRoto");
-
-            for (int i = 0; i < lenghtSnake; i++)
-            {
-                bodies[i].AnimacionEscudoRoto();
-            }
-        }
-
-        else if (miEscudo.LeerEscudo() == 1)
-        {
-            miAnimator.Play("EscudoCasiRoto");
-
-            for (int i = 0; i < lenghtSnake; i++)
-            {
-                bodies[i].AnimacionEscudoCasiRoto();
-            }
-        }
-
-        else
-        {
-            miAnimator.Play("EscudoBien");
-
-            for (int i = 0; i < lenghtSnake; i++)
-            {
-                bodies[i].AnimacionEscudoBien();
-            }
-        }
-    }
-
     void RegeneracionVida()
     {
         if (StatManager.puedeRegenerarVida)
@@ -269,7 +237,7 @@ public class Head : MonoBehaviour
     void SoltarTorreta()
     {
 
-        if (Input.GetKeyDown(KeyCode.E))
+        if (Input.GetKeyDown(GameManager.botonTorretaSuelta))
         {
             if (lenghtSnake > 0)
             {
@@ -281,13 +249,25 @@ public class Head : MonoBehaviour
         }
     }
 
+    void GastarEscudo()
+    {
+        if (Input.GetKeyDown(GameManager.botonGastarEscudo))
+        {
+            if (miEscudo.LeerEscudo() == miEscudo.LeerEscudoMaximo())
+            {
+                miEscudo.VaciarEscudo();
+                Growth();
+            }         
+        }
+    }
+
     void Movement()
     {
         transform.Translate(Vector2.up * playerSpeed * Time.deltaTime); //mueve el objeto en el en direccion flecha verde(la del eje y)        
 
         if (delayAcabado)
         {
-            if (Input.GetKey(GameManager.movimientoDerecha))
+            if (Input.GetKeyDown(GameManager.botonMovimientoDerecha))
             {
                 if (this.transform.eulerAngles.z != 90f)
                 {
@@ -297,7 +277,7 @@ public class Head : MonoBehaviour
                 }
             }
 
-            else if (Input.GetKey(GameManager.movimientoIzquierda))
+            else if (Input.GetKeyDown(GameManager.botonMovimientoIzquierda))
             {
                 if (this.transform.eulerAngles.z != 270f)
                 {
@@ -307,7 +287,7 @@ public class Head : MonoBehaviour
                 }
             }
 
-            else if (Input.GetKey(GameManager.movimientoArriba))
+            else if (Input.GetKeyDown(GameManager.botonMovimientoArriba))
             {
                 if (this.transform.eulerAngles.z != 180f)
                 {
@@ -317,7 +297,7 @@ public class Head : MonoBehaviour
                 }
             }
 
-            else if (Input.GetKey(GameManager.movimientoAbajo))
+            else if (Input.GetKeyDown(GameManager.botonMovimientoAbajo))
             {
                 if (this.transform.eulerAngles.z != 0)
                 {
@@ -459,6 +439,7 @@ public class Head : MonoBehaviour
     {
         hePerdido = true;
         GameManager.partidaAcabada = true;
+        //miEscudo.VaciarEscudo();
         AnimacionMorir();
     }
 
@@ -469,6 +450,39 @@ public class Head : MonoBehaviour
         for (int i = 0; i < bodies.Length; i++)
         {
             bodies[i].AnimacionMorir();
+        }
+    }
+
+    public void AnimacionEscudo()
+    {
+        if (miEscudo.LeerEscudo() <= 0)
+        {
+            miAnimator.Play("EscudoRoto");
+
+            for (int i = 0; i < lenghtSnake; i++)
+            {
+                bodies[i].AnimacionEscudoRoto();
+            }
+        }
+
+        else if (miEscudo.LeerEscudo() == 1)
+        {
+            miAnimator.Play("EscudoCasiRoto");
+
+            for (int i = 0; i < lenghtSnake; i++)
+            {
+                bodies[i].AnimacionEscudoCasiRoto();
+            }
+        }
+
+        else
+        {
+            miAnimator.Play("EscudoBien");
+
+            for (int i = 0; i < lenghtSnake; i++)
+            {
+                bodies[i].AnimacionEscudoBien();
+            }
         }
     }
 }

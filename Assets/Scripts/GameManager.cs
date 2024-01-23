@@ -13,7 +13,7 @@ public class GameManager : MonoBehaviour
     //MOVIMIENTO JUGADOR
     public static Head player; //Para que al cargar pantalla funcione el Navmesh se tiene que guardar directamente desde player en su start
 
-    public static KeyCode movimientoIzquierda = KeyCode.A, movimientoDerecha = KeyCode.D, movimientoArriba = KeyCode.W, movimientoAbajo = KeyCode.S;
+    public static KeyCode botonMovimientoIzquierda = KeyCode.A, botonMovimientoDerecha = KeyCode.D, botonMovimientoArriba = KeyCode.W, botonMovimientoAbajo = KeyCode.S, botonTorretaSuelta = KeyCode.E, botonGastarEscudo = KeyCode.Q;
 
     public static Transform objetivoPrincipalEnemigos;
 

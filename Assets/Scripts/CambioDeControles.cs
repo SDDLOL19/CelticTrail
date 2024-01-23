@@ -35,7 +35,7 @@ unsafe public class CambioDeControles : MonoBehaviour
     {
         PermitirCambioDeTecla();
 
-        fixed (KeyCode* tecla = &GameManager.movimientoDerecha) 
+        fixed (KeyCode* tecla = &GameManager.botonMovimientoDerecha) 
         {
             teclaQueCambia = tecla;
         }
@@ -45,7 +45,7 @@ unsafe public class CambioDeControles : MonoBehaviour
     {
         PermitirCambioDeTecla();
 
-        fixed (KeyCode* tecla = &GameManager.movimientoIzquierda)
+        fixed (KeyCode* tecla = &GameManager.botonMovimientoIzquierda)
         {
             teclaQueCambia = tecla;
         }
@@ -55,7 +55,7 @@ unsafe public class CambioDeControles : MonoBehaviour
     {
         PermitirCambioDeTecla();
 
-        fixed (KeyCode* tecla = &GameManager.movimientoArriba)
+        fixed (KeyCode* tecla = &GameManager.botonMovimientoArriba)
         {
             teclaQueCambia = tecla;
         }
@@ -65,7 +65,7 @@ unsafe public class CambioDeControles : MonoBehaviour
     {
         PermitirCambioDeTecla();
 
-        fixed (KeyCode* tecla = &GameManager.movimientoAbajo)
+        fixed (KeyCode* tecla = &GameManager.botonMovimientoAbajo)
         {
             teclaQueCambia = tecla;
         }

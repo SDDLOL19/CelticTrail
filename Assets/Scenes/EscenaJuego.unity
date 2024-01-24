@@ -71970,6 +71970,42 @@ PrefabInstance:
       propertyPath: m_Name
       value: Serpiente
       objectReference: {fileID: 0}
+    - target: {fileID: 6430074568389661610, guid: 52af84ac7f04834489e02437a602479c, type: 3}
+      propertyPath: torreta
+      value: 
+      objectReference: {fileID: 6638441914308934019, guid: 072a4fe3f72bdd64c96c245ff6616821, type: 3}
+    - target: {fileID: 6430074568668263552, guid: 52af84ac7f04834489e02437a602479c, type: 3}
+      propertyPath: torreta
+      value: 
+      objectReference: {fileID: 6638441914308934019, guid: 072a4fe3f72bdd64c96c245ff6616821, type: 3}
+    - target: {fileID: 6430074568948587541, guid: 52af84ac7f04834489e02437a602479c, type: 3}
+      propertyPath: torreta
+      value: 
+      objectReference: {fileID: 6638441914308934019, guid: 072a4fe3f72bdd64c96c245ff6616821, type: 3}
+    - target: {fileID: 6430074569486321321, guid: 52af84ac7f04834489e02437a602479c, type: 3}
+      propertyPath: torreta
+      value: 
+      objectReference: {fileID: 6638441914308934019, guid: 072a4fe3f72bdd64c96c245ff6616821, type: 3}
+    - target: {fileID: 6430074569580607718, guid: 52af84ac7f04834489e02437a602479c, type: 3}
+      propertyPath: torreta
+      value: 
+      objectReference: {fileID: 6638441914308934019, guid: 072a4fe3f72bdd64c96c245ff6616821, type: 3}
+    - target: {fileID: 6430074569763344035, guid: 52af84ac7f04834489e02437a602479c, type: 3}
+      propertyPath: torreta
+      value: 
+      objectReference: {fileID: 6638441914308934019, guid: 072a4fe3f72bdd64c96c245ff6616821, type: 3}
+    - target: {fileID: 6430074569810966964, guid: 52af84ac7f04834489e02437a602479c, type: 3}
+      propertyPath: torreta
+      value: 
+      objectReference: {fileID: 6638441914308934019, guid: 072a4fe3f72bdd64c96c245ff6616821, type: 3}
+    - target: {fileID: 6430074569851328792, guid: 52af84ac7f04834489e02437a602479c, type: 3}
+      propertyPath: torreta
+      value: 
+      objectReference: {fileID: 6638441914308934019, guid: 072a4fe3f72bdd64c96c245ff6616821, type: 3}
+    - target: {fileID: 6430074570328695018, guid: 52af84ac7f04834489e02437a602479c, type: 3}
+      propertyPath: torreta
+      value: 
+      objectReference: {fileID: 6638441914308934019, guid: 072a4fe3f72bdd64c96c245ff6616821, type: 3}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 52af84ac7f04834489e02437a602479c, type: 3}
 --- !u!224 &5314737160866803150

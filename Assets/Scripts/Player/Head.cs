@@ -63,6 +63,7 @@ public class Head : MonoBehaviour
         if (!GameManager.partidaAcabada)
         {
             Movement();
+            Acelera();
             DetectarChoqueFrontal();
             RegeneracionVida();
             SoltarTorreta();
@@ -258,6 +259,14 @@ public class Head : MonoBehaviour
                 miEscudo.VaciarEscudo();
                 Growth();
             }         
+        }
+    }
+
+    void Acelera()
+    {
+        if (Input.GetKeyDown(KeyCode.Space))
+        {
+            StatManager.velocidad += StatManager.velocidad * 20000f;
         }
     }
 

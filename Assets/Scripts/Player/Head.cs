@@ -15,6 +15,7 @@ public class Head : MonoBehaviour
     [SerializeField] GameObject torreta;
     Transform culoDeTren;
     public Shield miEscudo;
+    public EnergyBar miEnergia;
     float tiempo, temporizadorGiro = 0, contadorRegeneracionVida = 30;
 
     [HideInInspector] public float playerSpeed;
@@ -67,6 +68,8 @@ public class Head : MonoBehaviour
             RegeneracionVida();
             SoltarTorreta();
             GastarEscudo();
+            UsarTurbo();
+            Debug.Log("Velocidad:" + playerSpeed);
         }
     }
 
@@ -258,6 +261,14 @@ public class Head : MonoBehaviour
                 miEscudo.VaciarEscudo();
                 Growth();
             }         
+        }
+    }
+
+    void UsarTurbo()
+    {
+        if (Input.GetKey(KeyCode.Space))
+        {
+            miEnergia.UsarTurbo();
         }
     }
 

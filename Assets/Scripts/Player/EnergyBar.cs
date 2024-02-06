@@ -24,9 +24,14 @@ public class EnergyBar : MonoBehaviour
         if (energiaActual <= 0)
         {
             puedoCorrer = false;
-            estoyCorriendo = false;
-            RecargarEnergia();
+            estoyCorriendo = false;        
             Debug.Log("Energia:" + energiaActual);
+        }
+
+        if (!estoyCorriendo)
+        {
+            multiplicadorVelocidad = 1;
+            RecargarEnergia();
         }
     }
 
@@ -35,7 +40,7 @@ public class EnergyBar : MonoBehaviour
         if (puedoCorrer)
         {
             energiaActual -= multiplicadorReduccionEnergia * Time.deltaTime;
-            player.playerSpeed += multiplicadorVelocidad * Time.deltaTime;
+            multiplicadorVelocidad = 2;
             estoyCorriendo = true;
         }
     }

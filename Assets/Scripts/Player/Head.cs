@@ -265,7 +265,7 @@ public class Head : MonoBehaviour
 
     void UsarTurbo()
     {
-        if (Input.GetKey(KeyCode.Space))
+        if (Input.GetKey(GameManager.botonUsarTurbo))
         {
             miEnergiaController.UsarTurbo();
         }

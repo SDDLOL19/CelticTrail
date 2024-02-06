@@ -4,19 +4,17 @@ using UnityEngine;
 
 public class EnergyBar : MonoBehaviour
 {
-    [SerializeField] float duracionEnergia, multiplicadorReduccionEnergia = 1, multiplicadorRegeneracionEnergia = 1;
-    float temporizadorRecarga, temporizadorSinEnergia;
+    [SerializeField] float energiaMax, energiaRestada = 1, energiaSumada = 1, multiplicadorVelocidad = 2;
     float energiaActual;
-
-    public float multiplicadorVelocidad = 2;
+    [HideInInspector] public float velocidadActual = 1;
     bool puedoCorrer, estoyCorriendo;
-
-    [SerializeField] Head player;
 
     private void Start()
     {
-        energiaActual = duracionEnergia;
+        velocidadActual = 1;
+        energiaActual = energiaMax;
         puedoCorrer = true;
+        estoyCorriendo = false;
     }
 
     private void Update()
@@ -24,14 +22,23 @@ public class EnergyBar : MonoBehaviour
         if (energiaActual <= 0)
         {
             puedoCorrer = false;
-            estoyCorriendo = false;        
-            Debug.Log("Energia:" + energiaActual);
+            PararTurbo();
         }
 
         if (!estoyCorriendo)
         {
-            multiplicadorVelocidad = 1;
+            velocidadActual = 1;
             RecargarEnergia();
+
+            if (energiaActual >= energiaMax)
+            {
+                puedoCorrer = true;
+            }
+        }
+
+        else
+        {
+            energiaActual -= energiaRestada * Time.deltaTime;
         }
     }
 
@@ -39,17 +46,21 @@ public class EnergyBar : MonoBehaviour
     {
         if (puedoCorrer)
         {
-            energiaActual -= multiplicadorReduccionEnergia * Time.deltaTime;
-            multiplicadorVelocidad = 2;
+            velocidadActual = multiplicadorVelocidad;
             estoyCorriendo = true;
         }
     }
 
+    public void PararTurbo()
+    {
+        estoyCorriendo = false;
+    }
+
     void RecargarEnergia()
     {
-        if (energiaActual < duracionEnergia && estoyCorriendo)
+        if (energiaActual < energiaMax)
         {
-            energiaActual += multiplicadorRegeneracionEnergia * Time.deltaTime;           
+            energiaActual += energiaSumada * Time.deltaTime;
         }
     }
 

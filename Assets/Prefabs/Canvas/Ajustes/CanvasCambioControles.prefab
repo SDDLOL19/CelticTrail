@@ -1105,7 +1105,8 @@ PrefabInstance:
       propertyPath: m_Name
       value: Button Teclas Izquierda
       objectReference: {fileID: 0}
-    m_RemovedComponents: []
+    m_RemovedComponents:
+    - {fileID: 4073785856232811052, guid: 18cc8917fdb913e48b4497588d38d6e9, type: 3}
   m_SourcePrefab: {fileID: 100100000, guid: 18cc8917fdb913e48b4497588d38d6e9, type: 3}
 --- !u!224 &1635216159645979181 stripped
 RectTransform:
@@ -1231,7 +1232,8 @@ PrefabInstance:
       propertyPath: m_Name
       value: Button Teclas Derecha
       objectReference: {fileID: 0}
-    m_RemovedComponents: []
+    m_RemovedComponents:
+    - {fileID: 4073785856232811052, guid: 18cc8917fdb913e48b4497588d38d6e9, type: 3}
   m_SourcePrefab: {fileID: 100100000, guid: 18cc8917fdb913e48b4497588d38d6e9, type: 3}
 --- !u!224 &354772410598199048 stripped
 RectTransform:
@@ -1349,7 +1351,8 @@ PrefabInstance:
       propertyPath: m_Name
       value: Button Teclas Arriba
       objectReference: {fileID: 0}
-    m_RemovedComponents: []
+    m_RemovedComponents:
+    - {fileID: 4073785856232811052, guid: 18cc8917fdb913e48b4497588d38d6e9, type: 3}
   m_SourcePrefab: {fileID: 100100000, guid: 18cc8917fdb913e48b4497588d38d6e9, type: 3}
 --- !u!224 &5681021858749536717 stripped
 RectTransform:

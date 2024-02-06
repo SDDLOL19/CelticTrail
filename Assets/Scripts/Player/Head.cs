@@ -15,7 +15,7 @@ public class Head : MonoBehaviour
     [SerializeField] GameObject torreta;
     Transform culoDeTren;
     public Shield miEscudo;
-    public EnergyBar miEnergiaController;
+    EnergyBar miEnergiaController;
     float tiempo, temporizadorGiro = 0, contadorRegeneracionVida = 30;
 
     [HideInInspector] public float playerSpeed;
@@ -45,7 +45,8 @@ public class Head : MonoBehaviour
 
     private void Awake()
     {
-        miEscudo = this.gameObject.GetComponentInParent<Shield>();
+        miEscudo = gameObject.GetComponentInParent<Shield>();
+        miEnergiaController = gameObject.GetComponentInParent<EnergyBar>();
         GameManager.player = this;
     }
 
@@ -63,6 +64,7 @@ public class Head : MonoBehaviour
     {
         if (!GameManager.partidaAcabada)
         {
+            CalcularVelocidad();
             Movement();
             DetectarChoqueFrontal();
             RegeneracionVida();
@@ -159,7 +161,7 @@ public class Head : MonoBehaviour
             Morir();
         }
 
-        playerSpeed = StatManager.velocidad * (speedEscogida - (lenghtSnake / 1.5f)) * miEnergiaController.multiplicadorVelocidad;
+        CalcularVelocidad();
 
         for (int i = bodies.Length - 1; i >= lenghtSnake; i--)
         {
@@ -172,6 +174,11 @@ public class Head : MonoBehaviour
         }
 
         AnimacionEscudo();
+    }
+
+    void CalcularVelocidad()
+    {
+        playerSpeed = StatManager.velocidad * (speedEscogida - (lenghtSnake / 1.5f)) * miEnergiaController.velocidadActual;
     }
 
     public void Growth()
@@ -265,9 +272,14 @@ public class Head : MonoBehaviour
 
     void UsarTurbo()
     {
-        if (Input.GetKey(GameManager.botonUsarTurbo))
+        if (Input.GetKeyDown(GameManager.botonUsarTurbo))
         {
             miEnergiaController.UsarTurbo();
+        }
+
+        if (Input.GetKeyUp(GameManager.botonUsarTurbo))
+        {
+            miEnergiaController.PararTurbo();
         }
     }
 

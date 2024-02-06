@@ -11,6 +11,7 @@ GameObject:
   - component: {fileID: 749672583318327640}
   - component: {fileID: 749672583318327641}
   - component: {fileID: 749672583318327642}
+  - component: {fileID: 4686313348479635944}
   - component: {fileID: 4781655027846629132}
   - component: {fileID: 4781655027846629133}
   - component: {fileID: 730945032589440337}
@@ -120,6 +121,7 @@ MonoBehaviour:
   puntaCabeza: {fileID: 8892954027581782086}
   torreta: {fileID: 8656674880028795060}
   miEscudo: {fileID: 0}
+  miEnergiaController: {fileID: 0}
   playerSpeed: 0
   hePerdido: 0
   serpiente: {fileID: 0}
@@ -128,6 +130,24 @@ MonoBehaviour:
   defaultColor: {r: 1, g: 1, b: 1, a: 1}
   changedColor: {r: 1, g: 0, b: 0, a: 1}
   tiempoParpadeo: 0.3
+  spawnPointPlayer: {fileID: 0}
+--- !u!114 &4686313348479635944
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 749672583318327643}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: fccda45595640804b973f9bf5e8fc06a, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  energiaMax: 2
+  energiaRestada: 1
+  energiaSumada: 1
+  multiplicadorVelocidad: 2
+  player: {fileID: 0}
 --- !u!61 &4781655027846629132
 BoxCollider2D:
   m_ObjectHideFlags: 0

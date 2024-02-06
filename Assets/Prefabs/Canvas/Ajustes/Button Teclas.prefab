@@ -88,7 +88,6 @@ GameObject:
   - component: {fileID: 1860489418786035864}
   - component: {fileID: 8656174929150227799}
   - component: {fileID: 5197469860560023680}
-  - component: {fileID: 4073785856232811052}
   m_Layer: 5
   m_Name: TextoTecla
   m_TagString: Untagged
@@ -213,18 +212,6 @@ MonoBehaviour:
   m_hasFontAssetChanged: 0
   m_baseMaterial: {fileID: 0}
   m_maskOffset: {x: 0, y: 0, z: 0, w: 0}
---- !u!114 &4073785856232811052
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 4068204148411188832}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 4b1596606ad3a1a438f1d4c2bc9a3bbb, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
 --- !u!1 &4229663768034606238
 GameObject:
   m_ObjectHideFlags: 0

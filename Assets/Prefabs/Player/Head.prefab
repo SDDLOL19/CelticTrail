@@ -106,7 +106,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   distance: 2
   delay: 0.05
-  lenghtSnake: 10
+  lenghtSnake: 3
   speedEscogida: 10
   bodies:
   - {fileID: 0}
@@ -121,7 +121,6 @@ MonoBehaviour:
   puntaCabeza: {fileID: 8892954027581782086}
   torreta: {fileID: 8656674880028795060}
   miEscudo: {fileID: 0}
-  miEnergiaController: {fileID: 0}
   playerSpeed: 0
   hePerdido: 0
   serpiente: {fileID: 0}
@@ -147,7 +146,7 @@ MonoBehaviour:
   energiaRestada: 1
   energiaSumada: 1
   multiplicadorVelocidad: 2
-  player: {fileID: 0}
+  velocidadActual: 1
 --- !u!61 &4781655027846629132
 BoxCollider2D:
   m_ObjectHideFlags: 0

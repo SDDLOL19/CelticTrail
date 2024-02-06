@@ -42,7 +42,7 @@ GameObject:
   - component: {fileID: 5205183529543799378}
   - component: {fileID: 6018376522817620088}
   m_Layer: 0
-  m_Name: Serpiente
+  m_Name: Serpiente_1.0
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0

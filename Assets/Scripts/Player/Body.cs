@@ -3,9 +3,10 @@ using UnityEngine.AI;
 
 public class Body : MonoBehaviour
 {
-    [SerializeField] GameObject torreta;
+    [SerializeField] GameObject[] torreta;
+    [SerializeField] int cantidadTorretas;
     SpriteRenderer miRenderer;
-    SpriteRenderer torretaRenderer;
+    SpriteRenderer[] torretaRenderer;
     [SerializeField] SpriteRenderer escudoRenderer;
     NavMeshObstacle miObstacle;
     Collider2D miCollider;
@@ -18,8 +19,14 @@ public class Body : MonoBehaviour
 
     private void Awake()
     {
+        torretaRenderer = new SpriteRenderer[cantidadTorretas];
         miRenderer = GetComponent<SpriteRenderer>();
-        torretaRenderer = torreta.GetComponent<SpriteRenderer>();
+
+        for (int i = 0; i < torretaRenderer.Length; i++)
+        {
+            torretaRenderer[i] = torreta[i].GetComponent<SpriteRenderer>();
+        }
+
         miObstacle = GetComponent<NavMeshObstacle>();
         miCollider = GetComponent<Collider2D>();
         miAnimator = GetComponent<Animator>();
@@ -86,7 +93,11 @@ public class Body : MonoBehaviour
         miObstacle.enabled = true;
         miCollider.enabled = true;
         escudoRenderer.enabled = true;
-        torreta.SetActive(true);
+
+        for (int i = 0; i < torretaRenderer.Length; i++)
+        {
+            torreta[i].SetActive(true);
+        }
     }
 
     public void Esconderme()
@@ -95,7 +106,11 @@ public class Body : MonoBehaviour
         miObstacle.enabled = false;
         miCollider.enabled = false;
         escudoRenderer.enabled = false;
-        torreta.SetActive(false);
+
+        for (int i = 0; i < torretaRenderer.Length; i++)
+        {
+            torreta[i].SetActive(false);
+        }
     }
 
     void MeHicePupa()
@@ -107,13 +122,19 @@ public class Body : MonoBehaviour
     protected void CambioColor()
     {
         miRenderer.color = changedColor;
-        torretaRenderer.color = changedColor;
+        for (int i = 0; i < torretaRenderer.Length; i++)
+        {
+            torretaRenderer[i].color = changedColor;
+        }
     }
 
     protected void ResetColor()
     {
         miRenderer.color = defaultColor;
-        torretaRenderer.color = defaultColor;
+        for (int i = 0; i < torretaRenderer.Length; i++)
+        {
+            torretaRenderer[i].color = defaultColor;
+        }
     }
 
     public void AnimacionMorir()

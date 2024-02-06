@@ -1,16 +1,27 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using TMPro;
 
 unsafe public class CambioDeControles : MonoBehaviour
 {
     public bool esperandoTecla = false;
+
+    [SerializeField] TextMeshPro[] textosBotones;
+
+    int textoQueCambia;
+    string textoNuevo;
 
     KeyCode* teclaQueCambia;
 
     void OnGUI() //Se actualiza cada vez que hay un evento
     {
         CambiarTecla(); 
+    }
+
+    private void Update()
+    {
+        textosBotones[textoQueCambia].text = textoNuevo;
     }
 
     void CambiarTecla() //Obligatoriamente tiene que llamarse en OnGUI || Hay que añadir la tecla que hay que cambiar por puntero
@@ -39,6 +50,8 @@ unsafe public class CambioDeControles : MonoBehaviour
         {
             teclaQueCambia = tecla;
         }
+
+        CambiarTexto(0, GameManager.botonMovimientoDerecha);
     }
 
     public void CambiarIzquierda()
@@ -49,6 +62,8 @@ unsafe public class CambioDeControles : MonoBehaviour
         {
             teclaQueCambia = tecla;
         }
+
+        CambiarTexto(1, GameManager.botonMovimientoIzquierda);
     }
 
     public void CambiarArriba()
@@ -71,9 +86,25 @@ unsafe public class CambioDeControles : MonoBehaviour
         }
     }
 
+    public void CambiarTurbo()
+    {
+        PermitirCambioDeTecla();
+
+        fixed (KeyCode* tecla = &GameManager.botonUsarTurbo)
+        {
+            teclaQueCambia = tecla;
+        }
+    }
+
     public void Cambiar()
     {
 
+    }
+
+    void CambiarTexto(int valor, KeyCode tecla)
+    {
+        textoQueCambia = valor;
+        textoNuevo = tecla.ToString();
     }
 
     public void SalirDelMenu()

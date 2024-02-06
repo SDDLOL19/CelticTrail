@@ -8,7 +8,7 @@ public class EnergyBar : MonoBehaviour
     float temporizadorRecarga, temporizadorSinEnergia;
     float energiaActual;
 
-    [SerializeField] float multiplicadorVelocidad = 2, velocidadTurbo = 1;
+    public float multiplicadorVelocidad = 2;
     bool puedoCorrer, estoyCorriendo;
 
     [SerializeField] Head player;

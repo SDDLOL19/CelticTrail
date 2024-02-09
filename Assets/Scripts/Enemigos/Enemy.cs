@@ -7,11 +7,12 @@ public class Enemy : MonoBehaviour
 {
     public GameObject prefabDroppeable, shootPosition, prefabBullet, rotacionShooting, spriteEnemigo;
     public int velocidadMovimiento = 5;      //Para que esté a al velocidad por defecto sería 4 o 5
-    public float enemyVida;
+    [SerializeField] protected float vidaEscogida;
+    [HideInInspector] public float enemyVida;
     public float tiempoDeRecarga, rangoDisparoMin, rangoDisparoMax, rotationSpeed = 100;
     protected float timerSpawnBullet;                       //HideInInspector para que sea pública pero no se pueda cambiar fuera
 
-    protected bool disparando = false, muriendo = false;
+    protected bool disparando = false, muriendo = false, DoneOnceAccExtrUno = false;
 
     protected NavMeshAgent agent;
     protected Transform objetivoActual;
@@ -42,6 +43,10 @@ public class Enemy : MonoBehaviour
         miAnimator = spriteEnemigo.GetComponent<Animator>();
 
         miRenderer = spriteEnemigo.GetComponent<SpriteRenderer>();
+
+        enemyVida = vidaEscogida;
+
+        StartExtraUno();
     }
 
     private void OnDestroy()
@@ -54,6 +59,7 @@ public class Enemy : MonoBehaviour
     {
         if (!GameManager.partidaAcabada && !muriendo)
         {
+            AccionExtraUno();
             RotarShootingPoint();
             timerSpawnBullet -= Time.deltaTime;
             MoveToThePlayer();
@@ -240,5 +246,16 @@ public class Enemy : MonoBehaviour
     protected void AnimacionCaminar()
     {
         miAnimator.Play("Caminar");
+    }
+
+    //EXTRA
+    protected virtual void StartExtraUno()
+    {
+
+    }
+
+    protected virtual void AccionExtraUno()
+    {
+
     }
 }

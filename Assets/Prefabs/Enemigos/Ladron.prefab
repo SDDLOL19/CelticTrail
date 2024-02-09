@@ -77,6 +77,7 @@ MonoBehaviour:
   spriteEnemigo: {fileID: 5087299896580461871}
   velocidadMovimiento: 10
   enemyVida: 2
+  vidaEscogida: 2
   tiempoDeRecarga: 2
   rangoDisparoMin: 1
   rangoDisparoMax: 5

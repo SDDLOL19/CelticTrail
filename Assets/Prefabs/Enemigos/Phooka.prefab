@@ -281,11 +281,20 @@ MonoBehaviour:
   shootPosition: {fileID: 9015593652726599998}
   prefabBullet: {fileID: 2412584935707745910, guid: bda567a229a2a6d44bbac4c97c59cdd6, type: 3}
   rotacionShooting: {fileID: 2255331675192042856}
+  spriteEnemigo: {fileID: 0}
+  velocidadMovimiento: 5
+  vidaEscogida: 0
   enemyVida: 4
-  enemyVidaMax: 4
   tiempoDeRecarga: 2
   rangoDisparoMin: 5
   rangoDisparoMax: 10
+  rotationSpeed: 100
+  detectionDistance: 0
+  defaultColor: {r: 0, g: 0, b: 0, a: 0}
+  changedColor: {r: 0, g: 0, b: 0, a: 0}
+  tiempoParpadeo: 0.5
+  probabilidadDrop: 0
+  rangoMaxVidaMenos: 13
 --- !u!1 &9015593652726599998
 GameObject:
   m_ObjectHideFlags: 0

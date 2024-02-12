@@ -7,7 +7,7 @@ unsafe public class CambioDeControles : MonoBehaviour
 {
     public bool esperandoTecla = false;
 
-    [SerializeField] TextMeshPro[] textosBotones;
+    [SerializeField] TextMeshProUGUI[] textosBotones;
 
     int textoQueCambia;
     string textoNuevo;
@@ -74,6 +74,8 @@ unsafe public class CambioDeControles : MonoBehaviour
         {
             teclaQueCambia = tecla;
         }
+
+        CambiarTexto(2, GameManager.botonMovimientoArriba);
     }
 
     public void CambiarAbajo()
@@ -84,6 +86,8 @@ unsafe public class CambioDeControles : MonoBehaviour
         {
             teclaQueCambia = tecla;
         }
+
+        CambiarTexto(3, GameManager.botonMovimientoAbajo);
     }
 
     public void CambiarTurbo()
@@ -94,11 +98,30 @@ unsafe public class CambioDeControles : MonoBehaviour
         {
             teclaQueCambia = tecla;
         }
+
+        CambiarTexto(4, GameManager.botonUsarTurbo);
     }
-
-    public void Cambiar()
+    public void CambiarSoltarTorreta()
     {
+        PermitirCambioDeTecla();
 
+        fixed (KeyCode* tecla = &GameManager.botonTorretaSuelta)
+        {
+            teclaQueCambia = tecla;
+        }
+
+        CambiarTexto(5, GameManager.botonTorretaSuelta);
+    }
+    public void CambiarGastoEscudo()
+    {
+        PermitirCambioDeTecla();
+
+        fixed (KeyCode* tecla = &GameManager.botonGastarEscudo)
+        {
+            teclaQueCambia = tecla;
+        }
+
+        CambiarTexto(6, GameManager.botonGastarEscudo);
     }
 
     void CambiarTexto(int valor, KeyCode tecla)

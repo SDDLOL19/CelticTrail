@@ -7260,6 +7260,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: CanvasCambioControles
       objectReference: {fileID: 0}
+    - target: {fileID: 1635216159328160079, guid: 0dda63b8114a5134fab7b9517ba42ea3, type: 3}
+      propertyPath: m_IsActive
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 1635216159328160083, guid: 0dda63b8114a5134fab7b9517ba42ea3, type: 3}
       propertyPath: m_Pivot.x
       value: 0

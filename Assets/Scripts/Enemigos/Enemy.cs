@@ -216,6 +216,15 @@ public class Enemy : MonoBehaviour
             CambioColor();
             Invoke("ResetColor", tiempoParpadeo);
         }
+
+        if (collision.gameObject.tag == "RadioExplosion")
+        {
+            enemyVida -= StatManager.danioBala * StatManager.multiplicadorDaño;
+
+            Debug.Log("FuncionaElDaño");
+            CambioColor();
+            Invoke("ResetColor", tiempoParpadeo);
+        }
     }
 
     private void OnCollisionEnter2D(Collision2D collision)

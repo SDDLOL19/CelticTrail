@@ -4904,7 +4904,7 @@ MonoBehaviour:
   SF_danioTorreta: 1
   SF_areaExplosion: 1
   SF_danioExplosion: 1
-  SF_balaExplosiva: 0
+  SF_balaExplosiva: 1
   SF_cantidadBalas: 1
   SF_multiplicadorVelocidadBala: 1
   SF_vidaBala: 2

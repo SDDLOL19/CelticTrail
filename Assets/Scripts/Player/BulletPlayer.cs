@@ -7,6 +7,7 @@ public class BulletPlayer : MonoBehaviour
     [SerializeField, Range(1f, 20f)] float speed;
     float timeDestruction;
     [SerializeField] string tagDeMiCreador;
+    [SerializeField] GameObject prefabAreaExplosion;
 
     private void Start()
     {
@@ -27,11 +28,20 @@ public class BulletPlayer : MonoBehaviour
         transform.Translate(bullet * speed * StatManager.multiplicadorVelocidadBala * Time.deltaTime);
     }
 
+    void SpanwDañoArea()
+    {
+        Instantiate(prefabAreaExplosion, transform.position, transform.rotation);
+    }
+
     void Destroy()
     {
         timeDestruction -= Time.deltaTime;
         if (timeDestruction <= 0)
         {
+            if (StatManager.balaExplosiva)
+            {
+                SpanwDañoArea();
+            }
             Destroy(gameObject);
         }
     }
@@ -41,11 +51,19 @@ public class BulletPlayer : MonoBehaviour
         if (collision.gameObject.tag == "Enemigo") //collision.gameObject.tag != tagDeMiCreador
         {
             //Debug.Log("AAAAAAAAAAAAA");
+            if (StatManager.balaExplosiva)
+            {
+                SpanwDañoArea();
+            }
             Destroy(this.gameObject);
         }
 
         else if (collision.gameObject.tag == "Obstaculo")
         {
+            if (StatManager.balaExplosiva)
+            {
+                SpanwDañoArea();
+            }
             Destroy(this.gameObject);
         }
 

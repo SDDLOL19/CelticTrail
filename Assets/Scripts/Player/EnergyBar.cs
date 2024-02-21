@@ -7,7 +7,8 @@ public class EnergyBar : MonoBehaviour
     [SerializeField] float energiaMax, energiaRestada = 1, energiaSumada = 1, multiplicadorVelocidad = 2;
     float energiaActual;
     [HideInInspector] public float velocidadActual = 1;
-    bool puedoCorrer, estoyCorriendo;
+    [HideInInspector] public bool estoyCorriendo = false;
+    bool puedoCorrer;
 
     private void Start()
     {
@@ -46,9 +47,14 @@ public class EnergyBar : MonoBehaviour
     {
         if (puedoCorrer)
         {
-            velocidadActual = multiplicadorVelocidad;
+            //TurboVelocidad();
             estoyCorriendo = true;
         }
+    }
+
+    void TurboVelocidad()
+    {
+        velocidadActual = multiplicadorVelocidad;
     }
 
     public void PararTurbo()

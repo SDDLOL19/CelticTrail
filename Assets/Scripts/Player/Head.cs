@@ -121,13 +121,17 @@ public class Head : MonoBehaviour
             ReSpawm();
         }
 
+
         if (collision.gameObject.tag == "Enemigo")
         {
-            Debug.Log("ME CHOQUÉ");
-            Shrinkage();
+            if (!miEnergiaController.estoyCorriendo)
+            {
+                Debug.Log("ME CHOQUÉ");
+                Shrinkage();
 
-            CambioColor();
-            Invoke("ResetColor", tiempoParpadeo);
+                CambioColor();
+                Invoke("ResetColor", tiempoParpadeo);
+            }
         }
     }
 
@@ -266,7 +270,7 @@ public class Head : MonoBehaviour
             {
                 miEscudo.VaciarEscudo();
                 Growth();
-            }         
+            }
         }
     }
 
@@ -281,6 +285,11 @@ public class Head : MonoBehaviour
         {
             miEnergiaController.PararTurbo();
         }
+    }
+
+    void Esconderme()
+    {
+
     }
 
     void Movement()

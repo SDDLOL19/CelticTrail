@@ -4843,6 +4843,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: Serpiente_2.0
       objectReference: {fileID: 0}
+    - target: {fileID: 5205183531337242780, guid: de64315017794e549af13eb2673222f4, type: 3}
+      propertyPath: lenghtSnake
+      value: 10
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: de64315017794e549af13eb2673222f4, type: 3}
 --- !u!1 &1421387322

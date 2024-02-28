@@ -28,6 +28,8 @@ public class Enemy : MonoBehaviour
 
     [SerializeField] int probabilidadDrop;
 
+    bool explosionOnce = true;
+
     void Start()
     {
         Recarga();
@@ -217,13 +219,14 @@ public class Enemy : MonoBehaviour
             Invoke("ResetColor", tiempoParpadeo);
         }
 
-        if (collision.gameObject.tag == "RadioExplosion")
+        if (collision.gameObject.tag == "RadioExplosion" && explosionOnce)
         {
             enemyVida -= StatManager.danioBala * StatManager.multiplicadorDaño;
 
             Debug.Log("FuncionaElDaño");
             CambioColor();
             Invoke("ResetColor", tiempoParpadeo);
+            explosionOnce = false;
         }
     }
 

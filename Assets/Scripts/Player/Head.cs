@@ -8,14 +8,10 @@ using UnityEngine.AI;
 public class Head : MonoBehaviour
 {
     [SerializeField] float distance, delay = 0.05f;
-    [SerializeField] int lenghtSnake;
     [SerializeField, Range(1, 10)] int speedEscogida;
-    [SerializeField] Body[] bodies;
     [SerializeField] GameObject puntaCabeza;
     [SerializeField] GameObject torreta;
-    Transform culoDeTren;
     public Shield miEscudo;
-    EnergyBar miEnergiaController;
     float tiempo, temporizadorGiro = 0, contadorRegeneracionVida = 30;
 
     [HideInInspector] public float playerSpeed;
@@ -46,7 +42,6 @@ public class Head : MonoBehaviour
     private void Awake()
     {
         miEscudo = gameObject.GetComponentInParent<Shield>();
-        miEnergiaController = gameObject.GetComponentInParent<EnergyBar>();
         GameManager.player = this;
     }
 
@@ -57,7 +52,6 @@ public class Head : MonoBehaviour
         torretaRenderer = torreta.GetComponent<SpriteRenderer>();
         ControladorCarrosEnEscena();
         direccionRayo = Vector2.up;
-        culoDeTren = bodies[lenghtSnake].transform;
     }
 
     void Update()
@@ -146,18 +140,13 @@ public class Head : MonoBehaviour
 
         MovementUp();
         transform.position = spawnPointPlayer.position;
-
-        for (int i = 0; i < lenghtSnake; i++)
-        {
-            bodies[i].ReSpawn(spawnPointPlayer, distance * (i + 1));
-        }
     }
 
     void ControladorCarrosEnEscena()
     {
-        if (lenghtSnake > 9)
+        if (lenghtSnake > StatManager.vidaMaxima)
         {
-            lenghtSnake = 9;
+            lenghtSnake = StatManager.vidaMaxima;
         }
 
         if (lenghtSnake <= 0)
@@ -406,6 +395,7 @@ public class Head : MonoBehaviour
             delayAcabado = true;
         }
     }
+
     void BodiesUp()
     {
         for (int i = 0; i < bodies.Length; i++)
@@ -474,14 +464,24 @@ public class Head : MonoBehaviour
         AnimacionMorir();
     }
 
-    void AnimacionMorir()
+    public void AnimacionMorir()
     {
         miAnimator.Play("Muerte");
+    }
 
-        for (int i = 0; i < bodies.Length; i++)
-        {
-            bodies[i].AnimacionMorir();
-        }
+    public void AnimacionEscudoRoto()
+    {
+        miAnimator.Play("EscudoRoto");
+    }
+
+    public void AnimacionEscudoCasiRoto()
+    {
+        miAnimator.Play("EscudoCasiRoto");
+    }
+
+    public void AnimacionEscudoBien()
+    {
+        miAnimator.Play("EscudoBien");
     }
 
     public void AnimacionEscudo()

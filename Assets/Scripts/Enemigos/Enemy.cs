@@ -29,6 +29,7 @@ public class Enemy : MonoBehaviour
     [SerializeField] int probabilidadDrop;
 
     bool explosionOnce = true;
+    bool explosionOnceTorreta = true;
 
     void Start()
     {
@@ -223,10 +224,19 @@ public class Enemy : MonoBehaviour
         {
             enemyVida -= StatManager.danioBala * StatManager.multiplicadorDaño;
 
-            Debug.Log("FuncionaElDaño");
             CambioColor();
             Invoke("ResetColor", tiempoParpadeo);
             explosionOnce = false;
+        }
+
+        if (collision.gameObject.tag == "RadioExplosionTorreta" && explosionOnceTorreta)
+        {
+            enemyVida -= 4;
+
+            Debug.Log("FuncionaElDaño");
+            CambioColor();
+            Invoke("ResetColor", tiempoParpadeo);
+            explosionOnceTorreta = false;
         }
     }
 

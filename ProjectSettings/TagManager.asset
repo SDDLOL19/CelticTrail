@@ -13,6 +13,7 @@ TagManager:
   - Rompible
   - BalaTorreta
   - RadioExplosion
+  - RadioExplosionTorreta
   layers:
   - Default
   - TransparentFX

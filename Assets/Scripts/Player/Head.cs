@@ -58,7 +58,6 @@ public class Head : MonoBehaviour
     {
         if (!GameManager.partidaAcabada)
         {
-            CalcularVelocidad();
             Movement();
             DetectarChoqueFrontal();
             RegeneracionVida();
@@ -144,6 +143,8 @@ public class Head : MonoBehaviour
 
     void ControladorCarrosEnEscena()
     {
+        CalcularVelocidad();
+
         if (lenghtSnake > StatManager.vidaMaxima)
         {
             lenghtSnake = StatManager.vidaMaxima;
@@ -153,8 +154,6 @@ public class Head : MonoBehaviour
         {
             Morir();
         }
-
-        CalcularVelocidad();
 
         for (int i = bodies.Length - 1; i >= lenghtSnake; i--)
         {
@@ -172,6 +171,17 @@ public class Head : MonoBehaviour
     void CalcularVelocidad()
     {
         playerSpeed = StatManager.velocidad * (speedEscogida - (lenghtSnake / 1.5f)) * miEnergiaController.velocidadActual;
+
+        CambiarVelocidadBodies(playerSpeed);
+    }
+
+    void CambiarVelocidadBodies(float speed)
+    {
+        for (int i = 0; i < bodies.Length; i++)
+        {
+            //bodies[i].SetSpeed(speed);
+            StartCoroutine(WaitToChangeSpeed(i, speed)); ////////////////////  EL PROBLEMA RESIDE EN EL TIEMPO QUE TARDA EN CAMBIARLA YA QUE COGE PLAYER SPEED INCLUSO CUANDO CAMBIA AL TURBO, HAY QUE USAR UNA VARIABLE DIFERENTE QUE SE CAMBIE CUANDO EL CULO CAMBIE
+        }
     }
 
     public void Growth()
@@ -268,11 +278,15 @@ public class Head : MonoBehaviour
         if (Input.GetKeyDown(GameManager.botonUsarTurbo))
         {
             miEnergiaController.UsarTurbo();
+
+            CalcularVelocidad();
         }
 
         if (Input.GetKeyUp(GameManager.botonUsarTurbo))
         {
             miEnergiaController.PararTurbo();
+
+            CalcularVelocidad();
         }
     }
 
@@ -358,32 +372,43 @@ public class Head : MonoBehaviour
         direccionRayo = Vector2.down;
     }
 
-    IEnumerator WaitForUp(int i, float posicionEnHorizontal, float posicionEnVertical)
+    IEnumerator WaitForUp(int i, float posicionEnHorizontal, float posicionEnVertical, float speed)
     {
-        tiempo = (distance * (i + 1)) / playerSpeed;
+        tiempo = (distance * (i + 1)) / speed;
         yield return new WaitForSeconds(tiempo);
+        bodies[i].SetSpeed(speed);
         bodies[i].MovementUp(posicionEnHorizontal, posicionEnVertical);
     }
 
-    IEnumerator WaitForDown(int i, float posicionEnHorizontal, float posicionEnVertical)
+    IEnumerator WaitForDown(int i, float posicionEnHorizontal, float posicionEnVertical, float speed)
     {
-        tiempo = (distance * (i + 1)) / playerSpeed;
+        tiempo = (distance * (i + 1)) / speed;
         yield return new WaitForSeconds(tiempo);
+        bodies[i].SetSpeed(speed);
         bodies[i].MovementDown(posicionEnHorizontal, posicionEnVertical);
     }
 
-    IEnumerator WaitForLeft(int i, float posicionEnHorizontal, float posicionEnVertical)
+    IEnumerator WaitForLeft(int i, float posicionEnHorizontal, float posicionEnVertical, float speed)
     {
-        tiempo = (distance * (i + 1)) / playerSpeed;
+        tiempo = (distance * (i + 1)) / speed;
         yield return new WaitForSeconds(tiempo);
+        bodies[i].SetSpeed(speed);
         bodies[i].MovementLeft(posicionEnHorizontal, posicionEnVertical);
     }
 
-    IEnumerator WaitForRight(int i, float posicionEnHorizontal, float posicionEnVertical)
+    IEnumerator WaitForRight(int i, float posicionEnHorizontal, float posicionEnVertical, float speed)
     {
-        tiempo = (distance * (i + 1)) / playerSpeed;
+        tiempo = (distance * (i + 1)) / speed;
         yield return new WaitForSeconds(tiempo);
+        bodies[i].SetSpeed(speed);
         bodies[i].MovementRight(posicionEnHorizontal, posicionEnVertical);
+    }
+
+    IEnumerator WaitToChangeSpeed(int i, float speed)
+    {
+        tiempo = (distance * (i + 1)) / speed;
+        yield return new WaitForSeconds(tiempo);
+        bodies[i].SetSpeed(speed);
     }
 
     void Temporizador()
@@ -400,7 +425,7 @@ public class Head : MonoBehaviour
     {
         for (int i = 0; i < bodies.Length; i++)
         {
-            StartCoroutine(WaitForUp(i, transform.position.x, transform.position.y));
+            StartCoroutine(WaitForUp(i, transform.position.x, transform.position.y, playerSpeed));
         }
     }
 
@@ -408,7 +433,7 @@ public class Head : MonoBehaviour
     {
         for (int i = 0; i < bodies.Length; i++)
         {
-            StartCoroutine(WaitForDown(i, transform.position.x, transform.position.y));
+            StartCoroutine(WaitForDown(i, transform.position.x, transform.position.y, playerSpeed));
         }
     }
 
@@ -416,7 +441,7 @@ public class Head : MonoBehaviour
     {
         for (int i = 0; i < bodies.Length; i++)
         {
-            StartCoroutine(WaitForRight(i, transform.position.x, transform.position.y));
+            StartCoroutine(WaitForRight(i, transform.position.x, transform.position.y, playerSpeed));
         }
     }
 
@@ -424,37 +449,11 @@ public class Head : MonoBehaviour
     {
         for (int i = 0; i < bodies.Length; i++)
         {
-            StartCoroutine(WaitForLeft(i, transform.position.x, transform.position.y));
+            StartCoroutine(WaitForLeft(i, transform.position.x, transform.position.y, playerSpeed));
         }
     }
 
     //QQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQ
-
-    //IEnumerator ParpadeoTemporal()
-    //{
-    //    while (tiempoInvulnerable > 0)
-    //    {
-    //        StartCoroutine(TemporizadorInvulnerable());
-    //        InvokeRepeating("Parpadeo", 0, 0.1f); // Llama a la función Parpadeo
-    //        yield return new WaitForSeconds(0.1f); // Espera 0.1 segundos antes de la siguiente iteración
-    //        // Reduce el tiempo invulnerable
-    //    }
-    //    tiempoInvulnerable = 0.5f;  // Reinicia el tiempo invulnerable
-    //}
-
-    //IEnumerator TemporizadorInvulnerable()
-    //{
-    //    while (tiempoInvulnerable > 0)
-    //    {
-    //        tiempoInvulnerable -= Time.deltaTime;
-    //        yield return null;  // Espera hasta el siguiente frame antes de la siguiente iteración
-    //    }
-    //}
-
-    //void Parpadeo()  //Hay que rehacerlo del todo. Nunca funcionará como queremos de esta forma
-    //{
-    //    serpiente.SetActive(!serpiente.activeInHierarchy);
-    //}
 
     void Morir()
     {
@@ -517,4 +516,3 @@ public class Head : MonoBehaviour
         }
     }
 }
-

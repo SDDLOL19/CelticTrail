@@ -15,6 +15,8 @@ public class Body : MonoBehaviour
     public Color changedColor;
     [SerializeField] float tiempoParpadeo = 0.5f;
 
+    float velocidadBody;
+
     Animator miAnimator;
 
     private void Awake()
@@ -42,7 +44,7 @@ public class Body : MonoBehaviour
 
     void Movement()
     {
-        transform.Translate(Vector2.up * GameManager.player.playerSpeed * Time.deltaTime); //mueve el objeto en el en direccion flecha verde(la del eje y)           
+        transform.Translate(Vector2.up * velocidadBody * Time.deltaTime); //mueve el objeto en el en direccion flecha verde(la del eje y)           
     }
 
     public void MovementLeft(float posicionEnHorizontal, float posicionEnVertical)
@@ -50,7 +52,7 @@ public class Body : MonoBehaviour
         if (!GameManager.partidaAcabada)
         {
             transform.eulerAngles = new Vector3(0f, 0, 90); //rota el objeto a izquierda
-            new Vector3(posicionEnHorizontal, posicionEnVertical, transform.position.z);
+            transform.position = new Vector3(posicionEnHorizontal, posicionEnVertical, transform.position.z);
         }
     }
 
@@ -178,5 +180,10 @@ public class Body : MonoBehaviour
             CambioColor();
             Invoke("ResetColor", tiempoParpadeo);
         }
+    }
+
+    public void SetSpeed(float speed)
+    {
+        velocidadBody = speed;
     }
 }

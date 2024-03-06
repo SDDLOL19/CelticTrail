@@ -52,7 +52,7 @@ public class Body : MonoBehaviour
         if (!GameManager.partidaAcabada)
         {
             transform.eulerAngles = new Vector3(0f, 0, 90); //rota el objeto a izquierda
-            transform.position = new Vector3(posicionEnHorizontal, posicionEnVertical, transform.position.z);
+            transform.position = new Vector3(transform.position.x, posicionEnVertical, transform.position.z);
         }
     }
 
@@ -61,7 +61,7 @@ public class Body : MonoBehaviour
         if (!GameManager.partidaAcabada)
         {
             transform.eulerAngles = new Vector3(0f, 0, -90); //rota el objeto a derecha
-            transform.position = new Vector3(posicionEnHorizontal, posicionEnVertical, transform.position.z);
+            transform.position = new Vector3(transform.position.x, posicionEnVertical, transform.position.z);
         }
     }
 
@@ -70,7 +70,7 @@ public class Body : MonoBehaviour
         if (!GameManager.partidaAcabada)
         {
             transform.eulerAngles = Vector3.zero; ; //rota el objeto hacia arriba
-            transform.position = new Vector3(posicionEnHorizontal, posicionEnVertical, transform.position.z);
+            transform.position = new Vector3(posicionEnHorizontal, transform.position.y, transform.position.z);
         }
     }
 
@@ -79,7 +79,7 @@ public class Body : MonoBehaviour
         if (!GameManager.partidaAcabada)
         {
             transform.eulerAngles = new Vector3(0f, 0, 180); //rota el objeto hacia abajo
-            transform.position = new Vector3(posicionEnHorizontal, posicionEnVertical, transform.position.z);
+            transform.position = new Vector3(posicionEnHorizontal, transform.position.y, transform.position.z);
         }
     }
 

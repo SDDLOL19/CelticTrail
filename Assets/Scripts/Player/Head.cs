@@ -58,6 +58,10 @@ public class Head : MonoBehaviour
         ControladorCarrosEnEscena();
         culoDeTren = bodies[lenghtSnake].transform;
         direccionRayo = Vector2.up;
+        for (int i = 0; i < lenghtSnake; i++)
+        {
+            bodies[i].SetSpeed(playerSpeed);
+        }
     }
 
     void Update()
@@ -180,7 +184,7 @@ public class Head : MonoBehaviour
 
     void CalcularVelocidad()
     {
-        playerSpeed = StatManager.velocidad * (speedEscogida - (lenghtSnake / 1.5f)) * miEnergiaController.velocidadActual;
+        playerSpeed = StatManager.velocidad * (speedEscogida - (lenghtSnake / distance/*1.5f*/)) * miEnergiaController.velocidadActual;
 
         CambiarVelocidadBodies(playerSpeed);
     }
@@ -189,7 +193,6 @@ public class Head : MonoBehaviour
     {
         for (int i = 0; i < bodies.Length; i++)
         {
-            //bodies[i].SetSpeed(speed);
             StartCoroutine(WaitToChangeSpeed(i, speed)); ////////////////////  EL PROBLEMA RESIDE EN EL TIEMPO QUE TARDA EN CAMBIARLA YA QUE COGE PLAYER SPEED INCLUSO CUANDO CAMBIA AL TURBO, HAY QUE USAR UNA VARIABLE DIFERENTE QUE SE CAMBIE CUANDO EL CULO CAMBIE
         }
     }
@@ -386,7 +389,7 @@ public class Head : MonoBehaviour
     {
         tiempo = (distance * (i + 1)) / speed;
         yield return new WaitForSeconds(tiempo);
-        bodies[i].SetSpeed(speed);
+        //bodies[i].SetSpeed(speed);
         bodies[i].MovementUp(posicionEnHorizontal, posicionEnVertical);
     }
 
@@ -394,7 +397,7 @@ public class Head : MonoBehaviour
     {
         tiempo = (distance * (i + 1)) / speed;
         yield return new WaitForSeconds(tiempo);
-        bodies[i].SetSpeed(speed);
+        //bodies[i].SetSpeed(speed);
         bodies[i].MovementDown(posicionEnHorizontal, posicionEnVertical);
     }
 
@@ -402,7 +405,7 @@ public class Head : MonoBehaviour
     {
         tiempo = (distance * (i + 1)) / speed;
         yield return new WaitForSeconds(tiempo);
-        bodies[i].SetSpeed(speed);
+        //bodies[i].SetSpeed(speed);
         bodies[i].MovementLeft(posicionEnHorizontal, posicionEnVertical);
     }
 
@@ -410,13 +413,13 @@ public class Head : MonoBehaviour
     {
         tiempo = (distance * (i + 1)) / speed;
         yield return new WaitForSeconds(tiempo);
-        bodies[i].SetSpeed(speed);
+        //bodies[i].SetSpeed(speed);
         bodies[i].MovementRight(posicionEnHorizontal, posicionEnVertical);
     }
 
     IEnumerator WaitToChangeSpeed(int i, float speed)
     {
-        tiempo = (distance * (i + 1)) / speed;
+        tiempo = (distance * (i + 1)) / speed; //Tiene que ser la velocidad actual del body, no la nueva
         yield return new WaitForSeconds(tiempo);
         bodies[i].SetSpeed(speed);
     }

@@ -11,6 +11,10 @@ public class Head : MonoBehaviour
     [SerializeField, Range(1, 10)] int speedEscogida;
     [SerializeField] GameObject puntaCabeza;
     [SerializeField] GameObject torreta;
+    [SerializeField] int lenghtSnake;
+    [SerializeField] Body[] bodies;
+    Transform culoDeTren;
+    EnergyBar miEnergiaController;
     public Shield miEscudo;
     float tiempo, temporizadorGiro = 0, contadorRegeneracionVida = 30;
 
@@ -42,6 +46,7 @@ public class Head : MonoBehaviour
     private void Awake()
     {
         miEscudo = gameObject.GetComponentInParent<Shield>();
+        miEnergiaController = gameObject.GetComponentInParent<EnergyBar>();
         GameManager.player = this;
     }
 
@@ -51,6 +56,7 @@ public class Head : MonoBehaviour
         miAnimator = GetComponent<Animator>();
         torretaRenderer = torreta.GetComponent<SpriteRenderer>();
         ControladorCarrosEnEscena();
+        culoDeTren = bodies[lenghtSnake].transform;
         direccionRayo = Vector2.up;
     }
 
@@ -101,7 +107,6 @@ public class Head : MonoBehaviour
         if (collision.gameObject.tag == "BalaEnemigo")
         {
             Shrinkage();
-            //StartCoroutine(ParpadeoTemporal());
             CambioColor();
             Invoke("ResetColor", tiempoParpadeo);
         }
@@ -139,6 +144,11 @@ public class Head : MonoBehaviour
 
         MovementUp();
         transform.position = spawnPointPlayer.position;
+
+        for (int i = 0; i < lenghtSnake; i++)
+        {
+            bodies[i].ReSpawn(spawnPointPlayer, distance * (i + 1));
+        }
     }
 
     void ControladorCarrosEnEscena()
@@ -466,21 +476,11 @@ public class Head : MonoBehaviour
     public void AnimacionMorir()
     {
         miAnimator.Play("Muerte");
-    }
 
-    public void AnimacionEscudoRoto()
-    {
-        miAnimator.Play("EscudoRoto");
-    }
-
-    public void AnimacionEscudoCasiRoto()
-    {
-        miAnimator.Play("EscudoCasiRoto");
-    }
-
-    public void AnimacionEscudoBien()
-    {
-        miAnimator.Play("EscudoBien");
+        for (int i = 0; i < bodies.Length; i++)
+        {
+            bodies[i].AnimacionMorir();
+        }
     }
 
     public void AnimacionEscudo()

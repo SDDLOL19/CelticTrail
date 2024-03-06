@@ -29,8 +29,8 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 6155557242959742519, guid: 7b10d5829c7748b47bfa283bb6bcfe38, type: 3}
       propertyPath: m_text
-      value: "La REGENERACI\xD3N DE ESCUDO pasa a ser de 2 por tick\n\r\nTu ESCUDO
-        M\xC1XIMO ES DE 3 puntos\r\n"
+      value: "La REGENERACI\xD3N DE ESCUDO aumenta su velocidad\n\r\nTu ESCUDO M\xC1XIMO
+        ES DE 2 puntos\r\n"
       objectReference: {fileID: 0}
     - target: {fileID: 7940997572988566640, guid: 7b10d5829c7748b47bfa283bb6bcfe38, type: 3}
       propertyPath: m_Name

@@ -8,7 +8,7 @@ using UnityEngine.AI;
 public class Head : MonoBehaviour
 {
     [SerializeField] float distance, delay = 0.05f;
-    [SerializeField] int lenghtSnake;
+    [SerializeField] public int lenghtSnake;
     [SerializeField, Range(1, 10)] int speedEscogida;
     [SerializeField] Body[] bodies;
     [SerializeField] GameObject puntaCabeza;
@@ -71,6 +71,7 @@ public class Head : MonoBehaviour
             SoltarTorreta();
             GastarEscudo();
             UsarTurbo();
+            Debug.Log(contadorRegeneracionVida);
         }
     }
 
@@ -149,11 +150,11 @@ public class Head : MonoBehaviour
         }
     }
 
-    void ControladorCarrosEnEscena()
+    public void ControladorCarrosEnEscena()
     {
-        if (lenghtSnake > 9)
+        if (lenghtSnake > StatManager.vidaMaxima)
         {
-            lenghtSnake = 9;
+            lenghtSnake = StatManager.vidaMaxima;
         }
 
         if (lenghtSnake <= 0)

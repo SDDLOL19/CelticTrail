@@ -7,7 +7,8 @@ using UnityEngine.AI;
 
 public class Head : MonoBehaviour
 {
-    [SerializeField] float distance, delay = 0.05f;
+    [SerializeField] float delay = 0.05f;
+    public float distance = 2f;
     [SerializeField, Range(1, 10)] int speedEscogida;
     [SerializeField] GameObject puntaCabeza;
     [SerializeField] GameObject torreta;
@@ -16,7 +17,7 @@ public class Head : MonoBehaviour
     Transform culoDeTren;
     EnergyBar miEnergiaController;
     public Shield miEscudo;
-    float tiempo, temporizadorGiro = 0, contadorRegeneracionVida = 30;
+    float temporizadorGiro = 0, contadorRegeneracionVida = 30;
 
     [HideInInspector] public float playerSpeed;
     float distanciaRaycast = 0.2f;
@@ -61,6 +62,7 @@ public class Head : MonoBehaviour
         for (int i = 0; i < lenghtSnake; i++)
         {
             bodies[i].SetSpeed(playerSpeed);
+            bodies[i].SavePosition(i);
         }
     }
 
@@ -186,14 +188,14 @@ public class Head : MonoBehaviour
     {
         playerSpeed = StatManager.velocidad * (speedEscogida - (lenghtSnake / distance/*1.5f*/)) * miEnergiaController.velocidadActual;
 
-        CambiarVelocidadBodies(playerSpeed);
+        CambiarVelocidadBodies();
     }
 
-    void CambiarVelocidadBodies(float speed)
+    void CambiarVelocidadBodies()
     {
         for (int i = 0; i < bodies.Length; i++)
         {
-            StartCoroutine(WaitToChangeSpeed(i, speed)); ////////////////////  EL PROBLEMA RESIDE EN EL TIEMPO QUE TARDA EN CAMBIARLA YA QUE COGE PLAYER SPEED INCLUSO CUANDO CAMBIA AL TURBO, HAY QUE USAR UNA VARIABLE DIFERENTE QUE SE CAMBIE CUANDO EL CULO CAMBIE
+            bodies[i].WaitForSpeed(playerSpeed);
         }
     }
 
@@ -385,45 +387,6 @@ public class Head : MonoBehaviour
         direccionRayo = Vector2.down;
     }
 
-    IEnumerator WaitForUp(int i, float posicionEnHorizontal, float posicionEnVertical, float speed)
-    {
-        tiempo = (distance * (i + 1)) / speed;
-        yield return new WaitForSeconds(tiempo);
-        //bodies[i].SetSpeed(speed);
-        bodies[i].MovementUp(posicionEnHorizontal, posicionEnVertical);
-    }
-
-    IEnumerator WaitForDown(int i, float posicionEnHorizontal, float posicionEnVertical, float speed)
-    {
-        tiempo = (distance * (i + 1)) / speed;
-        yield return new WaitForSeconds(tiempo);
-        //bodies[i].SetSpeed(speed);
-        bodies[i].MovementDown(posicionEnHorizontal, posicionEnVertical);
-    }
-
-    IEnumerator WaitForLeft(int i, float posicionEnHorizontal, float posicionEnVertical, float speed)
-    {
-        tiempo = (distance * (i + 1)) / speed;
-        yield return new WaitForSeconds(tiempo);
-        //bodies[i].SetSpeed(speed);
-        bodies[i].MovementLeft(posicionEnHorizontal, posicionEnVertical);
-    }
-
-    IEnumerator WaitForRight(int i, float posicionEnHorizontal, float posicionEnVertical, float speed)
-    {
-        tiempo = (distance * (i + 1)) / speed;
-        yield return new WaitForSeconds(tiempo);
-        //bodies[i].SetSpeed(speed);
-        bodies[i].MovementRight(posicionEnHorizontal, posicionEnVertical);
-    }
-
-    IEnumerator WaitToChangeSpeed(int i, float speed)
-    {
-        tiempo = (distance * (i + 1)) / speed; //Tiene que ser la velocidad actual del body, no la nueva
-        yield return new WaitForSeconds(tiempo);
-        bodies[i].SetSpeed(speed);
-    }
-
     void Temporizador()
     {
         temporizadorGiro += Time.deltaTime;
@@ -438,7 +401,7 @@ public class Head : MonoBehaviour
     {
         for (int i = 0; i < bodies.Length; i++)
         {
-            StartCoroutine(WaitForUp(i, transform.position.x, transform.position.y, playerSpeed));
+            StartCoroutine(bodies[i].WaitForUp(transform.position.x, transform.position.y));
         }
     }
 
@@ -446,7 +409,7 @@ public class Head : MonoBehaviour
     {
         for (int i = 0; i < bodies.Length; i++)
         {
-            StartCoroutine(WaitForDown(i, transform.position.x, transform.position.y, playerSpeed));
+            StartCoroutine(bodies[i].WaitForDown(transform.position.x, transform.position.y));
         }
     }
 
@@ -454,7 +417,7 @@ public class Head : MonoBehaviour
     {
         for (int i = 0; i < bodies.Length; i++)
         {
-            StartCoroutine(WaitForRight(i, transform.position.x, transform.position.y, playerSpeed));
+            StartCoroutine(bodies[i].WaitForRight(transform.position.x, transform.position.y));
         }
     }
 
@@ -462,7 +425,7 @@ public class Head : MonoBehaviour
     {
         for (int i = 0; i < bodies.Length; i++)
         {
-            StartCoroutine(WaitForLeft(i, transform.position.x, transform.position.y, playerSpeed));
+            StartCoroutine(bodies[i].WaitForLeft(transform.position.x, transform.position.y));
         }
     }
 

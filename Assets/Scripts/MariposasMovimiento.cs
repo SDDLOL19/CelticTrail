@@ -5,8 +5,8 @@ using UnityEngine;
 
 public class MariposasMovimiento : MonoBehaviour
 {
-    private float rangoMovimiento = 3f;
-    private float LimiteX = 60f, LimiteY = 33f, posicionobjetivoX, posicionobjetivoY;
+    private float rangoMovimiento = 10f;
+    private float LimiteX = 60, LimiteY = 33, posicionobjetivoX, posicionobjetivoY;
     public float velocidad = 1f;
     Animator animator;
     private Vector3 posicionObjetivo;
@@ -22,22 +22,37 @@ public class MariposasMovimiento : MonoBehaviour
     {
 
         transform.position = Vector3.Lerp(transform.position, posicionObjetivo, velocidad * Time.deltaTime);
-        if (Vector3.Distance(transform.position, posicionObjetivo) < 1.5f)
+        if (Vector3.Distance(transform.position, posicionObjetivo) < 0.5f)
         {
             MoverAleatoriamente();
         }
     }
     void MoverAleatoriamente()
     {
-        // Genera una nueva posición aleatoria dentro del rango de movimiento
+        // Genera una nueva posición aleatoria dentro de los límites del mapa
+        posicionobjetivoX = Random.Range(-LimiteX, LimiteX);
+        posicionobjetivoY = Random.Range(-LimiteY, LimiteY);
 
-        posicionobjetivoX = Random.Range(-(transform.position.x + rangoMovimiento), (transform.position.x + rangoMovimiento));
-        posicionobjetivoX = Mathf.Clamp(posicionobjetivoX, -LimiteX, LimiteX);
+        // Asegúrate de que la nueva posición no esté demasiado cerca de la posición actual
+        while (Vector3.Distance(new Vector3(posicionobjetivoX, posicionobjetivoY, 0), transform.position) > rangoMovimiento)
+        {
+            posicionobjetivoX = Random.Range(-LimiteX, LimiteX);
+            posicionobjetivoY = Random.Range(-LimiteY, LimiteY);
+        }
 
-        posicionobjetivoY = Random.Range(-(transform.position.y + rangoMovimiento), (transform.position.y + rangoMovimiento));
-        posicionobjetivoY = Mathf.Clamp(posicionobjetivoY, -LimiteX, LimiteY);
-        posicionObjetivo = new Vector3(posicionobjetivoX, posicionobjetivoY, this.transform.position.z);
+        posicionObjetivo = new Vector3(posicionobjetivoX, posicionobjetivoY, transform.position.z);
     }
+    //void MoverAleatoriamente()
+    //{
+    //    // Genera una nueva posición aleatoria dentro del rango de movimiento
+
+    //    posicionobjetivoX = Random.Range(-(transform.position.x + rangoMovimiento), (transform.position.x + rangoMovimiento));
+    //    posicionobjetivoX = Mathf.Clamp(posicionobjetivoX, -LimiteX, LimiteX);
+
+    //    posicionobjetivoY = Random.Range(-(transform.position.y + rangoMovimiento), (transform.position.y + rangoMovimiento));
+    //    posicionobjetivoY = Mathf.Clamp(posicionobjetivoY, -LimiteX, LimiteY);
+    //    posicionObjetivo = new Vector3(posicionobjetivoX, posicionobjetivoY, this.transform.position.z);
+    //}
     private void OnTriggerEnter2D(Collider2D collision)
     {
         

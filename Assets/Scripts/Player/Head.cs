@@ -19,7 +19,6 @@ public class Head : MonoBehaviour
     public Shield miEscudo;
     float temporizadorGiro = 0, contadorRegeneracionVida = 30;
 
-    [HideInInspector] public float playerSpeed;
     float distanciaRaycast = 0.2f;
 
     RaycastHit2D hit;
@@ -61,7 +60,6 @@ public class Head : MonoBehaviour
         direccionRayo = Vector2.up;
         for (int i = 0; i < lenghtSnake; i++)
         {
-            bodies[i].SetSpeed(playerSpeed);
             bodies[i].SavePosition(i);
         }
     }
@@ -156,7 +154,6 @@ public class Head : MonoBehaviour
         {
             bodies[i].ReSpawn(spawnPointPlayer, distance * (i + 1));
         }
-        PlayerManager.Instance.CorutinasParadas = false;
     }
 
     void ControladorCarrosEnEscena()
@@ -188,17 +185,7 @@ public class Head : MonoBehaviour
 
     void CalcularVelocidad()
     {
-        playerSpeed = StatManager.velocidad * (speedEscogida - (lenghtSnake / distance/*1.5f*/)) * miEnergiaController.velocidadActual;
-
-        CambiarVelocidadBodies();
-    }
-
-    void CambiarVelocidadBodies()
-    {
-        for (int i = 0; i < bodies.Length; i++)
-        {
-            bodies[i].WaitForSpeed(playerSpeed);
-        }
+        PlayerManager.Instance.playerSpeed = StatManager.velocidad * (speedEscogida - (lenghtSnake / distance/*1.5f*/)) * miEnergiaController.velocidadActual;
     }
 
     public void Growth()
@@ -309,7 +296,7 @@ public class Head : MonoBehaviour
 
     void Movement()
     {
-        transform.Translate(Vector2.up * playerSpeed * Time.deltaTime); //mueve el objeto en el en direccion flecha verde(la del eje y)        
+        transform.Translate(Vector2.up * PlayerManager.Instance.playerSpeed * Time.deltaTime); //mueve el objeto en el en direccion flecha verde(la del eje y)        
 
         if (delayAcabado)
         {

@@ -5,7 +5,8 @@ using UnityEngine;
 public class PlayerManager : MonoBehaviour
 {
     public static PlayerManager Instance;
-    public bool CorutinasParadas = false;
+    [HideInInspector] public bool CorutinasParadas = false;
+    [HideInInspector] public float playerSpeed;
 
     void Singleton()
     {

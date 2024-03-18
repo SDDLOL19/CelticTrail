@@ -1,3 +1,6 @@
+using System.Collections;
+using System;
+using Unity.VisualScripting;
 using UnityEngine;
 using UnityEngine.AI;
 
@@ -14,6 +17,9 @@ public class Body : MonoBehaviour
     public Color defaultColor;
     public Color changedColor;
     [SerializeField] float tiempoParpadeo = 0.5f;
+
+    float velocidadBody;
+    [HideInInspector] public int posicion;
 
     Animator miAnimator;
 
@@ -42,49 +48,77 @@ public class Body : MonoBehaviour
 
     void Movement()
     {
-        transform.Translate(Vector2.up * GameManager.player.playerSpeed * Time.deltaTime); //mueve el objeto en el en direccion flecha verde(la del eje y)           
+        transform.Translate(Vector2.up * velocidadBody * Time.deltaTime); //mueve el objeto en el en direccion flecha verde(la del eje y)           
     }
 
-    public void MovementLeft(float posicionEnHorizontal, float posicionEnVertical)
+    void MovementLeft(float posicionEnHorizontal, float posicionEnVertical)
     {
-        if (!GameManager.partidaAcabada)
+        if (!GameManager.partidaAcabada || !PlayerManager.Instance.CorutinasParadas)
         {
             transform.eulerAngles = new Vector3(0f, 0, 90); //rota el objeto a izquierda
-            new Vector3(posicionEnHorizontal, posicionEnVertical, transform.position.z);
+            transform.position = new Vector3(transform.position.x, posicionEnVertical, transform.position.z);
         }
     }
 
-    public void MovementRight(float posicionEnHorizontal, float posicionEnVertical)
+    void MovementRight(float posicionEnHorizontal, float posicionEnVertical)
     {
-        if (!GameManager.partidaAcabada)
+        if (!GameManager.partidaAcabada || !PlayerManager.Instance.CorutinasParadas)
         {
             transform.eulerAngles = new Vector3(0f, 0, -90); //rota el objeto a derecha
-            transform.position = new Vector3(posicionEnHorizontal, posicionEnVertical, transform.position.z);
+            transform.position = new Vector3(transform.position.x, posicionEnVertical, transform.position.z);
         }
     }
 
     public void MovementUp(float posicionEnHorizontal, float posicionEnVertical)
     {
-        if (!GameManager.partidaAcabada)
+        if (!GameManager.partidaAcabada || !PlayerManager.Instance.CorutinasParadas)
         {
             transform.eulerAngles = Vector3.zero; ; //rota el objeto hacia arriba
-            transform.position = new Vector3(posicionEnHorizontal, posicionEnVertical, transform.position.z);
+            transform.position = new Vector3(posicionEnHorizontal, transform.position.y, transform.position.z);
         }
     }
 
-    public void MovementDown(float posicionEnHorizontal, float posicionEnVertical)
+    void MovementDown(float posicionEnHorizontal, float posicionEnVertical)
     {
-        if (!GameManager.partidaAcabada)
+        if (!GameManager.partidaAcabada || !PlayerManager.Instance.CorutinasParadas)
         {
             transform.eulerAngles = new Vector3(0f, 0, 180); //rota el objeto hacia abajo
-            transform.position = new Vector3(posicionEnHorizontal, posicionEnVertical, transform.position.z);
+            transform.position = new Vector3(posicionEnHorizontal, transform.position.y, transform.position.z);
         }
+    }
+
+    public IEnumerator WaitForUp(float posicionEnHorizontal, float posicionEnVertical)
+    {
+        float tiempo = (GameManager.player.distance * (posicion + 1)) / velocidadBody;
+        yield return new WaitForSeconds(tiempo);
+        MovementUp(posicionEnHorizontal, posicionEnVertical);
+    }
+
+    public IEnumerator WaitForDown(float posicionEnHorizontal, float posicionEnVertical)
+    {
+        float tiempo = (GameManager.player.distance * (posicion + 1)) / velocidadBody;
+        yield return new WaitForSeconds(tiempo);
+        MovementDown(posicionEnHorizontal, posicionEnVertical);
+    }
+
+    public IEnumerator WaitForLeft(float posicionEnHorizontal, float posicionEnVertical)
+    {
+        float tiempo = (GameManager.player.distance * (posicion + 1)) / velocidadBody;
+        yield return new WaitForSeconds(tiempo);
+        MovementLeft(posicionEnHorizontal, posicionEnVertical);
+    }
+
+    public IEnumerator WaitForRight(float posicionEnHorizontal, float posicionEnVertical)
+    {
+        float tiempo = (GameManager.player.distance * (posicion + 1)) / velocidadBody;
+        yield return new WaitForSeconds(tiempo);
+        MovementRight(posicionEnHorizontal, posicionEnVertical);
     }
 
     public void ReSpawn(Transform posicionPlayer, float distancia)
     {
         transform.eulerAngles = Vector3.zero;
-        transform.position = new Vector3(posicionPlayer.position.x, posicionPlayer.position.y - distancia ,transform.position.z);
+        transform.position = new Vector3(posicionPlayer.position.x, posicionPlayer.position.y - distancia, transform.position.z);
     }
 
     public void Aparecerme()
@@ -178,5 +212,27 @@ public class Body : MonoBehaviour
             CambioColor();
             Invoke("ResetColor", tiempoParpadeo);
         }
+    }
+
+    public void SetSpeed(float speed)
+    {
+        velocidadBody = speed;
+    }
+
+    public void WaitForSpeed(float headSpeed)
+    {
+        StartCoroutine(WaitToChangeSpeed(headSpeed));
+    }
+
+    public void SavePosition(int i)
+    {
+        posicion = i;
+    }
+
+    IEnumerator WaitToChangeSpeed(float speed)
+    {
+        float tiempo = (GameManager.player.distance * (posicion + 1)) / velocidadBody; //Tiene que ser la velocidad actual del body, no la nueva
+        yield return new WaitForSeconds(tiempo);
+        SetSpeed(speed);
     }
 }

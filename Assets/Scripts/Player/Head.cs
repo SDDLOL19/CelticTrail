@@ -7,16 +7,17 @@ using UnityEngine.AI;
 
 public class Head : MonoBehaviour
 {
-    [SerializeField] float distance, delay = 0.05f;
-    [SerializeField] int lenghtSnake;
+    [SerializeField] float delay = 0.05f;
+    public float distance = 2f;
     [SerializeField, Range(1, 10)] int speedEscogida;
-    [SerializeField] Body[] bodies;
     [SerializeField] GameObject puntaCabeza;
     [SerializeField] GameObject torreta;
+    [SerializeField] int lenghtSnake;
+    [SerializeField] Body[] bodies;
     Transform culoDeTren;
-    public Shield miEscudo;
     EnergyBar miEnergiaController;
-    float tiempo, temporizadorGiro = 0, contadorRegeneracionVida = 30;
+    public Shield miEscudo;
+    float temporizadorGiro = 0, contadorRegeneracionVida = 30;
 
     [HideInInspector] public float playerSpeed;
     float distanciaRaycast = 0.2f;
@@ -56,21 +57,25 @@ public class Head : MonoBehaviour
         miAnimator = GetComponent<Animator>();
         torretaRenderer = torreta.GetComponent<SpriteRenderer>();
         ControladorCarrosEnEscena();
-        direccionRayo = Vector2.up;
         culoDeTren = bodies[lenghtSnake].transform;
+        direccionRayo = Vector2.up;
+        for (int i = 0; i < lenghtSnake; i++)
+        {
+            bodies[i].SetSpeed(playerSpeed);
+            bodies[i].SavePosition(i);
+        }
     }
 
     void Update()
     {
         if (!GameManager.partidaAcabada)
         {
-            CalcularVelocidad();
             Movement();
             DetectarChoqueFrontal();
             RegeneracionVida();
             SoltarTorreta();
             GastarEscudo();
-            UsarTurbo();
+            //UsarTurbo();
         }
     }
 
@@ -108,7 +113,6 @@ public class Head : MonoBehaviour
         if (collision.gameObject.tag == "BalaEnemigo")
         {
             Shrinkage();
-            //StartCoroutine(ParpadeoTemporal());
             CambioColor();
             Invoke("ResetColor", tiempoParpadeo);
         }
@@ -141,6 +145,7 @@ public class Head : MonoBehaviour
 
     void ReSpawm()
     {
+        PlayerManager.Instance.CorutinasParadas = true;
         PerderVida();
         PerderVida();
 
@@ -151,21 +156,22 @@ public class Head : MonoBehaviour
         {
             bodies[i].ReSpawn(spawnPointPlayer, distance * (i + 1));
         }
+        PlayerManager.Instance.CorutinasParadas = false;
     }
 
     void ControladorCarrosEnEscena()
     {
-        if (lenghtSnake > 9)
+        CalcularVelocidad();
+
+        if (lenghtSnake > StatManager.vidaMaxima)
         {
-            lenghtSnake = 9;
+            lenghtSnake = StatManager.vidaMaxima;
         }
 
         if (lenghtSnake <= 0)
         {
             Morir();
         }
-
-        CalcularVelocidad();
 
         for (int i = bodies.Length - 1; i >= lenghtSnake; i--)
         {
@@ -182,7 +188,17 @@ public class Head : MonoBehaviour
 
     void CalcularVelocidad()
     {
-        playerSpeed = StatManager.velocidad * (speedEscogida - (lenghtSnake / 1.5f)) * miEnergiaController.velocidadActual;
+        playerSpeed = StatManager.velocidad * (speedEscogida - (lenghtSnake / distance/*1.5f*/)) * miEnergiaController.velocidadActual;
+
+        CambiarVelocidadBodies();
+    }
+
+    void CambiarVelocidadBodies()
+    {
+        for (int i = 0; i < bodies.Length; i++)
+        {
+            bodies[i].WaitForSpeed(playerSpeed);
+        }
     }
 
     public void Growth()
@@ -279,17 +295,16 @@ public class Head : MonoBehaviour
         if (Input.GetKeyDown(GameManager.botonUsarTurbo))
         {
             miEnergiaController.UsarTurbo();
+
+            CalcularVelocidad();
         }
 
         if (Input.GetKeyUp(GameManager.botonUsarTurbo))
         {
             miEnergiaController.PararTurbo();
+
+            CalcularVelocidad();
         }
-    }
-
-    void Esconderme()
-    {
-
     }
 
     void Movement()
@@ -369,34 +384,6 @@ public class Head : MonoBehaviour
         direccionRayo = Vector2.down;
     }
 
-    IEnumerator WaitForUp(int i, float posicionEnHorizontal, float posicionEnVertical)
-    {
-        tiempo = (distance * (i + 1)) / playerSpeed;
-        yield return new WaitForSeconds(tiempo);
-        bodies[i].MovementUp(posicionEnHorizontal, posicionEnVertical);
-    }
-
-    IEnumerator WaitForDown(int i, float posicionEnHorizontal, float posicionEnVertical)
-    {
-        tiempo = (distance * (i + 1)) / playerSpeed;
-        yield return new WaitForSeconds(tiempo);
-        bodies[i].MovementDown(posicionEnHorizontal, posicionEnVertical);
-    }
-
-    IEnumerator WaitForLeft(int i, float posicionEnHorizontal, float posicionEnVertical)
-    {
-        tiempo = (distance * (i + 1)) / playerSpeed;
-        yield return new WaitForSeconds(tiempo);
-        bodies[i].MovementLeft(posicionEnHorizontal, posicionEnVertical);
-    }
-
-    IEnumerator WaitForRight(int i, float posicionEnHorizontal, float posicionEnVertical)
-    {
-        tiempo = (distance * (i + 1)) / playerSpeed;
-        yield return new WaitForSeconds(tiempo);
-        bodies[i].MovementRight(posicionEnHorizontal, posicionEnVertical);
-    }
-
     void Temporizador()
     {
         temporizadorGiro += Time.deltaTime;
@@ -406,11 +393,12 @@ public class Head : MonoBehaviour
             delayAcabado = true;
         }
     }
+
     void BodiesUp()
     {
         for (int i = 0; i < bodies.Length; i++)
         {
-            StartCoroutine(WaitForUp(i, transform.position.x, transform.position.y));
+            StartCoroutine(bodies[i].WaitForUp(transform.position.x, transform.position.y));
         }
     }
 
@@ -418,7 +406,7 @@ public class Head : MonoBehaviour
     {
         for (int i = 0; i < bodies.Length; i++)
         {
-            StartCoroutine(WaitForDown(i, transform.position.x, transform.position.y));
+            StartCoroutine(bodies[i].WaitForDown(transform.position.x, transform.position.y));
         }
     }
 
@@ -426,7 +414,7 @@ public class Head : MonoBehaviour
     {
         for (int i = 0; i < bodies.Length; i++)
         {
-            StartCoroutine(WaitForRight(i, transform.position.x, transform.position.y));
+            StartCoroutine(bodies[i].WaitForRight(transform.position.x, transform.position.y));
         }
     }
 
@@ -434,37 +422,11 @@ public class Head : MonoBehaviour
     {
         for (int i = 0; i < bodies.Length; i++)
         {
-            StartCoroutine(WaitForLeft(i, transform.position.x, transform.position.y));
+            StartCoroutine(bodies[i].WaitForLeft(transform.position.x, transform.position.y));
         }
     }
 
     //QQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQ
-
-    //IEnumerator ParpadeoTemporal()
-    //{
-    //    while (tiempoInvulnerable > 0)
-    //    {
-    //        StartCoroutine(TemporizadorInvulnerable());
-    //        InvokeRepeating("Parpadeo", 0, 0.1f); // Llama a la función Parpadeo
-    //        yield return new WaitForSeconds(0.1f); // Espera 0.1 segundos antes de la siguiente iteración
-    //        // Reduce el tiempo invulnerable
-    //    }
-    //    tiempoInvulnerable = 0.5f;  // Reinicia el tiempo invulnerable
-    //}
-
-    //IEnumerator TemporizadorInvulnerable()
-    //{
-    //    while (tiempoInvulnerable > 0)
-    //    {
-    //        tiempoInvulnerable -= Time.deltaTime;
-    //        yield return null;  // Espera hasta el siguiente frame antes de la siguiente iteración
-    //    }
-    //}
-
-    //void Parpadeo()  //Hay que rehacerlo del todo. Nunca funcionará como queremos de esta forma
-    //{
-    //    serpiente.SetActive(!serpiente.activeInHierarchy);
-    //}
 
     void Morir()
     {
@@ -474,7 +436,7 @@ public class Head : MonoBehaviour
         AnimacionMorir();
     }
 
-    void AnimacionMorir()
+    public void AnimacionMorir()
     {
         miAnimator.Play("Muerte");
 
@@ -517,4 +479,3 @@ public class Head : MonoBehaviour
         }
     }
 }
-

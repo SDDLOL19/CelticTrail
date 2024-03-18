@@ -41,6 +41,7 @@ GameObject:
   m_Component:
   - component: {fileID: 5205183529543799378}
   - component: {fileID: 6018376522817620088}
+  - component: {fileID: 3731381298556150577}
   m_Layer: 0
   m_Name: Serpiente_2.0
   m_TagString: Untagged
@@ -90,6 +91,19 @@ MonoBehaviour:
   tiempoMaxRecarga: 5
   tiempoMaxEscudoRoto: 3
   player: {fileID: 5205183531337242780}
+--- !u!114 &3731381298556150577
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5205183529543799379}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 6b6dcfac4261d0749933d559de4e5f98, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  CorutinasParadas: 0
 --- !u!1001 &1112705727554340363
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -303,6 +317,10 @@ PrefabInstance:
       propertyPath: serpiente
       value: 
       objectReference: {fileID: 5205183529543799379}
+    - target: {fileID: 749672583318327642, guid: adfe2a66566b3224c9531384718f841f, type: 3}
+      propertyPath: lenghtSnake
+      value: 10
+      objectReference: {fileID: 0}
     - target: {fileID: 749672583318327642, guid: adfe2a66566b3224c9531384718f841f, type: 3}
       propertyPath: spawnPointPlayer
       value: 

@@ -28,7 +28,6 @@ public class EnergyBar : MonoBehaviour
 
         if (!estoyCorriendo)
         {
-            velocidadActual = 1;
             RecargarEnergia();
 
             if (energiaActual >= energiaMax)
@@ -47,7 +46,7 @@ public class EnergyBar : MonoBehaviour
     {
         if (puedoCorrer)
         {
-            //TurboVelocidad();
+            TurboVelocidad();
             estoyCorriendo = true;
         }
     }
@@ -59,6 +58,7 @@ public class EnergyBar : MonoBehaviour
 
     public void PararTurbo()
     {
+        velocidadActual = 1;
         estoyCorriendo = false;
     }
 

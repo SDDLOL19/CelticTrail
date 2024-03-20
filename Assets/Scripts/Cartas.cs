@@ -60,8 +60,8 @@ public class Cartas : MonoBehaviour
         StatManager.danioBala *= StatManager.danioBala * 0.50f;
 
         //DESVENTAJAS
-        StatManager.vidaMaxima = -5;
-
+        StatManager.vidaMaxima -= 5;
+        GameManager.player.ControladorCarrosEnEscena();
         LlamarPantallaCartas();
     }
 
@@ -83,6 +83,8 @@ public class Cartas : MonoBehaviour
 
         //DESVENTAJAS
         StatManager.vidaMaxima -= 2;
+
+        GameManager.player.ControladorCarrosEnEscena();
 
         LlamarPantallaCartas();
     }

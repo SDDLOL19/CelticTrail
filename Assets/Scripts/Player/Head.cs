@@ -12,7 +12,7 @@ public class Head : MonoBehaviour
     [SerializeField, Range(1, 10)] int speedEscogida;
     [SerializeField] GameObject puntaCabeza;
     [SerializeField] GameObject torreta;
-    [SerializeField] int lenghtSnake;
+    [SerializeField] public int lenghtSnake;
     [SerializeField] Body[] bodies;
     Transform culoDeTren;
     EnergyBar miEnergiaController;
@@ -156,7 +156,7 @@ public class Head : MonoBehaviour
         }
     }
 
-    void ControladorCarrosEnEscena()
+    public void ControladorCarrosEnEscena()
     {
         CalcularVelocidad();
 

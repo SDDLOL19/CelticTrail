@@ -8,6 +8,7 @@ public class StaticTurret : MonoBehaviour
     float tiempoAux;
     [SerializeField] GameObject prefabBullet, rotacionShooting;
     [SerializeField] Transform shootPosition;
+    [SerializeField] GameObject prefabAreaExplosion;
 
     Collider2D enemigo;
 
@@ -79,6 +80,10 @@ public class StaticTurret : MonoBehaviour
 
         if (vidaTorreta <= 0) 
         {
+            if (StatManager.puedeExplotarTorreta)
+            {
+                SpawnDañoArea();
+            }
             DestruirTorreta();
         }
     }
@@ -97,6 +102,11 @@ public class StaticTurret : MonoBehaviour
     void DestruirTorreta()
     {
         Destroy(gameObject);
+    }
+
+    void SpawnDañoArea()
+    {
+        Instantiate(prefabAreaExplosion, transform.position, transform.rotation);
     }
 
     private void OnTriggerEnter2D(Collider2D collision)

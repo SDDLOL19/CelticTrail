@@ -138,3 +138,4 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   speed: 15
   tagDeMiCreador: Player
+  prefabAreaExplosion: {fileID: 7931543500124996512, guid: 9b7ded994220ec84bb6a53f015c67186, type: 3}

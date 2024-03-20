@@ -19,6 +19,14 @@ unsafe public class CambioDeControles : MonoBehaviour
         CambiarTecla(); 
     }
 
+    private void Start()
+    {
+        for (int i = 0; i < textosBotones.Length; i++)
+        {
+            //textosBotones[i].text = textoNuevo;
+        }
+    }
+
     private void Update()
     {
         textosBotones[textoQueCambia].text = textoNuevo;
@@ -49,9 +57,8 @@ unsafe public class CambioDeControles : MonoBehaviour
         fixed (KeyCode* tecla = &GameManager.botonMovimientoDerecha) 
         {
             teclaQueCambia = tecla;
+            CambiarTexto(0, GameManager.botonMovimientoDerecha);
         }
-
-        CambiarTexto(0, GameManager.botonMovimientoDerecha);
     }
 
     public void CambiarIzquierda()
@@ -61,9 +68,8 @@ unsafe public class CambioDeControles : MonoBehaviour
         fixed (KeyCode* tecla = &GameManager.botonMovimientoIzquierda)
         {
             teclaQueCambia = tecla;
+            CambiarTexto(1, GameManager.botonMovimientoIzquierda);
         }
-
-        CambiarTexto(1, GameManager.botonMovimientoIzquierda);
     }
 
     public void CambiarArriba()
@@ -73,9 +79,8 @@ unsafe public class CambioDeControles : MonoBehaviour
         fixed (KeyCode* tecla = &GameManager.botonMovimientoArriba)
         {
             teclaQueCambia = tecla;
+            CambiarTexto(2, GameManager.botonMovimientoArriba);
         }
-
-        CambiarTexto(2, GameManager.botonMovimientoArriba);
     }
 
     public void CambiarAbajo()
@@ -85,9 +90,8 @@ unsafe public class CambioDeControles : MonoBehaviour
         fixed (KeyCode* tecla = &GameManager.botonMovimientoAbajo)
         {
             teclaQueCambia = tecla;
+            CambiarTexto(3, GameManager.botonMovimientoAbajo);
         }
-
-        CambiarTexto(3, GameManager.botonMovimientoAbajo);
     }
 
     public void CambiarTurbo()
@@ -97,9 +101,8 @@ unsafe public class CambioDeControles : MonoBehaviour
         fixed (KeyCode* tecla = &GameManager.botonUsarTurbo)
         {
             teclaQueCambia = tecla;
+            CambiarTexto(4, GameManager.botonUsarTurbo);
         }
-
-        CambiarTexto(4, GameManager.botonUsarTurbo);
     }
     public void CambiarSoltarTorreta()
     {
@@ -108,9 +111,8 @@ unsafe public class CambioDeControles : MonoBehaviour
         fixed (KeyCode* tecla = &GameManager.botonTorretaSuelta)
         {
             teclaQueCambia = tecla;
+            CambiarTexto(5, GameManager.botonTorretaSuelta);
         }
-
-        CambiarTexto(5, GameManager.botonTorretaSuelta);
     }
     public void CambiarGastoEscudo()
     {
@@ -119,9 +121,8 @@ unsafe public class CambioDeControles : MonoBehaviour
         fixed (KeyCode* tecla = &GameManager.botonGastarEscudo)
         {
             teclaQueCambia = tecla;
+            CambiarTexto(6, GameManager.botonGastarEscudo);
         }
-
-        CambiarTexto(6, GameManager.botonGastarEscudo);
     }
 
     void CambiarTexto(int valor, KeyCode tecla)

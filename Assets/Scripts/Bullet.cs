@@ -33,7 +33,7 @@ public class Bullet : MonoBehaviour
 
     private void OnTriggerEnter2D(Collider2D collision)
     {
-        if (collision.gameObject.tag != tagDeMiCreador) //collision.gameObject.tag != tagDeMiCreador
+        if (collision.gameObject.tag != tagDeMiCreador && collision.gameObject.tag != "BalaJugador") //collision.gameObject.tag != tagDeMiCreador
         {
             //Debug.Log("AAAAAAAAAAAAA");
             Destroy(this.gameObject);

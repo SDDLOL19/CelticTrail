@@ -29,8 +29,25 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 6155557242959742519, guid: 7b10d5829c7748b47bfa283bb6bcfe38, type: 3}
       propertyPath: m_text
-      value: "La REGENERACI\xD3N DE ESCUDO pasa a ser de 2 por tick\n\r\nTu ESCUDO
-        M\xC1XIMO ES DE 3 puntos\r\n"
+      value: "Una buena redistribuci\xF3n de los canales m\xE1gicos permiten curarte
+        el doble de puntos de escudo cuando este se regenera, pero el escudo m\xE1ximo
+        se reduce.\n"
+      objectReference: {fileID: 0}
+    - target: {fileID: 6155557242959742519, guid: 7b10d5829c7748b47bfa283bb6bcfe38, type: 3}
+      propertyPath: m_fontSize
+      value: 29.95
+      objectReference: {fileID: 0}
+    - target: {fileID: 6155557242959742519, guid: 7b10d5829c7748b47bfa283bb6bcfe38, type: 3}
+      propertyPath: m_enableAutoSizing
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 6825312591036916972, guid: 7b10d5829c7748b47bfa283bb6bcfe38, type: 3}
+      propertyPath: m_SizeDelta.y
+      value: -634.5286
+      objectReference: {fileID: 0}
+    - target: {fileID: 6825312591036916972, guid: 7b10d5829c7748b47bfa283bb6bcfe38, type: 3}
+      propertyPath: m_AnchoredPosition.y
+      value: -278.53918
       objectReference: {fileID: 0}
     - target: {fileID: 7940997572988566640, guid: 7b10d5829c7748b47bfa283bb6bcfe38, type: 3}
       propertyPath: m_Name

@@ -29,8 +29,24 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 6155557242959742519, guid: 7b10d5829c7748b47bfa283bb6bcfe38, type: 3}
       propertyPath: m_text
-      value: "Aumenta el \nTIEMPO DE VIDA DE LA BALA\r\n +30%\r\n\nLa VELOCIDAD de
-        tus BALAS se reduce un -20%\n"
+      value: "Los m\xEDsticos caminos de la sal han llevado a que tus balas se desplacen
+        m\xE1s despacio, pero llegan m\xE1s lejos.\n"
+      objectReference: {fileID: 0}
+    - target: {fileID: 6155557242959742519, guid: 7b10d5829c7748b47bfa283bb6bcfe38, type: 3}
+      propertyPath: m_fontSize
+      value: 36.6
+      objectReference: {fileID: 0}
+    - target: {fileID: 6155557242959742519, guid: 7b10d5829c7748b47bfa283bb6bcfe38, type: 3}
+      propertyPath: m_enableAutoSizing
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 6825312591036916972, guid: 7b10d5829c7748b47bfa283bb6bcfe38, type: 3}
+      propertyPath: m_SizeDelta.y
+      value: -638.5968
+      objectReference: {fileID: 0}
+    - target: {fileID: 6825312591036916972, guid: 7b10d5829c7748b47bfa283bb6bcfe38, type: 3}
+      propertyPath: m_AnchoredPosition.y
+      value: -281.92264
       objectReference: {fileID: 0}
     - target: {fileID: 7940997572988566640, guid: 7b10d5829c7748b47bfa283bb6bcfe38, type: 3}
       propertyPath: m_Name

@@ -29,8 +29,25 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 6155557242959742519, guid: 7b10d5829c7748b47bfa283bb6bcfe38, type: 3}
       propertyPath: m_text
-      value: "Las TORRETAS COLOCADAS en el suelo EXPLOTAN al morir, causando DA\xD1O
-        en \xC1REA\n\nLas BALAS de las TORRETAS COLOCADAS hacen -40% de DA\xD1O"
+      value: "Una t\xE9cnica milenaria ha sido transferida a las torretas que pones
+        en el suelo, estas causar\xE1n una potente explosi\xF3n al morir, pero reduce
+        mucho su da\xF1o mientras est\xE9 puesta."
+      objectReference: {fileID: 0}
+    - target: {fileID: 6155557242959742519, guid: 7b10d5829c7748b47bfa283bb6bcfe38, type: 3}
+      propertyPath: m_fontSize
+      value: 30.1
+      objectReference: {fileID: 0}
+    - target: {fileID: 6155557242959742519, guid: 7b10d5829c7748b47bfa283bb6bcfe38, type: 3}
+      propertyPath: m_enableAutoSizing
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 6825312591036916972, guid: 7b10d5829c7748b47bfa283bb6bcfe38, type: 3}
+      propertyPath: m_SizeDelta.y
+      value: -610.5372
+      objectReference: {fileID: 0}
+    - target: {fileID: 6825312591036916972, guid: 7b10d5829c7748b47bfa283bb6bcfe38, type: 3}
+      propertyPath: m_AnchoredPosition.y
+      value: -283.81476
       objectReference: {fileID: 0}
     - target: {fileID: 7940997572988566640, guid: 7b10d5829c7748b47bfa283bb6bcfe38, type: 3}
       propertyPath: m_Name

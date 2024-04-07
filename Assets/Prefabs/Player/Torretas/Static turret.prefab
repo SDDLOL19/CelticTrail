@@ -216,9 +216,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 5a143c65a17789c44b10d21d1aaeb09f, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  rotationSpeed: 10
-  detectionDistance: 7
-  timeSpawnBullet: 1
+  rotationSpeed: 15
+  detectionDistance: 14
+  timeSpawnBullet: 0.5
   vidaTorreta: 10
   prefabBullet: {fileID: 4536822823130952195, guid: 6b13c199bc9594542af43aaabe10fe6f, type: 3}
   rotacionShooting: {fileID: 5665192244197705008}

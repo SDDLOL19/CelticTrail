@@ -4,7 +4,7 @@ using UnityEngine;
 
 public class StaticTurret : MonoBehaviour
 {
-    [SerializeField, Range(1f, 20f)] float rotationSpeed, detectionDistance, timeSpawnBullet, vidaTorreta;
+    [SerializeField, Range(0.5f, 20f)] float rotationSpeed, detectionDistance, timeSpawnBullet, vidaTorreta;
     float tiempoAux;
     [SerializeField] GameObject prefabBullet, rotacionShooting;
     [SerializeField] Transform shootPosition;

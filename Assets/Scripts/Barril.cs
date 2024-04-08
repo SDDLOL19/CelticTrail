@@ -4,7 +4,22 @@ using UnityEngine;
 
 public class Barril : MonoBehaviour
 {
+    private AudioSource audioSource;
+    [SerializeField] AudioClip sonidoRomperBarril;
+
     [SerializeField] GameObject prefabRotoBarril;
+
+    
+    private void Awake()
+    {
+        audioSource = GetComponent<AudioSource>();
+        if (audioSource == null)
+        {
+            audioSource = gameObject.AddComponent<AudioSource>();
+        }
+
+        audioSource.clip = sonidoRomperBarril;
+    }
     private void OnTriggerEnter2D(Collider2D collision)
     {
         if (collision.gameObject.tag == "BalaJugador")
@@ -22,7 +37,9 @@ public class Barril : MonoBehaviour
 
     void MeRompo()
     {
+        audioSource.PlayOneShot(sonidoRomperBarril);
         Instantiate(prefabRotoBarril, this.transform.position + new Vector3(0, 0, 7.1f), Quaternion.identity);
         Destroy(this.gameObject);
     }
 }
+

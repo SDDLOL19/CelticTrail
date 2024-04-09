@@ -35,6 +35,8 @@ public class SelectorNiveles : MonoBehaviour
 
     public void VolverAlMenu()
     {
-        SceneManager.LoadScene("EscenaJuego");
+        SceneManager.LoadScene("MenuPrincipal");
     }
+
+    
 }

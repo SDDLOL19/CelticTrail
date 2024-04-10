@@ -22,6 +22,7 @@ public class GameManager : MonoBehaviour
 
     public static HUD_Manager hudMngr;
 
+    public GameObject prefabAudioSource;
 
     void Singleton()
     {

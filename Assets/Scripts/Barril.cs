@@ -5,19 +5,31 @@ using UnityEngine;
 public class Barril : MonoBehaviour
 {
     [SerializeField] GameObject prefabRotoBarril;
+    [SerializeField] AudioClip sonidoRomperBarril;
+
     private void OnTriggerEnter2D(Collider2D collision)
     {
         if (collision.gameObject.tag == "BalaJugador")
         {
-            MeRompo();
+            MeRompoConAudio();
         }
     }
+
     private void OnCollisionEnter2D(Collision2D collision)
     {
         if (collision.gameObject.tag == "Player")
         {
-            MeRompo();
+            MeRompoConAudio();
         }
+    }
+
+    void MeRompoConAudio()
+    {
+        //soundManager.EjecutarSonido(sonidoRomperBarril);
+        //audioSource.Play();
+        //Invoke("MeRompo", 0.5f);
+        Instantiate(GameManager.Instance.prefabAudioSource).GetComponent<PrefabAudioSource>().EjecutaAudio(sonidoRomperBarril);
+        MeRompo();
     }
 
     void MeRompo()

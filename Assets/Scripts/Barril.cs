@@ -28,7 +28,7 @@ public class Barril : MonoBehaviour
         //soundManager.EjecutarSonido(sonidoRomperBarril);
         //audioSource.Play();
         //Invoke("MeRompo", 0.5f);
-        Instantiate(GameManager.Instance.prefabAudioSource).GetComponent<PrefabAudioSource>().EjecutaAudio(sonidoRomperBarril);
+        ActivarSonido();
         MeRompo();
     }
 
@@ -36,5 +36,9 @@ public class Barril : MonoBehaviour
     {
         Instantiate(prefabRotoBarril, this.transform.position + new Vector3(0, 0, 7.1f), Quaternion.identity);
         Destroy(this.gameObject);
+    }
+    public void ActivarSonido()
+    {
+        Instantiate(GameManager.Instance.prefabAudioSource).GetComponent<PrefabAudioSource>().EjecutaAudio(sonidoRomperBarril);
     }
 }

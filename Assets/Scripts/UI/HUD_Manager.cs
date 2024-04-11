@@ -35,6 +35,10 @@ public class HUD_Manager : MonoBehaviour
     //STATS
     [SerializeField] TextMeshProUGUI textoDanioBala, textoVelocidadBala, textoRecarga, textoEscudoMaximo, textoEscudoRegenerado;
 
+    //AUDIO
+    [SerializeField] AudioClip sonidoPulsarBoton;
+
+
     private void Start()
     {
         pausado = false;
@@ -132,6 +136,8 @@ public class HUD_Manager : MonoBehaviour
 
     public void Reanudar()
     {
+        ActivarSonido();
+
         pausado = false;
         PantallaPausa();
         ComprobarPausa();
@@ -139,6 +145,8 @@ public class HUD_Manager : MonoBehaviour
 
     public void Reiniciar()
     {
+        ActivarSonido();
+
         Reanudar();
         SceneManager.LoadScene(SceneManager.GetActiveScene().name);
     }
@@ -199,8 +207,14 @@ public class HUD_Manager : MonoBehaviour
 
     public void PantallaControles()
     {
+        ActivarSonido();
         pantallaControles = !pantallaControles;
 
         CambioDeControles.gameObject.SetActive(pantallaControles);
+    }
+
+    public void ActivarSonido()
+    {
+        Instantiate(GameManager.Instance.prefabAudioSource).GetComponent<PrefabAudioSource>().EjecutaAudio(sonidoPulsarBoton);
     }
 }

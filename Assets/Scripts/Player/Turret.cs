@@ -9,6 +9,8 @@ public class Turret : MonoBehaviour
     [SerializeField] GameObject prefabBullet;
     [SerializeField] Transform shootPosition;
 
+    [SerializeField] AudioClip sonidoDisparo;
+
     private new Camera camera;
 
     void Start()
@@ -53,10 +55,16 @@ public class Turret : MonoBehaviour
     {
         if (Input.GetMouseButtonDown(0))
         {
+            ActivarSonido();
+
             Instantiate(prefabBullet, shootPosition.position, transform.rotation);
             //spawnea una bala en la posicion del disparo y con la rotacion que tenga este objeto
             //para modificar esta posicion simplemente mueve el objeto ShootPosition
             tiempoSpawnBalas = StatManager.tiempoRecarga;
         }
+    }
+    public void ActivarSonido()
+    {
+        Instantiate(GameManager.Instance.prefabAudioSource).GetComponent<PrefabAudioSource>().EjecutaAudio(sonidoDisparo);
     }
 }

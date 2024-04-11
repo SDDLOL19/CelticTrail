@@ -6,7 +6,6 @@ public class DropVida : MonoBehaviour
 {
     [SerializeField] float tiempoDeVida;
     float temporizador = 0;
-
     private void Update()
     {
         temporizador += Time.deltaTime;

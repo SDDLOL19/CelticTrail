@@ -12,6 +12,9 @@ public class StaticTurret : MonoBehaviour
 
     Collider2D enemigo;
 
+    [SerializeField] AudioClip sonidoDisparo, sonidoExplosion;
+
+
     bool tengoEnemigo = false;
 
     void Start()
@@ -92,6 +95,7 @@ public class StaticTurret : MonoBehaviour
     {
         if (timeSpawnBullet < 0)
         {
+            ActivarSonidoDisparo();
             Instantiate(prefabBullet, shootPosition.transform.position, rotacionShooting.transform.rotation);
             //spawnea una bala en la posicion del disparo y con la rotacion que tenga este objeto
             //para modificar esta posicion simplemente mueve el objeto ShootPosition
@@ -101,11 +105,13 @@ public class StaticTurret : MonoBehaviour
 
     void DestruirTorreta()
     {
+        ActivarSonidoExplosion();
         Destroy(gameObject);
     }
 
     void SpawnDañoArea()
     {
+        
         Instantiate(prefabAreaExplosion, transform.position, transform.rotation);
     }
 
@@ -115,5 +121,13 @@ public class StaticTurret : MonoBehaviour
         {
             vidaTorreta -= 1 * StatManager.multplDanioRecibidoTorreta;
         }
+    }
+    public void ActivarSonidoDisparo()
+    {
+        Instantiate(GameManager.Instance.prefabAudioSource).GetComponent<PrefabAudioSource>().EjecutaAudio(sonidoDisparo);
+    }
+    public void ActivarSonidoExplosion()
+    {
+        Instantiate(GameManager.Instance.prefabAudioSource).GetComponent<PrefabAudioSource>().EjecutaAudio(sonidoExplosion);
     }
 }

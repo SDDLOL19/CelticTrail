@@ -22,6 +22,7 @@ public class Body : MonoBehaviour
 
     Animator miAnimator;
 
+    [SerializeField] AudioClip sonidoRecibirDaño;
     private void Awake()
     {
         torretaRenderer = new SpriteRenderer[cantidadTorretas];
@@ -195,6 +196,7 @@ public class Body : MonoBehaviour
     {
         if (collision.gameObject.tag == "BalaEnemigo")
         {
+            ActivarSonido();
             MeHicePupa();
 
             CambioColor();
@@ -206,6 +208,7 @@ public class Body : MonoBehaviour
     {
         if (collision.gameObject.tag == "Enemigo")
         {
+            ActivarSonido();
             MeHicePupa();
 
             CambioColor();
@@ -216,5 +219,10 @@ public class Body : MonoBehaviour
     public void SavePosition(int i)
     {
         posicion = i;
+    }
+
+    public void ActivarSonido()
+    {
+        Instantiate(GameManager.Instance.prefabAudioSource).GetComponent<PrefabAudioSource>().EjecutaAudio(sonidoRecibirDaño);
     }
 }

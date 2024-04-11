@@ -14,6 +14,8 @@ unsafe public class CambioDeControles : MonoBehaviour
 
     KeyCode* teclaQueCambia;
 
+    [SerializeField] AudioClip sonidoPulsarBoton;
+
     void OnGUI() //Se actualiza cada vez que hay un evento
     {
         CambiarTecla(); 
@@ -52,6 +54,8 @@ unsafe public class CambioDeControles : MonoBehaviour
 
     public void CambiarDerecha()
     {
+        ActivarSonido();
+
         PermitirCambioDeTecla();
 
         fixed (KeyCode* tecla = &GameManager.botonMovimientoDerecha) 
@@ -63,6 +67,8 @@ unsafe public class CambioDeControles : MonoBehaviour
 
     public void CambiarIzquierda()
     {
+        ActivarSonido();
+
         PermitirCambioDeTecla();
 
         fixed (KeyCode* tecla = &GameManager.botonMovimientoIzquierda)
@@ -74,6 +80,8 @@ unsafe public class CambioDeControles : MonoBehaviour
 
     public void CambiarArriba()
     {
+        ActivarSonido();
+
         PermitirCambioDeTecla();
 
         fixed (KeyCode* tecla = &GameManager.botonMovimientoArriba)
@@ -85,6 +93,8 @@ unsafe public class CambioDeControles : MonoBehaviour
 
     public void CambiarAbajo()
     {
+        ActivarSonido();
+
         PermitirCambioDeTecla();
 
         fixed (KeyCode* tecla = &GameManager.botonMovimientoAbajo)
@@ -96,6 +106,8 @@ unsafe public class CambioDeControles : MonoBehaviour
 
     public void CambiarTurbo()
     {
+        ActivarSonido();
+
         PermitirCambioDeTecla();
 
         fixed (KeyCode* tecla = &GameManager.botonUsarTurbo)
@@ -106,6 +118,7 @@ unsafe public class CambioDeControles : MonoBehaviour
     }
     public void CambiarSoltarTorreta()
     {
+        ActivarSonido();
         PermitirCambioDeTecla();
 
         fixed (KeyCode* tecla = &GameManager.botonTorretaSuelta)
@@ -133,7 +146,14 @@ unsafe public class CambioDeControles : MonoBehaviour
 
     public void SalirDelMenu()
     {
+        ActivarSonido();
+
         this.gameObject.SetActive(false);
+    }
+
+    public void ActivarSonido()
+    {
+        Instantiate(GameManager.Instance.prefabAudioSource).GetComponent<PrefabAudioSource>().EjecutaAudio(sonidoPulsarBoton);
     }
 
 }

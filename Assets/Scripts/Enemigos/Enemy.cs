@@ -31,6 +31,9 @@ public class Enemy : MonoBehaviour
     bool explosionOnce = true;
     bool explosionOnceTorreta = true;
 
+    [SerializeField] AudioClip sonidoDisparo;
+
+
     void Start()
     {
         Recarga();
@@ -133,6 +136,7 @@ public class Enemy : MonoBehaviour
 
     public virtual void GenerarBala()
     {
+        ActivarSonido();
         Instantiate(prefabBullet, shootPosition.transform.position, rotacionShooting.transform.rotation);
         disparando = false;
         Recarga();
@@ -280,5 +284,9 @@ public class Enemy : MonoBehaviour
     protected virtual void AccionExtraUno()
     {
 
+    }
+    public void ActivarSonido()
+    {
+        Instantiate(GameManager.Instance.prefabAudioSource).GetComponent<PrefabAudioSource>().EjecutaAudio(sonidoDisparo);
     }
 }

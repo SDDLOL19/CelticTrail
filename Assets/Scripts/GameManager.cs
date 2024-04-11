@@ -22,7 +22,10 @@ public class GameManager : MonoBehaviour
 
     public static HUD_Manager hudMngr;
 
+    //AUDIO
     public GameObject prefabAudioSource;
+    //[SerializeField] AudioClip sonidoPulsarBoton;
+
 
     void Singleton()
     {
@@ -76,14 +79,20 @@ public class GameManager : MonoBehaviour
 
     public static void CerrarJuego()
     {
+        //Instantiate(GameManager.Instance.prefabAudioSource).GetComponent<PrefabAudioSource>().EjecutaAudio(sonidoPulsarBoton);
+
         Debug.Log("cerrando... "); //Sirve para comprobar si funciona en el editor, donde no se puede cerrar
         Application.Quit();
     }
 
     public static void CargarMenuPrincipal()
     {
+        //Instantiate(GameManager.Instance.prefabAudioSource).GetComponent<PrefabAudioSource>().EjecutaAudio(sonidoPulsarBoton);
+
+
         ReanudarTiempo();
         partidaAcabada = false;
         SceneManager.LoadScene("MenuPrincipal");
     }
+
 }

@@ -136,7 +136,7 @@ public class HUD_Manager : MonoBehaviour
 
     public void Reanudar()
     {
-        ActivarSonido();
+        ActivarSonidoPulsarBoton();
 
         pausado = false;
         PantallaPausa();
@@ -145,7 +145,7 @@ public class HUD_Manager : MonoBehaviour
 
     public void Reiniciar()
     {
-        ActivarSonido();
+        ActivarSonidoPulsarBoton();
 
         Reanudar();
         SceneManager.LoadScene(SceneManager.GetActiveScene().name);
@@ -207,13 +207,13 @@ public class HUD_Manager : MonoBehaviour
 
     public void PantallaControles()
     {
-        ActivarSonido();
+        ActivarSonidoPulsarBoton();
         pantallaControles = !pantallaControles;
 
         CambioDeControles.gameObject.SetActive(pantallaControles);
     }
 
-    public void ActivarSonido()
+    public void ActivarSonidoPulsarBoton()
     {
         Instantiate(GameManager.Instance.prefabAudioSource).GetComponent<PrefabAudioSource>().EjecutaAudio(sonidoPulsarBoton);
     }

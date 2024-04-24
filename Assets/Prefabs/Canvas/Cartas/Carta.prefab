@@ -497,6 +497,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: a8de59f7c426f29439e9207348336dbf, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  sonidoPulsarCarta: {fileID: 8300000, guid: d2f8f4aa8b996ee44b6357a02536f296, type: 3}
+  sonidoPasarPorEncima: {fileID: 8300000, guid: d2f8f4aa8b996ee44b6357a02536f296, type: 3}
 --- !u!1 &8750836370427855277
 GameObject:
   m_ObjectHideFlags: 0

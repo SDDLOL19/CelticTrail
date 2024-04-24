@@ -1,9 +1,18 @@
 using System.Collections;
 using System.Collections.Generic;
+using Unity.VisualScripting;
 using UnityEngine;
+using UnityEngine.UI;
 
 public class Cartas : MonoBehaviour
 {
+    [SerializeField] AudioClip sonidoPulsarCarta, sonidoPasarPorEncima;
+
+    //private void OnMouseOver()
+    //{
+    //    ActivarSonidoPasarPorEncima();
+    //}
+
     void LlamarPantallaCartas()
     {
         GameManager.hudMngr.PantallaCartas();
@@ -12,6 +21,8 @@ public class Cartas : MonoBehaviour
     //CARTAS
     public void EtapaDeDefinicion()
     {
+        ActivarSonidoPulsarCarta();
+
         //VENTAJAS
         StatManager.velocidad += StatManager.velocidad * 0.15f;
 
@@ -23,6 +34,8 @@ public class Cartas : MonoBehaviour
 
     public void EscudoItaliano()
     {
+        ActivarSonidoPulsarCarta();
+
         //VENTAJAS
         StatManager.vidaEscudoMaxima += 2;
 
@@ -34,6 +47,8 @@ public class Cartas : MonoBehaviour
 
     public void Acorazado()
     {
+        ActivarSonidoPulsarCarta();
+
         //VENTAJAS
         StatManager.vidaMaxTorreta *= 2;
 
@@ -45,6 +60,8 @@ public class Cartas : MonoBehaviour
 
     public void AutoDestruccion()
     {
+        ActivarSonidoPulsarCarta();
+
         //VENTAJAS
         StatManager.puedeExplotarTorreta = true;
 
@@ -56,6 +73,8 @@ public class Cartas : MonoBehaviour
 
     public void CañonDeCristal()
     {
+        ActivarSonidoPulsarCarta();
+
         //VENTAJAS
         StatManager.danioBala *= StatManager.danioBala * 0.50f;
 
@@ -67,6 +86,8 @@ public class Cartas : MonoBehaviour
 
     public void CuatroPorCuatro()
     {
+        ActivarSonidoPulsarCarta();
+
         //VENTAJAS
         StatManager.velocidad += StatManager.velocidad * 0.20f;
 
@@ -78,6 +99,8 @@ public class Cartas : MonoBehaviour
 
     public void Temerario()
     {
+        ActivarSonidoPulsarCarta();
+
         //VENTAJAS
         StatManager.velocidad += StatManager.velocidad * 0.20f;
 
@@ -91,6 +114,8 @@ public class Cartas : MonoBehaviour
 
     public void Barret()
     {
+        ActivarSonidoPulsarCarta();
+
         //VENTAJAS
         StatManager.vidaBala += StatManager.vidaBala * 0.30f;
 
@@ -102,6 +127,8 @@ public class Cartas : MonoBehaviour
 
     public void LecheVegana()
     {
+        ActivarSonidoPulsarCarta();
+
         //VENTAJAS
         StatManager.tiempoRecarga -= StatManager.tiempoRecarga * 0.25f;
 
@@ -113,6 +140,8 @@ public class Cartas : MonoBehaviour
 
     public void SuperBalas()
     {
+        ActivarSonidoPulsarCarta();
+
         //VENTAJAS
         StatManager.danioBala += StatManager.danioBala * 0.35f;
 
@@ -124,6 +153,8 @@ public class Cartas : MonoBehaviour
 
     public void BalasSombras()
     {
+        ActivarSonidoPulsarCarta();
+
         //VENTAJAS
         StatManager.cantidadBalas *= 2;
 
@@ -135,6 +166,8 @@ public class Cartas : MonoBehaviour
 
     public void Holograma()
     {
+        ActivarSonidoPulsarCarta();
+
         //VENTAJAS
         StatManager.cantidadEscudoRecuperada += 1;
 
@@ -147,6 +180,8 @@ public class Cartas : MonoBehaviour
 
     public void Nuez()
     {
+        ActivarSonidoPulsarCarta();
+
         //VENTAJAS
         StatManager.vidaMaxTorreta *= StatManager.vidaMaxTorreta * 3.00f;
 
@@ -158,6 +193,8 @@ public class Cartas : MonoBehaviour
 
     public void BalasExplosivas()
     {
+        ActivarSonidoPulsarCarta();
+
         //VENTAJAS
         StatManager.balaExplosiva = true;
 
@@ -169,6 +206,8 @@ public class Cartas : MonoBehaviour
 
     public void LagrimasDeFantasma()
     {
+        ActivarSonidoPulsarCarta();
+
         //VENTAJAS
         StatManager.puedeRegenerarVida = true;
 
@@ -178,4 +217,12 @@ public class Cartas : MonoBehaviour
         LlamarPantallaCartas();
     }
 
+    public void ActivarSonidoPulsarCarta()
+    {
+        Instantiate(GameManager.Instance.prefabAudioSource).GetComponent<PrefabAudioSource>().EjecutaAudio(sonidoPulsarCarta);
+    }
+    public void ActivarSonidoPasarPorEncima()
+    {
+        Instantiate(GameManager.Instance.prefabAudioSource).GetComponent<PrefabAudioSource>().EjecutaAudio(sonidoPasarPorEncima);
+    }
 }

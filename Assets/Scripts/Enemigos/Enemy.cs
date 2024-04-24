@@ -31,7 +31,7 @@ public class Enemy : MonoBehaviour
     bool explosionOnce = true;
     bool explosionOnceTorreta = true;
 
-    [SerializeField] AudioClip sonidoDisparo;
+    [SerializeField] AudioClip sonidoDisparo, sonidoMorir;
 
 
     void Start()
@@ -136,7 +136,7 @@ public class Enemy : MonoBehaviour
 
     public virtual void GenerarBala()
     {
-        ActivarSonido();
+        ActivarSonidoDisparo();
         Instantiate(prefabBullet, shootPosition.transform.position, rotacionShooting.transform.rotation);
         disparando = false;
         Recarga();
@@ -183,6 +183,7 @@ public class Enemy : MonoBehaviour
     {
         GetComponent<Collider2D>().enabled = false;
         muriendo = true;
+        //////ActivarSonidoMorir();
         AnimacionMuerte();
     }
 
@@ -285,8 +286,14 @@ public class Enemy : MonoBehaviour
     {
 
     }
-    public void ActivarSonido()
+
+    public void ActivarSonidoDisparo()
     {
         Instantiate(GameManager.Instance.prefabAudioSource).GetComponent<PrefabAudioSource>().EjecutaAudio(sonidoDisparo);
+    } 
+    
+    public void ActivarSonidoMorir()
+    {
+        Instantiate(GameManager.Instance.prefabAudioSource).GetComponent<PrefabAudioSource>().EjecutaAudio(sonidoMorir);
     }
 }

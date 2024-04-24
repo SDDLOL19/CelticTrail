@@ -24,7 +24,8 @@ public class GameManager : MonoBehaviour
 
     //AUDIO
     public GameObject prefabAudioSource;
-    //[SerializeField] AudioClip sonidoPulsarBoton;
+
+    [SerializeField] static AudioClip sonidoPulsarBoton;
 
 
     void Singleton()
@@ -87,7 +88,7 @@ public class GameManager : MonoBehaviour
 
     public static void CargarMenuPrincipal()
     {
-        //Instantiate(GameManager.Instance.prefabAudioSource).GetComponent<PrefabAudioSource>().EjecutaAudio(sonidoPulsarBoton);
+        Instantiate(GameManager.Instance.prefabAudioSource).GetComponent<PrefabAudioSource>().EjecutaAudio(sonidoPulsarBoton);
 
 
         ReanudarTiempo();

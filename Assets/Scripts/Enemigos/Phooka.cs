@@ -14,6 +14,8 @@ public class Phooka : Enemy
             rangoDisparoMax = rangoMaxVidaMenos;
 
             velocidadMovimiento /= 2;
+
+            DoneOnceAccExtrUno = true;
         }
     }
 }

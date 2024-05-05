@@ -12,6 +12,9 @@ TagManager:
   - BalaJugador
   - Rompible
   - BalaTorreta
+  - RadioExplosion
+  - RadioExplosionTorreta
+  - ZonaCura
   layers:
   - Default
   - TransparentFX

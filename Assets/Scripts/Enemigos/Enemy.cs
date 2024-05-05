@@ -7,19 +7,19 @@ public class Enemy : MonoBehaviour
 {
     public GameObject prefabDroppeable, shootPosition, prefabBullet, rotacionShooting, spriteEnemigo;
     public int velocidadMovimiento = 5;      //Para que esté a al velocidad por defecto sería 4 o 5
-    [SerializeField] protected float vidaEscogida;
+    [SerializeField] protected float vidaEscogida, recVidaPorSegundo = 0.2f;
     [HideInInspector] public float enemyVida;
     public float tiempoDeRecarga, rangoDisparoMin, rangoDisparoMax, rotationSpeed = 100;
     protected float timerSpawnBullet;                       //HideInInspector para que sea pública pero no se pueda cambiar fuera
 
-    protected bool disparando = false, muriendo = false, DoneOnceAccExtrUno = false;
+    protected bool disparando = false, muriendo = false, DoneOnceAccExtrUno = false, doneOnceAnimacionAndar = false;
 
     protected NavMeshAgent agent;
     protected Transform objetivoActual;
     protected RaycastHit2D hit;
     protected Animator miAnimator;
 
-    [SerializeField] float detectionDistance;
+    [SerializeField] protected float detectionDistance;
 
     protected SpriteRenderer miRenderer;
     public Color defaultColor;
@@ -100,7 +100,11 @@ public class Enemy : MonoBehaviour
         if (!disparando)
         {
             agent.SetDestination(objetivoActual.position);
-            AnimacionCaminar();
+
+            if (doneOnceAnimacionAndar == false)
+            {
+                AnimacionCaminar();
+            }
         }
 
         else
@@ -114,12 +118,12 @@ public class Enemy : MonoBehaviour
         agent.SetDestination(this.transform.position);
     }
 
-    void CambiarObjetivo(Transform objetivoNuevo)
+    protected void CambiarObjetivo(Transform objetivoNuevo)
     {
         objetivoActual = objetivoNuevo;
     }
 
-    void ObjetivoPrincipal()
+    protected void ObjetivoPrincipal()
     {
         objetivoActual = GameManager.objetivoPrincipalEnemigos;
     }
@@ -187,6 +191,19 @@ public class Enemy : MonoBehaviour
         AnimacionMuerte();
     }
 
+    void Curarme()
+    {
+        if (enemyVida < vidaEscogida)
+        {
+            enemyVida += Time.deltaTime * recVidaPorSegundo;
+        }
+
+        else if (enemyVida > vidaEscogida)
+        {
+            enemyVida = vidaEscogida;
+        }
+    }
+
     protected void Recarga()
     {
         timerSpawnBullet = tiempoDeRecarga;
@@ -219,7 +236,12 @@ public class Enemy : MonoBehaviour
             Vector2 radioDeteccion = Random.insideUnitCircle * detectionDistance; //genera un radio alrededor del objeto
             Vector2 radioDeteccionMovido = new Vector2(transform.position.x + radioDeteccion.x, transform.position.y + radioDeteccion.y);
 
-            CambiarObjetivo(Physics2D.OverlapCircle(radioDeteccionMovido, detectionDistance).transform);
+            Transform torreta = Physics2D.OverlapCircle(radioDeteccionMovido, detectionDistance).transform;
+
+            if (torreta.GetComponent<StaticTurret>())
+            {
+                CambiarObjetivo(torreta.transform);
+            }
 
             CambioColor();
             Invoke("ResetColor", tiempoParpadeo);
@@ -244,6 +266,8 @@ public class Enemy : MonoBehaviour
             Invoke("ResetColor", tiempoParpadeo);
             explosionOnceTorreta = false;
         }
+
+        ColisionExtraUno(collision);
     }
 
     private void OnCollisionEnter2D(Collision2D collision)
@@ -259,6 +283,7 @@ public class Enemy : MonoBehaviour
     protected void AnimacionAtaque()
     {
         miAnimator.Play("Ataque");
+        doneOnceAnimacionAndar = false;
     }
 
     protected void AnimacionMuerte()
@@ -269,11 +294,13 @@ public class Enemy : MonoBehaviour
     protected void AnimacionIdle()
     {
         miAnimator.Play("Idle");
+        doneOnceAnimacionAndar = false;
     }
 
     protected void AnimacionCaminar()
     {
         miAnimator.Play("Caminar");
+        doneOnceAnimacionAndar = true;
     }
 
     //EXTRA
@@ -285,6 +312,14 @@ public class Enemy : MonoBehaviour
     protected virtual void AccionExtraUno()
     {
 
+    }
+
+    protected virtual void ColisionExtraUno(Collider2D collision)
+    {
+        if (collision.gameObject.tag == "ZonaCura")
+        {
+            Curarme();
+        }
     }
 
     public void ActivarSonidoDisparo()

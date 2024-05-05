@@ -6,7 +6,7 @@ AnimationClip:
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_Name: Caminar Arq
+  m_Name: Caminar Fachen
   serializedVersion: 6
   m_Legacy: 0
   m_Compressed: 0
@@ -20,21 +20,15 @@ AnimationClip:
   m_PPtrCurves:
   - curve:
     - time: 0
-      value: {fileID: 1732127603, guid: ef48d127efd4e2b4680bcb777baa3468, type: 3}
-    - time: 0.1
-      value: {fileID: 10636191, guid: ef48d127efd4e2b4680bcb777baa3468, type: 3}
-    - time: 0.21666667
-      value: {fileID: 691768473, guid: ef48d127efd4e2b4680bcb777baa3468, type: 3}
+      value: {fileID: 1088287010, guid: 688c7d5549b536140b332bd487725e2e, type: 3}
+    - time: 0.16666667
+      value: {fileID: 1272397704, guid: 688c7d5549b536140b332bd487725e2e, type: 3}
     - time: 0.31666666
-      value: {fileID: 136450497, guid: ef48d127efd4e2b4680bcb777baa3468, type: 3}
-    - time: 0.43333334
-      value: {fileID: 692131109, guid: ef48d127efd4e2b4680bcb777baa3468, type: 3}
-    - time: 0.53333336
-      value: {fileID: -1074588356, guid: ef48d127efd4e2b4680bcb777baa3468, type: 3}
+      value: {fileID: -1858158480, guid: 688c7d5549b536140b332bd487725e2e, type: 3}
+    - time: 0.48333332
+      value: {fileID: 830873125, guid: 688c7d5549b536140b332bd487725e2e, type: 3}
     - time: 0.65
-      value: {fileID: -1737722225, guid: ef48d127efd4e2b4680bcb777baa3468, type: 3}
-    - time: 0.75
-      value: {fileID: -897186671, guid: ef48d127efd4e2b4680bcb777baa3468, type: 3}
+      value: {fileID: -1755282949, guid: 688c7d5549b536140b332bd487725e2e, type: 3}
     attribute: m_Sprite
     path: 
     classID: 212
@@ -54,20 +48,17 @@ AnimationClip:
       customType: 23
       isPPtrCurve: 1
     pptrCurveMapping:
-    - {fileID: 1732127603, guid: ef48d127efd4e2b4680bcb777baa3468, type: 3}
-    - {fileID: 10636191, guid: ef48d127efd4e2b4680bcb777baa3468, type: 3}
-    - {fileID: 691768473, guid: ef48d127efd4e2b4680bcb777baa3468, type: 3}
-    - {fileID: 136450497, guid: ef48d127efd4e2b4680bcb777baa3468, type: 3}
-    - {fileID: 692131109, guid: ef48d127efd4e2b4680bcb777baa3468, type: 3}
-    - {fileID: -1074588356, guid: ef48d127efd4e2b4680bcb777baa3468, type: 3}
-    - {fileID: -1737722225, guid: ef48d127efd4e2b4680bcb777baa3468, type: 3}
-    - {fileID: -897186671, guid: ef48d127efd4e2b4680bcb777baa3468, type: 3}
+    - {fileID: 1088287010, guid: 688c7d5549b536140b332bd487725e2e, type: 3}
+    - {fileID: 1272397704, guid: 688c7d5549b536140b332bd487725e2e, type: 3}
+    - {fileID: -1858158480, guid: 688c7d5549b536140b332bd487725e2e, type: 3}
+    - {fileID: 830873125, guid: 688c7d5549b536140b332bd487725e2e, type: 3}
+    - {fileID: -1755282949, guid: 688c7d5549b536140b332bd487725e2e, type: 3}
   m_AnimationClipSettings:
     serializedVersion: 2
     m_AdditiveReferencePoseClip: {fileID: 0}
     m_AdditiveReferencePoseTime: 0
     m_StartTime: 0
-    m_StopTime: 0.76666665
+    m_StopTime: 0.6666666
     m_OrientationOffsetY: 0
     m_Level: 0
     m_CycleOffset: 0
@@ -86,4 +77,11 @@ AnimationClip:
   m_EulerEditorCurves: []
   m_HasGenericRootTransform: 0
   m_HasMotionFloatCurves: 0
-  m_Events: []
+  m_Events:
+  - time: 0.65
+    functionName: HuellaDer
+    data: 
+    objectReferenceParameter: {fileID: 0}
+    floatParameter: 0
+    intParameter: 0
+    messageOptions: 0

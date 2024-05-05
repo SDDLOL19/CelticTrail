@@ -44,6 +44,7 @@ GameObject:
   - component: {fileID: 8678318481039210379}
   - component: {fileID: 7474978742592065512}
   - component: {fileID: 6770191333117952387}
+  - component: {fileID: 8816501313814792792}
   m_Layer: 0
   m_Name: SpriteSheert Phooka
   m_TagString: Untagged
@@ -139,6 +140,21 @@ Animator:
   m_AllowConstantClipSamplingOptimization: 1
   m_KeepAnimatorStateOnDisable: 0
   m_WriteDefaultValuesOnDisable: 0
+--- !u!114 &8816501313814792792
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 3838334646664958559}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 84f58c9d96add9d46a98c771c4c9fd34, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  miPadre: {fileID: 9000074285480542966}
+  prefabHuellaDer: {fileID: 4726500218215086106, guid: b6f6fadc44e1e364ea9f42b33ff7c44c, type: 3}
+  prefabHuellaIzq: {fileID: 8535026773800866767, guid: d08637e125b7f7041984da662285efcf, type: 3}
 --- !u!1 &6374366158400203251
 GameObject:
   m_ObjectHideFlags: 0

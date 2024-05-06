@@ -76,8 +76,9 @@ MonoBehaviour:
   rotacionShooting: {fileID: 6359896301870706599}
   spriteEnemigo: {fileID: 5087299896580461871}
   velocidadMovimiento: 10
-  enemyVida: 2
   vidaEscogida: 2
+  recVidaPorSegundo: 0.2
+  enemyVida: 2
   tiempoDeRecarga: 2
   rangoDisparoMin: 1
   rangoDisparoMax: 5
@@ -87,6 +88,9 @@ MonoBehaviour:
   changedColor: {r: 1, g: 0, b: 0, a: 1}
   tiempoParpadeo: 0.5
   probabilidadDrop: 0
+  sonidosDisparos:
+  - {fileID: 8300000, guid: 87abc5d003761c04e8e8ebaace4b1470, type: 3}
+  sonidoMorir: {fileID: 8300000, guid: 7fdf44306cc9eb340bab87f802571d68, type: 3}
   tiempoEntreRafaga: 1
 --- !u!58 &3763893288277437440
 CircleCollider2D:

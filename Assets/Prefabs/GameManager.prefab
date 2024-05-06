@@ -45,3 +45,4 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   framerate: 60
+  prefabAudioSource: {fileID: 1404549945995263889, guid: 4665b6741175a9c489bc94f17ebaa497, type: 3}

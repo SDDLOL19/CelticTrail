@@ -7,6 +7,7 @@ public class Phooka : Enemy
 {
     [SerializeField] float rangoMaxVidaMenos;
 
+
     protected override void AccionExtraUno()
     {
         if (DoneOnceAccExtrUno && enemyVida <= vidaEscogida/2)

@@ -5,7 +5,7 @@ using UnityEngine;
 public class Barril : MonoBehaviour
 {
     [SerializeField] GameObject prefabRotoBarril;
-    [SerializeField] AudioClip sonidoRomperBarril;
+    [SerializeField] AudioClip [] sonidosRomperBarril;
 
     private void OnTriggerEnter2D(Collider2D collision)
     {
@@ -39,6 +39,6 @@ public class Barril : MonoBehaviour
     }
     public void ActivarSonido()
     {
-        Instantiate(GameManager.Instance.prefabAudioSource).GetComponent<PrefabAudioSource>().EjecutaAudio(sonidoRomperBarril);
+        Instantiate(GameManager.Instance.prefabAudioSource).GetComponent<PrefabAudioSource>().EjecutaAudio(sonidosRomperBarril[Random.Range(0, sonidosRomperBarril.Length)]);
     }
 }

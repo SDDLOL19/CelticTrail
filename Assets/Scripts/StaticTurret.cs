@@ -12,7 +12,8 @@ public class StaticTurret : MonoBehaviour
 
     Collider2D enemigo;
 
-    [SerializeField] AudioClip sonidoDisparo, sonidoExplosion;
+    [SerializeField] AudioClip sonidoDisparo;
+    [SerializeField] AudioClip sonidoExplosion;
 
 
     bool tengoEnemigo = false;

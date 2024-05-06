@@ -31,7 +31,8 @@ public class Enemy : MonoBehaviour
     bool explosionOnce = true;
     bool explosionOnceTorreta = true;
 
-    [SerializeField] AudioClip sonidoDisparo, sonidoMorir;
+    [SerializeField] protected AudioClip[] sonidosDisparos;
+    [SerializeField] AudioClip sonidoMorir;
 
 
     void Start()
@@ -324,7 +325,7 @@ public class Enemy : MonoBehaviour
 
     public void ActivarSonidoDisparo()
     {
-        Instantiate(GameManager.Instance.prefabAudioSource).GetComponent<PrefabAudioSource>().EjecutaAudio(sonidoDisparo);
+        Instantiate(GameManager.Instance.prefabAudioSource).GetComponent<PrefabAudioSource>().EjecutaAudio(sonidosDisparos[Random.Range(0,sonidosDisparos.Length)]);
     } 
     
     public void ActivarSonidoMorir()

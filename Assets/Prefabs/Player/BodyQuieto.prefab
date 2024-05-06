@@ -259,6 +259,8 @@ MonoBehaviour:
   defaultColor: {r: 1, g: 1, b: 1, a: 1}
   changedColor: {r: 1, g: 0, b: 0, a: 1}
   tiempoParpadeo: 0.3
+  posicion: 0
+  "sonidoRecibirDa\xF1o": {fileID: 8300000, guid: 6dc9746f8de55ec419d65fb3847d64fe, type: 3}
 --- !u!95 &6350599286587051331
 Animator:
   serializedVersion: 5

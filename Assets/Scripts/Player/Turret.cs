@@ -9,7 +9,7 @@ public class Turret : MonoBehaviour
     [SerializeField] GameObject prefabBullet;
     [SerializeField] Transform shootPosition;
 
-    [SerializeField] AudioClip sonidoDisparo;
+    [SerializeField] AudioClip sonidosDisparos;
 
     private new Camera camera;
 
@@ -65,6 +65,6 @@ public class Turret : MonoBehaviour
     }
     public void ActivarSonido()
     {
-        Instantiate(GameManager.Instance.prefabAudioSource).GetComponent<PrefabAudioSource>().EjecutaAudio(sonidoDisparo);
+        Instantiate(GameManager.Instance.prefabAudioSource).GetComponent<PrefabAudioSource>().EjecutaAudio(sonidosDisparos);
     }
 }

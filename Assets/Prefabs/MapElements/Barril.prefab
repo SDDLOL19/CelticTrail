@@ -132,4 +132,5 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   prefabRotoBarril: {fileID: 3894909472170216741, guid: 8aa8f97350eaa5746a1b588753046bfe, type: 3}
-  sonidoRomperBarril: {fileID: 8300000, guid: c0dfc51f00757de488138880b19fc3f1, type: 3}
+  sonidosRomperBarril:
+  - {fileID: 8300000, guid: c0dfc51f00757de488138880b19fc3f1, type: 3}

@@ -229,7 +229,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!224 &1635216159328160083
 RectTransform:
   m_ObjectHideFlags: 0
@@ -341,6 +341,7 @@ MonoBehaviour:
   - {fileID: 4889429720878409358}
   - {fileID: 911864909070411477}
   - {fileID: 5414906006809621096}
+  sonidoPulsarBoton: {fileID: 8300000, guid: d2f8f4aa8b996ee44b6357a02536f296, type: 3}
 --- !u!1 &4042598958630970710
 GameObject:
   m_ObjectHideFlags: 0

@@ -25,7 +25,7 @@ public class GameManager : MonoBehaviour
     //AUDIO
     public GameObject prefabAudioSource;
 
-    [SerializeField] static AudioClip sonidoPulsarBoton;
+    [SerializeField] protected static AudioClip sonidoPulsarBoton;
 
 
     void Singleton()

@@ -104,6 +104,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   CorutinasParadas: 0
+  playerSpeed: 0
 --- !u!1001 &1112705727554340363
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -322,9 +323,29 @@ PrefabInstance:
       value: 10
       objectReference: {fileID: 0}
     - target: {fileID: 749672583318327642, guid: adfe2a66566b3224c9531384718f841f, type: 3}
+      propertyPath: sonidoMorir
+      value: 
+      objectReference: {fileID: 8300000, guid: 83160f0ed956c7341b6b61ac77827f0a, type: 3}
+    - target: {fileID: 749672583318327642, guid: adfe2a66566b3224c9531384718f841f, type: 3}
+      propertyPath: sonidoSumarVida
+      value: 
+      objectReference: {fileID: 8300000, guid: d5204b5ea087f5b47bf36009239fd3af, type: 3}
+    - target: {fileID: 749672583318327642, guid: adfe2a66566b3224c9531384718f841f, type: 3}
+      propertyPath: sonidoPerderVida
+      value: 
+      objectReference: {fileID: 8300000, guid: 9285162c53a8e194b9ed4e98674546bb, type: 3}
+    - target: {fileID: 749672583318327642, guid: adfe2a66566b3224c9531384718f841f, type: 3}
       propertyPath: spawnPointPlayer
       value: 
       objectReference: {fileID: 1194657674}
+    - target: {fileID: 749672583318327642, guid: adfe2a66566b3224c9531384718f841f, type: 3}
+      propertyPath: sonidoPerderEscudo
+      value: 
+      objectReference: {fileID: 8300000, guid: 6dc9746f8de55ec419d65fb3847d64fe, type: 3}
+    - target: {fileID: 749672583318327642, guid: adfe2a66566b3224c9531384718f841f, type: 3}
+      propertyPath: sonidoSoltarTorreta
+      value: 
+      objectReference: {fileID: 8300000, guid: d51544fc978c0d846bc6cb91d7650cfa, type: 3}
     - target: {fileID: 749672583318327642, guid: adfe2a66566b3224c9531384718f841f, type: 3}
       propertyPath: bodies.Array.data[0]
       value: 
@@ -361,6 +382,10 @@ PrefabInstance:
       propertyPath: bodies.Array.data[8]
       value: 
       objectReference: {fileID: 7782522049318236524}
+    - target: {fileID: 749672583318327642, guid: adfe2a66566b3224c9531384718f841f, type: 3}
+      propertyPath: sonidoCambiarEscudoPorVida
+      value: 
+      objectReference: {fileID: 8300000, guid: cfe9bde6c5eb9df4fb5255c7541a1507, type: 3}
     - target: {fileID: 749672583318327643, guid: adfe2a66566b3224c9531384718f841f, type: 3}
       propertyPath: m_Name
       value: Head

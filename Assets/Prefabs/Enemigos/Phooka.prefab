@@ -285,6 +285,7 @@ MonoBehaviour:
   spriteEnemigo: {fileID: 3838334646664958559}
   velocidadMovimiento: 5
   vidaEscogida: 0
+  recVidaPorSegundo: 0.2
   enemyVida: 4
   tiempoDeRecarga: 2
   rangoDisparoMin: 5
@@ -295,8 +296,8 @@ MonoBehaviour:
   changedColor: {r: 0, g: 0, b: 0, a: 0}
   tiempoParpadeo: 0.5
   probabilidadDrop: 0
-  sonidoDisparo: {fileID: 0}
-  sonidoMorir: {fileID: 0}
+  sonidoDisparo: {fileID: 8300000, guid: fcb989cfb6e95944c923e02815e2efff, type: 3}
+  sonidoMorir: {fileID: 8300000, guid: 7fdf44306cc9eb340bab87f802571d68, type: 3}
   rangoMaxVidaMenos: 13
 --- !u!58 &8300810076328830671
 CircleCollider2D:

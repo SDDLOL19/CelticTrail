@@ -17,6 +17,8 @@ public class SpawnManager : MonoBehaviour
     bool puedeCambiarRonda = false;
     float temporizadorEspecial;
 
+    [SerializeField] AudioClip sonidoFinRonda;
+
     private void Start()
     {
         timeToSpawn = tiempoEscogidoSpawn;
@@ -69,6 +71,7 @@ public class SpawnManager : MonoBehaviour
 
         if (rondaActual != rondaFinal)
         {
+            ActivarSonidoFinRonda();
             rondaActual++;
             Invoke("ComenzarRonda", tiempoEsperaRonda);
         }
@@ -84,5 +87,10 @@ public class SpawnManager : MonoBehaviour
     {
         cantidadEnemigosMax = cantidadEnemigosRonda[rondaActual - 1];
         puedeCambiarRonda = true;
+    }
+
+    public void ActivarSonidoFinRonda()
+    {
+        Instantiate(GameManager.Instance.prefabAudioSource).GetComponent<PrefabAudioSource>().EjecutaAudio(sonidoFinRonda);
     }
 }

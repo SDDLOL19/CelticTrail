@@ -36,7 +36,7 @@ public class HUD_Manager : MonoBehaviour
     [SerializeField] TextMeshProUGUI textoDanioBala, textoVelocidadBala, textoRecarga, textoEscudoMaximo, textoEscudoRegenerado;
 
     //AUDIO
-    [SerializeField] AudioClip sonidoPulsarBoton;
+    [SerializeField] AudioClip sonidoPulsarBoton, sonidoVictoria, sonidoDerrota;
 
 
     private void Start()
@@ -110,11 +110,13 @@ public class HUD_Manager : MonoBehaviour
     {
         if (GameManager.player.hePerdido)
         {
+            ActivarSonidoDerrota();
             CanvasGameOver.gameObject.SetActive(true);
         }
 
         else
         {
+            ActivarSonidoVictoria();
             CanvasVictoria.gameObject.SetActive(true);
         }
 
@@ -216,5 +218,15 @@ public class HUD_Manager : MonoBehaviour
     public void ActivarSonidoPulsarBoton()
     {
         Instantiate(GameManager.Instance.prefabAudioSource).GetComponent<PrefabAudioSource>().EjecutaAudio(sonidoPulsarBoton);
+    }
+
+    public void ActivarSonidoVictoria()
+    {
+        Instantiate(GameManager.Instance.prefabAudioSource).GetComponent<PrefabAudioSource>().EjecutaAudio(sonidoVictoria);
+    }
+
+    public void ActivarSonidoDerrota()
+    {
+        Instantiate(GameManager.Instance.prefabAudioSource).GetComponent<PrefabAudioSource>().EjecutaAudio(sonidoDerrota);
     }
 }

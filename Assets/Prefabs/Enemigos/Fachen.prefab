@@ -89,9 +89,9 @@ MonoBehaviour:
   tiempoParpadeo: 0.5
   probabilidadDrop: 0
   sonidosDisparos:
-  - {fileID: 0}
-  - {fileID: 0}
-  - {fileID: 0}
+  - {fileID: 8300000, guid: 8717aa2e6bcbde543a1fc20df4128fc0, type: 3}
+  - {fileID: 8300000, guid: 8717aa2e6bcbde543a1fc20df4128fc0, type: 3}
+  - {fileID: 8300000, guid: 8717aa2e6bcbde543a1fc20df4128fc0, type: 3}
   sonidoMorir: {fileID: 8300000, guid: 7fdf44306cc9eb340bab87f802571d68, type: 3}
 --- !u!58 &3183939425134061998
 CircleCollider2D:

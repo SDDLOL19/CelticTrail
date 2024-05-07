@@ -27,6 +27,18 @@ PrefabInstance:
       propertyPath: m_text
       value: BALAS EXPLOSIVAS
       objectReference: {fileID: 0}
+    - target: {fileID: 3635986694797464147, guid: 7b10d5829c7748b47bfa283bb6bcfe38, type: 3}
+      propertyPath: m_fontSize
+      value: 39.55
+      objectReference: {fileID: 0}
+    - target: {fileID: 3635986694797464147, guid: 7b10d5829c7748b47bfa283bb6bcfe38, type: 3}
+      propertyPath: m_enableAutoSizing
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 4712036986872249969, guid: 7b10d5829c7748b47bfa283bb6bcfe38, type: 3}
+      propertyPath: m_Sprite
+      value: 
+      objectReference: {fileID: 21300000, guid: e1c1c901d3674004e96c64416eb8ee92, type: 3}
     - target: {fileID: 6155557242959742519, guid: 7b10d5829c7748b47bfa283bb6bcfe38, type: 3}
       propertyPath: m_text
       value: "Los enanos han descubierto un pasatiempo mejor que explotar cosas con
@@ -35,7 +47,11 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 6155557242959742519, guid: 7b10d5829c7748b47bfa283bb6bcfe38, type: 3}
       propertyPath: m_fontSize
-      value: 29.3
+      value: 24.3
+      objectReference: {fileID: 0}
+    - target: {fileID: 6155557242959742519, guid: 7b10d5829c7748b47bfa283bb6bcfe38, type: 3}
+      propertyPath: m_margin.w
+      value: 1.1243896
       objectReference: {fileID: 0}
     - target: {fileID: 6155557242959742519, guid: 7b10d5829c7748b47bfa283bb6bcfe38, type: 3}
       propertyPath: m_enableAutoSizing
@@ -47,7 +63,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 6825312591036916972, guid: 7b10d5829c7748b47bfa283bb6bcfe38, type: 3}
       propertyPath: m_AnchoredPosition.y
-      value: -277.77417
+      value: -243
       objectReference: {fileID: 0}
     - target: {fileID: 7940997572988566640, guid: 7b10d5829c7748b47bfa283bb6bcfe38, type: 3}
       propertyPath: m_Name

@@ -27,6 +27,26 @@ PrefabInstance:
       propertyPath: m_text
       value: TEMERARIO
       objectReference: {fileID: 0}
+    - target: {fileID: 3635986694797464147, guid: 7b10d5829c7748b47bfa283bb6bcfe38, type: 3}
+      propertyPath: m_fontSize
+      value: 36.6
+      objectReference: {fileID: 0}
+    - target: {fileID: 3635986694797464147, guid: 7b10d5829c7748b47bfa283bb6bcfe38, type: 3}
+      propertyPath: m_margin.x
+      value: 152.82495
+      objectReference: {fileID: 0}
+    - target: {fileID: 3635986694797464147, guid: 7b10d5829c7748b47bfa283bb6bcfe38, type: 3}
+      propertyPath: m_margin.z
+      value: 148.42236
+      objectReference: {fileID: 0}
+    - target: {fileID: 3635986694797464147, guid: 7b10d5829c7748b47bfa283bb6bcfe38, type: 3}
+      propertyPath: m_enableAutoSizing
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 4712036986872249969, guid: 7b10d5829c7748b47bfa283bb6bcfe38, type: 3}
+      propertyPath: m_Sprite
+      value: 
+      objectReference: {fileID: 21300000, guid: 6fdc73a4383752748b78506e291c0a89, type: 3}
     - target: {fileID: 6155557242959742519, guid: 7b10d5829c7748b47bfa283bb6bcfe38, type: 3}
       propertyPath: m_text
       value: "La temeridad de aumentar la velocidad solo es comparable a la de perder
@@ -34,7 +54,11 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 6155557242959742519, guid: 7b10d5829c7748b47bfa283bb6bcfe38, type: 3}
       propertyPath: m_fontSize
-      value: 30.85
+      value: 24.8
+      objectReference: {fileID: 0}
+    - target: {fileID: 6155557242959742519, guid: 7b10d5829c7748b47bfa283bb6bcfe38, type: 3}
+      propertyPath: m_margin.w
+      value: 27.739044
       objectReference: {fileID: 0}
     - target: {fileID: 6155557242959742519, guid: 7b10d5829c7748b47bfa283bb6bcfe38, type: 3}
       propertyPath: m_enableAutoSizing
@@ -46,7 +70,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 6825312591036916972, guid: 7b10d5829c7748b47bfa283bb6bcfe38, type: 3}
       propertyPath: m_AnchoredPosition.y
-      value: -281.62335
+      value: -247
       objectReference: {fileID: 0}
     - target: {fileID: 7940997572988566640, guid: 7b10d5829c7748b47bfa283bb6bcfe38, type: 3}
       propertyPath: m_Name

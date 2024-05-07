@@ -27,6 +27,18 @@ PrefabInstance:
       propertyPath: m_text
       value: LECHE VEGANA
       objectReference: {fileID: 0}
+    - target: {fileID: 3635986694797464147, guid: 7b10d5829c7748b47bfa283bb6bcfe38, type: 3}
+      propertyPath: m_fontSize
+      value: 44.75
+      objectReference: {fileID: 0}
+    - target: {fileID: 3635986694797464147, guid: 7b10d5829c7748b47bfa283bb6bcfe38, type: 3}
+      propertyPath: m_enableAutoSizing
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 4712036986872249969, guid: 7b10d5829c7748b47bfa283bb6bcfe38, type: 3}
+      propertyPath: m_Sprite
+      value: 
+      objectReference: {fileID: 21300000, guid: 93b0bc6a4aa012b4c9592fe9bc638159, type: 3}
     - target: {fileID: 6155557242959742519, guid: 7b10d5829c7748b47bfa283bb6bcfe38, type: 3}
       propertyPath: m_text
       value: "Salido del imaginario de un ni\xF1o traumatizado, aumentar\xE1 mucho
@@ -34,7 +46,11 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 6155557242959742519, guid: 7b10d5829c7748b47bfa283bb6bcfe38, type: 3}
       propertyPath: m_fontSize
-      value: 33.95
+      value: 25.1
+      objectReference: {fileID: 0}
+    - target: {fileID: 6155557242959742519, guid: 7b10d5829c7748b47bfa283bb6bcfe38, type: 3}
+      propertyPath: m_margin.w
+      value: 44.373077
       objectReference: {fileID: 0}
     - target: {fileID: 6155557242959742519, guid: 7b10d5829c7748b47bfa283bb6bcfe38, type: 3}
       propertyPath: m_enableAutoSizing
@@ -46,7 +62,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 6825312591036916972, guid: 7b10d5829c7748b47bfa283bb6bcfe38, type: 3}
       propertyPath: m_AnchoredPosition.y
-      value: -285.16714
+      value: -251
       objectReference: {fileID: 0}
     - target: {fileID: 7940997572988566640, guid: 7b10d5829c7748b47bfa283bb6bcfe38, type: 3}
       propertyPath: m_Name

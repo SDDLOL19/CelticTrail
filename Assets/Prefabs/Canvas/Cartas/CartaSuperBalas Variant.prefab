@@ -27,6 +27,18 @@ PrefabInstance:
       propertyPath: m_text
       value: SUPER BALAS
       objectReference: {fileID: 0}
+    - target: {fileID: 3635986694797464147, guid: 7b10d5829c7748b47bfa283bb6bcfe38, type: 3}
+      propertyPath: m_fontSize
+      value: 44.75
+      objectReference: {fileID: 0}
+    - target: {fileID: 3635986694797464147, guid: 7b10d5829c7748b47bfa283bb6bcfe38, type: 3}
+      propertyPath: m_enableAutoSizing
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 4712036986872249969, guid: 7b10d5829c7748b47bfa283bb6bcfe38, type: 3}
+      propertyPath: m_Sprite
+      value: 
+      objectReference: {fileID: 21300000, guid: 50b7987639710424cb201bd381037ef4, type: 3}
     - target: {fileID: 6155557242959742519, guid: 7b10d5829c7748b47bfa283bb6bcfe38, type: 3}
       propertyPath: m_text
       value: "No hay duda de que las super balas son m\xE1s da\xF1inas que las normales,
@@ -34,7 +46,11 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 6155557242959742519, guid: 7b10d5829c7748b47bfa283bb6bcfe38, type: 3}
       propertyPath: m_fontSize
-      value: 34.25
+      value: 25.6
+      objectReference: {fileID: 0}
+    - target: {fileID: 6155557242959742519, guid: 7b10d5829c7748b47bfa283bb6bcfe38, type: 3}
+      propertyPath: m_margin.w
+      value: 36.05606
       objectReference: {fileID: 0}
     - target: {fileID: 6155557242959742519, guid: 7b10d5829c7748b47bfa283bb6bcfe38, type: 3}
       propertyPath: m_enableAutoSizing
@@ -46,7 +62,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 6825312591036916972, guid: 7b10d5829c7748b47bfa283bb6bcfe38, type: 3}
       propertyPath: m_AnchoredPosition.y
-      value: -280.497
+      value: -239
       objectReference: {fileID: 0}
     - target: {fileID: 7940997572988566640, guid: 7b10d5829c7748b47bfa283bb6bcfe38, type: 3}
       propertyPath: m_Name

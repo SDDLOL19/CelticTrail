@@ -27,6 +27,18 @@ PrefabInstance:
       propertyPath: m_text
       value: "ETAPA DEFINICI\xD3N"
       objectReference: {fileID: 0}
+    - target: {fileID: 3635986694797464147, guid: 7b10d5829c7748b47bfa283bb6bcfe38, type: 3}
+      propertyPath: m_fontSize
+      value: 42.35
+      objectReference: {fileID: 0}
+    - target: {fileID: 3635986694797464147, guid: 7b10d5829c7748b47bfa283bb6bcfe38, type: 3}
+      propertyPath: m_enableAutoSizing
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 4712036986872249969, guid: 7b10d5829c7748b47bfa283bb6bcfe38, type: 3}
+      propertyPath: m_Sprite
+      value: 
+      objectReference: {fileID: 21300000, guid: d35a6e1a4c1e46a4a9de7e65406a6bc2, type: 3}
     - target: {fileID: 6155557242959742519, guid: 7b10d5829c7748b47bfa283bb6bcfe38, type: 3}
       propertyPath: m_text
       value: "Los enanos han aligerado la carga! a costa de bajar potencia de los
@@ -34,7 +46,11 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 6155557242959742519, guid: 7b10d5829c7748b47bfa283bb6bcfe38, type: 3}
       propertyPath: m_fontSize
-      value: 36.1
+      value: 28.25
+      objectReference: {fileID: 0}
+    - target: {fileID: 6155557242959742519, guid: 7b10d5829c7748b47bfa283bb6bcfe38, type: 3}
+      propertyPath: m_margin.w
+      value: -7.192505
       objectReference: {fileID: 0}
     - target: {fileID: 6155557242959742519, guid: 7b10d5829c7748b47bfa283bb6bcfe38, type: 3}
       propertyPath: m_enableAutoSizing
@@ -46,7 +62,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 6825312591036916972, guid: 7b10d5829c7748b47bfa283bb6bcfe38, type: 3}
       propertyPath: m_AnchoredPosition.y
-      value: -273.72217
+      value: -232
       objectReference: {fileID: 0}
     - target: {fileID: 7940997572988566640, guid: 7b10d5829c7748b47bfa283bb6bcfe38, type: 3}
       propertyPath: m_Name

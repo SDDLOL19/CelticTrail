@@ -18,7 +18,8 @@ public class Ada : Enemy
 
         else
         {
-            CambiarObjetivo(GameManager.player.transform);
+            //CambiarObjetivo(GameManager.player.transform);
+            CambiarObjetivo(enemigo.transform);
         }
     }
 

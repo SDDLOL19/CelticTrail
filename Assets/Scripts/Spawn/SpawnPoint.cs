@@ -12,22 +12,20 @@ public class SpawnPoint : MonoBehaviour
     {
         tiroDeDado = Random.Range(1, 100);
 
-        //if (tiroDeDado <= 20)  //Asesino
-        //{
-        //    numeroEnemigo = 3;
-        //}
+        if (tiroDeDado <= 20)  //Asesino
+        {
+            numeroEnemigo = 0;
+        }
 
-        //else if (tiroDeDado > 20 && tiroDeDado <= 40)                //Arquero
-        //{
-        //    numeroEnemigo = 3;
-        //}
+        else if (tiroDeDado > 20 && tiroDeDado <= 40)                //Arquero
+        {
+            numeroEnemigo = 1;
+        }
 
-        //else
-        //{
-        //    numeroEnemigo = 3;
-        //}
-
-        numeroEnemigo = 3;
+        else
+        {
+            numeroEnemigo = 3;
+        }
 
         Instantiate(prefabEnemy[numeroEnemigo], transform.position, Quaternion.identity); //spawnea el enemigo
         Destroy(this.gameObject);

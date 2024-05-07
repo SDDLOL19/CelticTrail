@@ -124,11 +124,6 @@ public class Enemy : MonoBehaviour
         objetivoActual = objetivoNuevo;
     }
 
-    protected void ObjetivoPrincipal()
-    {
-        objetivoActual = GameManager.objetivoPrincipalEnemigos;
-    }
-
     void RotarShootingPoint()
     {
         //rotacionShooting.transform.up = GameManager.player.transform.position - rotacionShooting.transform.position;
@@ -275,7 +270,7 @@ public class Enemy : MonoBehaviour
     {
         if (collision.gameObject.tag == "Player")
         {
-            Destroy(this.gameObject);
+            Morir();
         }
     }
 

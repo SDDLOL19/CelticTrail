@@ -164,9 +164,9 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 6374366158400203261}
+  - component: {fileID: 9000074285480542966}
   - component: {fileID: 6374366158400203250}
   - component: {fileID: 6374366158400203260}
-  - component: {fileID: 9000074285480542966}
   - component: {fileID: 8300810076328830671}
   - component: {fileID: 1676663212127490452}
   m_Layer: 0
@@ -192,6 +192,42 @@ Transform:
   m_Father: {fileID: 0}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &9000074285480542966
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6374366158400203251}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: d22d4a48f94ecde4897f40951b622d9a, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  prefabDroppeable: {fileID: 2093152885178359709, guid: 502b661e01e6d17478e972f05e0ac041, type: 3}
+  shootPosition: {fileID: 9015593652726599998}
+  prefabBullet: {fileID: 2412584935707745910, guid: bda567a229a2a6d44bbac4c97c59cdd6, type: 3}
+  rotacionShooting: {fileID: 2255331675192042856}
+  spriteEnemigo: {fileID: 3838334646664958559}
+  velocidadMovimiento: 5
+  vidaEscogida: 10
+  recVidaPorSegundo: 0.2
+  enemyVida: 4
+  tiempoDeRecarga: 2
+  rangoDisparoMin: 5
+  rangoDisparoMax: 10
+  rotationSpeed: 100
+  detectionDistance: 0
+  defaultColor: {r: 1, g: 1, b: 1, a: 1}
+  changedColor: {r: 1, g: 0, b: 0, a: 1}
+  tiempoParpadeo: 0.5
+  probabilidadDrop: 0
+  sonidosDisparos:
+  - {fileID: 8300000, guid: 5522504b59a50b1408085897307168ae, type: 3}
+  - {fileID: 8300000, guid: 5522504b59a50b1408085897307168ae, type: 3}
+  - {fileID: 8300000, guid: 5522504b59a50b1408085897307168ae, type: 3}
+  sonidoMorir: {fileID: 8300000, guid: 7fdf44306cc9eb340bab87f802571d68, type: 3}
+  rangoMaxVidaMenos: 13
 --- !u!212 &6374366158400203250
 SpriteRenderer:
   m_ObjectHideFlags: 0
@@ -266,42 +302,6 @@ NavMeshAgent:
   m_BaseOffset: 0.5
   m_WalkableMask: 4294967295
   m_ObstacleAvoidanceType: 4
---- !u!114 &9000074285480542966
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 6374366158400203251}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: d22d4a48f94ecde4897f40951b622d9a, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  prefabDroppeable: {fileID: 2093152885178359709, guid: 502b661e01e6d17478e972f05e0ac041, type: 3}
-  shootPosition: {fileID: 9015593652726599998}
-  prefabBullet: {fileID: 2412584935707745910, guid: bda567a229a2a6d44bbac4c97c59cdd6, type: 3}
-  rotacionShooting: {fileID: 2255331675192042856}
-  spriteEnemigo: {fileID: 3838334646664958559}
-  velocidadMovimiento: 5
-  vidaEscogida: 0
-  recVidaPorSegundo: 0.2
-  enemyVida: 4
-  tiempoDeRecarga: 2
-  rangoDisparoMin: 5
-  rangoDisparoMax: 10
-  rotationSpeed: 100
-  detectionDistance: 0
-  defaultColor: {r: 0, g: 0, b: 0, a: 0}
-  changedColor: {r: 0, g: 0, b: 0, a: 0}
-  tiempoParpadeo: 0.5
-  probabilidadDrop: 0
-  sonidosDisparos:
-  - {fileID: 8300000, guid: 5522504b59a50b1408085897307168ae, type: 3}
-  - {fileID: 8300000, guid: 5522504b59a50b1408085897307168ae, type: 3}
-  - {fileID: 8300000, guid: 5522504b59a50b1408085897307168ae, type: 3}
-  sonidoMorir: {fileID: 8300000, guid: 7fdf44306cc9eb340bab87f802571d68, type: 3}
-  rangoMaxVidaMenos: 13
 --- !u!58 &8300810076328830671
 CircleCollider2D:
   m_ObjectHideFlags: 0

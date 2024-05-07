@@ -9,8 +9,8 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 2267601958634775346}
-  - component: {fileID: 2267601958634775347}
   - component: {fileID: 6620353369748456439}
+  - component: {fileID: 2267601958634775347}
   - component: {fileID: 3763893288277437440}
   - component: {fileID: 5785678043121179483}
   m_Layer: 0
@@ -36,28 +36,6 @@ Transform:
   m_Father: {fileID: 0}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!195 &2267601958634775347
-NavMeshAgent:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 2267601958634775356}
-  m_Enabled: 1
-  m_AgentTypeID: 0
-  m_Radius: 0.5
-  m_Speed: 3.5
-  m_Acceleration: 8
-  avoidancePriority: 50
-  m_AngularSpeed: 120
-  m_StoppingDistance: 3
-  m_AutoTraverseOffMeshLink: 1
-  m_AutoBraking: 1
-  m_AutoRepath: 1
-  m_Height: 1
-  m_BaseOffset: 0.5
-  m_WalkableMask: 4294967295
-  m_ObstacleAvoidanceType: 4
 --- !u!114 &6620353369748456439
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -94,6 +72,28 @@ MonoBehaviour:
   - {fileID: 8300000, guid: 87abc5d003761c04e8e8ebaace4b1470, type: 3}
   sonidoMorir: {fileID: 8300000, guid: 7fdf44306cc9eb340bab87f802571d68, type: 3}
   tiempoEntreRafaga: 1
+--- !u!195 &2267601958634775347
+NavMeshAgent:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2267601958634775356}
+  m_Enabled: 1
+  m_AgentTypeID: 0
+  m_Radius: 0.5
+  m_Speed: 3.5
+  m_Acceleration: 8
+  avoidancePriority: 50
+  m_AngularSpeed: 120
+  m_StoppingDistance: 3
+  m_AutoTraverseOffMeshLink: 1
+  m_AutoBraking: 1
+  m_AutoRepath: 1
+  m_Height: 1
+  m_BaseOffset: 0.5
+  m_WalkableMask: 4294967295
+  m_ObstacleAvoidanceType: 4
 --- !u!58 &3763893288277437440
 CircleCollider2D:
   m_ObjectHideFlags: 0

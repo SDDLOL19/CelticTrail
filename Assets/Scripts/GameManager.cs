@@ -63,11 +63,6 @@ public class GameManager : MonoBehaviour
         //cronometro = Mathf.Clamp(cronometro, 0, 180);
     }
 
-    void ActualizarObjetivo(Transform objetivo)
-    {
-        objetivoPrincipalEnemigos = objetivo;
-    }
-
     public static void ReanudarTiempo()
     {
         Time.timeScale = 1;

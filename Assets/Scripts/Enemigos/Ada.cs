@@ -6,20 +6,21 @@ public class Ada : Enemy
 {
     protected override void AccionExtraUno()
     {
-        Vector2 radioDeteccion = Random.insideUnitCircle * detectionDistance; //genera un radio alrededor del objeto
-        Vector2 radioDeteccionMovido = new Vector2(transform.position.x + radioDeteccion.x, transform.position.y + radioDeteccion.y);
+        Enemy enemigo = Physics2D.OverlapCircle(transform.position, detectionDistance).GetComponent<Enemy>();
 
-        Transform enemigo = Physics2D.OverlapCircle(radioDeteccionMovido, detectionDistance).transform;
-
-        if (enemigo.GetComponent<Enemy>() && !enemigo.GetComponent<Ada>())
+        if (enemigo != null /*&& enemigo.GetComponent<Ada>() == null*/)
         {
-            CambiarObjetivo(enemigo.transform);
+            Debug.Log("Enemigo encontrao");
+
+            if (enemigo.GetComponent<Ada>() == null)
+            {
+                CambiarObjetivo(enemigo.transform);
+            }
         }
 
         else
         {
-            //CambiarObjetivo(GameManager.player.transform);
-            CambiarObjetivo(enemigo.transform);
+            CambiarObjetivo(GameManager.player.transform);
         }
     }
 

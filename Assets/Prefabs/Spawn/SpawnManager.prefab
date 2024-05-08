@@ -44,7 +44,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: e0ea87cd81b344546a7ad06640713a26, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  cantidadEnemigosRonda: 05000000070000000a0000000f00000019000000
+  cantidadEnemigosRonda: 05000000070000000a0000000f000000190000001e000000
   tiempoEscogidoSpawn: 2
   radioEscogido: 3
   tiempoEsperaRonda: 4
@@ -56,3 +56,4 @@ MonoBehaviour:
   rondaFinal: 5
   rondasCartas: 000100010001000100
   manejadorHud: {fileID: 0}
+  sonidoFinRonda: {fileID: 0}

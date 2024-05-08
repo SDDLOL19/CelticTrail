@@ -12,17 +12,27 @@ public class SpawnPoint : MonoBehaviour
     {
         tiroDeDado = Random.Range(1, 100);
 
-        if (tiroDeDado <= 20)  //Asesino
+        if (tiroDeDado <= 30)  //Arquero
         {
             numeroEnemigo = 0;
         }
 
-        else if (tiroDeDado > 20 && tiroDeDado <= 40)                //Arquero
+        else if (tiroDeDado > 30 && tiroDeDado <= 50)                //Asesino
         {
             numeroEnemigo = 1;
         }
 
-        else
+        else if (tiroDeDado > 50 && tiroDeDado <= 70)                //Phooka
+        {
+            numeroEnemigo = 2;
+        }
+
+        else if (tiroDeDado > 70 && tiroDeDado <= 90)                //Fachen
+        {
+            numeroEnemigo = 4;
+        }
+
+        else                                                        //Hada
         {
             numeroEnemigo = 3;
         }

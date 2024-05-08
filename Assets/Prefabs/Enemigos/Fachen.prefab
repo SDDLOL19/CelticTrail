@@ -62,8 +62,8 @@ MonoBehaviour:
   rangoDisparoMax: 10
   rotationSpeed: 100
   detectionDistance: 0
-  defaultColor: {r: 1, g: 1, b: 1, a: 0}
-  changedColor: {r: 1, g: 0, b: 0, a: 0}
+  defaultColor: {r: 1, g: 1, b: 1, a: 1}
+  changedColor: {r: 1, g: 0, b: 0, a: 1}
   tiempoParpadeo: 0.5
   probabilidadDrop: 0
   sonidosDisparos:

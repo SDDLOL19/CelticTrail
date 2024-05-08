@@ -25,6 +25,7 @@ public class HUD_Manager : MonoBehaviour
 
     //GAME OVER
     [SerializeField] Canvas CanvasGameOver, CanvasVictoria;
+    bool doneOnceGameOver = false;
 
     //CARTAS
     [SerializeField] GameObject[] prefabsCartas;
@@ -108,21 +109,26 @@ public class HUD_Manager : MonoBehaviour
 
     void AcabarPartida()
     {
-        if (GameManager.player.hePerdido)
+        if (!doneOnceGameOver)
         {
-            ActivarSonidoDerrota();
-            CanvasGameOver.gameObject.SetActive(true);
-        }
+            if (GameManager.player.hePerdido)
+            {
+                ActivarSonidoDerrota();
+                CanvasGameOver.gameObject.SetActive(true);
+            }
 
-        else
-        {
-            ActivarSonidoVictoria();
-            CanvasVictoria.gameObject.SetActive(true);
-        }
+            else
+            {
+                ActivarSonidoVictoria();
+                CanvasVictoria.gameObject.SetActive(true);
+            }
 
-        HudPrincipal.gameObject.SetActive(false);
-        Invoke("DelayAcabar", 2);
-        //GameManager.PararTiempo();
+            HudPrincipal.gameObject.SetActive(false);
+            Invoke("DelayAcabar", 2);
+
+            doneOnceGameOver = true;
+            //GameManager.PararTiempo();
+        }
     }
 
     void DelayAcabar()

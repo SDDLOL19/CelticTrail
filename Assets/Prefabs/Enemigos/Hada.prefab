@@ -67,8 +67,10 @@ MonoBehaviour:
   tiempoParpadeo: 0.5
   probabilidadDrop: 0
   sonidosDisparos:
-  - {fileID: 8300000, guid: 8717aa2e6bcbde543a1fc20df4128fc0, type: 3}
-  sonidoMorir: {fileID: 8300000, guid: 7fdf44306cc9eb340bab87f802571d68, type: 3}
+  - {fileID: 8300000, guid: 1ec59854e7eedd94a9580501530ed714, type: 3}
+  - {fileID: 8300000, guid: 563eb40d3a94c074fae4e8864a2109cc, type: 3}
+  - {fileID: 8300000, guid: ffeb83f798696d845ac8b4d8106d11bd, type: 3}
+  sonidoMorir: {fileID: 8300000, guid: 219c152eb0f7fac489203a8d44dc808e, type: 3}
 --- !u!195 &2267601958634775347
 NavMeshAgent:
   m_ObjectHideFlags: 0

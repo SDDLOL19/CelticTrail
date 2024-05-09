@@ -43,7 +43,7 @@ public class Head : MonoBehaviour
     [SerializeField] Transform spawnPointPlayer;
 
     //SONIDOS
-    [SerializeField] AudioClip sonidoPerderEscudo, sonidoPerderVida, sonidoSumarVida, sonidoChocar, sonidoSoltarTorreta, sonidoCambiarEscudoPorVida, sonidoMorir;
+    [SerializeField] AudioClip sonidoPerderEscudo, sonidoPerderVida, sonidoSumarVida, sonidoSoltarTorreta, sonidoCambiarEscudoPorVida, sonidoMorir;
 
 
 

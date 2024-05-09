@@ -27,6 +27,8 @@ public class GameManager : MonoBehaviour
 
     [SerializeField] protected static AudioClip sonidoPulsarBoton;
 
+     
+
 
     void Singleton()
     {

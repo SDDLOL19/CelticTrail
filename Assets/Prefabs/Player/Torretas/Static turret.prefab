@@ -224,8 +224,8 @@ MonoBehaviour:
   rotacionShooting: {fileID: 5665192244197705008}
   shootPosition: {fileID: 4899884164384842040}
   prefabAreaExplosion: {fileID: 4223941925266280624, guid: 942ffde9d6ebb3441a2b9c5836646bec, type: 3}
-  sonidoDisparo: {fileID: 8300000, guid: 8717aa2e6bcbde543a1fc20df4128fc0, type: 3}
-  sonidoExplosion: {fileID: 8300000, guid: 9285162c53a8e194b9ed4e98674546bb, type: 3}
+  sonidoDisparo: {fileID: 8300000, guid: d37194afeac7fc748b4355dcb5b4bd62, type: 3}
+  sonidoExplosion: {fileID: 8300000, guid: 5613003e6e8a6b04e930265462452b24, type: 3}
 --- !u!61 &909637722852955507
 BoxCollider2D:
   m_ObjectHideFlags: 0

@@ -89,10 +89,10 @@ MonoBehaviour:
   tiempoParpadeo: 0.5
   probabilidadDrop: 50
   sonidosDisparos:
-  - {fileID: 8300000, guid: 8717aa2e6bcbde543a1fc20df4128fc0, type: 3}
-  - {fileID: 8300000, guid: 8717aa2e6bcbde543a1fc20df4128fc0, type: 3}
-  - {fileID: 8300000, guid: 8717aa2e6bcbde543a1fc20df4128fc0, type: 3}
-  sonidoMorir: {fileID: 8300000, guid: 7fdf44306cc9eb340bab87f802571d68, type: 3}
+  - {fileID: 8300000, guid: a74d36bb17a86984b96a94c2e2d24790, type: 3}
+  - {fileID: 8300000, guid: 7819db1999d03aa489ce8a8b86b6d818, type: 3}
+  - {fileID: 8300000, guid: c96444df4b0f3134a849a85230a41cc5, type: 3}
+  sonidoMorir: {fileID: 8300000, guid: 219c152eb0f7fac489203a8d44dc808e, type: 3}
 --- !u!58 &3183939425134061998
 CircleCollider2D:
   m_ObjectHideFlags: 0

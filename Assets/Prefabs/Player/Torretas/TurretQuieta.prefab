@@ -132,4 +132,4 @@ MonoBehaviour:
   rotationSpeed: 0
   prefabBullet: {fileID: 936864338944683171, guid: 636f95a6bc4756e49816b1e379b27595, type: 3}
   shootPosition: {fileID: 672178111710039950}
-  sonidosDisparos: {fileID: 8300000, guid: 8717aa2e6bcbde543a1fc20df4128fc0, type: 3}
+  sonidosDisparos: {fileID: 8300000, guid: 57bbd7fde32104146893a0d87b5c67cc, type: 3}

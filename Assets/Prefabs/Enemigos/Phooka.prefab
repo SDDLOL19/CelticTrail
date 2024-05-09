@@ -223,10 +223,10 @@ MonoBehaviour:
   tiempoParpadeo: 0.5
   probabilidadDrop: 0
   sonidosDisparos:
-  - {fileID: 8300000, guid: 5522504b59a50b1408085897307168ae, type: 3}
-  - {fileID: 8300000, guid: 5522504b59a50b1408085897307168ae, type: 3}
-  - {fileID: 8300000, guid: 5522504b59a50b1408085897307168ae, type: 3}
-  sonidoMorir: {fileID: 8300000, guid: 7fdf44306cc9eb340bab87f802571d68, type: 3}
+  - {fileID: 8300000, guid: 51a9e271f88e015419f4c4566f026cb2, type: 3}
+  - {fileID: 8300000, guid: 4704cb2085983ad4980c70dc9f9eeec9, type: 3}
+  - {fileID: 8300000, guid: fbd32adb306d3f04bb37573d9495ba9f, type: 3}
+  sonidoMorir: {fileID: 8300000, guid: 219c152eb0f7fac489203a8d44dc808e, type: 3}
   rangoMaxVidaMenos: 13
 --- !u!212 &6374366158400203250
 SpriteRenderer:

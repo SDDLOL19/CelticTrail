@@ -198,7 +198,7 @@ public class Head : MonoBehaviour
         if (lenghtSnake <= StatManager.vidaMaxima)
         {
             lenghtSnake++;
-            //////ActivarSonidoSumarVida();
+            ActivarSonidoSumarVida();
         }
 
         ControladorCarrosEnEscena();
@@ -209,7 +209,7 @@ public class Head : MonoBehaviour
         if (miEscudo.LeerEscudo() > 0)
         {
             miEscudo.QuitarEscudo();
-            //////ActivarSonidoPerderEscudo();
+            ActivarSonidoPerderEscudo();
         }
 
         else
@@ -226,7 +226,7 @@ public class Head : MonoBehaviour
     void PerderVida()
     {
         lenghtSnake -= 1 * StatManager.multpDanioRecibidoPlayer;
-        //////ActivarSonidoPerderVida();
+        ActivarSonidoPerderVida();
         if (lenghtSnake < 0)
         {
             lenghtSnake = 0;
@@ -268,7 +268,7 @@ public class Head : MonoBehaviour
                 ControladorCarrosEnEscena();
                 Instantiate(prefabStaticTurret, culoDeTren.position, culoDeTren.rotation);
                 culoDeTren = bodies[lenghtSnake].transform;
-                //////ActivarSonidoSoltarTorreta();
+                ActivarSonidoSoltarTorreta();
             }
         }
     }
@@ -281,7 +281,7 @@ public class Head : MonoBehaviour
             {
                 miEscudo.VaciarEscudo();
                 Growth();
-                //////ActivarSonidoCambiarEscudoPorVida();
+                ActivarSonidoCambiarEscudoPorVida();
             }
         }
     }
@@ -475,32 +475,32 @@ public class Head : MonoBehaviour
         }
     }
 
-    public void ActivarSonidoSumarVida()
+    void ActivarSonidoSumarVida()
     {
         Instantiate(GameManager.Instance.prefabAudioSource).GetComponent<PrefabAudioSource>().EjecutaAudio(sonidoSumarVida);
     }
 
-    public void ActivarSonidoPerderVida()
+    void ActivarSonidoPerderVida()
     {
         Instantiate(GameManager.Instance.prefabAudioSource).GetComponent<PrefabAudioSource>().EjecutaAudio(sonidoPerderVida);
     }
 
-    public void ActivarSonidoPerderEscudo()
+    void ActivarSonidoPerderEscudo()
     {
         Instantiate(GameManager.Instance.prefabAudioSource).GetComponent<PrefabAudioSource>().EjecutaAudio(sonidoPerderEscudo);
     }
     
-    public void ActivarSonidoSoltarTorreta()
+    void ActivarSonidoSoltarTorreta()
     {
         Instantiate(GameManager.Instance.prefabAudioSource).GetComponent<PrefabAudioSource>().EjecutaAudio(sonidoSoltarTorreta);
     }
     
-    public void ActivarSonidoCambiarEscudoPorVida()
+    void ActivarSonidoCambiarEscudoPorVida()
     {
         Instantiate(GameManager.Instance.prefabAudioSource).GetComponent<PrefabAudioSource>().EjecutaAudio(sonidoCambiarEscudoPorVida);
     }
     
-    public void ActivarSonidoMorir()
+    void ActivarSonidoMorir()
     {
         Instantiate(GameManager.Instance.prefabAudioSource).GetComponent<PrefabAudioSource>().EjecutaAudio(sonidoMorir);
     }

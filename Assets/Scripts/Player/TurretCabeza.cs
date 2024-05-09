@@ -2,7 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class Turret : MonoBehaviour
+public class TurretCabeza : MonoBehaviour
 {
     [SerializeField, Range(0f, 20f)] float rotationSpeed;
     float tiempoSpawnBalas = 0;
@@ -48,7 +48,7 @@ public class Turret : MonoBehaviour
         tiempoSpawnBalas -= Time.deltaTime;
     }
 
-    void Disparo() 
+    void Disparo()
     {
         if (Input.GetMouseButtonDown(0))
         {
@@ -63,9 +63,15 @@ public class Turret : MonoBehaviour
 
     void CreateBullet()
     {
-            Instantiate(prefabBullet, shootPosition.position, transform.rotation);
-            //spawnea una bala en la posicion del disparo y con la rotacion que tenga este objeto
-            //para modificar esta posicion simplemente mueve el objeto ShootPosition
-            tiempoSpawnBalas = StatManager.tiempoRecarga;
+        ActivarSonido();
+        Instantiate(prefabBullet, shootPosition.position, transform.rotation);
+        //spawnea una bala en la posicion del disparo y con la rotacion que tenga este objeto
+        //para modificar esta posicion simplemente mueve el objeto ShootPosition
+        tiempoSpawnBalas = StatManager.tiempoRecarga;
+    }
+
+    void ActivarSonido()
+    {
+        Instantiate(GameManager.Instance.prefabAudioSource).GetComponent<PrefabAudioSource>().EjecutaAudio(sonidosDisparos);
     }
 }

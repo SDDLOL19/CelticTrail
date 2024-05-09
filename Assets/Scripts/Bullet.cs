@@ -4,7 +4,7 @@ using UnityEngine;
 
 public class Bullet : MonoBehaviour
 {
-    [SerializeField, Range(1f, 20f)] float speed;
+    [SerializeField, Range(0f, 20f)] float speed;
     [SerializeField] float timeDestruction;
     [SerializeField] string tagDeMiCreador;
 

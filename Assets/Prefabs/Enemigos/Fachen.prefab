@@ -50,7 +50,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   prefabDroppeable: {fileID: 2093152885178359709, guid: 502b661e01e6d17478e972f05e0ac041, type: 3}
   shootPosition: {fileID: 2449980635421548127}
-  prefabBullet: {fileID: 2412584935707745910, guid: bda567a229a2a6d44bbac4c97c59cdd6, type: 3}
+  prefabBullet: {fileID: 2412584935707745910, guid: cffc3a44e8fed0040a288952d742ec19, type: 3}
   rotacionShooting: {fileID: 4634567906735696393}
   spriteEnemigo: {fileID: 7663235161128967486}
   velocidadMovimiento: 5

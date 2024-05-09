@@ -4,19 +4,8 @@ using UnityEngine;
 
 public class RadioExplosion : MonoBehaviour
 {
-    [SerializeField] float timeDestruction;
-
-    void Update()
+    public void Destroy()
     {
-        Destroy();
-    }
-
-    void Destroy()
-    {
-        timeDestruction -= Time.deltaTime;
-        if (timeDestruction <= 0)
-        {
-            Destroy(gameObject);
-        }
+        Destroy(gameObject);
     }
 }

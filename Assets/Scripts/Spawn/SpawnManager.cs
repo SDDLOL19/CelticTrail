@@ -4,7 +4,7 @@ using UnityEngine;
 
 public class SpawnManager : MonoBehaviour
 {
-    public static int cantidadEnemigosEnEscena, cantidadEnemigosMax, rondaActual;
+    [SerializeField] public static int cantidadEnemigosEnEscena, cantidadEnemigosMax, rondaActual;
     [SerializeField] int[] cantidadEnemigosRonda;
     [SerializeField] float tiempoEscogidoSpawn, radioEscogido, tiempoEsperaRonda;
     public static float timeToSpawn, radioDeSpawn;
@@ -24,7 +24,7 @@ public class SpawnManager : MonoBehaviour
         timeToSpawn = tiempoEscogidoSpawn;
         radioDeSpawn = radioEscogido;
         temporizadorEspecial = tiempoEscogidoSpawn + 0.2f;
-        rondaActual = 1;
+        rondaActual = 5;
         cantidadEnemigosMax = 0;
         cantidadEnemigosEnEscena = 0;
         Invoke("ComenzarRonda", tiempoEsperaRonda);

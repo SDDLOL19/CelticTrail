@@ -217,9 +217,9 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   rotationSpeed: 15
-  detectionDistance: 14
+  detectionDistance: 20
   timeSpawnBullet: 0.5
-  vidaTorreta: 10
+  vidaTorreta: 20
   prefabBullet: {fileID: 4536822823130952195, guid: 6b13c199bc9594542af43aaabe10fe6f, type: 3}
   rotacionShooting: {fileID: 5665192244197705008}
   shootPosition: {fileID: 4899884164384842040}

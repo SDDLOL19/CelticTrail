@@ -245,7 +245,7 @@ public class Head : MonoBehaviour
             {
                 Growth();
 
-                contadorRegeneracionVida = 40;
+                contadorRegeneracionVida = 25;
             }
         }
     }

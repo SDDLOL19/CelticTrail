@@ -87,7 +87,7 @@ MonoBehaviour:
   defaultColor: {r: 1, g: 1, b: 1, a: 1}
   changedColor: {r: 1, g: 0, b: 0, a: 1}
   tiempoParpadeo: 0.5
-  probabilidadDrop: 50
+  probabilidadDrop: 10
   sonidosDisparos:
   - {fileID: 8300000, guid: a74d36bb17a86984b96a94c2e2d24790, type: 3}
   - {fileID: 8300000, guid: 7819db1999d03aa489ce8a8b86b6d818, type: 3}

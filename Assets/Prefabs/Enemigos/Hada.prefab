@@ -57,15 +57,15 @@ MonoBehaviour:
   vidaEscogida: 10
   recVidaPorSegundo: 0.2
   enemyVida: 0
-  tiempoDeRecarga: 0
-  rangoDisparoMin: 0
-  rangoDisparoMax: 0
+  tiempoDeRecarga: 0.1
+  rangoDisparoMin: 10
+  rangoDisparoMax: 40
   rotationSpeed: 100
   detectionDistance: 300
   defaultColor: {r: 1, g: 1, b: 1, a: 1}
   changedColor: {r: 1, g: 0, b: 0, a: 1}
   tiempoParpadeo: 0.5
-  probabilidadDrop: 0
+  probabilidadDrop: 10
   sonidosDisparos:
   - {fileID: 8300000, guid: 1ec59854e7eedd94a9580501530ed714, type: 3}
   - {fileID: 8300000, guid: 563eb40d3a94c074fae4e8864a2109cc, type: 3}

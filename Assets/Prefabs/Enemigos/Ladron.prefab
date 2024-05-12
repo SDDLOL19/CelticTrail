@@ -53,19 +53,19 @@ MonoBehaviour:
   prefabBullet: {fileID: 2412584935707745910, guid: bda567a229a2a6d44bbac4c97c59cdd6, type: 3}
   rotacionShooting: {fileID: 6359896301870706599}
   spriteEnemigo: {fileID: 5087299896580461871}
-  velocidadMovimiento: 10
+  velocidadMovimiento: 11
   vidaEscogida: 2
   recVidaPorSegundo: 0.2
   enemyVida: 2
-  tiempoDeRecarga: 2
+  tiempoDeRecarga: 1.5
   rangoDisparoMin: 1
-  rangoDisparoMax: 5
+  rangoDisparoMax: 3
   rotationSpeed: 100
   detectionDistance: 0
   defaultColor: {r: 1, g: 1, b: 1, a: 1}
   changedColor: {r: 1, g: 0, b: 0, a: 1}
   tiempoParpadeo: 0.5
-  probabilidadDrop: 0
+  probabilidadDrop: 10
   sonidosDisparos:
   - {fileID: 8300000, guid: 4a86c7e9558ddaf40a61adb38f085af8, type: 3}
   - {fileID: 8300000, guid: 176bec981112eba46b0631e31f309a9e, type: 3}

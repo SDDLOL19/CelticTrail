@@ -50,7 +50,7 @@ PrefabInstance:
     - target: {fileID: 6155557242959742519, guid: 7b10d5829c7748b47bfa283bb6bcfe38, type: 3}
       propertyPath: m_text
       value: "Cierto ung\xFCento salido de las l\xE1grimas de los fantasmas del infierno
-        permiten que te cures 1 de vida cada 40 segundos pero no podr\xE1s ser curado
+        permiten que te cures 1 de vida cada 25 segundos pero no podr\xE1s ser curado
         de ninguna otra forma."
       objectReference: {fileID: 0}
     - target: {fileID: 6155557242959742519, guid: 7b10d5829c7748b47bfa283bb6bcfe38, type: 3}
@@ -62,8 +62,32 @@ PrefabInstance:
       value: 57.680176
       objectReference: {fileID: 0}
     - target: {fileID: 6155557242959742519, guid: 7b10d5829c7748b47bfa283bb6bcfe38, type: 3}
+      propertyPath: m_fontStyle
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 6155557242959742519, guid: 7b10d5829c7748b47bfa283bb6bcfe38, type: 3}
+      propertyPath: m_fontColor.b
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 6155557242959742519, guid: 7b10d5829c7748b47bfa283bb6bcfe38, type: 3}
+      propertyPath: m_fontColor.g
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 6155557242959742519, guid: 7b10d5829c7748b47bfa283bb6bcfe38, type: 3}
+      propertyPath: m_fontColor.r
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 6155557242959742519, guid: 7b10d5829c7748b47bfa283bb6bcfe38, type: 3}
       propertyPath: m_enableAutoSizing
       value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 6155557242959742519, guid: 7b10d5829c7748b47bfa283bb6bcfe38, type: 3}
+      propertyPath: m_fontColor32.rgba
+      value: 4278190080
+      objectReference: {fileID: 0}
+    - target: {fileID: 6155557242959742519, guid: 7b10d5829c7748b47bfa283bb6bcfe38, type: 3}
+      propertyPath: m_enableVertexGradient
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 6825312591036916972, guid: 7b10d5829c7748b47bfa283bb6bcfe38, type: 3}
       propertyPath: m_SizeDelta.y

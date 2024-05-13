@@ -38,9 +38,8 @@ public class SelectorNiveles : MonoBehaviour
         SceneManager.LoadScene("MenuPrincipal");
     }
 
-    //public void ActivarSonidoDerrota()
-    //{
-    //    Instantiate(GameManager.Instance.prefabAudioSource).GetComponent<PrefabAudioSource>().EjecutaAudio(sonidoDerrota);
-    //}
-
+    public void AbrirMenuCredits()
+    {
+        SceneManager.LoadScene("Creditos");
+    }
 }

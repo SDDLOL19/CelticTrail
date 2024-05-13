@@ -24,7 +24,7 @@ public class SpawnManager : MonoBehaviour
         timeToSpawn = tiempoEscogidoSpawn;
         radioDeSpawn = radioEscogido;
         temporizadorEspecial = tiempoEscogidoSpawn + 0.2f;
-        rondaActual = 5;
+        rondaActual = 1;
         cantidadEnemigosMax = 0;
         cantidadEnemigosEnEscena = 0;
         Invoke("ComenzarRonda", tiempoEsperaRonda);

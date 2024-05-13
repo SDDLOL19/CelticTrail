@@ -137,5 +137,5 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   speed: 6
-  timeDestruction: 6
+  timeDestruction: 15
   tagDeMiCreador: Enemigo

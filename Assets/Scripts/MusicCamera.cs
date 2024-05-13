@@ -13,6 +13,7 @@ public class MusicCamera : MonoBehaviour
     {
         audioSource = GetComponent<AudioSource>();
     }
+
     private void Update()
     {
         if (musicaActiva == false)
@@ -20,7 +21,10 @@ public class MusicCamera : MonoBehaviour
             EjecutaAudio(musicasJuego[Random.Range(0, musicasJuego.Length)]);
             musicaActiva = true;
         }
+
+        audioSource.volume = GameManager.volumenMusica;
     }
+
     public void EjecutaAudio(AudioClip clipAudio)
     {
         audioSource.clip = clipAudio;
@@ -28,10 +32,11 @@ public class MusicCamera : MonoBehaviour
 
         StartCoroutine("CambiarCancion");
     }
+
     IEnumerator CambiarCancion()
     {
         audioSource.Play();
         yield return new WaitForSeconds(tiempoClip);
-        musicaActiva=false;
+        musicaActiva = false;
     }
 }

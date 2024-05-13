@@ -11,6 +11,12 @@ public class PrefabAudioSource : MonoBehaviour
     {
         audioSource = GetComponent<AudioSource>();
     }
+
+    private void Start()
+    {
+        audioSource.volume = GameManager.volumenGeneral;
+    }
+
     public void EjecutaAudio(AudioClip clipAudio)
     {
         audioSource.clip = clipAudio;

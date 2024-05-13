@@ -243,19 +243,9 @@ public class Enemy : MonoBehaviour
             Invoke("ResetColor", tiempoParpadeo);
         }
 
-        if (collision.gameObject.tag == "RadioExplosion" && explosionOnce)
-        {
-            enemyVida -= StatManager.danioBala * StatManager.multiplicadorDaño;
-
-            Debug.Log("FuncionaElDaño");
-            CambioColor();
-            Invoke("ResetColor", tiempoParpadeo);
-            explosionOnce = false;
-        }
-
         if (collision.gameObject.tag == "RadioExplosionTorreta" && explosionOnceTorreta)
         {
-            enemyVida -= 4;
+            enemyVida -= StatManager.danioBala * StatManager.multiplicadorDaño;
 
             Debug.Log("FuncionaElDaño");
             CambioColor();

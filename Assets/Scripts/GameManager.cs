@@ -24,10 +24,12 @@ public class GameManager : MonoBehaviour
 
     //AUDIO
     public GameObject prefabAudioSource;
+    public static float volumenGeneral = 1;
+    public static float volumenMusica = 1;
 
     [SerializeField] protected static AudioClip sonidoPulsarBoton;
 
-     
+
 
 
     void Singleton()

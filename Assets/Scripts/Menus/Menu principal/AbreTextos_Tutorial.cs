@@ -8,7 +8,7 @@ public class AbreTextos_Tutorial : MonoBehaviour
 
     void Start()
     {
-        textoAEsconder0.SetActive(false);
+        textoAEsconder0.SetActive(true);
         textoAEsconder1.SetActive(false);
         textoAEsconder2.SetActive(false);
         textoAEsconder3.SetActive(false);

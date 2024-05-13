@@ -58,10 +58,10 @@ MonoBehaviour:
   recVidaPorSegundo: 0.2
   enemyVida: 0
   tiempoDeRecarga: 0.1
-  rangoDisparoMin: 10
+  rangoDisparoMin: 0
   rangoDisparoMax: 40
   rotationSpeed: 100
-  detectionDistance: 300
+  detectionDistance: 0
   defaultColor: {r: 1, g: 1, b: 1, a: 1}
   changedColor: {r: 1, g: 0, b: 0, a: 1}
   tiempoParpadeo: 0.5

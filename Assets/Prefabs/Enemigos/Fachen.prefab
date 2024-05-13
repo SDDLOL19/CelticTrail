@@ -59,7 +59,7 @@ MonoBehaviour:
   enemyVida: 0
   tiempoDeRecarga: 0
   rangoDisparoMin: 0
-  rangoDisparoMax: 0
+  rangoDisparoMax: 2
   rotationSpeed: 100
   detectionDistance: 0
   defaultColor: {r: 1, g: 1, b: 1, a: 1}

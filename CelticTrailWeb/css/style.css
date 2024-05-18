@@ -1,14 +1,12 @@
-*
-{
+
+*{
+    font-family: 'Courier New', Courier, monospace;
     margin: 0;
     padding: 0;
-    font-family: 'Courier New', Courier, monospace;
     scroll-behavior: smooth;
-
-    /* para que el modelo de cajas funcione correctamente (o de una forma más comprensible) */
     box-sizing: border-box;
+    position: relative;
 }
-
 
 .MenuNavegacion{
     background-color: rgba(138, 138, 138, 0.479);
@@ -26,8 +24,6 @@
     top: 0;
     z-index: 9999;
 }
-
-
 
 .MenuNavegacion .logo a img{
     display: flexbox;
@@ -58,34 +54,47 @@
         transition: 0.35s;
     }
 }
+
+
+/* FOOTER */
+
 .footer{
-    position: relative;
     background-color: rgba(63, 161, 114, 1);
     width: 100%;
     height: 500px;
     display: flex;
     justify-content: space-between;
+    gap: 5%;
     /* flex-flow: row wrap; */
 }
-.footer img{
-    width: auto;
-    height: 300px;
-    position: absolute;
-    bottom: 5%;
-    left:2%;
-}
-.segunda-caja {
-    position: absolute;
-    right: 60px;
-    top: 25px;
+
+.primera-caja-footer {
     width: 50%;
     height: 100%;
+    align-items:self-end;
 }
-.segunda-caja input {
+
+.primera-caja-footer img{
+    position: absolute;
+    bottom: 0px;
+    width: 300px;
+    height: auto;
+    margin-left: 5%;
+    margin-bottom: 2%;
+}
+
+.segunda-caja-footer {
+    margin-top: 25px;
+    margin-right: 5%;
+    width: 45%;
+    height: 100%;
+}
+
+.segunda-caja-footer input {
     width: 100%;;
 }
+
 .mensaje{
     height: 200px;
     overflow-y: scroll;
-
 }

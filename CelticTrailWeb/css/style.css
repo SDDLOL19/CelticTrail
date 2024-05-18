@@ -1,0 +1,91 @@
+*
+{
+    margin: 0;
+    padding: 0;
+    font-family: 'Courier New', Courier, monospace;
+    scroll-behavior: smooth;
+
+    /* para que el modelo de cajas funcione correctamente (o de una forma más comprensible) */
+    box-sizing: border-box;
+}
+
+
+.MenuNavegacion{
+    background-color: rgba(138, 138, 138, 0.479);
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    align-items: center;
+    padding: 1% 3%; /*Va a influenciar al nav de */
+    padding-right: 10%;
+
+
+    list-style: none;
+    /* para fijar el menú */
+    position: sticky;
+    top: 0;
+    z-index: 9999;
+}
+
+
+
+.MenuNavegacion .logo a img{
+    display: flexbox;
+
+    justify-content: flex-end;
+    height: 5em;
+    width: auto;
+    transition: 0.3s;
+}
+
+@media only screen and (max-width: 700px){
+    /* Para comprobar */
+    /* header{
+        background-color: aquamarine;
+    } */
+
+    /* Menú hamburguesa */
+    .MenuNavegacion{
+        display: block;
+    }
+
+    .MenuNavegacion .TextoHeader{
+        max-height: 0px;
+        flex-direction: column;
+        align-items: center;
+        /* para ocultar lo que se queda fuera del contenedor */
+        overflow: hidden;
+        transition: 0.35s;
+    }
+}
+.footer{
+    position: relative;
+    background-color: rgba(63, 161, 114, 1);
+    width: 100%;
+    height: 500px;
+    display: flex;
+    justify-content: space-between;
+    /* flex-flow: row wrap; */
+}
+.footer img{
+    width: auto;
+    height: 300px;
+    position: absolute;
+    bottom: 5%;
+    left:2%;
+}
+.segunda-caja {
+    position: absolute;
+    right: 60px;
+    top: 25px;
+    width: 50%;
+    height: 100%;
+}
+.segunda-caja input {
+    width: 100%;;
+}
+.mensaje{
+    height: 200px;
+    overflow-y: scroll;
+
+}

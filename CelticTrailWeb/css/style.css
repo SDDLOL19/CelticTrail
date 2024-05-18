@@ -1,5 +1,4 @@
-
-*{
+* {
     font-family: "Inknut Antiqua", serif;
     margin: 0;
     padding: 0;
@@ -8,24 +7,25 @@
     position: relative;
 }
 
-h1{
+h1 {
     font-weight: 300;
     font-style: normal;
 }
 
-.TextoHeader{
+.TextoHeader {
     font-weight: 300;
     font-style: normal;
     font-size: 200%;
 }
 
-.MenuNavegacion{
+.MenuNavegacion {
     background-color: rgba(138, 138, 138, 0.479);
     display: flex;
     flex-direction: row;
     justify-content: space-between;
     align-items: center;
-    padding: 1% 3%; /*Va a influenciar al nav de */
+    padding: 1% 3%;
+    /*Va a influenciar al nav de */
     padding-right: 10%;
 
     list-style: none;
@@ -35,7 +35,7 @@ h1{
     z-index: 9999;
 }
 
-.MenuNavegacion .logo a img{
+.MenuNavegacion .logo a img {
     display: flexbox;
     justify-content: flex-end;
     height: 5em;
@@ -43,18 +43,18 @@ h1{
     transition: 0.3s;
 }
 
-@media only screen and (max-width: 1050px){
+@media only screen and (max-width: 1050px) {
     /* Para comprobar */
     /* header{
         background-color: aquamarine;
     } */
 
     /* Menú hamburguesa */
-    .MenuNavegacion{
+    .MenuNavegacion {
         display: block;
     }
 
-    .MenuNavegacion .TextoHeader{
+    .MenuNavegacion .TextoHeader {
         max-height: 0px;
         flex-direction: column;
         align-items: center;
@@ -67,7 +67,7 @@ h1{
 
 /* FOOTER */
 
-.footer{
+.footer {
     background-color: rgba(63, 161, 114, 1);
     width: 100%;
     height: 500px;
@@ -80,10 +80,10 @@ h1{
 .primera-caja-footer {
     width: 50%;
     height: 100%;
-    align-items:self-end;
+    align-items: self-end;
 }
 
-.primera-caja-footer img{
+.primera-caja-footer img {
     position: absolute;
     bottom: 0px;
     width: 300px;
@@ -102,7 +102,7 @@ h1{
     width: 100%;
 }
 
-.footer textarea{
+.footer textarea {
     width: 100%;
     height: 20%;
 }

@@ -18,25 +18,38 @@
 <body>
     <!-- Menú navegación -->
     <header>
-        <ul class="MenuNavegacion">
+        <div class="menu-cont">
             <div class="logo">
+               
                 <a href="index.html">
                     <img src="media/image/LogoArmataInsania.png" alt="logo">
                 </a>
             </div>
-            <li class="TextoHeader">
-                Información del juego
-            </li>
-            <li class="TextoHeader">
-                Lore
-            </li>
-            <li class="TextoHeader">
-                ArtBook
-            </li>
-            <li class="TextoHeader">
-                Contacto
-            </li>
-        </ul>
+            <nav>
+                <input type="checkbox" id="menuToggle">
+                <label for="menuToggle" class="menu-icon">
+                    <i class="fa-solid fa-bars"></i>
+                </label>
+                <ul class="menu-opt">
+                    <li>
+                        <a href="#about_me">Información</a>
+                    </li>
+                    <li>
+                        <a href="#my_enemies">Lore</a>
+                    </li>
+                    <li>
+                        <a href="#my_friends">Artbook</a>
+                    </li>
+                    <li>
+                        <div class="btn">
+                            <button>Contacto</button>
+                        </div>
+                    </li>
+                </ul>
+            </nav>
+        </div>
+        
+        
     </header>
     <div id="ParteDario">
 

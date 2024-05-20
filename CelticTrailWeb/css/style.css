@@ -325,6 +325,28 @@ h3 {
     height: 20%;
 }
 
+#final_pagina{
+    height: 150px;
+    width: 100%;
+    background-color: white;
+    text-align: center;
+    display: flex;
+    flex-direction: column;
+}
+
+#final_pagina nav{
+    text-align: center;
+    display: flex;
+    flex-direction: column;
+
+}
+
+#final_pagina img{
+    width: 40px;
+    height: auto;
+}
+
+
 @media only screen and (max-width: 1050px) {
 
     /* Menú hamburguesa */

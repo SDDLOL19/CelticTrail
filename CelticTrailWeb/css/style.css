@@ -7,6 +7,10 @@
     position: relative;
 }
 
+#pixel-art{
+    image-rendering: pixelated;
+}
+
 body {
     background-color: rgba(70, 127, 114, 1);
 }
@@ -92,6 +96,8 @@ h1 {
     width: 100%;
     height: auto;
     display: flex;
+    align-items: center;
+    justify-items: center;
     flex-direction: row;
     background-color: rgba(63, 161, 114, 1);
 }
@@ -106,23 +112,75 @@ h1 {
 .caja4-slider {
     width: 50%;
     height: auto;
+    overflow: hidden;
+}
+
+.caja4-slider ul {
     display: flex;
-    justify-content: center;
+    align-content: center;
+    animation: cambioImagenCaja4 30s infinite alternate linear;
+    width: 500%;
+}
+
+.caja4-slider li {
+    width: 100%;
+    list-style: none;
 }
 
 .caja4-slider img {
-    width: auto;
-    height: 50%;
-    min-width: 48px;
-    min-height: 48px;
-    align-self: center;
+    width: 50%;
+    height: auto;
+    margin-left: 25%;
+}
 
+@keyframes cambioImagenCaja4 {
+    0% {
+        margin-left: 0;
+    }
+
+    20% {
+        margin-left: 0;
+    }
+
+    21% {
+        margin-left: -100%;
+    }
+
+    41% {
+        margin-left: -100%;
+    }
+
+    44% {
+        margin-left: -200%;
+    }
+
+    64% {
+        margin-left: -200%;
+    }
+
+    66% {
+        margin-left: -300%;
+    }
+
+    86% {
+        margin-left: -300%;
+    }
+
+    88% {
+        margin-left: -400%;
+    }
+
+    100% {
+        margin-left: -400%;
+    }
 }
 
 .caja5 {
     width: 100%;
     height: auto;
     display: flex;
+    align-items: center;
+    justify-items: center;
     flex-direction: row;
 
 }
@@ -137,20 +195,55 @@ h1 {
 .caja5-slider {
     width: 50%;
     height: auto;
+    overflow: hidden;
+}
+
+.caja5-slider ul {
     display: flex;
+    align-content: center;
     justify-content: center;
+    animation: cambioImagenCaja5 18s infinite alternate linear;
+    width: 300%;
+}
+
+.caja5-slider li {
+    width: 100%;
+    list-style: none;
 }
 
 .caja5-slider img {
-    width: auto;
-    height: 50%;
-    max-height: 300px;
-    min-width: 48px;
-    min-height: 48px;
-    align-self: center;
-    padding: 2%;
+    width: 40%;
+    height: auto;
+    margin-left: 25%;
+    margin-top: 2%;
+    image-rendering: pixelated;
 }
 
+@keyframes cambioImagenCaja5 {
+    0% {
+        margin-left: 0;
+    }
+
+    30% {
+        margin-left: 0;
+    }
+
+    33% {
+        margin-left: -100%;
+    }
+
+    63% {
+        margin-left: -100%;
+    }
+
+    66% {
+        margin-left: -200%;
+    }
+
+    100% {
+        margin-left: -200%;
+    }
+}
 
 
 /* FOOTER */
@@ -211,7 +304,9 @@ h1 {
         transition: 0.35s;
     }
 
-    .caja3-info, .caja4, .caja5{
+    .caja3-info,
+    .caja4,
+    .caja5 {
         flex-direction: column;
     }
 

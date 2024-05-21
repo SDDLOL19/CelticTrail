@@ -336,7 +336,7 @@ h3 {
     flex-direction: column;
     align-items: center;
     width: 100%;
-    border-radius: 36px 36px;
+    border-radius: 10px 10px;
     background-color: rgb(95, 128, 118);
     margin: 20px 20px 20px 20px;
     padding: 1%;
@@ -348,15 +348,20 @@ h3 {
     flex-direction: column;
     align-items: center;
     width: 100%;
-    border-radius: 36px 36px;
+    border-radius: 10px 10px;
     background-color: rgb(92, 122, 113);
     margin: 20px 20px 20px 20px;
 }
 
 .DibujosPersonaje{
     list-style: none;
+    padding: 20px 20px;
     width: 50%;
     height: auto;
+    display: flex;
+    justify-content: space-around;
+    border-radius: 10px 10px;
+    background-color: rgb(92, 122, 113);
 }
 
 .pixel-artimg{
@@ -369,20 +374,20 @@ h4{
 }
 
 #bocetos {
-    width: 12%;
-    height: 12%;
-    border-radius: 36px 36px;
+    width: 20%;
+    height: 20%;
+    border-radius: 10px 10px;
    
 }
 
 #bocetos2 {
-    width: 8%;
+    width: 10%;
     height: auto;
-    border-radius: 36px 36px;
+    border-radius: 10px 10px;
 }
 
 .serpienteImg{
-    width: 150%;
+    width: 100%;
     height: auto;
 } 
 

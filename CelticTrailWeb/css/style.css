@@ -57,11 +57,12 @@ h3 {
     font-size: 200%;
 }
 
-.MenuNavegacion {
+.Menu-cont {
     background-color: var(--gris-navegacion);
     display: flex;
     flex-direction: row;
     justify-content: space-between;
+    gap: 20px;
     align-items: center;
     padding: 1% 3%;
     /*Va a influenciar al nav de */
@@ -74,12 +75,25 @@ h3 {
     z-index: 9999;
 }
 
-.MenuNavegacion .logo a img {
+.Menu-cont .logo a img {
     display: flex;
     justify-content: flex-end;
     height: 5em;
     width: auto;
     transition: 0.3s;
+}
+
+.Menu-cont .Textos{
+    display: flex;
+    flex-direction: row-reverse;
+    align-items: center;
+    justify-content: space-between;
+}
+
+.Menu-cont .Textos .menu-opt{
+    list-style: none;
+    display: flex;
+    gap: 20px;
 }
 
 /* INFO */
@@ -382,17 +396,35 @@ h3 {
 @media only screen and (max-width: 1050px) {
 
     /* Menú hamburguesa */
-    .MenuNavegacion {
+    .Menu-cont, .Menu-cont .Textos {
         display: block;
     }
 
-    .MenuNavegacion .TextoHeader {
+    .menu-icon{
+        display: block;
+        position: absolute;
+        top: 30px;
+        right: 20px;
+    }
+
+    .menu-icon i{
+        font-size: 2em;
+    }
+
+    .menu-opt{
         max-height: 0px;
         flex-direction: column;
         align-items: center;
-        /* para ocultar lo que se queda fuera del contenedor */
         overflow: hidden;
         transition: 0.35s;
+    }
+
+    .menu-opt >li:first-child{
+        margin-top: 20px;
+    }
+
+    #menuToggle:checked ~ .menu-opt{
+        max-height: 350px;
     }
 
     h1,

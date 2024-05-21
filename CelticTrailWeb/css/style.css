@@ -75,7 +75,7 @@ h3 {
 }
 
 .MenuNavegacion .logo a img {
-    display: flexbox;
+    display: flex;
     justify-content: flex-end;
     height: 5em;
     width: auto;
@@ -169,6 +169,8 @@ h3 {
     height: auto;
     margin-left: 25%;
 }
+
+
 
 @keyframes cambioImagenCaja4 {
     0% {
@@ -294,7 +296,22 @@ h3 {
 /* ARTBOOK */
 
 .Artbook{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+    list-style: none;
+}
 
+#bocetos {
+    align-items: center;
+    width: 20%;
+    height: 20%;
+}
+
+#bocetos2 {
+    width: 10%;
+    height: auto;
 }
 
 

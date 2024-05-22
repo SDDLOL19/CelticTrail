@@ -261,6 +261,48 @@ header {
     margin-left: 25%;
 }
 
+@keyframes cambioImagenCaja4 {
+    0% {
+        margin-left: 0;
+    }
+
+    18% {
+        margin-left: 0;
+    }
+
+    20% {
+        margin-left: -100%;
+    }
+
+    38% {
+        margin-left: -100%;
+    }
+
+    40% {
+        margin-left: -200%;
+    }
+
+    58% {
+        margin-left: -200%;
+    }
+
+    60% {
+        margin-left: -300%;
+    }
+
+    78% {
+        margin-left: -300%;
+    }
+
+    80% {
+        margin-left: -400%;
+    }
+    
+    100% {
+        margin-left: -400%;
+    }
+}
+
 .caja5 {
     width: 100%;
     height: auto;

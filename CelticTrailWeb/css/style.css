@@ -1,5 +1,5 @@
 :root {
-    --green-titulos: #3FA172;
+    --green-titulos: #43db91;
     --green-oscuros: rgb(70, 127, 114);
     --green-claros: rgba(63, 161, 114, 1);
     --texto-oscuros: whitesmoke;
@@ -17,6 +17,15 @@
 }
 
 
+.Titulos {
+    background-color: var(--green-titulos);
+    width: 100%;
+    height: auto;
+    padding: auto;
+    margin: 0;
+    text-align: center;
+    font-size: 200%;
+}
 
 
 #pixel-art {
@@ -54,32 +63,36 @@ h3 {
     color: var(--texto-oscuros);
 }
 
+header{
+    position: sticky;
+    top: 0;
+    z-index: 9999;
+}
+
 .TextoHeader {
     font-weight: 300;
     font-style: normal;
-    font-size: 200%;
+    font-size: 300%;
 }
-
 
 
 .Menu-cont {
     background-color: var(--gris-navegacion);
     display: flex;
     flex-direction: row;
-    justify-content: space-between;
-    gap: 20px;
     align-items: center;
-    padding: 1% 3%;
-    /*Va a influenciar al nav de */
-    padding-right: 10%;
-
     list-style: none;
-    /* para fijar el menú */
-    position: sticky;
-    top: 0;
-    z-index: 9999;
     padding: 25px 50px;
+}
 
+.Menu-cont nav{
+    display: flexbox;
+    align-self: center;
+    justify-content: space-between;
+}
+
+.Menu-cont div{
+    width: 25%;
 }
 
 .Menu-cont .logo a img {
@@ -98,13 +111,8 @@ h3 {
     justify-content: space-between;
 }
 
-.menu-opt a {
-    text-decoration: none;
-    color: var(--green-titulos);
-}
-
-.menu-opt a :hover {
-    color: var(--green-oscuros);
+.menu-opt li :hover {
+    font-weight: bold;
 }
 
 .Texto_Menu {
@@ -112,6 +120,7 @@ h3 {
 }
 
 .Texto_Menu :hover {
+    text-decoration: none;
     color: var(--green-oscuros);
 }
 
@@ -119,6 +128,10 @@ h3 {
     list-style: none;
     display: flex;
     gap: 20px;
+}
+
+#MenuHamburguesa {
+    background-color: rgb(153, 153, 153);
 }
 
 .menu-icon,
@@ -149,12 +162,12 @@ h3 {
     background-color: var(--green-claros);
 }
 
-.caja2-info-video{
+.caja2-info-video {
     width: 100%;
     height: auto;
 }
 
-.caja2-info-video iframe{
+.caja2-info-video iframe {
     width: 100%;
     height: 100%;
 }
@@ -301,83 +314,6 @@ h3 {
 }
 
 /* Lore */
-.Lore {
-    background-image: url(../Media/Image/Fondo_lore1.jpg);
-    display: flex;
-    align-items: center;
-    align-content: space-around;
-    flex-direction: column;
-    background-repeat: no-repeat;
-    background-attachment: fixed;
-    background-size: cover;
-    background-color: #fff;
-}
-
-#TituloLore {
-    background-color: #3FA172;
-}
-
-.SeccionLore {
-    size: 100%;
-    width: 90%;
-    background-color: #48f5a1a2;
-    display: flex;
-    align-items: center;
-}
-
-.SeccionLore h1 {
-
-
-    align-items: center;
-    align-content: space-around;
-}
-
-.espacio {
-    padding-top: 200px;
-}
-
-
-@keyframes cambioImagenCaja4 {
-    0% {
-        margin-left: 0;
-    }
-
-    20% {
-        margin-left: 0;
-    }
-
-    21% {
-        margin-left: -100%;
-    }
-
-    41% {
-        margin-left: -100%;
-    }
-
-    44% {
-        margin-left: -200%;
-    }
-
-    64% {
-        margin-left: -200%;
-    }
-
-    66% {
-        margin-left: -300%;
-    }
-
-    86% {
-        margin-left: -300%;
-    }
-
-    88% {
-        margin-left: -400%;
-    }
-
-    100% {
-        margin-left: -400%;
-    }
-}
 
 
 /* ARTBOOK */
@@ -386,9 +322,8 @@ h3 {
     display: flex;
     align-items: center;
     flex-direction: column;
-    padding: 25px 50px;
-    margin: auto;
     background-color: rgb(115, 170, 152);
+    padding: 10%;
 }
 
 .Artbook div li {
@@ -408,7 +343,6 @@ h3 {
     width: 100%;
     border-radius: 10px 10px;
     background-color: rgb(92, 122, 113);
-    margin: 20px 20px 20px 20px;
     padding: 1%;
 }
 
@@ -477,7 +411,7 @@ h3 {
     height: auto;
 }
 
-h4 {
+.TextoArtbook {
     font-size: 300%;
 }
 
@@ -583,9 +517,10 @@ h4 {
         align-items: center;
         overflow: hidden;
         transition: 0.35s;
+        width: 100%;
     }
 
-    .menu-opt>li:first-child {
+    .menu-opt li:first-child {
         margin-top: 20px;
     }
 
@@ -593,16 +528,19 @@ h4 {
         max-height: 350px;
     }
 
-    h1, h2 {
+    h1,
+    h2 {
         font-size: 100%;
     }
 
-    .caja2-info-video iframe{
+    .caja2-info-video iframe {
         width: 100%;
         height: 50%;
     }
 
-    .caja3-info, .caja4, .caja5 {
+    .caja3-info,
+    .caja4,
+    .caja5 {
         flex-direction: column;
     }
 

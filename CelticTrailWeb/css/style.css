@@ -72,7 +72,7 @@ h3 {
     padding: 1% 3%;
     /*Va a influenciar al nav de */
     padding-right: 10%;
-    
+
     list-style: none;
     /* para fijar el menú */
     position: sticky;
@@ -90,7 +90,7 @@ h3 {
     transition: 0.3s;
 }
 
-.Menu-cont .Textos{
+.Menu-cont .Textos {
     text-decoration: none;
     display: flex;
     flex-direction: row-reverse;
@@ -98,31 +98,39 @@ h3 {
     justify-content: space-between;
 }
 
-.menu-opt a{
+.menu-opt a {
     text-decoration: none;
     color: var(--green-titulos);
 }
 
-.menu-opt a :hover{
+.menu-opt a :hover {
     color: var(--green-oscuros);
 }
 
-.Texto_Menu{
+.Texto_Menu {
     color: var(--green-claros);
 }
 
-.Texto_Menu :hover{
+.Texto_Menu :hover {
     color: var(--green-oscuros);
 }
 
-.Menu-cont .Textos .menu-opt{
+.Menu-cont .Textos .menu-opt {
     list-style: none;
     display: flex;
     gap: 20px;
 }
 
-.menu-icon, #MenuHamburguesa{
+.menu-icon,
+#MenuHamburguesa {
     display: none;
+}
+
+/* PORTADA */
+#portada,
+#portada img {
+    width: 100%;
+    height: auto;
 }
 
 /* INFO */
@@ -141,6 +149,15 @@ h3 {
     background-color: var(--green-claros);
 }
 
+.caja2-info-video{
+    width: 100%;
+    height: auto;
+}
+
+.caja2-info-video iframe{
+    width: 100%;
+    height: 100%;
+}
 
 .caja3-info {
     width: 100%;
@@ -213,85 +230,6 @@ h3 {
     margin-left: 25%;
 }
 
-/* Lore */
-.Lore{
-    background-image:url(../Media/Image/Fondo_lore1.jpg);
-    display: flex;
-    align-items: center;
-    align-content: space-around;
-    flex-direction: column;
-    background-repeat: no-repeat;
-    background-attachment: fixed;
-    background-size: cover;
-    background-color: #fff ;
-}
-
-#TituloLore{
-    background-color: #3FA172;
-}
-
-.SeccionLore{
-    size: 100%;
-    width: 90%;
-    background-color: #48f5a1a2;
-    display: flex;
-    align-items: center;
-}
-
-.SeccionLore h1{
-
-
-    align-items: center;
-    align-content: space-around;
-}
-
-.espacio{
-    padding-top: 200px;
-}
-
-
-@keyframes cambioImagenCaja4 {
-    0% {
-        margin-left: 0;
-    }
-
-    20% {
-        margin-left: 0;
-    }
-
-    21% {
-        margin-left: -100%;
-    }
-
-    41% {
-        margin-left: -100%;
-    }
-
-    44% {
-        margin-left: -200%;
-    }
-
-    64% {
-        margin-left: -200%;
-    }
-
-    66% {
-        margin-left: -300%;
-    }
-
-    86% {
-        margin-left: -300%;
-    }
-
-    88% {
-        margin-left: -400%;
-    }
-
-    100% {
-        margin-left: -400%;
-    }
-}
-
 .caja5 {
     width: 100%;
     height: auto;
@@ -362,10 +300,89 @@ h3 {
     }
 }
 
+/* Lore */
+.Lore {
+    background-image: url(../Media/Image/Fondo_lore1.jpg);
+    display: flex;
+    align-items: center;
+    align-content: space-around;
+    flex-direction: column;
+    background-repeat: no-repeat;
+    background-attachment: fixed;
+    background-size: cover;
+    background-color: #fff;
+}
+
+#TituloLore {
+    background-color: #3FA172;
+}
+
+.SeccionLore {
+    size: 100%;
+    width: 90%;
+    background-color: #48f5a1a2;
+    display: flex;
+    align-items: center;
+}
+
+.SeccionLore h1 {
+
+
+    align-items: center;
+    align-content: space-around;
+}
+
+.espacio {
+    padding-top: 200px;
+}
+
+
+@keyframes cambioImagenCaja4 {
+    0% {
+        margin-left: 0;
+    }
+
+    20% {
+        margin-left: 0;
+    }
+
+    21% {
+        margin-left: -100%;
+    }
+
+    41% {
+        margin-left: -100%;
+    }
+
+    44% {
+        margin-left: -200%;
+    }
+
+    64% {
+        margin-left: -200%;
+    }
+
+    66% {
+        margin-left: -300%;
+    }
+
+    86% {
+        margin-left: -300%;
+    }
+
+    88% {
+        margin-left: -400%;
+    }
+
+    100% {
+        margin-left: -400%;
+    }
+}
+
 
 /* ARTBOOK */
 
-.Artbook{
+.Artbook {
     display: flex;
     align-items: center;
     flex-direction: column;
@@ -374,7 +391,7 @@ h3 {
     background-color: rgb(115, 170, 152);
 }
 
-.Artbook div li{
+.Artbook div li {
     display: flex;
     justify-content: space-evenly;
     list-style: none;
@@ -383,7 +400,7 @@ h3 {
 
 }
 
-.Paleta{
+.Paleta {
     display: flex;
     justify-content: center;
     flex-direction: column;
@@ -395,7 +412,7 @@ h3 {
     padding: 1%;
 }
 
-.Personaje_Principal{
+.Personaje_Principal {
     display: flex;
     justify-content: center;
     flex-direction: column;
@@ -406,7 +423,7 @@ h3 {
     margin: 20px 20px 20px 20px;
 }
 
-.DibujosPersonaje{
+.DibujosPersonaje {
     list-style: none;
     padding: 20px 20px;
     width: 50%;
@@ -417,7 +434,7 @@ h3 {
     background-color: rgb(92, 122, 113);
 }
 
-.Enemigos{
+.Enemigos {
     /* padding: 20px 20px 20px 20px; */
     width: 100%;
     border-radius: 10px 10px 10px 10px;
@@ -426,39 +443,41 @@ h3 {
     justify-content: center;
     flex-direction: column;
 }
-.Enemigos div div h2{
+
+.Enemigos div div h2 {
     display: flex;
     justify-content: center;
 }
-.enemigosImg{
+
+.enemigosImg {
     display: flex;
     align-items: center;
     justify-content: center;
     flex-direction: row;
-}  
+}
 
-#TextoEnemigos{
+#TextoEnemigos {
     display: flex;
     align-items: center;
     justify-content: space-evenly;
     list-style: none;
-} 
+}
 
-#ImagenesEnemigos{
+#ImagenesEnemigos {
     width: 100%;
     height: auto;
     display: flex;
     justify-content: center;
     align-items: center;
-    
-} 
 
-.pixel-artimg{
+}
+
+.pixel-artimg {
     width: 80%;
     height: auto;
 }
 
-h4{
+h4 {
     font-size: 300%;
 }
 
@@ -466,7 +485,7 @@ h4{
     width: 20%;
     height: 20%;
     border-radius: 10px 10px;
-   
+
 }
 
 #bocetos2 {
@@ -475,10 +494,10 @@ h4{
     border-radius: 10px 10px;
 }
 
-.serpienteImg{
+.serpienteImg {
     width: 100%;
     height: auto;
-} 
+}
 
 /* FOOTER */
 
@@ -522,23 +541,17 @@ h4{
     height: 20%;
 }
 
-#final_pagina{
-    height: 150px;
+#final_pagina {
+    height: auto;
     width: 100%;
     background-color: white;
     text-align: center;
     display: flex;
     flex-direction: column;
+    align-self: center;
 }
 
-#final_pagina nav{
-    text-align: center;
-    display: flex;
-    flex-direction: column;
-
-}
-
-#final_pagina img{
+#final_pagina img {
     width: 40px;
     height: auto;
 }
@@ -547,23 +560,24 @@ h4{
 @media only screen and (max-width: 1050px) {
 
     /* Menú hamburguesa */
-    .Menu-cont, .Menu-cont .Textos {
+    .Menu-cont,
+    .Menu-cont .Textos {
         display: block;
     }
 
-    .menu-icon{
+    .menu-icon {
         display: block;
         position: absolute;
-        font-size: 1,7em;
+        font-size: 1, 7em;
         top: -40px;
         right: 10px;
     }
 
-    .menu-icon i{
+    .menu-icon i {
         font-size: 2em;
     }
 
-    .menu-opt{
+    .menu-opt {
         max-height: 0px;
         flex-direction: column;
         align-items: center;
@@ -571,53 +585,55 @@ h4{
         transition: 0.35s;
     }
 
-    .menu-opt >li:first-child{
+    .menu-opt>li:first-child {
         margin-top: 20px;
     }
 
-    #MenuHamburguesa:checked ~ .menu-opt{
+    #MenuHamburguesa:checked~.menu-opt {
         max-height: 350px;
     }
 
-    h1,
-    h2 {
+    h1, h2 {
         font-size: 100%;
     }
 
-    .caja3-info,
-    .caja4,
-    .caja5 {
+    .caja2-info-video iframe{
+        width: 100%;
+        height: 50%;
+    }
+
+    .caja3-info, .caja4, .caja5 {
         flex-direction: column;
     }
 
     .caja3-info li img {
         max-height: 163px;
+        min-width: 30%;
+        width: auto;
+        height: 100%;
     }
 }
 
 @media only screen and (max-width: 800px) {
 
-    .enemigosImg{
+    .enemigosImg {
         display: flex;
         align-items: center;
         justify-content: center;
         flex-direction: column;
     }
 
-    #PPText{
+    #PPText {
         font-size: 20px;
     }
 
-    #PPText2{
+    #PPText2 {
         font-size: 10px;
     }
 
-    .Personaje_Principal li{
+    .Personaje_Principal li {
         display: flex;
         flex-direction: column;
         list-style: none;
-
     }
-
-
 }

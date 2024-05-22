@@ -328,7 +328,7 @@ header{
 }
 
 .lore .CajaImagenFondo:first-child{
-    background-image:url(Media/Image/Fondo_lore1.jpg);
+    background-image:url(../Media/Image/Fondo_lore1.jpg);
 }
 
 .CajaImagenFondoDos{
@@ -337,7 +337,7 @@ header{
     background-repeat: no-repeat;
     background-size: cover;
     align-content: center;
-    background-image:url(Media/Image/Fondo_lore2.png);
+    background-image:url(../Media/Image/Fondo_lore2.png);
     background-color: red;
 }
 

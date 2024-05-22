@@ -1,5 +1,5 @@
 :root {
-    --green-titulos: #43db91;
+    --green-titulos: #46aa99;
     --green-oscuros: rgb(70, 127, 114);
     --green-claros: rgba(63, 161, 114, 1);
     --texto-oscuros: whitesmoke;
@@ -25,6 +25,8 @@
     margin: 0;
     text-align: center;
     font-size: 200%;
+    /* border-radius: 30px 30px; */
+
 }
 
 
@@ -63,7 +65,7 @@ h3 {
     color: var(--texto-oscuros);
 }
 
-header{
+header {
     position: sticky;
     top: 0;
     z-index: 9999;
@@ -80,18 +82,27 @@ header{
     background-color: var(--gris-navegacion);
     display: flex;
     flex-direction: row;
+    justify-content: space-between;
     align-items: center;
     list-style: none;
     padding: 25px 50px;
 }
 
-.Menu-cont nav{
-    display: flexbox;
+.Menu-cont nav {
+    display: flex;
     align-self: center;
-    justify-content: space-between;
+    padding: 25px 50px;
 }
 
-.Menu-cont div{
+.menu-opt li {
+    padding-top: 10px;
+}
+
+.menu-cont .logo:hover {
+    transform: scale(1.1);
+}
+
+.Menu-cont div {
     width: 25%;
 }
 
@@ -116,12 +127,18 @@ header{
 }
 
 .Texto_Menu {
-    color: var(--green-claros);
+    color: var(--texto-oscuros);
+    background-color: var(--green-oscuros);
+    padding: 5%;
+    margin: 5% 5% 5% 5%;
+    border-radius: 10px 10px;
+    text-decoration: none;
+
 }
 
 .Texto_Menu :hover {
     text-decoration: none;
-    color: var(--green-oscuros);
+    color: var(--green-titulos);
 }
 
 .Menu-cont .Textos .menu-opt {
@@ -163,8 +180,9 @@ header{
 }
 
 .caja2-info-video {
-    width: 100%;
+    width: 80%;
     height: auto;
+    margin: 10%;
 }
 
 .caja2-info-video iframe {
@@ -315,11 +333,11 @@ header{
 
 /* LORE */
 
-.lore h1{
+.lore h1 {
     background-color: var(--green-claros);
 }
 
-.CajaImagenFondo{
+.CajaImagenFondo {
     width: 100%;
     height: 50%;
     background-repeat: no-repeat;
@@ -327,21 +345,21 @@ header{
     align-content: center;
 }
 
-.lore .CajaImagenFondo:first-child{
-    background-image:url(../Media/Image/Fondo_lore1.jpg);
+.lore .CajaImagenFondo:first-child {
+    background-image: url(../Media/Image/Fondo_lore1.jpg);
 }
 
-.CajaImagenFondoDos{
+.CajaImagenFondoDos {
     width: 100%;
     height: 50%;
     background-repeat: no-repeat;
     background-size: cover;
     align-content: center;
-    background-image:url(../Media/Image/Fondo_lore2.png);
+    background-image: url(../Media/Image/Fondo_lore2.png);
     background-color: red;
 }
 
-.image-lore{
+.image-lore {
     width: 100%;
     height: auto;
 }
@@ -472,29 +490,38 @@ header{
     height: 500px;
     display: flex;
     justify-content: space-between;
+    flex-direction: row;
     gap: 5%;
     /* flex-flow: row wrap; */
 }
 
-.primera-caja-footer {
-    width: 50%;
+#mapa {
+    width: 45%;
     height: 100%;
-    align-items: self-end;
+    margin-left: 2%;
+    padding-top: 2%;
+    padding-bottom: 2%;
+
+}
+
+.primera-caja-footer {
+    width: 100%;
+    height: auto;
 }
 
 .primera-caja-footer img {
-    position: absolute;
-    bottom: 0px;
-    width: 300px;
-    height: auto;
+    /* width: 300px;
+    height: auto; */
     margin-left: 5%;
     margin-bottom: 2%;
+    margin-top: 2%;
 }
 
 .segunda-caja-footer {
     margin-right: 2%;
     width: 45%;
     height: 100%;
+
 }
 
 .segunda-caja-footer input {
@@ -579,6 +606,23 @@ header{
         max-height: 163px;
         min-width: 30%;
         width: auto;
+        height: 100%;
+    }
+
+    .footer {
+        flex-direction: column;
+        align-items: center;
+    }
+
+    #mapa {
+        width: 80%;
+        height: 50%;
+        margin-left: 0;
+    }
+
+    .segunda-caja-footer {
+        margin-right: 0;
+        width: 80%;
         height: 100%;
     }
 }

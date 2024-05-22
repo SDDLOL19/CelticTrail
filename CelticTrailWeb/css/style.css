@@ -16,15 +16,7 @@
     position: relative;
 }
 
-.menu-opt a{
-    text-decoration: none;
-    color: var(--green-titulos);
-}
 
-.menu-opt a :hover{
-    text-decoration: none;
-    color: var(--green-oscuros);
-}
 
 
 #pixel-art {
@@ -69,6 +61,7 @@ h3 {
 }
 
 
+
 .Menu-cont {
     background-color: var(--gris-navegacion);
     display: flex;
@@ -103,6 +96,23 @@ h3 {
     flex-direction: row-reverse;
     align-items: center;
     justify-content: space-between;
+}
+
+.menu-opt a{
+    text-decoration: none;
+    color: var(--green-titulos);
+}
+
+.menu-opt a :hover{
+    color: var(--green-oscuros);
+}
+
+.Texto_Menu{
+    color: var(--green-claros);
+}
+
+.Texto_Menu :hover{
+    color: var(--green-oscuros);
 }
 
 .Menu-cont .Textos .menu-opt{
@@ -208,6 +218,7 @@ h3 {
     background-image:url(../Media/Image/Fondo_lore1.jpg);
     display: flex;
     align-items: center;
+    align-content: space-around;
     flex-direction: column;
     background-repeat: no-repeat;
     background-attachment: fixed;
@@ -215,9 +226,27 @@ h3 {
     background-color: #fff ;
 }
 
+#TituloLore{
+    background-color: #3FA172;
+}
+
 .SeccionLore{
     size: 100%;
-    background-color: #48f5a1a2;    
+    width: 90%;
+    background-color: #48f5a1a2;
+    display: flex;
+    align-items: center;
+}
+
+.SeccionLore h1{
+
+
+    align-items: center;
+    align-content: space-around;
+}
+
+.espacio{
+    padding-top: 200px;
 }
 
 
@@ -332,14 +361,6 @@ h3 {
         margin-left: -200%;
     }
 }
-
-
-/* LORE */
-
-.Lore{
-    
-}
-
 
 
 /* ARTBOOK */

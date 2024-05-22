@@ -16,6 +16,17 @@
     position: relative;
 }
 
+.menu-opt a{
+    text-decoration: none;
+    color: var(--green-titulos);
+}
+
+.menu-opt a :hover{
+    text-decoration: none;
+    color: var(--green-oscuros);
+}
+
+
 #pixel-art {
     image-rendering: pixelated;
 }
@@ -57,6 +68,7 @@ h3 {
     font-size: 200%;
 }
 
+
 .Menu-cont {
     background-color: var(--gris-navegacion);
     display: flex;
@@ -67,7 +79,7 @@ h3 {
     padding: 1% 3%;
     /*Va a influenciar al nav de */
     padding-right: 10%;
-
+    
     list-style: none;
     /* para fijar el menú */
     position: sticky;
@@ -86,6 +98,7 @@ h3 {
 }
 
 .Menu-cont .Textos{
+    text-decoration: none;
     display: flex;
     flex-direction: row-reverse;
     align-items: center;
@@ -96,6 +109,10 @@ h3 {
     list-style: none;
     display: flex;
     gap: 20px;
+}
+
+.menu-icon, #MenuHamburguesa{
+    display: none;
 }
 
 /* INFO */
@@ -186,6 +203,22 @@ h3 {
     margin-left: 25%;
 }
 
+/* Lore */
+.Lore{
+    background-image:url(../Media/Image/Fondo_lore1.jpg);
+    display: flex;
+    align-items: center;
+    flex-direction: column;
+    background-repeat: no-repeat;
+    background-attachment: fixed;
+    background-size: cover;
+    background-color: #fff ;
+}
+
+.SeccionLore{
+    size: 100%;
+    background-color: #48f5a1a2;    
+}
 
 
 @keyframes cambioImagenCaja4 {
@@ -500,8 +533,9 @@ h4{
     .menu-icon{
         display: block;
         position: absolute;
-        top: 30px;
-        right: 20px;
+        font-size: 1,7em;
+        top: -40px;
+        right: 10px;
     }
 
     .menu-icon i{
@@ -520,7 +554,7 @@ h4{
         margin-top: 20px;
     }
 
-    #menuToggle:checked ~ .menu-opt{
+    #MenuHamburguesa:checked ~ .menu-opt{
         max-height: 350px;
     }
 
@@ -563,5 +597,6 @@ h4{
         list-style: none;
 
     }
+
 
 }
